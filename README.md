@@ -24,6 +24,8 @@ The resulting GPS object add columns to the DataFrame for step metrics of the GP
 GPS_Collection(gps_collection)
 * *gps_collection* is a list of GPS object.
 
+The resulting GPS_Collection object allows to handle several GPS biologgers at once to produce central-place foraging trip statistics and releveant plots. See the documentation for more details.
+
 ## methods
 * *display_data_summary* : display a summary of the GPS collection.
 * *plot_stats_summary* : produce the png showing the trip statistics of the GPS collection.
@@ -32,5 +34,5 @@ GPS_Collection(gps_collection)
 
 
 # Infos
-Python version used is 3.11.5
-OS used is Ubuntu 18.04
+* Python version used is 3.11.5
+* OS used is Ubuntu 18.04
