@@ -18,8 +18,8 @@ language = "en"
 
 extensions = []
 
-templates_path = ["_templates"]
-exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
+templates_path = ["../doc/_templates"]
+exclude_patterns = ["../doc/_build", "Thumbs.db", ".DS_Store"]
 
 
 
@@ -27,7 +27,7 @@ exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
 html_theme = "classic"
-html_static_path = ["_static"]
+html_static_path = ["../doc/_static"]
 
 
 # -- Authorized extensions -------------------------------------------------
@@ -36,3 +36,6 @@ extensions = ["sphinx.ext.duration",
               "sphinx.ext.doctest",
               "sphinx.ext.autodoc",
               "sphinx.ext.autosummary"]
+
+
+# command line for building documentation : sphinx-build -M html src/ doc/ -c doc/
