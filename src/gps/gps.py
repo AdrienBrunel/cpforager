@@ -96,9 +96,15 @@ class GPS:
         self.n_trip = infos["n_trip"]
         self.nest_position = infos["nest_position"]
         self.trip_statistics = infos["trip_statistics"]
-
         
-
+    # [METHODS] length of the class 
+    def __len__(self):
+        return self.n_df
+    
+    # [METHODS] getter of the class 
+    def __getitem__(self, idx):
+        return self.df[idx]
+        
     # [METHODS] string representation of the class 
     def __repr__(self):
         return "%s(group=%s, id=%s, trips=%d, n=%d)" % (type(self).__name__, self.group, self.id, self.n_trip, self.n_df)
