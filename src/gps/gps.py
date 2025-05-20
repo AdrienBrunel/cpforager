@@ -103,7 +103,7 @@ class GPS:
     
     # [METHODS] getter of the class 
     def __getitem__(self, idx):
-        return self.df[idx]
+        return self.df.iloc[idx]
         
     # [METHODS] string representation of the class 
     def __repr__(self):
