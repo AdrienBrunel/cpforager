@@ -69,10 +69,18 @@ class GPS_Collection:
         self.n_trip = len(trip_statistics_all)
         self.trip_statistics_all = trip_statistics_all
         self.df_all = df_all
-
+        
+    # [METHODS] length of the class 
+    def __len__(self):
+        return self.n_gps
+    
+    # [METHODS] getter of the class 
+    def __getitem__(self, idx):
+        return self.gps_collection[idx]
+        
     # [METHODS] string representation of the class 
     def __repr__(self):
-        return "%s(%d GPS, trips=%d)" % (type(self).__name__, self.n_gps, self.n_trip)
+        return "%s(%d GPS, %d trips)" % (type(self).__name__, self.n_gps, self.n_trip)
         
     # [METHODS] display the summary of the data
     display_data_summary = display.display_data_summary
