@@ -278,6 +278,27 @@ def plot_folium_map(df, params, id):
     
     return(fmap)
 
+# ======================================================= #
+# PLOT MAP FOLIUM WITH TRIP COLORS
+# ======================================================= # 
+def plot_folium_map_wtrips(df, params, id, n_trip, color_palette):
+    
+    # get parameters
+    colony = params.get("colony")
+    
+    # produce folium map with a trip color gradient
+    n_cols = len(color_palette)
+    fmap = folium.Map(location = [colony["center"][1], colony["center"][0]])
+    folium.Marker(location=[colony["center"][1], colony["center"][0]], popup="<i>Colony</i>").add_to(fmap)
+    folium.PolyLine(tooltip=id, locations=df[["latitude", "longitude"]].values.tolist(), 
+                    color="black", weight=3, opacity=0.7).add_to(fmap)
+    if n_trip >= 1:
+        for i in range(n_trip):
+            trip_id = i+1
+            folium.PolyLine(tooltip="%s - %d" % (id, trip_id), locations=df.loc[df["trip"] == trip_id, ["latitude", "longitude"]].values.tolist(), 
+                            color=misc.rgb_to_hex(color_palette[i % n_cols]), weight=3, opacity=0.7).add_to(fmap)
+    
+    return(fmap)
 
 # ======================================================= #
 # PLOT MAP COLORGRAD FOLIUM

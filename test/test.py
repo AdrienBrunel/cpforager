@@ -58,6 +58,7 @@ gps.display_data_summary()
 _ = gps.full_diag(test_dir, "%s_diag" % file_id, plot_params)
 _ = gps.maps_diag(test_dir, "%s_map" % file_id, plot_params)
 _ = gps.folium_map(test_dir, "%s_fmap" % file_id)
+_ = gps.folium_map_wtrips(test_dir, "%s_fmap_wtrips" % file_id, plot_params)
 _ = gps.folium_map_colorgrad(test_dir, "%s_fmap_speed" % file_id, plot_params)
 
 

@@ -208,6 +208,27 @@ def folium_map(self, fig_dir=str, file_id=str):
 
     return(fmap)
 
+# ======================================================= #
+# GPS FOLIUM MAP [GPS METHOD]
+# ======================================================= #
+def folium_map_wtrips(self, fig_dir=str, file_id=str, plot_params=dict):
+    
+    # get parameters
+    cols_1 = plot_params.get("cols_1")
+    
+    # get attributes
+    params = self.params
+    df = self.df
+    id = self.id
+    n_trip = self.n_trip
+    
+    # produce folium map
+    fmap = diagnostic.plot_folium_map_wtrips(df, params, id, n_trip, cols_1)
+    
+    # save figure
+    fmap.save("%s/%s.html" % (fig_dir, file_id)) 
+
+    return(fmap)
 
 # ======================================================= #
 # GPS FOLIUM MAP COLORGRAD [GPS METHOD]
