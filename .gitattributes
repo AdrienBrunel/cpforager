@@ -1,2 +1,2 @@
-# only account files in src to compute GitHub language statistics
-src/* -linguist-detectable
+# only account for files in src (and its subdirectories) to compute GitHub language statistics
+src/** -linguist-detectable
