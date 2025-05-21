@@ -1,10 +1,9 @@
 # ======================================================= #
 # LIBRARIES
 # ======================================================= #
-from src import diagnostic, misc
+from src import diagnostic
 import matplotlib.pyplot as plt
 import cartopy.crs as ccrs
-import folium
 
 
 # ======================================================= #

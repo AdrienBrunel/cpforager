@@ -384,10 +384,13 @@ def remove_suspicious(df, params):
 #
 # INPUT  : - df              : dataframe with "datetime", "longitude" and "latitude" columns.
 #          - interp_datetime : array of the desired datetime for interpolation. 
+#          - add_proxy       : boolean True if we want to compute the interpolation proxy computed 
+#                              as the duration in seconds between the interp_datetime and the closest
+#                              GPS measure.
 #
 # OUTPUT : - df_interp : dataframe with longitude and latitude interpolated at interp_datetime.
 # ================================================================================================ #
-def interpolate_lat_lon(df, interp_datetime):
+def interpolate_lat_lon(df, interp_datetime, add_proxy=False):
 
     # number of interpolation step
     n_step = len(interp_datetime)
@@ -402,6 +405,28 @@ def interpolate_lat_lon(df, interp_datetime):
     # reformat column
     df_interp["latitude"] = df_interp["latitude"].round(6)
     df_interp["longitude"] = df_interp["longitude"].round(6)
+    
+    # compute interpolation proxy
+    if add_proxy:
+        
+        # compute duration between interp and measure
+        df_interp["interp_proxy"] = [0.0]*n_step
+        for k in range(n_step):
+            t = df_interp.loc[k, "datetime"]
+            idx = np.searchsorted(df["datetime"], t)
+            if (idx == 0):
+                t2 = df.loc[idx, "datetime"]
+                df_interp.loc[k,"interp_proxy"] = (t2-t).total_seconds()
+            elif (idx == len(df)):
+                t1 = df.loc[idx-1, "datetime"]
+                df_interp.loc[k,"interp_proxy"] = (t-t1).total_seconds()
+            else:
+                t1 = df.loc[idx-1,"datetime"]
+                t2 = df.loc[idx,"datetime"]
+                df_interp.loc[k, "interp_proxy"] = min((t-t1).total_seconds(), (t2-t).total_seconds())
+    
+        # reformat column
+        df_interp["interp_proxy"] = df_interp["interp_proxy"].round(1)
 
     return(df_interp)
 

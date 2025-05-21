@@ -3,7 +3,7 @@
 # ======================================================= #
 import pandas as pd
 from src import processing
-from src.gps import diagnostic, display
+from src.gps import diagnostic, display, interpolation
 
 
 # ======================================================= #
@@ -109,6 +109,9 @@ class GPS:
     def __repr__(self):
         return "%s(group=%s, id=%s, trips=%d, n=%d)" % (type(self).__name__, self.group, self.id, self.n_trip, self.n_df)
         
+    # [METHODS] interpolate data
+    interpolate_lat_lon = interpolation.interpolate_lat_lon
+    
     # [METHODS] display the summary of the data
     display_data_summary = display.display_data_summary
     
