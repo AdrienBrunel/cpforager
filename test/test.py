@@ -4,7 +4,7 @@
 import os
 import csv
 import pandas as pd
-from src import parameters, utils
+from src import parameters, utils, processing
 from src.gps.gps import GPS
 from src.gps_collection.gps_collection import GPS_Collection
 
@@ -15,13 +15,13 @@ from src.gps_collection.gps_collection import GPS_Collection
 root_dir = os.getcwd()
 data_dir = "%s/data" % root_dir
 test_dir = "%s/test" % root_dir
-src_dir = "%s/src" % root_dir
+src_dir  = "%s/src" % root_dir
 plot_dir = "%s/plots" % root_dir
-res_dir = "%s/results" % root_dir
+res_dir  = "%s/results" % root_dir
 
 
 # ======================================================= #
-# TEST GPS
+# TEST GPS CLASS
 # ======================================================= #
 
 # parameters
@@ -46,21 +46,31 @@ df["datetime"] = pd.to_datetime(df["date"] + " " + df["time"], format="mixed", d
 # build GPS object
 gps = GPS(df=df, group=fieldwork, id=file_id, params=params)
 
-# display summary
+# test built-in methods
+print(gps)
+print(len(gps))
+print(gps[1312])
+
+# test display_data_summary method
 gps.display_data_summary()
 
-# produce individual plots
+# test full_diag, maps_diag, folium_map, folium_map_colorgrad methods
 _ = gps.full_diag(test_dir, "%s_diag" % file_id, plot_params)
 _ = gps.maps_diag(test_dir, "%s_map" % file_id, plot_params)
 _ = gps.folium_map(test_dir, "%s_fmap" % file_id)
 _ = gps.folium_map_colorgrad(test_dir, "%s_fmap_speed" % file_id, plot_params)
 
-# produce the csv file of processed gps data
-gps.df.drop(["datetime", "step_heading"], axis=1).to_csv("%s/%s" % (test_dir, file_name), index=False, quoting=csv.QUOTE_NONNUMERIC)
+
+# ======================================================= #
+# TEST INTERPOLATION
+# ======================================================= #
+interp_datetime = pd.date_range(start=gps.df["datetime"].iloc[0], end=gps.df["datetime"].iloc[-1], freq=pd.Timedelta(seconds=5), periods=None)
+df_interp = processing.interpolate_lat_lon(gps.df, interp_datetime)
+print("%d/%d = %.2f%%" % (len(df_interp), len(gps.df), 100*len(df_interp)/len(gps.df)))
 
 
 # ======================================================= #
-# TEST GPS COLLECTION
+# TEST GPS_COLLECTION CLASS
 # ======================================================= #
 
 # parameters
@@ -106,14 +116,32 @@ for (fieldwork, colony) in zip(fieldworks, colonies):
         
     # plot data summary
     gps_collection = GPS_Collection(gps_collection)
+        
+    # test built-in methods
+    print(gps_collection)
+    print(len(gps_collection))
+    print(gps_collection[2])
+    
+    # test display_data_summary method
     gps_collection.display_data_summary()
+    
+    # test plot_stats_summary, folium_map, maps_diag methods
     _ = gps_collection.plot_stats_summary(test_dir, "trip_statistics_%s" % fieldwork, plot_params)
     _ = gps_collection.folium_map(test_dir, "folium_%s" % fieldwork)
     _ = gps_collection.maps_diag(test_dir, "maps_%s" % fieldwork, plot_params)
 
 # analysis of all data
 gps_collection_all = GPS_Collection(gps_collection_all)
+
+# test built-in methods
+print(gps_collection_all)
+print(len(gps_collection_all))
+print(gps_collection_all[5])
+
+# test display_data_summary method
 gps_collection_all.display_data_summary()
+
+# test plot_stats_summary, folium_map, maps_diag methods
 _ = gps_collection_all.plot_stats_summary(test_dir, "trip_statistics_all", plot_params)
 _ = gps_collection_all.folium_map(test_dir, "folium_all")
 gps_collection_all.trip_statistics_all.to_csv("%s/trip_statistics_all.csv" % (test_dir), index=False, quoting=csv.QUOTE_NONNUMERIC)
