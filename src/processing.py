@@ -393,11 +393,11 @@ def interpolate_lat_lon(df, interp_datetime):
     n_step = len(interp_datetime)
 
     # init interpolated dataframe
-    df_interp = pd.DataFrame({"datetime": interp_datetime, "latitude": [df.loc[0, "latitude"]]*n_step, "longitude": [df.loc[0, "longitude"]]*n_step, "interp_proxy": [0.0]*n_step})
+    df_interp = pd.DataFrame({"datetime": interp_datetime, "latitude": [df.loc[0, "latitude"]]*n_step, "longitude": [df.loc[0, "longitude"]]*n_step})
 
     # interpolate longitude and latitude
-    df_interp["latitude"] = np.interp(interp_datetime.astype(float), df["datetime"].values.astype(float), df["latitude"].values)
-    df_interp["longitude"] = np.interp(interp_datetime.astype(float), df["datetime"].values.astype(float), df["longitude"].values)
+    df_interp["latitude"] = np.interp(interp_datetime.values.astype(float), df["datetime"].values.astype(float), df["latitude"].values)
+    df_interp["longitude"] = np.interp(interp_datetime.values.astype(float), df["datetime"].values.astype(float), df["longitude"].values)
     
     # reformat column
     df_interp["latitude"] = df_interp["latitude"].round(6)

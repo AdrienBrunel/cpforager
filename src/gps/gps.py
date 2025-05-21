@@ -21,9 +21,9 @@ class GPS:
     df : pandas.DataFrame
         The dataframe containing the raw and processed GPS data.
     group : str
-        The string representing the goup to which the GPS data belongs (*e.g.* species, year, fieldwork, *etc*.).
+        The string representing the group to which the GPS data belongs (*e.g.* species, year, fieldwork, *etc*.) useful for statistics and filtering.
     id : str
-        The string representing the unique identifier of the central-palce foraging seabird.
+        The string representing the unique identifier of the central-place foraging seabird.
     params : dict
         The dictionary containing the parameters used for the GPS data processing.
     n_df : int
@@ -69,7 +69,7 @@ class GPS:
         df : pandas.DataFrame
             The dataframe containing "datetime", "longitude" and "latitude" columns. Type of "datetime" column must be converted to datetime64.
         group : str
-            The string representing the group to which the data belongs (e.g. year, fieldwork, specie, etc.) which can be useful for statistics and filtering.
+            The string representing the group to which the GPS data belongs (*e.g.* species, year, fieldwork, *etc*.) useful for statistics and filtering.
         id : str
             The string representing the unique identifier of the central-place foraging seabird.
         params : dict
@@ -97,15 +97,15 @@ class GPS:
         self.nest_position = infos["nest_position"]
         self.trip_statistics = infos["trip_statistics"]
         
-    # [METHODS] length of the class 
+    # [BUILT-IN METHODS] length of the class 
     def __len__(self):
         return self.n_df
     
-    # [METHODS] getter of the class 
+    # [BUILT-IN METHODS] getter of the class 
     def __getitem__(self, idx):
         return self.df.iloc[idx]
         
-    # [METHODS] string representation of the class 
+    # [BUILT-IN METHODS] string representation of the class 
     def __repr__(self):
         return "%s(group=%s, id=%s, trips=%d, n=%d)" % (type(self).__name__, self.group, self.id, self.n_trip, self.n_df)
         
