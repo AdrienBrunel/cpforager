@@ -380,6 +380,33 @@ def remove_suspicious(df, params):
 
 
 # ================================================================================================ #
+# GOAL   : interpolate longitude and latitude at a desired datetime.
+#
+# INPUT  : - df              : dataframe with "datetime", "longitude" and "latitude" columns.
+#          - interp_datetime : array of the desired datetime for interpolation. 
+#
+# OUTPUT : - df_interp : dataframe with longitude and latitude interpolated at interp_datetime.
+# ================================================================================================ #
+def interpolate_lat_lon(df, interp_datetime):
+
+    # number of interpolation step
+    n_step = len(interp_datetime)
+
+    # init interpolated dataframe
+    df_interp = pd.DataFrame({"datetime": interp_datetime, "latitude": [df.loc[0, "latitude"]]*n_step, "longitude": [df.loc[0, "longitude"]]*n_step, "interp_proxy": [0.0]*n_step})
+
+    # interpolate longitude and latitude
+    df_interp["latitude"] = np.interp(interp_datetime.astype(float), df["datetime"].values.astype(float), df["latitude"].values)
+    df_interp["longitude"] = np.interp(interp_datetime.astype(float), df["datetime"].values.astype(float), df["longitude"].values)
+    
+    # reformat column
+    df_interp["latitude"] = df_interp["latitude"].round(6)
+    df_interp["longitude"] = df_interp["longitude"].round(6)
+
+    return(df_interp)
+
+
+# ================================================================================================ #
 # GOAL   : add the gps data.
 #
 # INPUT  : - df     : dataframe with "datetime", "longitude" and "latitude" columns.

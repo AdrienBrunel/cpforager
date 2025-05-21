@@ -109,7 +109,6 @@ class GPS:
     def __repr__(self):
         return "%s(group=%s, id=%s, trips=%d, n=%d)" % (type(self).__name__, self.group, self.id, self.n_trip, self.n_df)
         
-
     # [METHODS] display the summary of the data
     display_data_summary = display.display_data_summary
     
