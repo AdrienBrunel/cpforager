@@ -126,13 +126,25 @@ def plot_cumulative_distribution(df, var, title, var_lab, plot_params, v_qs=[0.2
 # ======================================================= #        
 def plot_box(df, plot_params, var, title, var_lab):
        
-    # plot histogram of var
+    # boxplot of var
     plt.boxplot(df[var], vert=False)
     plt.title(title, fontsize=plot_params["main_fs"])
     plt.xlabel(var_lab, fontsize=plot_params["labs_fs"])
     plt.tick_params(axis="both", labelsize=plot_params["axis_fs"])
     plt.grid(linestyle=plot_params["grid_lty"], linewidth=plot_params["grid_lwd"], color=plot_params["grid_col"])
-     
+    
+# ======================================================= #
+# PLOT VIOLINPLOT
+# ======================================================= #        
+def plot_violin(df, plot_params, var, title, var_lab, quantiles=[0.25, 0.50, 0.75]):
+       
+    # violinplot of var
+    plt.violinplot(df[var], orientation="horizontal", quantiles=quantiles)
+    plt.title(title, fontsize=plot_params["main_fs"])
+    plt.xlabel(var_lab, fontsize=plot_params["labs_fs"])
+    plt.tick_params(axis="both", labelsize=plot_params["axis_fs"])
+    plt.grid(linestyle=plot_params["grid_lty"], linewidth=plot_params["grid_lwd"], color=plot_params["grid_col"])
+    
 # ======================================================= #
 # PLOT HISTOGRAMS
 # ======================================================= #        
@@ -260,7 +272,6 @@ def plot_map_colorgrad(ax, df, params, plot_params, var, color_palette, nest_lon
     else:
         # plt.legend(loc="best", fontsize=plot_params["text_fs"], markerscale=5)
         plt.axis("equal")
-    
     
 # ======================================================= #
 # PLOT MAP FOLIUM
