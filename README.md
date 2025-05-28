@@ -37,7 +37,7 @@ methods                | description
 
 # AXY
 Constructor  `AXY(df, group, id, params)` : 
-* `df` is a pandas DataFrame containing ***datetime***, ***longitude***, ***latitude***, ***a_x***, ***a_y*** and ***a_z*** columns. The user must input the ***datetime*** at local timezone and converted to `datetime64` type (see `test.py`).
+* `df` is a pandas DataFrame containing ***datetime***, ***longitude***, ***latitude***, ***ax***, ***ay*** and ***az*** columns. The user must input the ***datetime*** at local timezone and converted to `datetime64` type (see `test.py`).
 * `group` is a string representing the group to which the data belongs (year, fieldwork, specie, etc.) which can be relevant for future statistics.
 * `id` is a string representing the unique identifier of the central-place foraging seabird.
 * `params` is the list of parameters that should at least include the fields present in parameters.py.
