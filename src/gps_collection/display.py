@@ -11,24 +11,26 @@ from src import utils
 def display_data_summary(self):
 
     # get attributes
-    # stats_group_id = self.stats_group_id
     gps_collection = self.gps_collection
     trip_statistics_all = self.trip_statistics_all
     
+    # append groups
     groups = []
     for gps in gps_collection:
         groups.append(gps.group)
         
-    # compute infos
+    # build string with group infos
     groups_str = "| "
     for group in np.unique(groups):
         groups_str = groups_str + "%s [%d GPS] | " % (group, sum(np.isin(groups, group)))
+        
+    # get quantiles trip statistics
     trip_length_quantiles = trip_statistics_all["length"].quantile([0,0.25,0.5,0.75,1])
     trip_duration_quantiles = trip_statistics_all["duration"].quantile([0,0.25,0.5,0.75,1])
     trip_dmax_quantiles = trip_statistics_all["dmax"].quantile([0,0.25,0.5,0.75,1])
     trip_nstep_quantiles = trip_statistics_all["n_step"].quantile([0,0.25,0.5,0.75,1])
     
-    # store information
+    # print information
     print("# ============================== SUMMARY ============================== #")
     print("# ------------------------------ METADATA ----------------------------- #")
     print("# + Nb of GPS   = %d" % self.n_gps)

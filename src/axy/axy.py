@@ -2,7 +2,9 @@
 # LIBRARIES
 # ======================================================= #
 import pandas as pd
+from src.gps.gps import GPS
 from src import processing
+from src.axy import display
 # from src.axy import diagnostic, display, interpolation
 
 
@@ -17,6 +19,9 @@ class AXY:
         # process data
         df, df_gps = processing.add_axy_data(df, params)
         
+        # build GPS object
+        gps = GPS(df_gps, group, id, params)
+        
         # compute additional information
         basic_infos = processing.compute_basic_infos(df)
         gps_infos = processing.compute_gps_infos(df_gps, params)
@@ -30,6 +35,7 @@ class AXY:
         self.params = params
         self.df_gps = df_gps
         self.n_df_gps = len(df_gps)
+        self.gps = gps
         self.n_df = basic_infos["n_df"]
         self.start_datetime = basic_infos["start_datetime"]
         self.end_datetime = basic_infos["end_datetime"]
@@ -65,7 +71,7 @@ class AXY:
     # interpolate_lat_lon = interpolation.interpolate_lat_lon
     
     # # [METHODS] display the summary of the data
-    # display_data_summary = display.display_data_summary
+    display_data_summary = display.display_data_summary
     
     # # [METHODS] plot data
     # full_diag = diagnostic.full_diagnostic

@@ -5,7 +5,7 @@ from src import utils
 
 
 # ======================================================= #
-# DISPLAY [GPS METHODS]
+# DISPLAY [AXY METHODS]
 # ======================================================= #
 def display_data_summary(self):
                 
@@ -19,9 +19,15 @@ def display_data_summary(self):
     print("# ------------------------------ METADATA ----------------------------- #")
     print("# + Group = %s" % self.group)
     print("# + Id    = %s" % self.id)
-    print("# ------------------------------ DATA --------------------------------- #")
-    print("# + Nb of measures       = %d" % self.n_df)
-    print("# + Date range           = %s | %s" % (self.start_datetime, self.end_datetime))       
+    print("# ------------------------------ ACC DATA ----------------------------- #")
+    print("# + Nb of measures            = %d" % self.n_df)
+    print("# + Date range                = %s | %s" % (self.start_datetime, self.end_datetime))     
+    print("# + Median (ax, ay, az)       = (%.1f, %.1f, %.1f)" % (self.df["ax"].median(), self.df["ay"].median(), self.df["az"].median()))
+    print("# + Median (ax_f, ay_f, az_f) = (%.1f, %.1f, %.1f)" % (self.df["ax_f"].median(), self.df["ay_f"].median(), self.df["az_f"].median()))
+    print("# + Median odba               = %.1f" % self.median_odba)
+    print("# + Median odba_f             = %.1f" % self.median_odba_f)
+    print("# ------------------------------ GPS DATA ----------------------------- #")
+    print("# + Nb of GPS measures   = %d" % self.n_gps_df)  
     print("# + Nb of trips          = %d" % self.n_trip) 
     print("# + Time resolution      = %.1f s" % self.resolution)
     print("# + Total duration       = %.2f days" % self.total_duration)
@@ -34,4 +40,9 @@ def display_data_summary(self):
         print("# + Largest trip         = %.1f km" % self.trip_statistics["length"].max())
         print("# + Median trip length   = %.1f km" % self.trip_statistics["length"].quantile(0.5))
     print("# + First position (%.5f, %.5f) is %.3fkm away from the estimated nest position (%.5f, %.5f)" % (pos0[0], pos0[1], d_pos0_nest, nest[0], nest[1]))
+    print("# ------------------------------ TDR DATA ----------------------------- #")
+    print("# + Number of dives  = %d" % self.nb_dives)
+    print("# + Median pressure  = %.1f hPa" % self.median_pressure)
+    print("# + Median depth     = %.2f m" % self.median_depth)
+    print("# + Mean temperature = %.1f °C" % self.mean_temperature)
     print("# ===================================================================== #")
