@@ -10,7 +10,7 @@ from src.gps import diagnostic, display, interpolation
 # BIOLOGGER SUPER-CLASS
 # ======================================================= #
 class GPS:
-    
+
     """
     A class to represent the GPS data of a central-place foraging seabird.
 
@@ -46,7 +46,7 @@ class GPS:
         The longitude and latitude of the estimated nest position.
     trip_statistics : pandas.DataFrame
         The dataframe containing the trip statistics where one row corresponds to one foraging trip.
-        
+
     Methods
     -------
     display_data_summary()
@@ -60,7 +60,7 @@ class GPS:
     folium_map_colorgrad()
         Produces the html map of the GPS data with a speed color gradient.
     """
-    
+
     # [CONSTRUCTOR] GPS
     def __init__(self, df=pd.DataFrame, group=str, id=str, params=dict):
         """
@@ -74,14 +74,14 @@ class GPS:
             The string representing the unique identifier of the central-place foraging seabird.
         params : dict
             The dictionary of parameters.
-        """           
+        """
         # process data
         df = processing.add_gps_data(df, params)
-        
+
         # compute additional information
         basic_infos = processing.compute_basic_infos(df)
         gps_infos = processing.compute_gps_infos(df, params)
-        
+
         # set attributes
         self.df = df
         self.group = group
@@ -97,25 +97,25 @@ class GPS:
         self.n_trip = gps_infos["n_trip"]
         self.nest_position = gps_infos["nest_position"]
         self.trip_statistics = gps_infos["trip_statistics"]
-        
-    # [BUILT-IN METHODS] length of the class 
+
+    # [BUILT-IN METHODS] length of the class
     def __len__(self):
         return self.n_df
-    
-    # [BUILT-IN METHODS] getter of the class 
+
+    # [BUILT-IN METHODS] getter of the class
     def __getitem__(self, idx):
         return self.df.iloc[idx]
-        
-    # [BUILT-IN METHODS] string representation of the class 
+
+    # [BUILT-IN METHODS] string representation of the class
     def __repr__(self):
         return "%s(group=%s, id=%s, trips=%d, n=%d)" % (type(self).__name__, self.group, self.id, self.n_trip, self.n_df)
-        
+
     # [METHODS] interpolate data
     interpolate_lat_lon = interpolation.interpolate_lat_lon
-    
+
     # [METHODS] display the summary of the data
     display_data_summary = display.display_data_summary
-    
+
     # [METHODS] plot data
     full_diag = diagnostic.full_diagnostic
     maps_diag = diagnostic.maps_diagnostic
