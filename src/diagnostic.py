@@ -92,7 +92,31 @@ def plot_ts_wtrips(ax, df, plot_params, n_trip, var, title, var_lab, custom_loca
     plt.grid(linestyle=plot_params["grid_lty"], linewidth=plot_params["grid_lwd"], color=plot_params["grid_col"])
     ax.xaxis.set(major_locator=datetime_locator, major_formatter=datetime_formatter)
     
- 
+# ======================================================= #
+# PLOT RAW AND FILTERED VAR
+# ======================================================= # 
+def plot_ts_twinx(ax, df, plot_params, var, title, var_lab, custom_locator=None, custom_formatter=None, scatter=True):
+    
+    # plot timeserie of var and var_f in dataframe with two axes
+    datetime_locator, datetime_formatter = get_datetime_locator_formatter(df, custom_locator, custom_formatter)
+    plot_night(df, plot_params)
+    if scatter:
+        plt.scatter(df["datetime"], df[var], s=plot_params["pnt_size"], marker=plot_params["pnt_type"], edgecolor="None")
+        ax_twinx = ax.twinx()
+        ax_twinx.scatter(df["datetime"], df["%s_f" % var], s=plot_params["pnt_size"], marker=plot_params["pnt_type"], edgecolor="None", color="red")
+    else:
+        plt.plot(df["datetime"], df[var], linewidth=plot_params["pnt_size"])
+        ax_twinx = ax.twinx()
+        ax_twinx.plot(df["datetime"], df["%s_f" % var], linewidth=plot_params["pnt_size"], color="red")
+    plt.title(title, fontsize=plot_params["main_fs"])
+    plt.xlabel("Time", fontsize=plot_params["labs_fs"])
+    plt.ylabel(var_lab, fontsize=plot_params["labs_fs"])
+    plt.tick_params(axis="both", labelsize=plot_params["axis_fs"])
+    plt.grid(linestyle=plot_params["grid_lty"], linewidth=plot_params["grid_lwd"], color=plot_params["grid_col"])
+    ax.xaxis.set(major_locator=datetime_locator, major_formatter=datetime_formatter)
+    ax_twinx.spines["right"].set_color("red")
+    ax_twinx.tick_params("y", colors="red")
+    
 # ======================================================= #
 # PLOT CUMULATIVE DISTRIB OF TRIP STATS
 # ======================================================= #   

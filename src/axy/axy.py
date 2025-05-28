@@ -4,7 +4,7 @@
 import pandas as pd
 from src.gps.gps import GPS
 from src import processing
-from src.axy import display
+from src.axy import diagnostic, display
 # from src.axy import diagnostic, display, interpolation
 
 
@@ -74,8 +74,8 @@ class AXY:
     display_data_summary = display.display_data_summary
     
     # # [METHODS] plot data
-    # full_diag = diagnostic.full_diagnostic
-    # maps_diag = diagnostic.maps_diagnostic
-    # folium_map = diagnostic.folium_map
-    # folium_map_wtrips = diagnostic.folium_map_wtrips
-    # folium_map_colorgrad = diagnostic.folium_map_colorgrad
+    full_diag = diagnostic.full_diagnostic
+    maps_diag = diagnostic.maps_diagnostic
+    folium_map = diagnostic.folium_map
+    folium_map_wtrips = diagnostic.folium_map_wtrips
+    folium_map_colorgrad = diagnostic.folium_map_colorgrad
