@@ -64,7 +64,7 @@ def add_step_time(df):
     df["step_time"] = (df["datetime"] - df["datetime"].shift(1)).dt.total_seconds()
 
     # reformat column
-    df["step_time"] = df["step_time"].round(1)
+    df["step_time"] = df["step_time"]
 
     return(df)
 
@@ -358,6 +358,100 @@ def add_is_night(df, params):
 
     return(df)
 
+# ================================================================================================ #
+# GOAL   : compute the depth in meters at every measure of pressure.
+#
+# INPUT  : - df : dataframe with a "pressure" column in hPa.
+#
+# OUTPUT : - df : dataframe with an additional column "depth" that gives the underwater depth in 
+#                 meters.
+# ================================================================================================ #
+def add_depth(df):
+    
+    # physical constants
+    salt_water_density = 1023.6
+    earth_acceleration = 9.80665
+
+    # compute depth
+    p_atm = df["pressure"].median()
+    df["depth"] = 100*(df["pressure"] - p_atm)/(salt_water_density*earth_acceleration)
+    
+    # reformat column
+    df["depth"] = df["depth"].round(2)
+    
+    return(df)
+
+
+# ================================================================================================ #
+# GOAL   : compute the boolean value informing bird is diving based on depth measure.
+#
+# INPUT  : - df : dataframe with a "depth" column.
+#          - params : structure of parameters with "diving_depth_threshold" giving the depth in meter
+#                     above which we consider the bird to be diving. 
+#
+# OUTPUT : - df : dataframe with an additional "is_diving" column that is 1 if depth above a dive 
+#                 threshold.
+# ================================================================================================ #
+def add_is_diving(df, params):
+    
+    # get parameters
+    diving_depth_threshold = params.get("diving_depth_threshold")
+    
+    # add column to dataframe
+    df["is_diving"] = (df["depth"] > diving_depth_threshold)
+
+    # reformat colum
+    df["is_diving"] = df["is_diving"].astype(int)
+
+    return(df)
+
+
+# ================================================================================================ #
+# GOAL   : compute the filtered acceleration.
+#
+# INPUT  : - df : dataframe with "datetime", "ax", "ay" and "az" columns.
+#
+# OUTPUT : - df : dataframe with additional "ax_f", "ay_f" and "az_f" columns containing the moving
+#                 average of the 3 axes accelerations.
+# ================================================================================================ #
+def add_filtered_acc(df, time_window):
+    
+    # filter accelerations (moving average + bias removal)
+    resolution = df["step_time"].median()
+    window = int(time_window/resolution)
+    
+    # compute filtered acceleration as the rolling average over a time window in seconds
+    df["ax_f"] = df["ax"] - df["ax"].rolling(window=window, center=True, min_periods=1).mean()
+    df["ay_f"] = df["ay"] - df["ay"].rolling(window=window, center=True, min_periods=1).mean()
+    df["az_f"] = df["az"] - df["az"].rolling(window=window, center=True, min_periods=1).mean()
+    
+    # reformat colum
+    df["ax_f"] = df["ax_f"].round(3)
+    df["ay_f"] = df["ay_f"].round(3)
+    df["az_f"] = df["az_f"].round(3)
+
+    return(df)
+
+
+# ================================================================================================ #
+# GOAL   : compute the overall dynamical budget acceleration.
+#
+# INPUT  : - df : dataframe with "ax", "ay", "az", "ax_f", "ay_f" and "az_f" columns.
+#
+# OUTPUT : - df : dataframe with additional "odba" and "odba_f" columns.
+# ================================================================================================ #
+def add_odba(df, p=1): 
+    
+    # compute odba as the euclidean p-norm of the acceleration vector
+    df["odba"] = (abs(df["ax"])**p + abs(df["ay"])**p + abs(df["az"])**p)**(1/p)
+    df["odba_f"] = (abs(df["ax_f"])**p + abs(df["ay_f"])**p + abs(df["az_f"])**p)**(1/p)
+    
+    # reformat colum
+    df["odba"] = df["odba"].round(3)
+    df["odba_f"] = df["odba_f"].round(3)
+
+    return(df)
+
 
 # ================================================================================================ #
 # GOAL   : clean gps data.
@@ -432,6 +526,22 @@ def interpolate_lat_lon(df, interp_datetime, add_proxy=False):
 
 
 # ================================================================================================ #
+# GOAL   : XXXX
+#
+# INPUT  : - XXXX : XXXX.
+#
+# OUTPUT : - df : dataframe.
+# ================================================================================================ #
+def add_basic_data(df, params):
+    
+    # compute basic data
+    df = add_step_time(df)
+    df = add_is_night(df, params)
+    
+    return(df)
+    
+    
+# ================================================================================================ #
 # GOAL   : add the gps data.
 #
 # INPUT  : - df     : dataframe with "datetime", "longitude" and "latitude" columns.
@@ -441,26 +551,103 @@ def interpolate_lat_lon(df, interp_datetime, add_proxy=False):
 # ================================================================================================ #
 def add_gps_data(df, params):
     
+    # compute basic data
+    df = add_basic_data(df, params)
     
     # step statistics of gps data
-    df = add_step_time(df)
+    # df = add_step_time(df)
     df = add_step_length(df) 
     df = add_step_speed(df) 
     df = add_step_heading(df)
     df = add_step_turning_angle(df)
     df = add_step_heading_to_colony(df, params)
     
-    # clean data
+    # clean gps data
     df = remove_suspicious(df, params)
-        
-    # trip segmenation
-    df = add_is_night(df, params)
+    
+    # # add boolean night    
+    # df = add_is_night(df, params)
+    
+    # trip segmentation
     df = add_dist_to_nest(df, params)
     df = add_trip(df, params)
     
     return(df)
 
 
+# ================================================================================================ #
+# GOAL   : XXXX
+#
+# INPUT  : - XXXX : XXXX.
+#
+# OUTPUT : - df : dataframe.
+#          - df_gps : dataframe.
+# ================================================================================================ #
+def add_axy_data(df, params):
+    
+    # compute basic data
+    df = add_basic_data(df, params)
+    
+    # processing acceleration data
+    df = add_filtered_acc(df, time_window=2)
+    df = add_odba(df, p=1)
+    
+    # processing tdr data
+    df = add_depth(df)
+    df = add_is_diving(df, params)
+    
+    # set gps resolution as the subsample resolution
+    gps_resolution = (df["longitude"].notna()) & (df["latitude"].notna())
+    
+    # sum physical quantities between every pair of subsample measures
+    df = utils.func_between_samples(df, gps_resolution, ["odba", "odba_f", "step_time", "is_diving"], func="sum")
+    
+    # keep maximum of physical quantities between every pair of subsample measures
+    df = utils.func_between_samples(df, gps_resolution, ["pressure", "depth", "is_diving"], func="max")
+    
+    # average physical quantities between every pair of subsample measures
+    df = utils.func_between_samples(df, gps_resolution, ["temperature"], func="mean")
+
+    # manage columns of the resulting subsample dataframe
+    df_gps = df.loc[gps_resolution].reset_index(drop=True)
+    df_gps = df_gps.drop(["odba", "odba_f", "step_time", "is_diving", "pressure", "depth", "temperature"], axis=1)
+    df_gps = df_gps.rename(columns={"odba_sum":"odba", "odba_f_sum":"odba_f", "step_time_sum":"step_time", 
+                                    "is_diving_max":"is_diving", "is_diving_sum":"nb_dives",
+                                    "pressure_max":"pressure", "depth_max":"depth", "temperature_mean":"temperature"})    
+    # process gps data
+    df_gps = add_gps_data(df_gps, params)
+    df = df[["date", "time", "ax", "ay", "az", "longitude", "latitude", "pressure", "temperature", 
+             "datetime", "step_time", "is_night", "ax_f", "ay_f", "az_f", "odba", "odba_f", "depth", "is_diving"]]
+        
+    return(df, df_gps)
+
+
+# ================================================================================================ #
+# GOAL   : build the basic infos structure of the data.
+#
+# INPUT  : - df     : dataframe with all the processed columns.
+#
+# OUTPUT : - infos : data structure with the basic information about the data.
+# ================================================================================================ #
+def compute_basic_infos(df):
+    
+    # compute basic information
+    start_datetime = df["datetime"].min()
+    end_datetime = df["datetime"].max()
+    resolution = df["step_time"].median()
+    total_duration = (df["datetime"].max() - df["datetime"].min()).total_seconds()/86400
+    n_df = len(df)
+    
+    # store basic information
+    infos = {"start_datetime" : start_datetime,
+             "end_datetime" : end_datetime,
+             "resolution" : resolution,
+             "total_duration" : total_duration,
+             "n_df" : n_df}
+    
+    return(infos)
+
+    
 # ================================================================================================ #
 # GOAL   : build the infos structure of the gps data.
 #
@@ -471,20 +658,6 @@ def add_gps_data(df, params):
 # ================================================================================================ #
 def compute_gps_infos(df, params):
     
-    # compute basic information
-    start_datetime = df["datetime"].min()
-    end_datetime = df["datetime"].max()
-    resolution = df["step_time"].median()
-    total_duration = (df["datetime"].max() - df["datetime"].min()).total_seconds()/86400
-    n_df = len(df)
-    
-    # store basic information
-    basic_infos = {"start_datetime" : start_datetime,
-                   "end_datetime" : end_datetime,
-                   "resolution" : resolution,
-                   "total_duration" : total_duration,
-                   "n_df" : n_df}
-        
     # compute gps infos
     total_length = df["step_length"].sum()
     dmax = df["dist_to_nest"].max()
@@ -503,16 +676,60 @@ def compute_gps_infos(df, params):
     nest_position = estimate_nest_position(df, params)
     
     # store gps infos
-    gps_infos = {"total_length" : total_length,
-                 "dmax" : dmax,
-                 "n_trip" : n_trip,
-                 "nest_position" : nest_position,
-                 "trip_statistics" : trip_statistics}
-    
-    # append dictionaries
-    infos = {}
-    infos.update(basic_infos)
-    infos.update(gps_infos)
+    infos = {"total_length" : total_length,
+             "dmax" : dmax,
+             "n_trip" : n_trip,
+             "nest_position" : nest_position,
+             "trip_statistics" : trip_statistics}
     
     return(infos)
 
+
+# ================================================================================================ #
+# GOAL   : build the infos structure of the tdr data.
+#
+# INPUT  : - df     : dataframe with all the processed columns.
+#          - params : structure of parameters.
+#
+# OUTPUT : - infos : data structure with information about the gps data.
+# ================================================================================================ #
+def compute_tdr_infos(df):
+    
+    # compute tdr infos
+    nb_dives = int(df["is_diving"].sum())
+    median_pressure = df["pressure"].median()
+    median_depth = df["depth"].median()
+    mean_temperature = df["temperature"].mean()
+            
+    # structure the infos
+    infos = {"nb_dives" : nb_dives,
+             "median_pressure" : median_pressure, 
+             "median_depth" : median_depth, 
+             "mean_temperature" : mean_temperature}
+    
+    return(infos)
+    
+    
+# ================================================================================================ #
+# GOAL   : build the infos structure of the axy data.
+#
+# INPUT  : - df     : dataframe with all the processed columns.
+#          - params : structure of parameters.
+#
+# OUTPUT : - infos : data structure with information about the gps data.
+# ================================================================================================ #
+def compute_axy_infos(df):
+    
+    # compute tdr infos
+    max_odba = df["odba"].max()
+    median_odba = df["odba"].median()
+    max_odba_f = df["odba_f"].max()
+    median_odba_f = df["odba_f"].median()
+            
+    # structure the infos
+    infos = {"max_odba" : max_odba,
+             "median_odba" : median_odba, 
+             "max_odba_f" : max_odba_f, 
+             "median_odba_f" : median_odba_f}
+    
+    return(infos)

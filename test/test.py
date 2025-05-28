@@ -4,9 +4,10 @@
 import os
 import csv
 import pandas as pd
-from src import parameters, utils, processing
+from src import parameters, utils
 from src.gps.gps import GPS
 from src.gps_collection.gps_collection import GPS_Collection
+from src.axy.axy import AXY
 
 
 # ======================================================= #
@@ -21,6 +22,12 @@ res_dir  = "%s/results" % root_dir
 
 
 # ======================================================= #
+# PARAMATERS
+# ======================================================= #
+plot_params = parameters.get_plot_params()
+
+
+# ======================================================= #
 # TEST GPS CLASS
 # ======================================================= #
 
@@ -30,7 +37,6 @@ colony = "BRA_FDN_MEI"
 
 # get structure of parameters
 params = parameters.get_params(colony)
-plot_params = parameters.get_plot_params()
 
 # set file infos
 file_name = "BRA_FDN_MEI_2016-09-15_SSUL_01_T32840_NA_GPS_IGU120_BR023_LOC.csv"
@@ -155,3 +161,37 @@ gps_collection_all.display_data_summary()
 _ = gps_collection_all.plot_stats_summary(test_dir, "trip_statistics_all", plot_params)
 _ = gps_collection_all.folium_map(test_dir, "folium_all")
 gps_collection_all.trip_statistics_all.to_csv("%s/trip_statistics_all.csv" % (test_dir), index=False, quoting=csv.QUOTE_NONNUMERIC)
+
+
+# ======================================================= #
+# TEST GPS CLASS
+# ======================================================= #
+
+# parameters
+fieldwork = "BRA_FDN_2022_04"
+colony = "BRA_FDN_MEI"
+
+# get structure of parameters
+params = parameters.get_params(colony)
+
+# set file infos
+file_name = "BRA_FDN_MEI_2022-04-26_SDAC_01_U61556_F_GPS_AXY_RT10_UTC.csv"
+file_id = file_name.replace(".csv", "")
+file_path = "%s/%s/%s" % (data_dir, fieldwork, file_name)
+    
+# load raw data
+df = pd.read_csv(file_path, sep=",")
+
+# produce "datetime" column of type datetime64
+df["datetime"] = pd.to_datetime(df["date"] + " " + df["time"], format="%Y-%m-%d %H:%M:%S.%f", dayfirst=False)
+
+# if time is at UTC, convert it to local datetime
+if "_UTC" in file_name: df = utils.convert_utc_to_loc(df, params.get("local_tz"))
+
+# build GPS object
+axy = AXY(df=df, group=fieldwork, id=file_id, params=params)
+
+# test built-in methods
+print(gps)
+print(len(gps))
+print(gps[1312])

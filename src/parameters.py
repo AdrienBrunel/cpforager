@@ -72,12 +72,16 @@ def get_params(colony):
                            "trip_max_length": 10000,
                            "trip_min_steps": 10}    
     
+    # dives parameters    
+    params_dives = {"diving_depth_threshold" : 2}    
+    
     # append dictionaries
     params = {}
     params.update(params_colony)
     params.update(params_tz)
     params.update(params_cleaning)
     params.update(params_segmentation)
+    params.update(params_dives)
     
     return(params)
 

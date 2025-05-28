@@ -103,48 +103,43 @@ def convert_loc_to_utc(df, local_timezone):
     
     return(df)
     
-    
-# ================================================================================================ #
-# INPUT  : - XXXX
-#
-# OUTPUT : - XXXX
-# ================================================================================================ #
-def interpolate_lonlat(df, interp_freq, verbose=False):
-    
-    # vector of desired interpolation
-    interp_datetime = pd.date_range(start=df["datetime"].iloc[0], end=df["datetime"].iloc[-1], freq=pd.Timedelta(seconds=interp_freq), periods=None)
-    n_step = len(interp_datetime)
-    
-    # build interpolation dataframe 
-    df_interp = pd.DataFrame(columns=["datetime", "longitude", "latitude", "interp_proxy"])
-    df_interp["datetime"] = interp_datetime
-    df_interp["latitude"] = np.interp(interp_datetime.values.astype(float), df["datetime"].values.astype(float), df["latitude"].values).round(6)
-    df_interp["longitude"] = np.interp(interp_datetime.values.astype(float), df["datetime"].values.astype(float), df["longitude"].values).round(6)
-    df_interp["interp_proxy"] = [0.0]*n_step
-    for k in range(n_step):
-        
-        # display progress
-        if (k % 25 == 0) & (k>0) & (verbose):
-            print(f"lon/lat : %.1f%%" % (100*k/n_step))
-        
-        # find gps lat/lon before and after interpolation datetime
-        t = df_interp.loc[k, "datetime"]
-        idx = np.searchsorted(df["datetime"], t)
-        if (idx == 0):
-            t2 = df.loc[idx, "datetime"]
-            df_interp.loc[k,"interp_proxy"] = (t2 - t).total_seconds()
-        elif (idx == len(df)):
-            t1 = df.loc[idx-1, "datetime"]
-            df_interp.loc[k,"interp_proxy"] = (t - t1).total_seconds()
-        else:
-            t1 = df.loc[idx-1,"datetime"]
-            t2 = df.loc[idx,"datetime"]
-            df_interp.loc[k, "interp_proxy"] = min((t - t1).total_seconds(), (t2 - t).total_seconds())
-        
-    # reformat column
-    df_interp["latitude"] = df_interp["latitude"].round(6)
-    df_interp["longitude"] = df_interp["longitude"].round(6)
-    df_interp["interp_proxy"] = df_interp["interp_proxy"].round(1)
-    
-    return(df_interp)
 
+# ================================================================================================ #
+# GOAL   : apply a chosen function (e.g. sum, mean, min, max) over every elements between samples 
+#          at a given resolution. Note that the output is of same size of the input, though only
+#          indices corresponding to subsample resolution have nonzero values.
+# INPUT  : - df : XXXX.
+#          - resolution : XXXX. 
+#          - columns : XXXX. 
+#          - func : XXXX. 
+#
+# OUTPUT : - df : dataframe at resolution
+# ================================================================================================ #
+def func_between_samples(df, resolution, columns, func=["sum", "mean", "min", "max"]):
+
+    # subsample of initial dataframe
+    df_subsamples = df.loc[resolution].reset_index(drop=True)
+    n_subsamples = resolution.sum()
+    n_df = len(df)
+    
+    # loop over columns to be processed (sum, mean, min or max) between subsamples
+    for c in columns:
+        new_column = "%s_%s" % (c, func)
+        df[new_column] = 0.0*n_df
+        
+        # loop over subsamples
+        for k in range(n_subsamples):
+            if k == 0:
+                idx_0 = 0 
+                idx_1 = np.searchsorted(df["datetime"], df_subsamples.loc[k, "datetime"], side="right")
+                between_subsamples_points = np.arange(idx_0, idx_1)
+            else:       
+                idx_0 = np.searchsorted(df["datetime"], df_subsamples.loc[k-1, "datetime"], side="right")
+                idx_1 = np.searchsorted(df["datetime"], df_subsamples.loc[k, "datetime"], side="right")
+                between_subsamples_points = np.arange(idx_0, idx_1)
+            if len(between_subsamples_points) > 0:
+                if func=="sum": df.loc[idx_1-1,new_column] = df.loc[between_subsamples_points,c].sum()
+                if func=="mean": df.loc[idx_1-1,new_column] = df.loc[between_subsamples_points,c].mean()
+                if func=="min": df.loc[idx_1-1,new_column] = df.loc[between_subsamples_points,c].min()
+                if func=="max": df.loc[idx_1-1,new_column] = df.loc[between_subsamples_points,c].max()
+    return(df)

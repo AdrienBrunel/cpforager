@@ -79,23 +79,24 @@ class GPS:
         df = processing.add_gps_data(df, params)
         
         # compute additional information
-        infos = processing.compute_gps_infos(df, params)
+        basic_infos = processing.compute_basic_infos(df)
+        gps_infos = processing.compute_gps_infos(df, params)
         
         # set attributes
         self.df = df
         self.group = group
         self.id = id
         self.params = params
-        self.n_df = infos["n_df"]
-        self.start_datetime = infos["start_datetime"]
-        self.end_datetime = infos["end_datetime"]
-        self.resolution = infos["resolution"]
-        self.total_duration = infos["total_duration"]
-        self.total_length = infos["total_length"]
-        self.dmax = infos["dmax"]
-        self.n_trip = infos["n_trip"]
-        self.nest_position = infos["nest_position"]
-        self.trip_statistics = infos["trip_statistics"]
+        self.n_df = basic_infos["n_df"]
+        self.start_datetime = basic_infos["start_datetime"]
+        self.end_datetime = basic_infos["end_datetime"]
+        self.resolution = basic_infos["resolution"]
+        self.total_duration = basic_infos["total_duration"]
+        self.total_length = gps_infos["total_length"]
+        self.dmax = gps_infos["dmax"]
+        self.n_trip = gps_infos["n_trip"]
+        self.nest_position = gps_infos["nest_position"]
+        self.trip_statistics = gps_infos["trip_statistics"]
         
     # [BUILT-IN METHODS] length of the class 
     def __len__(self):
