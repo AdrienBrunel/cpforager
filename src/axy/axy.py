@@ -12,16 +12,16 @@ from src.axy import diagnostic, display
 # BIOLOGGER SUPER-CLASS
 # ======================================================= #
 class AXY:
-    
+
     # [CONSTRUCTOR] GPS
     def __init__(self, df=pd.DataFrame, group=str, id=str, params=dict):
-        
+
         # process data
         df, df_gps = processing.add_axy_data(df, params)
-        
+
         # build GPS object
         gps = GPS(df_gps, group, id, params)
-        
+
         # compute additional information
         basic_infos = processing.compute_basic_infos(df)
         gps_infos = processing.compute_gps_infos(df_gps, params)
@@ -54,25 +54,25 @@ class AXY:
         self.median_odba = axy_infos["median_odba"]
         self.max_odba_f = axy_infos["max_odba_f"]
         self.median_odba_f = axy_infos["median_odba_f"]
-        
-    # [BUILT-IN METHODS] length of the class 
+
+    # [BUILT-IN METHODS] length of the class
     def __len__(self):
         return self.n_df
-    
-    # [BUILT-IN METHODS] getter of the class 
+
+    # [BUILT-IN METHODS] getter of the class
     def __getitem__(self, idx):
         return self.df.iloc[idx]
-        
-    # [BUILT-IN METHODS] string representation of the class 
+
+    # [BUILT-IN METHODS] string representation of the class
     def __repr__(self):
         return "%s(group=%s, id=%s, trips=%d, n=%d, n_gps=%d)" % (type(self).__name__, self.group, self.id, self.n_trip, self.n_df, self.n_df_gps)
-        
+
     # # [METHODS] interpolate data
     # interpolate_lat_lon = interpolation.interpolate_lat_lon
-    
+
     # # [METHODS] display the summary of the data
     display_data_summary = display.display_data_summary
-    
+
     # # [METHODS] plot data
     full_diag = diagnostic.full_diagnostic
     maps_diag = diagnostic.maps_diagnostic
