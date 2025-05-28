@@ -192,7 +192,6 @@ if "_UTC" in file_name: df = utils.convert_utc_to_loc(df, params.get("local_tz")
 # build AXY object
 axy = AXY(df=df, group=fieldwork, id=file_id, params=params)
 
-
 # test built-in methods
 print(axy)
 print(len(axy))

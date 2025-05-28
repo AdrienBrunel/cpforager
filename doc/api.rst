@@ -15,10 +15,10 @@ GPS classes
 
    GPS
 
-Axes classes
+AXY classes
 --------------------------
 
 .. autosummary::
    :toctree: generated
 
-   GPS
+   AXY
