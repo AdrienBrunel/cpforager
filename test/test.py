@@ -69,7 +69,7 @@ _ = gps.folium_map_colorgrad(test_dir, "%s_fmap_speed" % file_id, plot_params)
 
 
 # ======================================================= #
-# TEST INTERPOLATION
+# TEST GPS INTERPOLATION
 # ======================================================= #
 # build a regular interpolation datetime
 interp_freq_secs = 5
@@ -84,6 +84,7 @@ gps_interp = GPS(df_interp, gps.group, "%s_%s" % (gps.id, "interp"), gps.params)
 # display size change and produce diag
 print("%d/%d = %.2f%%" % (len(gps_interp), len(gps), 100*len(gps_interp)/len(gps)))
 _ = gps_interp.full_diag(test_dir, "%s_diag" % gps_interp.id, plot_params)
+
 
 # ======================================================= #
 # TEST GPS_COLLECTION CLASS
@@ -164,7 +165,7 @@ gps_collection_all.trip_statistics_all.to_csv("%s/trip_statistics_all.csv" % (te
 
 
 # ======================================================= #
-# TEST GPS CLASS
+# TEST AXY CLASS
 # ======================================================= #
 
 # parameters
@@ -188,10 +189,21 @@ df["datetime"] = pd.to_datetime(df["date"] + " " + df["time"], format="%Y-%m-%d 
 # if time is at UTC, convert it to local datetime
 if "_UTC" in file_name: df = utils.convert_utc_to_loc(df, params.get("local_tz"))
 
-# build GPS object
+# build AXY object
 axy = AXY(df=df, group=fieldwork, id=file_id, params=params)
 
+
 # test built-in methods
-print(gps)
-print(len(gps))
-print(gps[1312])
+print(axy)
+print(len(axy))
+print(axy[1312])
+
+# test display_data_summary method
+axy.display_data_summary()
+
+# test full_diag, maps_diag, folium_map, folium_map_colorgrad methods
+_ = axy.full_diag(test_dir, "%s_diag" % file_id, plot_params)
+_ = axy.maps_diag(test_dir, "%s_map" % file_id, plot_params)
+_ = axy.folium_map(test_dir, "%s_fmap" % file_id)
+_ = axy.folium_map_wtrips(test_dir, "%s_fmap_wtrips" % file_id, plot_params)
+_ = axy.folium_map_colorgrad(test_dir, "%s_fmap_speed" % file_id, plot_params)
