@@ -595,6 +595,10 @@ def add_axy_data(df, params):
     # processing tdr data
     df = add_depth(df)
     df = add_is_diving(df, params)
+        
+    # set tdr resolution as the subsample resolution
+    tdr_resolution = (df["pressure"].notna()) & (df["temperature"].notna())
+    df_tdr = df.loc[tdr_resolution].reset_index(drop=True)
     
     # set gps resolution as the subsample resolution
     gps_resolution = (df["longitude"].notna()) & (df["latitude"].notna())
@@ -616,10 +620,13 @@ def add_axy_data(df, params):
                                     "pressure_max":"pressure", "depth_max":"depth", "temperature_mean":"temperature"})    
     # process gps data
     df_gps = add_gps_data(df_gps, params)
+    
+    # rearrange full dataframe
     df = df[["date", "time", "ax", "ay", "az", "longitude", "latitude", "pressure", "temperature", 
              "datetime", "step_time", "is_night", "ax_f", "ay_f", "az_f", "odba", "odba_f", "depth", "is_diving"]]
+
         
-    return(df, df_gps)
+    return(df, df_gps, df_tdr)
 
 
 # ================================================================================================ #
