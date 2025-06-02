@@ -19,6 +19,7 @@ methods                | description
 `folium_map`           | produce the html map showing the GPS data.
 `folium_map_wtrips`    | produce the html map showing the GPS data with trip colors.
 `folium_map_colorgrad` | produce the html map showing the GPS data with a speed color gradient.
+`interpolate_lat_lon`  | produce the interpolated dataframe along a desired datetime numpy array.
 
 
 # GPS_Collection
@@ -36,7 +37,7 @@ methods                | description
 
 
 # AXY
-Constructor  `AXY(df, group, id, params)` : 
+Constructor `AXY(df, group, id, params)` : 
 * `df` is a pandas DataFrame containing ***datetime***, ***longitude***, ***latitude***, ***ax***, ***ay*** and ***az*** columns. The user must input the ***datetime*** at local timezone and converted to `datetime64` type (see `test.py`).
 * `group` is a string representing the group to which the data belongs (year, fieldwork, specie, etc.) which can be relevant for future statistics.
 * `id` is a string representing the unique identifier of the central-place foraging seabird.
@@ -50,9 +51,14 @@ methods                | description
 `full_diag`            | produce a full png diagnostic showing the AXY data.
 `maps_diag`            | produce the png maps showing the GPS data.
 `folium_map`           | produce the html map showing the GPS data.
+`folium_map_wtrips`    | produce the html map showing the GPS data with trip colors.
 `folium_map_colorgrad` | produce the html map showing the GPS data with a speed color gradient.
 
 
+# Test
+In the *test.py* script, we illustrate how the `GPS`, `GPS_Collection` and `AXY` classes can benefit users.
+
+
 # Infos
-* Python version used is 3.11.5
+* Python version used is 3.13.3
 * OS used is Ubuntu 18.04
