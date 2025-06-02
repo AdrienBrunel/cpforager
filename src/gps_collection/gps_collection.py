@@ -4,7 +4,7 @@
 import pandas as pd
 import numpy as np
 from src.gps_collection import diagnostic, display
-from gps.gps import GPS
+from src.gps.gps import GPS
 
 
 # ======================================================= #
@@ -25,11 +25,6 @@ class GPS_Collection:
                   "step_turning_angle":"float", "step_heading_to_colony":"float", "is_night":"int", "dist_to_nest":"float", "trip":"int"}
         df_all = pd.DataFrame(columns=dtypes_2.keys())
         df_all = df_all.astype(dtype=dtypes_2)
-
-        # df_all = pd.DataFrame(columns=["group", "id", "datetime", "longitude", "latitude",
-        #                                "step_time", "step_length", "step_speed", "step_heading", "step_turning_angle", "step_heading_to_colony",
-        #                                "is_night", "dist_to_nest", "trip"],
-        #                       dtypes=[str, str, datetime64, ])
 
         # compute statistics
         group = []
