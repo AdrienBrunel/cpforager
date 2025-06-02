@@ -52,7 +52,7 @@ def full_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict):
         infos.append("Median trip length = %.1f km" % trip_statistics["length"].quantile(0.5))
     
     # produce diagnostic
-    fig = plt.figure(figsize=(30, 15), dpi=plot_params.get("fig_dpi"))
+    fig = plt.figure(figsize=(30, 16), dpi=plot_params.get("fig_dpi"))
     fig.tight_layout()
     fig.subplots_adjust(hspace=0.3, wspace=0.25, bottom=0.06, top=0.95, left=0.05, right=0.95)
     gs = fig.add_gridspec(4, 5)
@@ -85,11 +85,11 @@ def full_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict):
     
     # step length timeserie
     ax = fig.add_subplot(gs[1,1])
-    diagnostic.plot_ts(ax, df, plot_params, "step_length", "Step length [breeding]", "Length [km]")
+    diagnostic.plot_ts(ax, df, plot_params, "step_length", "Step length", "Length [km]")
 
     # step speed timeserie
     ax = fig.add_subplot(gs[1,2])
-    diagnostic.plot_ts(ax, df, plot_params, "step_speed", "Step speed [breeding]", "Speed [km/h]")
+    diagnostic.plot_ts(ax, df, plot_params, "step_speed", "Step speed", "Speed [km/h]")
     
     # step turning angle timeserie
     ax = fig.add_subplot(gs[1,3])
@@ -105,15 +105,15 @@ def full_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict):
 
     # step length histogram
     ax = fig.add_subplot(gs[2,1])
-    diagnostic.plot_hist(df, plot_params, "step_length", "Step length [breeding]", "Length [km]")
+    diagnostic.plot_hist(df, plot_params, "step_length", "Step length", "Length [km]")
     
     # step speed histogram
     ax = fig.add_subplot(gs[2,2])
-    diagnostic.plot_hist(df, plot_params, "step_speed", "Step speed [breeding]", "Speed [km/h]")
+    diagnostic.plot_hist(df, plot_params, "step_speed", "Step speed", "Speed [km/h]")
 
     # step turning angle histogram
     ax = fig.add_subplot(gs[2,3])
-    diagnostic.plot_hist(df, plot_params, "step_turning_angle", "Step turning angle [breeding]", "Angle [°]")
+    diagnostic.plot_hist(df, plot_params, "step_turning_angle", "Step turning angle", "Angle [°]")
     
     # heading polar plot
     ax = fig.add_subplot(gs[2,4], projection="polar")
