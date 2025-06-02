@@ -5,7 +5,7 @@ import os
 import csv
 import pandas as pd
 from src import parameters, utils
-from gps.gps import GPS
+from src.gps.gps import GPS
 from src.gps_collection.gps_collection import GPS_Collection
 from src.axy.axy import AXY
 
