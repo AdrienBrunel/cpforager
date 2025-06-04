@@ -1,10 +1,10 @@
 # seabird-movement-cpf
-Python code to handle data gathered from biologgers attached to central-place foraging seabirds. The idea is to make movement ecology data a bit easier to process.
+Python code to manipulate data collected from biologgers attached to central-place foraging seabirds. The idea is to make movement ecology data a bit easier to process.
 
 
 # GPS
 Constructor `GPS(df, group, id, params)` : 
-* `df` is a pandas DataFrame containing ***datetime***, ***longitude*** and ***latitude***, columns. The user must input the ***datetime*** at local timezone and converted to `datetime64` type (see `test.py`).
+* `df` is a pandas DataFrame containing ***datetime***, ***longitude*** and ***latitude*** columns. The user must input the ***datetime*** at the local timezone and converted to `datetime64` type (see `test.py`).
 * `group` is a string representing the group to which the data belongs (year, fieldwork, specie, etc.) which can be relevant for future statistics.
 * `id` is a string representing the unique identifier of the central-place foraging seabird.
 * `params` is the list of parameters that should at least include the fields present in parameters.py.
@@ -38,7 +38,7 @@ methods                | description
 
 # AXY
 Constructor `AXY(df, group, id, params)` : 
-* `df` is a pandas DataFrame containing ***datetime***, ***longitude***, ***latitude***, ***ax***, ***ay*** and ***az*** columns. The user must input the ***datetime*** at local timezone and converted to `datetime64` type (see `test.py`).
+* `df` is a pandas DataFrame containing ***datetime***, ***longitude***, ***latitude***, ***ax***, ***ay*** and ***az*** columns. The user must input the ***datetime*** at the local timezone and converted to `datetime64` type (see `test.py`).
 * `group` is a string representing the group to which the data belongs (year, fieldwork, specie, etc.) which can be relevant for future statistics.
 * `id` is a string representing the unique identifier of the central-place foraging seabird.
 * `params` is the list of parameters that should at least include the fields present in parameters.py.
@@ -56,7 +56,7 @@ methods                | description
 
 
 # Test
-In the *test.py* script, we illustrate how the `GPS`, `GPS_Collection` and `AXY` classes can benefit users.
+In the `test.py` script, we illustrate how the `GPS`, `GPS_Collection` and `AXY` classes should be used to fully benefit the users.
 
 
 # Infos
