@@ -1,6 +1,7 @@
 # ======================================================= #
 # LIBRARIES
 # ======================================================= #
+import os
 from src import diagnostic
 import matplotlib.pyplot as plt
 import cartopy.crs as ccrs
@@ -182,7 +183,8 @@ def full_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict):
     diagnostic.plot_ts(ax, df_tdr, plot_params, "temperature", "Temperature", "Temperature [°C]", hline=mean_temperature)
     
     # save figure
-    plt.savefig("%s/%s.png" % (fig_dir, file_id), format="png", bbox_inches="tight")
+    fig_path = os.path.join(fig_dir, "%s.png" % file_id)
+    plt.savefig(fig_path, format="png", bbox_inches="tight")
     fig.clear()
     plt.close(fig)
     

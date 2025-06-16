@@ -1,6 +1,7 @@
 # ======================================================= #
 # LIBRARIES
 # ======================================================= #
+import os
 from src import diagnostic
 import matplotlib.pyplot as plt
 import cartopy.crs as ccrs
@@ -129,7 +130,8 @@ def full_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict):
     diagnostic.plot_ts_wtrips(ax, df, plot_params, n_trip, "dist_to_nest", "Distance to nest", "Distance [km]")
     
     # save figure
-    plt.savefig("%s/%s.png" % (fig_dir, file_id), format="png", bbox_inches="tight")
+    fig_path = os.path.join(fig_dir, "%s.png" % file_id)
+    plt.savefig(fig_path, format="png", bbox_inches="tight")
     fig.clear()
     plt.close(fig)
     
@@ -182,7 +184,8 @@ def maps_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict):
     del df["duration"]
     
     # save figure
-    plt.savefig("%s/%s.png" % (fig_dir, file_id), format="png", bbox_inches="tight")
+    fig_path = os.path.join(fig_dir, "%s.png" % file_id)
+    plt.savefig(fig_path, format="png", bbox_inches="tight")
     fig.clear()
     plt.close(fig)
     
@@ -203,7 +206,8 @@ def folium_map(self, fig_dir=str, file_id=str):
     fmap = diagnostic.plot_folium_map(df, params, id)
     
     # save figure
-    fmap.save("%s/%s.html" % (fig_dir, file_id)) 
+    fig_path = os.path.join(fig_dir, "%s.html" % file_id)
+    fmap.save(fig_path) 
 
     return(fmap)
 
@@ -225,7 +229,8 @@ def folium_map_wtrips(self, fig_dir=str, file_id=str, plot_params=dict):
     fmap = diagnostic.plot_folium_map_wtrips(df, params, id, n_trip, cols_1)
     
     # save figure
-    fmap.save("%s/%s.html" % (fig_dir, file_id)) 
+    fig_path = os.path.join(fig_dir, "%s.html" % file_id)
+    fmap.save(fig_path) 
 
     return(fmap)
 
@@ -245,6 +250,7 @@ def folium_map_colorgrad(self, fig_dir=str, file_id=str, plot_params=dict):
     fmap = diagnostic.plot_folium_map_colorgrad(df, params, "step_speed", cols_2, 0.99)
     
     # save figure
-    fmap.save("%s/%s.html" % (fig_dir, file_id)) 
+    fig_path = os.path.join(fig_dir, "%s.html" % file_id)
+    fmap.save(fig_path) 
 
     return(fmap)

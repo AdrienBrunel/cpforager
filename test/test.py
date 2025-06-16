@@ -41,7 +41,7 @@ params = parameters.get_params(colony)
 # set file infos
 file_name = "BRA_FDN_MEI_2016-09-15_SSUL_01_T32840_NA_GPS_IGU120_BR023_LOC.csv"
 file_id = file_name.replace(".csv", "")
-file_path = "%s/%s/%s" % (data_dir, fieldwork, file_name)
+file_path = os.path.join(data_dir, fieldwork, file_name)
 
 # load raw data
 df = pd.read_csv(file_path, sep=",")
@@ -99,7 +99,7 @@ gps_collection_all = []
 for (fieldwork, colony) in zip(fieldworks, colonies):
 
     # list of files to process
-    files = os.listdir("%s/%s" % (data_dir, fieldwork))
+    files = os.listdir(os.path.join(data_dir, fieldwork))
     n_files = len(files)
 
     # get structure of parameters
@@ -113,7 +113,7 @@ for (fieldwork, colony) in zip(fieldworks, colonies):
         # set file infos
         file_name = files[k]
         file_id = file_name.replace(".csv", "")
-        file_path = "%s/%s" % ("%s/%s" % (data_dir, fieldwork), file_name)
+        file_path = os.path.join(data_dir, fieldwork, file_name)
 
         # load raw data
         df = pd.read_csv(file_path, sep=",")
@@ -178,7 +178,7 @@ params = parameters.get_params(colony)
 # set file infos
 file_name = "BRA_FDN_MEI_2022-04-26_SDAC_01_U61556_F_GPS_AXY_RT10_UTC.csv"
 file_id = file_name.replace(".csv", "")
-file_path = "%s/%s/%s" % (data_dir, fieldwork, file_name)
+file_path = os.path.join(data_dir, fieldwork, file_name)
 
 # load raw data
 df = pd.read_csv(file_path, sep=",")

@@ -1,6 +1,7 @@
 # ======================================================= #
 # LIBRARIES
 # ======================================================= #
+import os
 import numpy as np
 import pandas as pd
 from src import diagnostic, misc
@@ -55,7 +56,8 @@ def plot_stats_summary(self, fig_dir=str, file_id=str, plot_params=dict, quantil
     diagnostic.plot_cumulative_distribution(trip_statistics_all, "dmax", "Distance max to nest", "Distance [km]", plot_params, quantiles)
     
     # save figure
-    plt.savefig("%s/%s.png" % (fig_dir, file_id), format="png", bbox_inches="tight")
+    fig_path = os.path.join(fig_dir, "%s.png" % file_id)
+    plt.savefig(fig_path, format="png", bbox_inches="tight")
     fig.clear()
     plt.close(fig)
     
@@ -103,7 +105,8 @@ def maps_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict):
     ax.axis("off")
     
     # save figure
-    plt.savefig("%s/%s.png" % (fig_dir, file_id), format="png", bbox_inches="tight")
+    fig_path = os.path.join(fig_dir, "%s.png" % file_id)
+    plt.savefig(fig_path, format="png", bbox_inches="tight")
     fig.clear()
     plt.close(fig)
     
@@ -130,12 +133,8 @@ def folium_map(self, fig_dir=str, file_id=str):
         folium.PolyLine(tooltip=gps.id, locations=gps.df[["latitude", "longitude"]].values.tolist(), 
                         color=misc.rgb_to_hex(misc.random_colors()[0]), weight=2, opacity=0.7).add_to(fmap)   
     
-    # # produce folium map
-    # fmap = folium.Map(location = [colony["center"][1], colony["center"][0]])
-    # for gps in gps_collection:
-    #     diagnostic.plot_folium_map(gps.df, gps.params, gps.id).add_to(fmap)
-    
     # save figure
-    fmap.save("%s/%s.html" % (fig_dir, file_id)) 
+    fig_path = os.path.join(fig_dir, "%s.html" % file_id)
+    fmap.save(fig_path) 
 
     return(fmap)
