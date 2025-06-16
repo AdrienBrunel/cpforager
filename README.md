@@ -61,4 +61,4 @@ In the `test.py` script, we illustrate how the `GPS`, `GPS_Collection` and `AXY`
 
 # Infos
 * Python version used is 3.13.3
-* OS used is Ubuntu 18.04
+* OS used is Ubuntu 20.04
