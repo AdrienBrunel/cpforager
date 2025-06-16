@@ -668,7 +668,7 @@ def compute_gps_infos(df, params):
     # compute gps infos
     total_length = df["step_length"].sum()
     dmax = df["dist_to_nest"].max()
-    n_trip = len(df["trip"].unique())-1
+    n_trip = df["trip"].max()
     trip_statistics = pd.DataFrame(columns=["id", "length", "duration", "max_hole", "dmax"])
     for k in range(n_trip):
         trip_id = k+1
