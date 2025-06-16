@@ -14,11 +14,11 @@ from src.axy.axy import AXY
 # DIRECTORIES
 # ======================================================= #
 root_dir = os.getcwd()
-data_dir = "%s/data" % root_dir
-test_dir = "%s/test" % root_dir
-src_dir  = "%s/src" % root_dir
-plot_dir = "%s/plots" % root_dir
-res_dir  = "%s/results" % root_dir
+data_dir = os.path.join(root_dir, "data")
+test_dir = os.path.join(root_dir, "test")
+src_dir  = os.path.join(root_dir, "src")
+plot_dir = os.path.join(root_dir, "plots")
+res_dir  = os.path.join(root_dir, "results")
 
 
 # ======================================================= #
