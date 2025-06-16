@@ -5,17 +5,16 @@ import os
 import csv
 import pandas as pd
 from src import parameters, utils
-from gps.gps import GPS
+from src.gps.gps import GPS
 from src.gps_collection.gps_collection import GPS_Collection
-
 
 # ======================================================= #
 # DIRECTORIES
 # ======================================================= #
 root_dir = os.getcwd()
-data_dir = "%s/data" % root_dir
-plot_dir = "%s/plots" % root_dir
-res_dir = "%s/results" % root_dir
+data_dir = os.path.join(root_dir, "data")
+plot_dir = os.path.join(root_dir, "plots")
+res_dir  = os.path.join(root_dir, "results")
 
 
 # ======================================================= #
