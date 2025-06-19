@@ -5,6 +5,7 @@ Python code to manipulate data collected from biologgers attached to central-pla
 
 # User guide 
 * In the `parameters.py` script, the `get_params(colony)` function produces a dictionary of parameters. This dictionary is required as an argument in the `GPS`, `GPS_Collection` and `AXY` classes. Users can modify the following parameters :
+
 name                        | description
 --------------------------- | ----------------------
 `colony`                    | longitude/latitude bounding box inside which the searbird's nest is to be found. 
@@ -84,6 +85,6 @@ methods                | description
 
 # Future development ideas
 - [ ] improve number of dives calculation in `add_is_diving` function to account for biologger time resolution.
-- [ ] create a `TDR` class for biologgers recording ***pressure*** and ***temperature***.
+- [ ] create a `TDR` class for biologgers recording ***pressure*** (and ***temperature***).
 - [ ] create a function `merge_gps_tdr(GPS, TDR)` that will merge TDR data within GPS data and produce the resulting dataframe. 
 - [ ] create a `GPS_TDR` class for biologgers with both GPS and TDR data.
