@@ -1,6 +1,26 @@
 # seabird-movement-cpf
 Python code to manipulate data collected from biologgers attached to central-place foraging seabirds. The idea is to make movement ecology data a bit easier to process.
 
+# User guide 
+In the `parameters.py` script, the `get_params(colony)` function produces a dictionary of parameters. This dictionary is required as an argument in the `GPS`, `GPS_Collection` and `AXY` classes. Users can modify the following parameters :
+name                        | description
+--------------------------- | ----------------------
+`colony`                    | longitude/latitude bounding box inside which the searbird's nest is to be found. 
+`local_tz`                  | local timezone of the seabird's nest.
+`max_possible_speed`        | speed threshold in km/h above which a longitude/latitude measure can be considered as an error and will be deleted.
+`dist_threshold`            | distance from the nest threshold in km above which the seabird is considered in a foraging trip.
+`speed_threshold`           | speed threshold in km/h above which the seabird is still considered in a foraging trip despite being below the distance threshold.
+`nesting_speed`             | speed threshold in km/h below which the seabird is considered at nest.
+`trip_min_duration`         | duration in seconds above which a trip is valid.
+`trip_max_duration`         | duration in seconds below which a trip is valid.
+`trip_min_length`           | length in km above which a trip is valid.
+`trip_max_length`           | length in km below which a trip is valid.
+`trip_min_steps`            | number of steps above which a trip is valid.
+`diving_depth_threshold`    | set the depth threshold above which a seabird is considered to be diving.
+
+In the `test` folder, the `test.py` script illustrates how the `GPS`, `GPS_Collection` and `AXY` classes should be used to fully benefit the users. Results of this script is also found in the `test` folder.
+
+<br />
 
 # GPS
 Constructor `GPS(df, group, id, params)` : 
@@ -21,7 +41,6 @@ methods                | description
 `folium_map_colorgrad` | produce the html map showing the GPS data with a speed color gradient.
 `interpolate_lat_lon`  | produce the interpolated dataframe along a desired datetime numpy array.
 
-
 # GPS_Collection
 Constructor `GPS_Collection(gps_collection)`
 * `gps_collection` is an array of GPS object.
@@ -34,7 +53,6 @@ methods                | description
 `plot_stats_summary`   | produce the png showing the trip statistics of the GPS collection.
 `maps_diag`            | produce the png map showing all the trips in the GPS collection.
 `folium_map`           | produce the html map showing all the trips in the GPS collection.
-
 
 # AXY
 Constructor `AXY(df, group, id, params)` : 
@@ -54,11 +72,16 @@ methods                | description
 `folium_map_wtrips`    | produce the html map showing the GPS data with trip colors.
 `folium_map_colorgrad` | produce the html map showing the GPS data with a speed color gradient.
 
-
-# Test
-In the `test.py` script, we illustrate how the `GPS`, `GPS_Collection` and `AXY` classes should be used to fully benefit the users.
-
+<br />
 
 # Infos
 * Python version used is 3.13.3
 * OS used is Ubuntu 20.04
+
+<br />
+
+# Future development ideas
+[ ] improve number of dives calculation in `add_is_diving` function to account for biologger time resolution.
+[ ] create a TDR class for biologgers recording pressure and temperature.
+[ ] create a function merge_gps_tdr(GPS, TDR) that will merge TDR data within GPS data and produce the resulting dataframe. 
+[ ] create a GPS_TDR class for biologgers with both GPS and TDR data.
