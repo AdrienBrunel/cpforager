@@ -1,5 +1,6 @@
 __pycache__/
 main_dev.py
+.vscode
 data/BRA_FDN_2022_04/BRA_FDN_MEI_2022-04-26_SDAC_01_U61556_F_GPS_AXY_RT10_UTC.csv
 doc/_build
 doc/generated
