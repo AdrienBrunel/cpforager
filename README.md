@@ -83,8 +83,9 @@ methods                | description
 
 <br />
 
-# Future development ideas
-- [ ] improve number of dives calculation in `add_is_diving` function to account for biologger time resolution.
+# Future developments
+- [ ] document code and produce automatically documentation using sphinx
 - [ ] create a `TDR` class for biologgers recording ***pressure*** (and ***temperature***).
-- [ ] create a function `merge_gps_tdr(GPS, TDR)` that will merge TDR data within GPS data and produce the resulting dataframe. 
+- [ ] improve number of dives calculation in `add_is_diving` function to account for biologger time resolution.
+- [ ] create a function `merge_gps_tdr(GPS, TDR)` that will merge TDR data within GPS data and produce the resulting dataframe.
 - [ ] create a `GPS_TDR` class for biologgers with both GPS and TDR data.
