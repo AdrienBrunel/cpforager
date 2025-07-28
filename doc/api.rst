@@ -2,7 +2,7 @@
 API
 #############################
 
-.. automodule:: src
+.. automodule:: cpforager
    :members:
    :undoc-members:
    :show-inheritance:
