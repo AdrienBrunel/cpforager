@@ -4,9 +4,9 @@
 import os
 import csv
 import pandas as pd
-from src import parameters, utils
-from src.gps.gps import GPS
-from src.gps_collection.gps_collection import GPS_Collection
+from cpforager import parameters, utils
+from cpforager.gps.gps import GPS
+from cpforager.gps_collection.gps_collection import GPS_Collection
 
 
 # ======================================================= #
