@@ -4,10 +4,7 @@
 import os
 import csv
 import pandas as pd
-from cpforager import parameters, utils
-from cpforager.gps.gps import GPS
-from cpforager.gps_collection.gps_collection import GPS_Collection
-from cpforager.axy.axy import AXY
+from cpforager import parameters, utils, GPS, AXY, GPS_Collection
 
 
 # ======================================================= #
@@ -16,13 +13,13 @@ from cpforager.axy.axy import AXY
 root_dir = os.getcwd()
 data_dir = os.path.join(root_dir, "data")
 test_dir = os.path.join(root_dir, "test")
-src_dir  = os.path.join(root_dir, "src")
+src_dir  = os.path.join(root_dir, "cpforager")
 plot_dir = os.path.join(root_dir, "plots")
 res_dir  = os.path.join(root_dir, "results")
 
 
 # ======================================================= #
-# PARAMATERS
+# PARAMETERS
 # ======================================================= #
 plot_params = parameters.get_plot_params()
 

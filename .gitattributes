@@ -1,5 +1,5 @@
-# only account for files in src (and its subdirectories) to compute GitHub language statistics
-src/** linguist-detectable
+# only account for files in cpforager (and its subdirectories) to compute GitHub language statistics
+cpforager/** linguist-detectable
 data/** linguist-vendored
 doc/** linguist-vendored
 plots/** linguist-vendored
