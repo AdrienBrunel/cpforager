@@ -581,6 +581,25 @@ def add_gps_data(df, params):
 # INPUT  : - XXXX : XXXX.
 #
 # OUTPUT : - df : dataframe.
+# ================================================================================================ #
+def add_tdr_data(df, params):
+    
+    # compute basic data
+    df = add_basic_data(df, params)
+    
+    # process tdr data
+    df = add_depth(df)
+    df = add_is_diving(df, params)
+    
+    return(df)
+
+
+# ================================================================================================ #
+# GOAL   : XXXX
+#
+# INPUT  : - XXXX : XXXX.
+#
+# OUTPUT : - df : dataframe.
 #          - df_gps : dataframe.
 # ================================================================================================ #
 def add_axy_data(df, params):
@@ -624,7 +643,6 @@ def add_axy_data(df, params):
     # rearrange full dataframe
     df = df[["date", "time", "ax", "ay", "az", "longitude", "latitude", "pressure", "temperature", 
              "datetime", "step_time", "is_night", "ax_f", "ay_f", "az_f", "odba", "odba_f", "depth", "is_diving"]]
-
         
     return(df, df_gps, df_tdr)
 
@@ -708,7 +726,7 @@ def compute_tdr_infos(df):
     median_depth = df["depth"].median()
     mean_temperature = df["temperature"].mean()
             
-    # structure the infos
+    # store tdr infos
     infos = {"nb_dives" : nb_dives,
              "median_pressure" : median_pressure, 
              "median_depth" : median_depth, 
@@ -727,13 +745,13 @@ def compute_tdr_infos(df):
 # ================================================================================================ #
 def compute_axy_infos(df):
     
-    # compute tdr infos
+    # compute axy infos
     max_odba = df["odba"].max()
     median_odba = df["odba"].median()
     max_odba_f = df["odba_f"].max()
     median_odba_f = df["odba_f"].median()
             
-    # structure the infos
+    # store axy infos
     infos = {"max_odba" : max_odba,
              "median_odba" : median_odba, 
              "max_odba_f" : max_odba_f, 

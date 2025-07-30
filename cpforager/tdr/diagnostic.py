@@ -1,0 +1,78 @@
+# ======================================================= #
+# LIBRARIES
+# ======================================================= #
+import os
+from cpforager import diagnostic
+import matplotlib.pyplot as plt
+import cartopy.crs as ccrs
+
+
+# ======================================================= #
+# GPS FULL DIAG [GPS METHOD]
+# ======================================================= #
+def full_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict):   
+    
+    # get attributes
+    df = self.df
+    group = self.group
+    id = self.id
+    params = self.params
+    n_df = self.n_df
+    start_datetime = self.start_datetime
+    end_datetime = self.end_datetime
+    resolution = self.resolution
+    total_duration = self.total_duration
+    nb_dives = self.nb_dives
+    median_pressure = self.median_pressure
+    median_depth = self.median_depth
+    mean_temperature = self.mean_temperature
+
+    # get parameters
+    diving_depth_threshold = params.get("diving_depth_threshold")
+    
+    # set infos to print on diagnostic
+    infos = []
+    infos.append("Group = %s" % group)
+    infos.append("Id = %s" % id)
+    infos.append("Number of TDR measures = %d" % n_df)
+    infos.append("Start date = %s | End date = %s" % (start_datetime.strftime("%Y-%m-%d"), end_datetime.strftime("%Y-%m-%d")))
+    infos.append("TDR time resolution = %.1f s" % resolution)
+    infos.append("Total duration = %.2f days" % total_duration)
+    infos.append("Number of dives = %d" % nb_dives)
+    infos.append("Median pressure = %.1f hPa" % median_pressure)
+    infos.append("Median depth = %.2f m" % median_depth)
+    infos.append("Mean temperature = %.1f °C" % mean_temperature)
+    
+    # produce diagnostic
+    fig = plt.figure(figsize=(30, 24), dpi=plot_params.get("fig_dpi"))
+    fig.tight_layout()
+    fig.subplots_adjust(hspace=0.3, wspace=0.25, bottom=0.06, top=0.95, left=0.05, right=0.95)
+    gs = fig.add_gridspec(2, 3)
+
+    # pressure
+    ax = fig.add_subplot(gs[0,0])
+    diagnostic.plot_ts(ax, df, plot_params, "pressure", "%d Dives" % nb_dives, "Pressure [hPa]", eph_cond=(df["is_diving"]==1))
+    
+    # step time timeserie
+    ax = fig.add_subplot(gs[0,1])
+    diagnostic.plot_ts(ax, df, plot_params, "step_time", "GPS step time", "Time [s]")
+    
+    # plot infos
+    ax = fig.add_subplot(gs[0,2])
+    diagnostic.plot_infos(infos, plot_params)
+    
+    # depth
+    ax = fig.add_subplot(gs[1,0])
+    diagnostic.plot_ts(ax, df, plot_params, "depth", "%d Dives" % nb_dives, "Depth [m]", hline=diving_depth_threshold, eph_cond=(df["is_diving"]==1))
+    
+    # temperature
+    ax = fig.add_subplot(gs[1,1])
+    diagnostic.plot_ts(ax, df, plot_params, "temperature", "Temperature", "Temperature [°C]", hline=mean_temperature)
+    
+    # save figure
+    fig_path = os.path.join(fig_dir, "%s.png" % file_id)
+    plt.savefig(fig_path, format="png", bbox_inches="tight")
+    fig.clear()
+    plt.close(fig)
+    
+    return fig
