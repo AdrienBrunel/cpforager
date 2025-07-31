@@ -115,7 +115,7 @@ def convert_loc_to_utc(df, local_timezone):
 #
 # OUTPUT : - df : dataframe at resolution
 # ================================================================================================ #
-def func_between_samples(df, resolution, columns, func=["sum", "mean", "min", "max"], verbose=False):
+def func_between_samples(df, resolution, columns, func=["sum", "mean", "min", "max", "len_unique_pos"], verbose=False):
 
     # subsample of the initial dataframe
     df_subsamples = df.loc[resolution].reset_index(drop=True)
@@ -150,6 +150,7 @@ def func_between_samples(df, resolution, columns, func=["sum", "mean", "min", "m
                     if func=="mean": df.loc[idx_1-1,new_column] = df.loc[between_subsamples_points,c].mean()
                     if func=="min": df.loc[idx_1-1,new_column] = df.loc[between_subsamples_points,c].min()
                     if func=="max": df.loc[idx_1-1,new_column] = df.loc[between_subsamples_points,c].max()
+                    if func=="len_unique_pos": df.loc[idx_1-1,new_column] = (df.loc[between_subsamples_points,c].unique()>0).sum()
                     
     # if subsampling resolution is thiner than sampling resolution
     else:
