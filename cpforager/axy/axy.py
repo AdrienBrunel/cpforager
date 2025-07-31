@@ -12,7 +12,7 @@ from cpforager.axy import diagnostic, display
 # ======================================================= #
 class AXY:
 
-    # [CONSTRUCTOR] GPS
+    # [CONSTRUCTOR] AXY
     def __init__(self, df=pd.DataFrame, group=str, id=str, params=dict):
 
         # process data

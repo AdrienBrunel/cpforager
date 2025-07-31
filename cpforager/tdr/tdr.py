@@ -30,7 +30,7 @@ class TDR:
 
         # compute additional information
         basic_infos = processing.compute_basic_infos(df)
-        tdr_infos = processing.compute_tdr_infos(df, params)
+        tdr_infos = processing.compute_tdr_infos(df)
 
         # set attributes
         self.df = df

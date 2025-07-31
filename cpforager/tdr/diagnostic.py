@@ -44,7 +44,7 @@ def full_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict):
     infos.append("Mean temperature = %.1f °C" % mean_temperature)
     
     # produce diagnostic
-    fig = plt.figure(figsize=(30, 24), dpi=plot_params.get("fig_dpi"))
+    fig = plt.figure(figsize=(10, 12), dpi=plot_params.get("fig_dpi"))
     fig.tight_layout()
     fig.subplots_adjust(hspace=0.3, wspace=0.25, bottom=0.06, top=0.95, left=0.05, right=0.95)
     gs = fig.add_gridspec(2, 3)
