@@ -172,11 +172,11 @@ def full_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict):
     
     # pressure
     ax = fig.add_subplot(gs[5,0])
-    diagnostic.plot_ts(ax, df_tdr, plot_params, "pressure", "%d Dives" % nb_dives, "Pressure [hPa]", eph_cond=(df_tdr["is_diving"]==1))
-    
+    diagnostic.plot_ts(ax, df_tdr, plot_params, "pressure", "%d Dives" % nb_dives, "Pressure [hPa]", eph_cond=(df_tdr["dive"]>0))
+        
     # depth
     ax = fig.add_subplot(gs[5,1:3])
-    diagnostic.plot_ts(ax, df_tdr, plot_params, "depth", "%d Dives" % nb_dives, "Depth [m]", hline=diving_depth_threshold, eph_cond=(df_tdr["is_diving"]==1))
+    diagnostic.plot_ts(ax, df_tdr, plot_params, "depth", "%d Dives" % nb_dives, "Depth [m]", hline=diving_depth_threshold, eph_cond=(df_tdr["dive"]>0))
     
     # temperature
     ax = fig.add_subplot(gs[5,3:5])

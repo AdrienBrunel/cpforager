@@ -73,7 +73,7 @@ def get_params(colony):
                            "trip_min_steps": 10}    
     
     # dives parameters    
-    params_dives = {"diving_depth_threshold" : 2}    
+    params_dives = {"diving_depth_threshold" : 2, "dive_min_duration" : 2}
     
     # append dictionaries
     params = {}

@@ -4,7 +4,6 @@
 import os
 from cpforager import diagnostic
 import matplotlib.pyplot as plt
-import cartopy.crs as ccrs
 
 
 # ======================================================= #
@@ -44,14 +43,14 @@ def full_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict):
     infos.append("Mean temperature = %.1f °C" % mean_temperature)
     
     # produce diagnostic
-    fig = plt.figure(figsize=(10, 12), dpi=plot_params.get("fig_dpi"))
+    fig = plt.figure(figsize=(12, 10), dpi=plot_params.get("fig_dpi"))
     fig.tight_layout()
     fig.subplots_adjust(hspace=0.3, wspace=0.25, bottom=0.06, top=0.95, left=0.05, right=0.95)
     gs = fig.add_gridspec(2, 3)
 
     # pressure
     ax = fig.add_subplot(gs[0,0])
-    diagnostic.plot_ts(ax, df, plot_params, "pressure", "%d Dives" % nb_dives, "Pressure [hPa]", eph_cond=(df["is_diving"]==1))
+    diagnostic.plot_ts(ax, df, plot_params, "pressure", "%d Dives" % nb_dives, "Pressure [hPa]", eph_cond=(df["dive"]>0))
     
     # step time timeserie
     ax = fig.add_subplot(gs[0,1])
@@ -63,7 +62,7 @@ def full_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict):
     
     # depth
     ax = fig.add_subplot(gs[1,0])
-    diagnostic.plot_ts(ax, df, plot_params, "depth", "%d Dives" % nb_dives, "Depth [m]", hline=diving_depth_threshold, eph_cond=(df["is_diving"]==1))
+    diagnostic.plot_ts(ax, df, plot_params, "depth", "%d Dives" % nb_dives, "Depth [m]", hline=diving_depth_threshold, eph_cond=(df["dive"]>0))
     
     # temperature
     ax = fig.add_subplot(gs[1,1])

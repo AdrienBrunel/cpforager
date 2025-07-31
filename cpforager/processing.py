@@ -209,7 +209,7 @@ def add_dist_to_nest(df, params):
 
 # ================================================================================================ #
 # GOAL   : segment the full recording of positions in foraging trips by labelling every positions 
-# 	   with a trip id.
+# 	       with a trip id.
 #
 # INPUT  : - df     : dataframe with "dist_to_nest", "step_speed", "datetime" and "step_length" 
 # 		              columns.
@@ -323,6 +323,86 @@ def add_trip(df, params):
 
     return df
 
+# ================================================================================================ #
+# GOAL   : segment the full recording of pressure in foraging dives by labelling every measure 
+# 	       with a dive id.
+#
+# INPUT  : - df     : dataframe with "depth" and"datetime" columns.
+#          - params : structure of parameters with "diving_depth_threshold" giving the depth at 
+#                     which we consider a dive may start, "dive_min_duration" giving the dive 
+#                     duration below which we do not consider it to be a dive.
+# 
+# OUTPUT : - df : dataframe with an additional column "dive" that gives the dive number. 
+# ================================================================================================ #
+def add_dive(df, params):
+    
+    # get parameters
+    diving_depth_threshold = params.get("diving_depth_threshold")
+    dive_min_duration = params.get("dive_min_duration")
+    
+    # number of steps
+    n_df = len(df)
+    
+    # init dive id array
+    dive_id = np.zeros(n_df, dtype=int)
+
+    # determine when bird is flying
+    is_flying = np.where(df["depth"] <= diving_depth_threshold, 1, 0)
+    
+    # determine when diving state is changing
+    changing_state = np.insert(np.diff(is_flying), 0, 0)
+
+    # compute start indexes of the candidate dives
+    candidates_start_idx = np.where(changing_state == -1)[0]
+    if is_flying[0] == 0:
+        candidates_start_idx = np.insert(candidates_start_idx, 0, 0)
+    
+    # total number of candidate dives
+    n_candidates = len(candidates_start_idx)
+    
+    # compute end indexes of the candidate dives
+    candidates_end_idx = np.where(changing_state == 1)[0]
+    if is_flying[n_df-1] == 0:
+        candidates_end_idx = np.insert(candidates_end_idx, n_candidates-1, n_df-1)
+
+    # determine start and end indexes of valid dives among candidate dives
+    if n_candidates > 0:
+        
+        # init
+        valids_start_idx = []
+        valids_end_idx = []
+        t_end_previous_dive = 0
+        k = 0        
+        
+        # loop over candidate dives
+        while k < n_candidates:
+                
+            # start and end index of the k-th candidate dive
+            t_start = max(candidates_start_idx[k], t_end_previous_dive)
+            t_end = candidates_end_idx[k]
+            t_end_previous_dive = t_end
+            
+            # dive is valid iff duration is high enough
+            dive_duration = (df.loc[t_end, "datetime"] - df.loc[t_start, "datetime"]).total_seconds()
+            if (dive_duration > dive_min_duration):
+                valids_start_idx.append(t_start)
+                valids_end_idx.append(t_end)
+                
+            # increment candidate dive
+            k = k+1
+       
+        # set dive ids of the valid dives
+        n_valids = len(valids_start_idx)
+        if n_valids > 0:
+            for k in range(1, n_valids+1):
+                t_start = valids_start_idx[k-1]
+                t_end = valids_end_idx[k-1]
+                dive_id[t_start:(t_end+1)] = k
+    
+    # add dive id to the dataframe        
+    df["dive"] = dive_id
+
+    return df
 
 # ================================================================================================ #
 # GOAL   : compute the boolean value informing if it is night at a given position and time.
@@ -382,28 +462,28 @@ def add_depth(df):
     return(df)
 
 
-# ================================================================================================ #
-# GOAL   : compute the boolean value informing bird is diving based on depth measure.
-#
-# INPUT  : - df : dataframe with a "depth" column.
-#          - params : structure of parameters with "diving_depth_threshold" giving the depth in meter
-#                     above which we consider the bird to be diving. 
-#
-# OUTPUT : - df : dataframe with an additional "is_diving" column that is 1 if depth above a dive 
-#                 threshold.
-# ================================================================================================ #
-def add_is_diving(df, params):
+# # ================================================================================================ #
+# # GOAL   : compute the boolean value informing bird is diving based on depth measure.
+# #
+# # INPUT  : - df : dataframe with a "depth" column.
+# #          - params : structure of parameters with "diving_depth_threshold" giving the depth in meter
+# #                     above which we consider the bird to be diving. 
+# #
+# # OUTPUT : - df : dataframe with an additional "is_diving" column that is 1 if depth above a dive 
+# #                 threshold.
+# # ================================================================================================ #
+# def add_is_diving(df, params):
     
-    # get parameters
-    diving_depth_threshold = params.get("diving_depth_threshold")
+#     # get parameters
+#     diving_depth_threshold = params.get("diving_depth_threshold")
     
-    # add column to dataframe
-    df["is_diving"] = (df["depth"] > diving_depth_threshold)
+#     # add column to dataframe
+#     df["is_diving"] = (df["depth"] > diving_depth_threshold)
 
-    # reformat colum
-    df["is_diving"] = df["is_diving"].astype(int)
+#     # reformat colum
+#     df["is_diving"] = df["is_diving"].astype(int)
 
-    return(df)
+#     return(df)
 
 
 # ================================================================================================ #
@@ -589,7 +669,7 @@ def add_tdr_data(df, params):
     
     # process tdr data
     df = add_depth(df)
-    df = add_is_diving(df, params)
+    df = add_dive(df, params)
     
     return(df)
 
@@ -613,7 +693,7 @@ def add_axy_data(df, params):
     
     # processing tdr data
     df = add_depth(df)
-    df = add_is_diving(df, params)
+    # df = add_dive(df_tdr, params)
         
     # set tdr resolution as the subsample resolution
     tdr_resolution = (df["pressure"].notna()) & (df["temperature"].notna())
@@ -623,26 +703,28 @@ def add_axy_data(df, params):
     gps_resolution = (df["longitude"].notna()) & (df["latitude"].notna())
     
     # sum physical quantities between every pair of subsample measures
-    df = utils.func_between_samples(df, gps_resolution, ["odba", "odba_f", "step_time", "is_diving"], func="sum")
-    
+    df = utils.func_between_samples(df, gps_resolution, ["odba", "odba_f", "step_time"], func="sum")
     # keep maximum of physical quantities between every pair of subsample measures
-    df = utils.func_between_samples(df, gps_resolution, ["pressure", "depth", "is_diving"], func="max")
-    
+    df = utils.func_between_samples(df, gps_resolution, ["pressure", "depth", "dive"], func="max")
     # average physical quantities between every pair of subsample measures
     df = utils.func_between_samples(df, gps_resolution, ["temperature"], func="mean")
+    # # len_unique_pos physical quantities between every pair of subsample measures
+    # df = utils.func_between_samples(df, gps_resolution, ["dive"], func="len_unique_pos")
 
-    # manage columns of the resulting subsample dataframe
-    df_gps = df.loc[gps_resolution].reset_index(drop=True)
-    df_gps = df_gps.drop(["odba", "odba_f", "step_time", "is_diving", "pressure", "depth", "temperature"], axis=1)
-    df_gps = df_gps.rename(columns={"odba_sum":"odba", "odba_f_sum":"odba_f", "step_time_sum":"step_time", 
-                                    "is_diving_max":"is_diving", "is_diving_sum":"nb_dives",
-                                    "pressure_max":"pressure", "depth_max":"depth", "temperature_mean":"temperature"})    
     # process gps data
+    df_gps = df.loc[gps_resolution].reset_index(drop=True)
+    df_gps = df_gps.drop(["odba", "odba_f", "step_time", "dive", "pressure", "depth", "temperature"], axis=1)
+    df_gps = df_gps.rename(columns={"odba_sum":"odba", "odba_f_sum":"odba_f", "step_time_sum":"step_time", 
+                                    "dive_max":"dive", "dive_len_unique_pos":"nb_dives",
+                                    "pressure_max":"pressure", "depth_max":"depth", "temperature_mean":"temperature"})    
     df_gps = add_gps_data(df_gps, params)
+    
+    # process gps data
+    df_tdr = df.loc[tdr_resolution].reset_index(drop=True)
     
     # rearrange full dataframe
     df = df[["date", "time", "ax", "ay", "az", "longitude", "latitude", "pressure", "temperature", 
-             "datetime", "step_time", "is_night", "ax_f", "ay_f", "az_f", "odba", "odba_f", "depth", "is_diving"]]
+             "datetime", "step_time", "is_night", "ax_f", "ay_f", "az_f", "odba", "odba_f", "depth", "dive"]]
         
     return(df, df_gps, df_tdr)
 
@@ -721,7 +803,7 @@ def compute_gps_infos(df, params):
 def compute_tdr_infos(df):
     
     # compute tdr infos
-    nb_dives = int(df["is_diving"].sum())
+    nb_dives = df["dive"].max()
     median_pressure = df["pressure"].median()
     median_depth = df["depth"].median()
     mean_temperature = df["temperature"].mean()
