@@ -57,6 +57,20 @@ methods                | description
 `maps_diag`            | produce the png map showing all the trips in the GPS collection.
 `folium_map`           | produce the html map showing all the trips in the GPS collection.
 
+# TDR
+Constructor `TDR(df, group, id, params)` : 
+* `df` is a pandas DataFrame containing ***datetime***, ***pressure*** and ***temperature*** columns. The user must input the ***datetime*** at the local timezone and converted to `datetime64` type (see `test.py`).
+* `group` is a string representing the group to which the data belongs (year, fieldwork, specie, etc.) which can be relevant for future statistics.
+* `id` is a string representing the unique identifier of the central-place foraging seabird.
+* `params` is the list of parameters that should at least include the fields present in parameters.py.
+
+The resulting TDR object adds segmented dives to the initial DataFrame. See the documentation for more details.
+
+methods                | description
+---------------------- | ----------------------
+`display_data_summary` | display a summary of the TDR data.
+`full_diag`            | produce a full png diagnostic showing the TDR data.
+
 # AXY
 Constructor `AXY(df, group, id, params)` : 
 * `df` is a pandas DataFrame containing ***datetime***, ***longitude***, ***latitude***, ***ax***, ***ay*** and ***az*** columns. The user must input the ***datetime*** at the local timezone and converted to `datetime64` type (see `test.py`).
