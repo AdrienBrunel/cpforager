@@ -161,47 +161,45 @@ _ = gps_collection_all.folium_map(test_dir, "folium_all")
 gps_collection_all.trip_statistics_all.to_csv("%s/trip_statistics_all.csv" % (test_dir), index=False, quoting=csv.QUOTE_NONNUMERIC)
 
 
-# # ======================================================= #
-# # TEST TDR CLASS
-# # ======================================================= #
+# ======================================================= #
+# TEST TDR CLASS
+# ======================================================= #
 
-# # parameters
-# # fieldwork = "BRA_FDN_2018_09"
-# fieldwork = "BRA_FDN_2022_04"
-# colony = "BRA_FDN_MEI"
+# parameters
+fieldwork = "BRA_FDN_2022_04"
+colony = "BRA_FDN_MEI"
 
-# # get structure of parameters
-# params = parameters.get_params(colony)
+# get structure of parameters
+params = parameters.get_params(colony)
 
-# # set file infos
-# # file_name = "BRA_FDN_MEI_2018-09-18_SSUL_01_NA_NA_TDR_G5_A07652_LOC.csv"
-# # file_name = "BRA_FDN_MEI_2018-09-18_SSUL_01_NA_NA_TDR_G5_A07652_LOC.csv"
-# file_name = "BRA_FDN_MEI_2022-04-26_SDAC_01_U61556_F_GPS_AXY_RT10_UTC.csv"
-# file_id = file_name.replace(".csv", "")
-# file_path = os.path.join(data_dir, fieldwork, file_name)
+# set file infos
+file_name = "BRA_FDN_MEI_2022-04-26_SDAC_01_U61556_F_TDR_G5_RT10_UTC.csv"
+file_id = file_name.replace(".csv", "")
+file_path = os.path.join(data_dir, fieldwork, file_name)
 
-# # load raw data
-# df = pd.read_csv(file_path, sep=",")
+# load raw data
+df = pd.read_csv(file_path, sep=",")
 # df = df.loc[~df["pressure"].isna()][["date", "time", "pressure", "temperature"]].reset_index(drop=True)
-# # df = pd.read_csv("/home/adrien/Téléchargements/LB_validation.csv", sep=",")
-# # df["pressure"] = df["pressure"]*(1013.25/df["pressure"].median())
+# df.to_csv("/home/adrien/Bureau/BRA_FDN_MEI_2022-04-26_SDAC_01_U61556_F_TDR_G5_RT10_UTC.csv", index=False, quoting=csv.QUOTE_NONNUMERIC)
+# df = pd.read_csv("/home/adrien/Téléchargements/LB_validation.csv", sep=",")
+# df["pressure"] = df["pressure"]*(1013.25/df["pressure"].median())
 
-# # produce "datetime" column of type datetime64
-# df["datetime"] = pd.to_datetime(df["date"] + " " + df["time"], format="mixed", dayfirst=False)
+# produce "datetime" column of type datetime64
+df["datetime"] = pd.to_datetime(df["date"] + " " + df["time"], format="mixed", dayfirst=False)
 
-# # build TDR object
-# tdr = TDR(df=df, group=fieldwork, id=file_id, params=params)
+# build TDR object
+tdr = TDR(df=df, group=fieldwork, id=file_id, params=params)
 
-# # test built-in methods
-# print(tdr)
-# print(len(tdr))
-# print(tdr[1312])
+# test built-in methods
+print(tdr)
+print(len(tdr))
+print(tdr[1312])
 
-# # test display_data_summary method
-# tdr.display_data_summary()
+# test display_data_summary method
+tdr.display_data_summary()
 
-# # test full_diag, maps_diag, folium_map, folium_map_colorgrad methods
-# _ = tdr.full_diag(test_dir, "%s_TDRdiag" % file_id, plot_params)
+# test full_diag, maps_diag, folium_map, folium_map_colorgrad methods
+_ = tdr.full_diag(test_dir, "%s_diag" % file_id, plot_params)
 
 
 # ======================================================= #
@@ -271,3 +269,4 @@ axy_interp = AXY(df=df_interp, group=fieldwork, id="%s_%s" % (axy.id, "interp"),
 print("df     : %d/%d = %.2f%%" % (len(axy_interp), len(axy), 100*len(axy_interp)/len(axy)))
 print("df_gps : %d/%d = %.2f%%" % (len(axy_interp.df_gps), len(axy.df_gps), 100*len(axy_interp.df_gps)/len(axy.df_gps)))
 _ = axy_interp.full_diag(test_dir, "%s_diag" % axy_interp.id, plot_params)
+_ = axy_interp.maps_diag(test_dir, "%s_map" % axy_interp.id, plot_params)
