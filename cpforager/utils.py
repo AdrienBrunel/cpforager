@@ -115,7 +115,7 @@ def convert_loc_to_utc(df, local_timezone):
 #
 # OUTPUT : - df : dataframe at resolution
 # ================================================================================================ #
-def apply_funcs_between_samples(df, resolution, columns_functions=dict, verbose=False):
+def apply_functions_between_samples(df, resolution, columns_functions=dict, verbose=False):
     
     # set of possible values for funcs
     funcs_possible_values = ["sum", "mean", "min", "max", "len_unique_pos"]
