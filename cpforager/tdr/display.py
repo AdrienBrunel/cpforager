@@ -24,5 +24,5 @@ def display_data_summary(self):
         print("# ------------------------------ DIVE --------------------------------- #")
         print("# + Longest dive          = %.1f s" % self.dive_statistics["duration"].max())
         print("# + Median dive duration  = %.1f s" % self.dive_statistics["duration"].quantile(0.5))
-        print("# + Median dive max depth = %.1f m" % self.dive_statistics["max_depth"].quantile(0.5))
+        print("# + Median dive max depth = %.2f m" % self.dive_statistics["max_depth"].quantile(0.5))
     print("# ===================================================================== #")

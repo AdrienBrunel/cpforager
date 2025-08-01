@@ -78,7 +78,7 @@ def full_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict):
     if nb_dives>0:
         infos.append("Longest dive = %.1f s" % dive_statistics["duration"].max())
         infos.append("Median dive duration = %.1f s" % dive_statistics["duration"].quantile(0.5))
-        infos.append("Median dive max depth = %.1f m" % dive_statistics["max_depth"].quantile(0.5))
+        infos.append("Median dive max depth = %.2f m" % dive_statistics["max_depth"].quantile(0.5))
     
     # produce diagnostic
     fig = plt.figure(figsize=(30, 24), dpi=plot_params.get("fig_dpi"))
