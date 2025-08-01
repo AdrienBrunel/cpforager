@@ -247,3 +247,27 @@ _ = axy.maps_diag(test_dir, "%s_map" % file_id, plot_params)
 _ = axy.folium_map(test_dir, "%s_fmap" % file_id)
 _ = axy.folium_map_wtrips(test_dir, "%s_fmap_wtrips" % file_id, plot_params)
 _ = axy.folium_map_colorgrad(test_dir, "%s_fmap_speed" % file_id, plot_params)
+
+
+# ======================================================= #
+# TEST AXY INTERPOLATION
+# ======================================================= #
+
+# build a regular interpolation datetime
+interp_freq_secs = 10
+interp_datetime = pd.date_range(start=axy.df_gps["datetime"].iloc[0], end=axy.df_gps["datetime"].iloc[-1], freq=pd.Timedelta(seconds=interp_freq_secs), periods=None)
+
+# compute interpolated positions from AXY method
+df_gps_interp = axy.interpolate_lat_lon(interp_datetime, add_proxy=True)
+
+# merge dataframes on datetime column
+df_wo_positions = axy.df[["date", "time", "ax", "ay", "az", "pressure", "temperature", "datetime"]]
+df_interp = pd.merge(df_wo_positions, df_gps_interp, on="datetime", how="left")
+
+# build another AXY object with interpolated dataframe
+axy_interp = AXY(df=df_interp, group=fieldwork, id="%s_%s" % (axy.id, "interp"), params=params)
+
+# display size change and produce diag
+print("df     : %d/%d = %.2f%%" % (len(axy_interp), len(axy), 100*len(axy_interp)/len(axy)))
+print("df_gps : %d/%d = %.2f%%" % (len(axy_interp.df_gps), len(axy.df_gps), 100*len(axy_interp.df_gps)/len(axy.df_gps)))
+_ = axy_interp.full_diag(test_dir, "%s_diag" % axy_interp.id, plot_params)
