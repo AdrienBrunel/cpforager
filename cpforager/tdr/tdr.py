@@ -45,7 +45,9 @@ class TDR:
         self.nb_dives = tdr_infos["nb_dives"]
         self.median_pressure = tdr_infos["median_pressure"]
         self.median_depth = tdr_infos["median_depth"]
+        self.max_depth = tdr_infos["max_depth"]
         self.mean_temperature = tdr_infos["mean_temperature"]
+        self.dive_statistics = tdr_infos["dive_statistics"]
         
     # [BUILT-IN METHODS] length of the class
     def __len__(self):

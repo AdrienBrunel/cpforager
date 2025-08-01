@@ -817,13 +817,25 @@ def compute_tdr_infos(df):
     nb_dives = df["dive"].max()
     median_pressure = df["pressure"].median()
     median_depth = df["depth"].median()
+    max_depth = df["depth"].max()
     mean_temperature = df["temperature"].mean()
+    nb_dives = df["dive"].max()
+    dive_statistics = pd.DataFrame(columns=["id", "duration", "max_depth"])
+    for k in range(nb_dives):
+        dive_id = k+1
+        df_dive = df.loc[df["dive"] == dive_id].reset_index(drop=True)
+        n_df_dive = len(df_dive)
+        dive_statistics.loc[k, "id"] = dive_id
+        dive_statistics.loc[k, "duration"] = (df_dive.loc[n_df_dive-1, "datetime"] - df_dive.loc[0, "datetime"]).total_seconds()
+        dive_statistics.loc[k, "max_depth"] = df_dive["depth"].max()
             
     # store tdr infos
     infos = {"nb_dives" : nb_dives,
              "median_pressure" : median_pressure, 
              "median_depth" : median_depth, 
-             "mean_temperature" : mean_temperature}
+             "max_depth" : max_depth, 
+             "mean_temperature" : mean_temperature,
+             "dive_statistics" : dive_statistics}
     
     return(infos)
     

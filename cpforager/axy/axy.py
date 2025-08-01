@@ -24,8 +24,9 @@ class AXY:
         # compute additional information
         basic_infos = processing.compute_basic_infos(df)
         basic_gps_infos = processing.compute_basic_infos(df_gps)
+        basic_tdr_infos = processing.compute_basic_infos(df_tdr)
         gps_infos = processing.compute_gps_infos(df_gps, params)
-        tdr_infos = processing.compute_tdr_infos(df)
+        tdr_infos = processing.compute_tdr_infos(df_tdr)
         axy_infos = processing.compute_axy_infos(df)
 
         # set attributes
@@ -49,10 +50,13 @@ class AXY:
         self.n_trip = gps_infos["n_trip"]
         self.nest_position = gps_infos["nest_position"]
         self.trip_statistics = gps_infos["trip_statistics"]
+        self.tdr_resolution = basic_tdr_infos["resolution"]
         self.nb_dives = tdr_infos["nb_dives"]
         self.median_pressure = tdr_infos["median_pressure"]
         self.median_depth = tdr_infos["median_depth"]
+        self.max_depth = tdr_infos["max_depth"]
         self.mean_temperature = tdr_infos["mean_temperature"]
+        self.dive_statistics = tdr_infos["dive_statistics"]
         self.max_odba = axy_infos["max_odba"]
         self.median_odba = axy_infos["median_odba"]
         self.max_odba_f = axy_infos["max_odba_f"]
