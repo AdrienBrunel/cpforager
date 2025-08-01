@@ -24,7 +24,9 @@ def full_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict):
     nb_dives = self.nb_dives
     median_pressure = self.median_pressure
     median_depth = self.median_depth
+    max_depth = self.max_depth
     mean_temperature = self.mean_temperature
+    dive_statistics = self.dive_statistics
 
     # get parameters
     diving_depth_threshold = params.get("diving_depth_threshold")
@@ -40,7 +42,12 @@ def full_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict):
     infos.append("Number of dives = %d" % nb_dives)
     infos.append("Median pressure = %.1f hPa" % median_pressure)
     infos.append("Median depth = %.2f m" % median_depth)
+    infos.append("Max depth = %.2f m" % max_depth)
     infos.append("Mean temperature = %.1f °C" % mean_temperature)
+    if nb_dives>0:
+        infos.append("Longest dive = %.1f s" % dive_statistics["duration"].max())
+        infos.append("Median dive duration = %.1f s" % dive_statistics["duration"].quantile(0.5))
+        infos.append("Median dive max depth = %.1f m" % dive_statistics["max_depth"].quantile(0.5))
     
     # produce diagnostic
     fig = plt.figure(figsize=(12, 10), dpi=plot_params.get("fig_dpi"))

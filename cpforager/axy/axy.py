@@ -4,7 +4,7 @@
 import pandas as pd
 from cpforager.gps.gps import GPS
 from cpforager import processing
-from cpforager.axy import diagnostic, display
+from cpforager.axy import diagnostic, display, interpolation
 
 
 # ======================================================= #
@@ -74,8 +74,8 @@ class AXY:
     def __repr__(self):
         return "%s(group=%s, id=%s, trips=%d, n=%d, n_gps=%d, n_tdr=%d)" % (type(self).__name__, self.group, self.id, self.n_trip, self.n_df, self.n_df_gps, self.n_df_tdr)
 
-    # # [METHODS] interpolate data
-    # interpolate_lat_lon = interpolation.interpolate_lat_lon
+    # [METHODS] interpolate data
+    interpolate_lat_lon = interpolation.interpolate_lat_lon
 
     # # [METHODS] display the summary of the data
     display_data_summary = display.display_data_summary
