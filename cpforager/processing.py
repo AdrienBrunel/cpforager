@@ -323,6 +323,7 @@ def add_trip(df, params):
 
     return df
 
+
 # ================================================================================================ #
 # GOAL   : segment the full recording of pressure in foraging dives by labelling every measure 
 # 	       with a dive id.
@@ -404,6 +405,7 @@ def add_dive(df, params):
 
     return df
 
+
 # ================================================================================================ #
 # GOAL   : compute the boolean value informing if it is night at a given position and time.
 #
@@ -437,6 +439,7 @@ def add_is_night(df, params):
     df["is_night"] = df["is_night"].astype(int)
 
     return(df)
+
 
 # ================================================================================================ #
 # GOAL   : compute the depth in meters at every measure of pressure.
@@ -635,7 +638,6 @@ def add_gps_data(df, params):
     df = add_basic_data(df, params)
     
     # step statistics of gps data
-    # df = add_step_time(df)
     df = add_step_length(df) 
     df = add_step_speed(df) 
     df = add_step_heading(df)
@@ -644,9 +646,6 @@ def add_gps_data(df, params):
     
     # clean gps data
     df = remove_suspicious(df, params)
-    
-    # # add boolean night    
-    # df = add_is_night(df, params)
     
     # trip segmentation
     df = add_dist_to_nest(df, params)
@@ -687,44 +686,56 @@ def add_axy_data(df, params):
     # compute basic data
     df = add_basic_data(df, params)
     
-    # processing acceleration data
+    # process acceleration data
     df = add_filtered_acc(df, time_window=2)
     df = add_odba(df, p=1)
-    
-    # processing tdr data
-    df = add_depth(df)
-    # df = add_dive(df_tdr, params)
         
-    # set tdr resolution as the subsample resolution
-    tdr_resolution = (df["pressure"].notna()) & (df["temperature"].notna())
-    df_tdr = df.loc[tdr_resolution].reset_index(drop=True)
-    
-    # set gps resolution as the subsample resolution
+    # extract data at gps resolution and add processed gps data
     gps_resolution = (df["longitude"].notna()) & (df["latitude"].notna())
+    gps_indices = df.loc[gps_resolution].index
+    df_gps_tmp = df.loc[gps_resolution, ["datetime", "longitude", "latitude"]].reset_index(drop=True)
+    df_gps_tmp = add_gps_data(df_gps_tmp, params)
     
-    # sum physical quantities between every pair of subsample measures
-    df = utils.func_between_samples(df, gps_resolution, ["odba", "odba_f", "step_time"], func="sum")
-    # keep maximum of physical quantities between every pair of subsample measures
-    df = utils.func_between_samples(df, gps_resolution, ["pressure", "depth", "dive"], func="max")
-    # average physical quantities between every pair of subsample measures
-    df = utils.func_between_samples(df, gps_resolution, ["temperature"], func="mean")
-    # # len_unique_pos physical quantities between every pair of subsample measures
-    # df = utils.func_between_samples(df, gps_resolution, ["dive"], func="len_unique_pos")
-
+    # extract data at tdr resolution and add processed tdr data
+    tdr_resolution = (df["pressure"].notna()) & (df["temperature"].notna())
+    tdr_indices = df.loc[tdr_resolution].index
+    df_tdr_tmp = df.loc[tdr_resolution, ["datetime", "pressure", "temperature"]].reset_index(drop=True)
+    df_tdr_tmp = add_tdr_data(df_tdr_tmp, params)
+    
+    # add gps data to the initial df
+    gps_columns = ["step_length", "step_speed", "step_turning_angle", "step_heading", "step_heading_to_colony", "dist_to_nest", "trip"]
+    df[gps_columns] = np.nan
+    df.loc[gps_indices, gps_columns] = df_gps_tmp[gps_columns].values
+    
+    # add tdr data to the initial df
+    tdr_columns = ["depth", "dive"]
+    df[tdr_columns] = np.nan
+    df.loc[tdr_indices, tdr_columns] = df_tdr_tmp[tdr_columns].values
+    
+    # produce df_gps by processing (sum, mean, max) data between two gps measures
+    cols_funcs = {"odba":"sum", "odba_f":"sum", "step_time":"sum",
+                  "pressure":"max", "depth":"max", "dive":"max",
+                  "temperature":"mean",
+                  "dive":"len_unique_pos"}
+    df = utils.apply_functions_between_samples(df, gps_resolution, cols_funcs, verbose=True)
+    
     # process gps data
     df_gps = df.loc[gps_resolution].reset_index(drop=True)
     df_gps = df_gps.drop(["odba", "odba_f", "step_time", "dive", "pressure", "depth", "temperature"], axis=1)
     df_gps = df_gps.rename(columns={"odba_sum":"odba", "odba_f_sum":"odba_f", "step_time_sum":"step_time", 
                                     "dive_max":"dive", "dive_len_unique_pos":"nb_dives",
-                                    "pressure_max":"pressure", "depth_max":"depth", "temperature_mean":"temperature"})    
-    df_gps = add_gps_data(df_gps, params)
-    
-    # process gps data
-    df_tdr = df.loc[tdr_resolution].reset_index(drop=True)
-    
+                                    "pressure_max":"pressure", "depth_max":"depth", "temperature_mean":"temperature"})
+    df_gps["trip"] = df_gps["trip"].astype(int)
+        
+    # # process tdr data
+    # df_tdr = df.loc[tdr_resolution].reset_index(drop=True)
+    # df_tdr = df_tdr.drop(["odba", "odba_f", "step_time", "dive", "pressure", "depth", "temperature"], axis=1)
+    # df_tdr = df_tdr.rename(columns={"odba_sum":"odba", "odba_f_sum":"odba_f", "step_time_sum":"step_time"}) # longitude latitude ?
+    df_tdr = df_tdr_tmp     
+
     # rearrange full dataframe
-    df = df[["date", "time", "ax", "ay", "az", "longitude", "latitude", "pressure", "temperature", 
-             "datetime", "step_time", "is_night", "ax_f", "ay_f", "az_f", "odba", "odba_f", "depth", "dive"]]
+    df = df[np.concatenate((["date", "time", "ax", "ay", "az", "longitude", "latitude", "pressure", "temperature",
+                             "datetime", "step_time", "is_night", "ax_f", "ay_f", "az_f", "odba", "odba_f"], gps_columns, tdr_columns))]
         
     return(df, df_gps, df_tdr)
 
