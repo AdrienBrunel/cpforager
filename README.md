@@ -1,3 +1,10 @@
+<div align="center">
+  <a href="https://github.com/mfts/seabird-movement-cpf/stargazers"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/mfts/seabird-movement-cpf"></a>
+  <a href="https://github.com/mfts/seabird-movement-cpf/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/badge/license-AGPLv3-purple"></a>
+</div>
+
+<br />
+
 # cpforager
 Are you a scientist involved in movement ecology working with biologging data collected from central-place foraging seabirds? **cpforager** is a Python package designed to help you manipulate, process, analyse and visualise the biologging datasets with ease and flexibility.
 
@@ -28,6 +35,7 @@ git clone https://github.com/AdrienBrunel/seabird-movement-cpf
 TO BE DONE
 
 <br />
+
 # User guide 
 
 1. Read you data (GPS/TDR/AXY) with pandas
