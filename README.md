@@ -41,8 +41,6 @@ git clone https://github.com/AdrienBrunel/seabird-movement-cpf
 
 TO BE DONE
 
-<br>
-
 # User guide 
 
 1. Load the GPS/TDR/AXY raw data as a dataframe using `pandas.DataFrame`.
@@ -54,13 +52,10 @@ TO BE DONE
 
 [test.py](./test/test.py) illustrates how the `GPS`, `TDR`, `AXY` and `GPS_Collection` classes should be used to fully benefit the users. Results of this script are found in the [test](./test/) folder.
 
-<br>
-
 # Documentation
 
 * Documentation can be produced using sphinx in the [doc](./doc/) folder. (Work in progress)
 
-<br>
 <br>
 
 # Parameters 
@@ -82,7 +77,6 @@ name                        | description           | class
 `diving_depth_threshold`    | set the depth threshold above which a seabird is considered to be diving. | TDR
 `dive_min_duration`         | set the minimum duration in seconds of a dive for the considered seabird. | TDR
 
-<br>
 <br>
 
 # GPS
