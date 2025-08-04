@@ -168,8 +168,6 @@ TO BE DONE.
 - [ ] create a `AXY_Collection` class.
 - [ ] create a `TDR_Collection` class.
 
-<br>
-
 # Infos
 * Python version used is 3.13.3
 * OS used is Ubuntu 20.04
