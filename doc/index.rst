@@ -3,12 +3,23 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-seabird-movement-cpf documentation
+cpforager documentation
 ==================================
 
- .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
-   :numbered:
+   .. only:: html
+      
+      .. image:: _static/logo_tmp.JPG
+         :width: 250 px
+         :align: center
 
-   api
+   .. toctree::
+      :maxdepth: 2
+      :caption: Overview
+      :numbered:
+
+      classes.rst
+      parameters.rst
+      processing.rst
+      diagnostic.rst
+      utils.rst
+      misc.rst

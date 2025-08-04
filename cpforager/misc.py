@@ -4,6 +4,7 @@
 import csv
 import numpy as np
 
+
 # ================================================================================================ #
 # INPUT  : - filename : complete path of the csv file to be read.
 #
@@ -32,7 +33,6 @@ def derive_separator(filename):
 
     # return the separator with greater number of fields in dataframe
     return(sep)
-
 
 
 # ================================================================================================ #

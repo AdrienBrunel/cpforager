@@ -9,37 +9,37 @@ import cartopy.mpl.ticker as cmpl
 # ======================================================= #
 # DICTIONARY OF PARAMETERS
 # ======================================================= #
-"""
-.. py:function:: get_params(colony)
-
-   Return a dictionary of parameters needed for GPS, TDR and AXY classes.
-   
-   The dictionary is composed of the following fields : 
-   +----------------------------+---------------------------------------------------------------+
-   | name                       | description
-   +----------------------------+---------------------------------------------------------------+
-    `colony`                    | longitude/latitude bounding box inside which the searbird's nest is to be found. 
-    `local_tz`                  | local timezone of the seabird's nest.
-    `max_possible_speed`        | speed threshold in km/h above which a longitude/latitude measure can be considered as an error and will be deleted.
-    `dist_threshold`            | distance from the nest threshold in km above which the seabird is considered in a foraging trip.
-    `speed_threshold`           | speed threshold in km/h above which the seabird is still considered in a foraging trip despite being below the distance threshold.
-    `nesting_speed`             | speed threshold in km/h below which the seabird is considered at nest.
-    `trip_min_duration`         | duration in seconds above which a trip is valid.
-    `trip_max_duration`         | duration in seconds below which a trip is valid.
-    `trip_min_length`           | length in km above which a trip is valid.
-    `trip_max_length`           | length in km below which a trip is valid.
-    `trip_min_steps`            | number of steps above which a trip is valid.
-    `diving_depth_threshold`    | set the depth threshold above which a seabird is considered to be diving.
-    `dive_min_duration`         | set the minimum duration in seconds of a dive for the considered seabird.
-   +----------------------------+---------------------------------------------------------------+
-
-   :colony: codified name of the considered colony.
-   :type kind: str
-   :return: The dictionary of parameters.
-   :rtype: dict
-"""        
-
 def get_params(colony):
+    
+    """
+    Return a dictionary of parameters required to construct GPS, TDR and AXY classes.
+    
+    :param colony: codified name of the considered colony
+    :type colony: str
+    :return: a dictionary of parameters
+    :rtype: dict
+    
+    The user-defined colony code allows to define a dictionary of parameters according to a specific dataset.
+    Users should thus modify the values according to their dataset. Find below the exhaustive table of parameters within the dictionary.
+    
+    .. csv-table::  
+        :header: "name", "description", "required"
+        :widths: 20, 30, 20
+
+        "colony", "longitude/latitude bounding box inside which the searbird's nest is to be found.", "GPS"
+        "local_tz", "local timezone of the seabird's nest.", "GPS, TDR, AXY"
+        "max_possible_speed", "speed threshold in km/h above which a longitude/latitude measure can be considered as an error and will be deleted.", "GPS"
+        "dist_threshold", "distance from the nest threshold in km above which the seabird is considered in a foraging trip.", "GPS"
+        "speed_threshold", "speed threshold in km/h above which the seabird is still considered in a foraging trip despite being below the distance threshold.", "GPS"
+        "nesting_speed", "local timezone of the seabird's nest.", "GPS"
+        "trip_min_duration", "duration in seconds above which a trip is valid.", "GPS"
+        "trip_max_duration", "duration in seconds below which a trip is valid.", "GPS"
+        "trip_min_length", "length in km above which a trip is valid.", "GPS"
+        "trip_max_length", "length in km below which a trip is valid.", "GPS"
+        "trip_min_steps", "length in km below which a trip is valid.", "GPS"
+        "diving_depth_threshold", "set the depth threshold above which a seabird is considered to be diving.", "TDR"
+        "dive_min_duration", "set the minimum duration in seconds of a dive for the considered seabird.", "TDR"
+    """        
     
     # colony parameters 
     # (https://mapscaping.com/bounding-box-calculator/)
@@ -120,7 +120,43 @@ def get_params(colony):
 # DICTIONARY OF PLOT PARAMETERS
 # ======================================================= #
 def get_plot_params():
-        
+    
+    """
+    Return a dictionary of plot parameters required to produce the diagnostic of GPS, TDR and AXY classes.
+    
+    :param: None
+    :return: a dictionary of plot parameters
+    :rtype: dict 
+    
+    Find below the exhaustive table of parameters within the dictionary.
+    
+    .. csv-table::  
+        :header: "name", "description", "required"
+        :widths: 20, 30, 20
+
+        "cols_1", "", "GPS"
+        "cols_2", "", "GPS"
+        "cols_3", "", "GPS"
+        "main_fs", "", "GPS"
+        "labs_fs", "", "GPS"
+        "axis_fs", "", "GPS"
+        "text_fs", "", "GPS"
+        "pnt_size", "", "GPS"
+        "eph_size", "", "GPS"
+        "mrk_size", "", "GPS"
+        "pnt_type", "", "GPS"
+        "grid_lwd", "", "GPS"
+        "grid_col", "", "GPS"
+        "grid_lty", "", "GPS"
+        "night_transp", "", "GPS"
+        "cb_shrink", "", "GPS"
+        "cb_pad", "", "GPS"
+        "cb_aspect", "", "GPS"
+        "fig_dpi", "", "GPS"
+        "lon_fmt", "", "GPS"
+        "lat_fmt", "", "GPS"
+    """
+    
     # colors
     colors = {"cols_1" : np.tile(plt.cm.Set1(range(9)), (1, 1)),
               "cols_2" : plt.cm.viridis(np.linspace(0, 1, 100)),

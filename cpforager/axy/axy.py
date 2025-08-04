@@ -11,6 +11,10 @@ from cpforager.axy import diagnostic, display, interpolation
 # BIOLOGGER SUPER-CLASS
 # ======================================================= #
 class AXY:
+    
+    """
+    A class to represent the AXY data of a central-place foraging seabird.
+    """
 
     # [CONSTRUCTOR] AXY
     def __init__(self, df=pd.DataFrame, group=str, id=str, params=dict):

@@ -34,5 +34,8 @@ extensions = ["sphinx.ext.duration",
               "sphinx.ext.autosummary"]
 
 
-# command line for building documentation : sphinx-build -M html cpforager/ doc/ -c doc/
-# command line for building documentation : make html
+# command line for building documentation : 
+# make clean
+# rm -rfv generated/
+# make html
+# sphinx-pdf-generate doc/ doc/_build/html

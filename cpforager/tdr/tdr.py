@@ -10,21 +10,13 @@ from cpforager.tdr import diagnostic, display
 # BIOLOGGER SUPER-CLASS
 # ======================================================= #
 class TDR:
+    """
+    A class to represent the TDR data of a central-place foraging seabird.
+    """
 
     # [CONSTRUCTOR] TDR
     def __init__(self, df=pd.DataFrame, group=str, id=str, params=dict):
-        """
-        Parameters
-        ----------
-        df : pandas.DataFrame
-            The dataframe containing "datetime", "pressure" and "temperature" columns. Type of "datetime" column must be converted to datetime64.
-        group : str
-            The string representing the group to which the TDR data belongs (*e.g.* species, year, fieldwork, *etc*.) useful for statistics and filtering.
-        id : str
-            The string representing the unique identifier of the central-place foraging seabird.
-        params : dict
-            The dictionary of parameters.
-        """
+        
         # process data
         df = processing.add_tdr_data(df, params)
 
