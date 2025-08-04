@@ -19,30 +19,31 @@ Each class automatically enhances raw data but also computes key features specif
 <br />
 
 # Installation
-TO BE DONE
 
 First, clone this repository:
-<!-- start:code block -->
+```bash
 git clone https://github.com/AdrienBrunel/seabird-movement-cpf
-<!-- end:code block -->
+```
+
+TO BE DONE
 
 <br />
 # User guide 
 
 1. Read you data (GPS/TDR/AXY) with pandas
 2. Build a datetime column  at the local timezone
-3. Create the appropriate fields in parameters (see [Parameters](#Parameters "Goto Parameters"))
+3. Create the appropriate fields in parameters (see [Parameters](#Parameters "Go to Parameters section"))
 4. Build you object GPS/TDR/AXY
 5. 
 
-* In the `test` folder, the [test.py](./test/test.py) script illustrates how the `GPS`, `TDR`, `AXY` and `GPS_Collection` classes should be used to fully benefit the users. Results of this script is also found in the `test` folder.
+* [test.py](./test/test.py) illustrates how the `GPS`, `TDR`, `AXY` and `GPS_Collection` classes should be used to fully benefit the users. Results of this script are found in the [test](./test/) folder.
 
-* Documentation can be produced using sphinx in the `doc` folder. (Work in progress)
+* Documentation can be produced using sphinx in the [doc](./doc/) folder. (Work in progress)
 
 <br />
 
 # Parameters 
-* In [parameters.py](./cpforager/parameters.py) script, the `get_params(colony)` function produces a dictionary of parameters. This dictionary is required as an argument in the `GPS`, `TDR`, `AXY` and `GPS_Collection` classes. Users can modify the following parameters :
+* In [parameters.py](./cpforager/parameters.py), the `get_params(colony)` function produces a dictionary of parameters. This dictionary is required as an argument in the `GPS`, `TDR`, `AXY` and `GPS_Collection` classes. Users can modify the following parameters :
 
 name                        | description           | class
 --------------------------- | ----------------------| ----------------------
