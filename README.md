@@ -5,7 +5,7 @@
 </div>
 
 <div align="center">
-  [![GitHub repo stars](https://github.com/AdrienBrunel/seabird-movement-cpf/stargazers](https://github.com/AdrienBrunel/seabird-movement-cpf/stargazers)&#160;
+    [![GitHub repo stars](https://img.shields.io/github/stars/AdrienBrunel/seabird-movement-cpf)](https://github.com/AdrienBrunel/seabird-movement-cpf/stargazers)&#160;
 </div>
 
 <br />
