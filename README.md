@@ -1,23 +1,23 @@
+# cpforager
+
 <div align="center">
   <a href="https://github.com/AdrienBrunel/seabird-movement-cpf/stargazers"><img alt="stars" src="https://img.shields.io/github/stars/AdrienBrunel/seabird-movement-cpf"></a>
   <a href="https://github.com/AdrienBrunel/seabird-movement-cpf/forks"><img alt="forks" src="https://img.shields.io/github/forks/AdrienBrunel/seabird-movement-cpf"></a>
   <a href="https://github.com/AdrienBrunel/seabird-movement-cpf/blob/master/LICENSE"><img alt="license" src="https://img.shields.io/badge/license-AGPLv3-blue"></a>
 </div>
 
-\
-\
+<br>
 
-# cpforager
 Are you a scientist involved in movement ecology working with biologging data collected from central-place foraging seabirds? **cpforager** is a Python package designed to help you manipulate, process, analyse and visualise the biologging datasets with ease.
 
-\
+<br>
 
 The main objectives of **cpforager** package are :  
 1. Efficiently handle large-scale biologging datasets, including high-resolution sensor data.
 2. Provide a modular and extensible architecture, allowing users to tailor the code to specific research needs.
 3. Facilitate a smooth transition to Python for movement ecology researchers familiar with other languages (*e.g.*, R).
 
-\
+<br>
 
 **cpforager** package supports various biologging sensor types commonly used in the field and provides the following core classes:
 * `GPS` : for handling position recordings. 
@@ -29,8 +29,8 @@ The main objectives of **cpforager** package are :
 
 Each class automatically enhances raw data but also computes key features specific to each biologger (*e.g.* trip segmentation for GPS, dive segmentation for TDR, ODBA calculation for AXY). They are also accompanied with built-in methods for data processing and visualisation.
 
-\
-\
+<br>
+<br>
 
 # Installation
 
@@ -41,7 +41,7 @@ git clone https://github.com/AdrienBrunel/seabird-movement-cpf
 
 TO BE DONE
 
-\
+<br>
 
 # User guide 
 
@@ -54,14 +54,14 @@ TO BE DONE
 
 [test.py](./test/test.py) illustrates how the `GPS`, `TDR`, `AXY` and `GPS_Collection` classes should be used to fully benefit the users. Results of this script are found in the [test](./test/) folder.
 
-\
+<br>
 
 # Documentation
 
 * Documentation can be produced using sphinx in the [doc](./doc/) folder. (Work in progress)
 
-\
-\
+<br>
+<br>
 
 # Parameters 
 * In [parameters.py](./cpforager/parameters.py), the `get_params(colony)` function produces a dictionary of parameters. This dictionary is required as an argument in the `GPS`, `TDR`, `AXY` and `GPS_Collection` classes. Users can modify the following parameters :
@@ -82,7 +82,8 @@ name                        | description           | class
 `diving_depth_threshold`    | set the depth threshold above which a seabird is considered to be diving. | TDR
 `dive_min_duration`         | set the minimum duration in seconds of a dive for the considered seabird. | TDR
 
-\
+<br>
+<br>
 
 # GPS
 Constructor `GPS(df, group, id, params)` : 
@@ -135,7 +136,7 @@ methods                | description
 `folium_map_wtrips`    | produce the html map showing the GPS data with trip colors.
 `folium_map_colorgrad` | produce the html map showing the GPS data with a speed color gradient.
 
-<br />
+<br>
 
 # GPS_Collection
 Constructor `GPS_Collection(gps_collection)`
@@ -163,7 +164,8 @@ Constructor `AXY_Collection(axy_collection)`
 
 TO BE DONE.
 
-<br />
+<br>
+<br>
 
 # Future developments
 - [ ] document code and produce automatically documentation using sphinx
@@ -172,7 +174,7 @@ TO BE DONE.
 - [ ] create a `AXY_Collection` class.
 - [ ] create a `TDR_Collection` class.
 
-<br />
+<br>
 
 # Infos
 * Python version used is 3.13.3
