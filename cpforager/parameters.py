@@ -9,6 +9,36 @@ import cartopy.mpl.ticker as cmpl
 # ======================================================= #
 # DICTIONARY OF PARAMETERS
 # ======================================================= #
+"""
+.. py:function:: get_params(colony)
+
+   Return a dictionary of parameters needed for GPS, TDR and AXY classes.
+   
+   The dictionary is composed of the following fields : 
+   +----------------------------+---------------------------------------------------------------+
+   | name                       | description
+   +----------------------------+---------------------------------------------------------------+
+    `colony`                    | longitude/latitude bounding box inside which the searbird's nest is to be found. 
+    `local_tz`                  | local timezone of the seabird's nest.
+    `max_possible_speed`        | speed threshold in km/h above which a longitude/latitude measure can be considered as an error and will be deleted.
+    `dist_threshold`            | distance from the nest threshold in km above which the seabird is considered in a foraging trip.
+    `speed_threshold`           | speed threshold in km/h above which the seabird is still considered in a foraging trip despite being below the distance threshold.
+    `nesting_speed`             | speed threshold in km/h below which the seabird is considered at nest.
+    `trip_min_duration`         | duration in seconds above which a trip is valid.
+    `trip_max_duration`         | duration in seconds below which a trip is valid.
+    `trip_min_length`           | length in km above which a trip is valid.
+    `trip_max_length`           | length in km below which a trip is valid.
+    `trip_min_steps`            | number of steps above which a trip is valid.
+    `diving_depth_threshold`    | set the depth threshold above which a seabird is considered to be diving.
+    `dive_min_duration`         | set the minimum duration in seconds of a dive for the considered seabird.
+   +----------------------------+---------------------------------------------------------------+
+
+   :colony: codified name of the considered colony.
+   :type kind: str
+   :return: The dictionary of parameters.
+   :rtype: dict
+"""        
+
 def get_params(colony):
     
     # colony parameters 
