@@ -10,18 +10,22 @@
 # cpforager
 Are you a scientist involved in movement ecology working with biologging data collected from central-place foraging seabirds? **cpforager** is a Python package designed to help you manipulate, process, analyse and visualise the biologging datasets with ease.
 
+<br>
+
 The main objectives of **cpforager** package are :  
 1. Efficiently handle large-scale biologging datasets, including high-resolution sensor data.
 2. Provide a modular and extensible architecture, allowing users to tailor the code to specific research needs.
 3. Facilitate a smooth transition to Python for movement ecology researchers familiar with other environments (*e.g.*, R).
+
+<br>
 
 **cpforager** package supports various biologging sensor types commonly used in the field and provides the following core classes:
 * `GPS` : for handling position recordings. 
 * `TDR` : for handling pressure recordings.
 * `AXY` : for handling tri-axial acceleration recordings at high resolution combined with lower resolution position and pressure recordings.
 * `GPS_Collection` : for working with datasets composed of multiple GPS loggers.
-* ~~`TDR_Collection` : for working with datasets composed of multiple TDR loggers.~~
-* ~~`AXY_Collection` : for working with datasets composed of multiple AXY loggers.~~
+* (`TDR_Collection` : for working with datasets composed of multiple TDR loggers.)
+* (`AXY_Collection` : for working with datasets composed of multiple AXY loggers.)
 
 Each class automatically enhances raw data but also computes key features specific to each biologger (*e.g.* trip segmentation for GPS, dive segmentation for TDR, ODBA calculation for AXY). They are also accompanied with built-in methods for data processing and visualisation.
 
@@ -40,13 +44,16 @@ TO BE DONE
 
 # User guide 
 
-1. Read you data (GPS/TDR/AXY) with pandas
-2. Build a datetime column  at the local timezone
-3. Create the appropriate fields in parameters (see [Parameters](#Parameters "Go to Parameters section"))
-4. Build you object GPS/TDR/AXY
-5. 
+1. Load the GPS/TDR/AXY raw data as a dataframe using `pandas.DataFrame`.
+2. Add a ***datetime*** column at the local timezone of type `datetime64`.
+3. Choose a colony code for your dataset and modify the `get_params(colony)` in [parameters.py](./cpforager/parameters.py) with the appropriate fields (see [Parameters](#Parameters "Go to Parameters section")).
+4. Generate your dictionary of parameters using the `get_params(colony)` function and your colony code.
+5. Create the GPS/TDR/AXY object using the class constructor. 
+6. Enjoy the GPS/TDR/AXY attributes and built-in methods ! 
 
-* [test.py](./test/test.py) illustrates how the `GPS`, `TDR`, `AXY` and `GPS_Collection` classes should be used to fully benefit the users. Results of this script are found in the [test](./test/) folder.
+[test.py](./test/test.py) illustrates how the `GPS`, `TDR`, `AXY` and `GPS_Collection` classes should be used to fully benefit the users. Results of this script are found in the [test](./test/) folder.
+
+# Documentation
 
 * Documentation can be produced using sphinx in the [doc](./doc/) folder. (Work in progress)
 
@@ -154,16 +161,16 @@ TO BE DONE.
 
 <br />
 
-# Infos
-* Python version used is 3.13.3
-* OS used is Ubuntu 20.04
-* Environment used is [environment.yml](environment.yml)
-
-<br />
-
 # Future developments
 - [ ] document code and produce automatically documentation using sphinx
 - [ ] create a function `merge_gps_tdr(GPS, TDR)` that will merge TDR data within GPS data and produce the resulting dataframe.
 - [ ] create a `GPS_TDR` class for biologgers with both GPS and TDR data.
 - [ ] create a `AXY_Collection` class.
 - [ ] create a `TDR_Collection` class.
+
+<br />
+
+# Infos
+* Python version used is 3.13.3
+* OS used is Ubuntu 20.04
+* Environment used is [environment.yml](environment.yml)
