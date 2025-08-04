@@ -1,7 +1,11 @@
 <div align="center">
-  <a href="https://github.com/AdrienBrunel/seabird-movement-cpf/stargazers"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/AdrienBrunel/seabird-movement-cpf"></a>  
-  <a href="https://github.com/AdrienBrunel/seabird-movement-cpf/forks"><img alt="GitHub Repo stars" src="https://img.shields.io/github/forks/AdrienBrunel/seabird-movement-cpf"></a>
+  <a href="https://github.com/AdrienBrunel/seabird-movement-cpf/stargazers"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/AdrienBrunel/seabird-movement-cpf"></a>
+  <a href="https://github.com/AdrienBrunel/seabird-movement-cpf/forks"><img alt="GitHub Repo forks" src="https://img.shields.io/github/forks/AdrienBrunel/seabird-movement-cpf"></a>
   <a href="https://github.com/AdrienBrunel/seabird-movement-cpf/blob/master/LICENSE"><img alt="License" src="https://img.shields.io/badge/license-AGPLv3-purple"></a>
+</div>
+
+<div align="center">
+  [![GitHub repo stars](https://github.com/AdrienBrunel/seabird-movement-cpf/stargazers](https://github.com/AdrienBrunel/seabird-movement-cpf/stargazers)&#160;
 </div>
 
 <br />
