@@ -13,31 +13,44 @@ The main objectives of **cpforager** package are :
 * `GPS_Collection` : for working with datasets composed of multiple GPS loggers.
 * ~~`TDR_Collection` : for working with datasets composed of multiple TDR loggers.~~
 * ~~`AXY_Collection` : for working with datasets composed of multiple AXY loggers.~~
-Each class automatically enhances raw data but also computes key features specific to each biologger (*e.g.* trip segmentation for GPS, dive segmentation for TDR, ODBA for AXY). They are also accompanied with built-in methods for data processing and visualisation.
+
+Each class automatically enhances raw data but also computes key features specific to each biologger (*e.g.* trip segmentation for GPS, dive segmentation for TDR, ODBA calculation for AXY). They are also accompanied with built-in methods for data processing and visualisation.
 
 
 <br />
 
 # User guide 
-* In the `parameters.py` script, the `get_params(colony)` function produces a dictionary of parameters. This dictionary is required as an argument in the `GPS`, `TDR`, `AXY` and `GPS_Collection` classes. Users can modify the following parameters :
 
-name                        | description
---------------------------- | ----------------------
-`colony`                    | longitude/latitude bounding box inside which the searbird's nest is to be found. 
-`local_tz`                  | local timezone of the seabird's nest.
-`max_possible_speed`        | speed threshold in km/h above which a longitude/latitude measure can be considered as an error and will be deleted.
-`dist_threshold`            | distance from the nest threshold in km above which the seabird is considered in a foraging trip.
-`speed_threshold`           | speed threshold in km/h above which the seabird is still considered in a foraging trip despite being below the distance threshold.
-`nesting_speed`             | speed threshold in km/h below which the seabird is considered at nest.
-`trip_min_duration`         | duration in seconds above which a trip is valid.
-`trip_max_duration`         | duration in seconds below which a trip is valid.
-`trip_min_length`           | length in km above which a trip is valid.
-`trip_max_length`           | length in km below which a trip is valid.
-`trip_min_steps`            | number of steps above which a trip is valid.
-`diving_depth_threshold`    | set the depth threshold above which a seabird is considered to be diving.
-`dive_min_duration`         | set the minimum duration in seconds of a dive for the considered seabird.
+1. Read you data (GPS/TDR/AXY) with pandas
+2. Build a datetime column  at the local timezone
+3. Create the appropriate fields in parameters (see [Parameters](#Parameters "Goto Parameters"))
+4. Build you object GPS/TDR/AXY
+5. 
 
 * In the `test` folder, the `test.py` script illustrates how the `GPS`, `TDR`, `AXY` and `GPS_Collection` classes should be used to fully benefit the users. Results of this script is also found in the `test` folder.
+
+* Documentation can be produced using sphinx in the `doc` folder. (Work in progress)
+
+<br />
+
+# Parameters 
+* In the `parameters.py` script, the `get_params(colony)` function produces a dictionary of parameters. This dictionary is required as an argument in the `GPS`, `TDR`, `AXY` and `GPS_Collection` classes. Users can modify the following parameters :
+
+name                        | description           | class
+--------------------------- | ----------------------| ----------------------
+`colony`                    | longitude/latitude bounding box inside which the searbird's nest is to be found. | GPS
+`local_tz`                  | local timezone of the seabird's nest. | GPS, TDR, AXY
+`max_possible_speed`        | speed threshold in km/h above which a longitude/latitude measure can be considered as an error and will be deleted. | GPS
+`dist_threshold`            | distance from the nest threshold in km above which the seabird is considered in a foraging trip. | GPS
+`speed_threshold`           | speed threshold in km/h above which the seabird is still considered in a foraging trip despite being below the distance threshold. | GPS
+`nesting_speed`             | speed threshold in km/h below which the seabird is considered at nest. | GPS
+`trip_min_duration`         | duration in seconds above which a trip is valid. | GPS
+`trip_max_duration`         | duration in seconds below which a trip is valid. | GPS
+`trip_min_length`           | length in km above which a trip is valid. | GPS
+`trip_max_length`           | length in km below which a trip is valid. | GPS
+`trip_min_steps`            | number of steps above which a trip is valid. | GPS
+`diving_depth_threshold`    | set the depth threshold above which a seabird is considered to be diving. | TDR
+`dive_min_duration`         | set the minimum duration in seconds of a dive for the considered seabird. | TDR
 
 <br />
 
@@ -106,6 +119,19 @@ methods                | description
 `plot_stats_summary`   | produce the png showing the trip statistics of the GPS collection.
 `maps_diag`            | produce the png map showing all the trips in the GPS collection.
 `folium_map`           | produce the html map showing all the trips in the GPS collection.
+
+
+# TDR_Collection
+Constructor `TDR_Collection(tdr_collection)`
+* `tdr_collection` is an array of TDR object.
+
+TO BE DONE.
+
+# AXY_Collection
+Constructor `AXY_Collection(axy_collection)`
+* `axy_collection` is an array of AXY object.
+
+TO BE DONE.
 
 <br />
 
