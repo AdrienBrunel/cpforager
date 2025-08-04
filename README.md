@@ -16,9 +16,17 @@ The main objectives of **cpforager** package are :
 
 Each class automatically enhances raw data but also computes key features specific to each biologger (*e.g.* trip segmentation for GPS, dive segmentation for TDR, ODBA calculation for AXY). They are also accompanied with built-in methods for data processing and visualisation.
 
-
 <br />
 
+# Installation
+TO BE DONE
+
+First, clone this repository:
+<!-- start:code block -->
+git clone https://github.com/AdrienBrunel/seabird-movement-cpf
+<!-- end:code block -->
+
+<br />
 # User guide 
 
 1. Read you data (GPS/TDR/AXY) with pandas
@@ -27,14 +35,14 @@ Each class automatically enhances raw data but also computes key features specif
 4. Build you object GPS/TDR/AXY
 5. 
 
-* In the `test` folder, the `test.py` script illustrates how the `GPS`, `TDR`, `AXY` and `GPS_Collection` classes should be used to fully benefit the users. Results of this script is also found in the `test` folder.
+* In the `test` folder, the [test.py](./test/test.py) script illustrates how the `GPS`, `TDR`, `AXY` and `GPS_Collection` classes should be used to fully benefit the users. Results of this script is also found in the `test` folder.
 
 * Documentation can be produced using sphinx in the `doc` folder. (Work in progress)
 
 <br />
 
 # Parameters 
-* In the `parameters.py` script, the `get_params(colony)` function produces a dictionary of parameters. This dictionary is required as an argument in the `GPS`, `TDR`, `AXY` and `GPS_Collection` classes. Users can modify the following parameters :
+* In [parameters.py](./cpforager/parameters.py) script, the `get_params(colony)` function produces a dictionary of parameters. This dictionary is required as an argument in the `GPS`, `TDR`, `AXY` and `GPS_Collection` classes. Users can modify the following parameters :
 
 name                        | description           | class
 --------------------------- | ----------------------| ----------------------
@@ -56,7 +64,7 @@ name                        | description           | class
 
 # GPS
 Constructor `GPS(df, group, id, params)` : 
-* `df` is a pandas DataFrame containing ***datetime***, ***longitude*** and ***latitude*** columns. The user must input the ***datetime*** at the local timezone and converted to `datetime64` type (see `test.py`).
+* `df` is a pandas DataFrame containing ***datetime***, ***longitude*** and ***latitude*** columns. The user must input the ***datetime*** at the local timezone and converted to `datetime64` type (see [test.py](./test/test.py)).
 * `group` is a string representing the group to which the data belongs (year, fieldwork, specie, etc.) which can be relevant for future statistics.
 * `id` is a string representing the unique identifier of the central-place foraging seabird.
 * `params` is the list of parameters that should at least include the fields present in parameters.py.
@@ -75,10 +83,10 @@ methods                | description
 
 # TDR
 Constructor `TDR(df, group, id, params)` : 
-* `df` is a pandas DataFrame containing ***datetime***, ***pressure*** and ***temperature*** columns. The user must input the ***datetime*** at the local timezone and converted to `datetime64` type (see `test.py`).
+* `df` is a pandas DataFrame containing ***datetime***, ***pressure*** and ***temperature*** columns. The user must input the ***datetime*** at the local timezone and converted to `datetime64` type (see [test.py](./test/test.py)).
 * `group` is a string representing the group to which the data belongs (year, fieldwork, specie, etc.) which can be relevant for future statistics.
 * `id` is a string representing the unique identifier of the central-place foraging seabird.
-* `params` is the list of parameters that should at least include the fields present in parameters.py.
+* `params` is the list of parameters that should at least include the fields present in [parameters.py](./cpforager/parameters.py).
 
 The resulting TDR object adds segmented dives to the initial DataFrame. See the documentation for more details.
 
@@ -89,10 +97,10 @@ methods                | description
 
 # AXY
 Constructor `AXY(df, group, id, params)` : 
-* `df` is a pandas DataFrame containing ***datetime***, ***longitude***, ***latitude***, ***ax***, ***ay*** and ***az*** columns. The user must input the ***datetime*** at the local timezone and converted to `datetime64` type (see `test.py`).
+* `df` is a pandas DataFrame containing ***datetime***, ***longitude***, ***latitude***, ***ax***, ***ay*** and ***az*** columns. The user must input the ***datetime*** at the local timezone and converted to `datetime64` type (see [test.py](./test/test.py)).
 * `group` is a string representing the group to which the data belongs (year, fieldwork, specie, etc.) which can be relevant for future statistics.
 * `id` is a string representing the unique identifier of the central-place foraging seabird.
-* `params` is the list of parameters that should at least include the fields present in parameters.py.
+* `params` is the list of parameters that should at least include the fields present in [parameters.py](./cpforager/parameters.py).
 
 The resulting AXY object adds step metrics to the initial DataFrame and accelerations metrics (*e.g.* ODBA), but also provides the central-place foraging trip statistics. See the documentation for more details.
 
@@ -138,6 +146,7 @@ TO BE DONE.
 # Infos
 * Python version used is 3.13.3
 * OS used is Ubuntu 20.04
+* Environment used is [environment.yml](environment.yml)
 
 <br />
 
