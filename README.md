@@ -1,13 +1,13 @@
 <div align="center">
-  <a href="https://github.com/AdrienBrunel/seabird-movement-cpf/stargazers"><img alt="stars" src="https://img.shields.io/github/stars/AdrienBrunel/seabird-movement-cpf"></a>
+  <a href="https://github.com/AdrienBrunel/seabird-movement-cpf/stargazers"><img alt="stars" src="https://img.shields.io/github/stars/AdrienBrunel/seabird-movement-cpf", style="flat"></a>
   <a href="https://github.com/AdrienBrunel/seabird-movement-cpf/forks"><img alt="forks" src="https://img.shields.io/github/forks/AdrienBrunel/seabird-movement-cpf"></a>
-  <a href="https://github.com/AdrienBrunel/seabird-movement-cpf/blob/master/LICENSE"><img alt="license" src="https://img.shields.io/badge/license-AGPLv3-grey"></a>
+  <a href="https://github.com/AdrienBrunel/seabird-movement-cpf/blob/master/LICENSE"><img alt="license" src="https://img.shields.io/badge/license-AGPLv3-blue"></a>
 </div>
 
 <br />
 
 # cpforager
-Are you a scientist involved in movement ecology working with biologging data collected from central-place foraging seabirds? **cpforager** is a Python package designed to help you manipulate, process, analyse and visualise the biologging datasets with ease and flexibility.
+Are you a scientist involved in movement ecology working with biologging data collected from central-place foraging seabirds? **cpforager** is a Python package designed to help you manipulate, process, analyse and visualise the biologging datasets with ease.
 
 The main objectives of **cpforager** package are :  
 1. Efficiently handle large-scale biologging datasets, including high-resolution sensor data.
