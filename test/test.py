@@ -68,6 +68,7 @@ _ = gps.folium_map_colorgrad(test_dir, "%s_fmap_speed" % file_id, plot_params)
 # ======================================================= #
 # TEST GPS INTERPOLATION
 # ======================================================= #
+
 # build a regular interpolation datetime
 interp_freq_secs = 5
 interp_datetime = pd.date_range(start=gps.df["datetime"].iloc[0], end=gps.df["datetime"].iloc[-1], freq=pd.Timedelta(seconds=interp_freq_secs), periods=None)
