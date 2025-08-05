@@ -5,17 +5,28 @@ import math
 import numpy as np
 import pandas as pd
 
+
 # ================================================================================================ #
-# INPUT  : - lon_1 : longitude in degree of the first position.
-#          - lat_1 : latitude in degree of the first position.
-#          - lon_2 : longitude in degree of the second position.
-#          - lat_2 : latitude in degree of the second position.
-#
-# OUTPUT : - hav_dist : distance in kilometers following the trigonometric haversine formula.
+# ORTHODROMIC DISTANCE
 # ================================================================================================ #
 def ortho_distance(lon_1, lat_1, lon_2, lat_2):
+    
+    """
+    :param lon_1: longitude in degrees of the first position.
+    :type lon_1: float64
+    :param lat_1: latitude in degrees of the first position.
+    :type lat_1: float64
+    :param lon_2: longitude in degrees of the second position.
+    :type lon_2: float64
+    :param lat_2: latitude in degrees of the second position.
+    :type lat_2: float64
+    :return: the distance in kilometers between (lon_1, lat_1) and (lon_2, lat_2).
+    :rtype: float64
+    
+    Return the distance in kilometers between (lon_1, lat_1) and (lon_2, lat_2) following the trigonometric haversine formula.
+    """
 
-    # convert degree to radians
+    # convert degrees to radians
     lat_1 = math.pi/180*lat_1
     lat_2 = math.pi/180*lat_2
     lon_1 = math.pi/180*lon_1
@@ -40,17 +51,26 @@ def ortho_distance(lon_1, lat_1, lon_2, lat_2):
 
 
 # ================================================================================================ #
-# INPUT  : - lon_1 : longitude in degree of the first position.
-#          - lat_1 : latitude in degree of the first position.
-#          - lon_2 : longitude in degree of the second position.
-#          - lat_2 : latitude in degree of the second position.
-#
-# OUTPUT : - heading_deg : spherical heading in degrees between the north and the direction formed 
-#                          by the two positions.
+# SPHERICAL HEADING
 # ================================================================================================ #
 def spherical_heading(lon_1, lat_1, lon_2, lat_2):
 
-    # convert degree to radians
+    """
+    :param lon_1: longitude in degrees of the first position.
+    :type lon_1: float64
+    :param lat_1: latitude in degrees of the first position.
+    :type lat_1: float64
+    :param lon_2: longitude in degrees of the second position.
+    :type lon_2: float64
+    :param lat_2: latitude in degrees of the second position.
+    :type lat_2: float64
+    :return: the spherical heading in degrees between the north and the direction formed by the two positions (lon_1, lat_1) and (lon_2, lat_2).
+    :rtype: float64
+    
+    Return the spherical heading in degrees between the north and the direction formed by the two positions (lon_1, lat_1) and (lon_2, lat_2).
+    """
+    
+    # convert degrees to radians
     lat_1 = math.pi/180*lat_1
     lat_2 = math.pi/180*lat_2
     lon_1 = math.pi/180*lon_1
@@ -64,19 +84,27 @@ def spherical_heading(lon_1, lat_1, lon_2, lat_2):
     b = np.sin(dlon) * np.cos(lat_2)
     heading_rad = np.arctan2(b, a) % (2 * math.pi)
 
-    # convert back to degrees
+    # convert radians to degrees
     heading_deg = 180/math.pi*heading_rad
 
     return(heading_deg)
 
 
 # ================================================================================================ #
-# INPUT  : - df : dataframe with a "datetime" column at utc timezone.
-#          - local_timezone : local timezone as a string according to pytz nomenclature.
-#
-# OUTPUT : - df : dataframe with a "datetime" column at local timezone.
+# UTC TO LOC
 # ================================================================================================ #
 def convert_utc_to_loc(df, local_timezone):
+    
+    """
+    :param df: dataframe with a "datetime" column at the UTC timezone.
+    :type df: pandas.DataFrame
+    :param local_timezone: local timezone following the pytz nomenclature.
+    :type local_timezone: str
+    :return: the dataframe with a "datetime" column at the local timezone.
+    :rtype: pandas.DataFrame
+    
+    Return the dataframe with its "datetime" column converted at the local timezone.
+    """
     
     # convert utc datetime to local time
     df["datetime"] = pd.to_datetime(df["datetime"]).dt.tz_localize("UTC").dt.tz_convert(local_timezone)
@@ -88,12 +116,20 @@ def convert_utc_to_loc(df, local_timezone):
 
     
 # ================================================================================================ #
-# INPUT  : - df : dataframe with a "datetime" column at local_timezone.
-#          - local_timezone : local timezone as a string according to pytz nomenclature.
-#
-# OUTPUT : - df : dataframe with a "datetime" column at utc timezone.
+# LOC TO UTC
 # ================================================================================================ #
 def convert_loc_to_utc(df, local_timezone):
+    
+    """
+    :param df: dataframe with a "datetime" column at the local timezone.
+    :type df: pandas.DataFrame
+    :param local_timezone: local timezone following the pytz nomenclature.
+    :type local_timezone: str
+    :return: the dataframe with a "datetime" column at the UTC timezone.
+    :rtype: pandas.DataFrame
+    
+    Return the dataframe with its "datetime" column converted at the UTC timezone.
+    """
     
     # convert local datetime to utc
     df["datetime"] = pd.to_datetime(df["datetime"]).dt.tz_localize(local_timezone).dt.tz_convert("UTC")
@@ -105,17 +141,40 @@ def convert_loc_to_utc(df, local_timezone):
     
 
 # ================================================================================================ #
-# GOAL   : apply a chosen function (e.g. sum, mean, min, max) over every elements between samples 
-#          at a given resolution. Note that the output is of same size of the input, though only
-#          indices corresponding to subsample resolution have nonzero values.
-# INPUT  : - df : XXXX.
-#          - resolution : XXXX. 
-#          - columns : XXXX. 
-#          - func : XXXX. 
-#
-# OUTPUT : - df : dataframe at resolution
+# APPLY FUNCTION BETWEEN SAMPLES
 # ================================================================================================ #
 def apply_functions_between_samples(df, resolution, columns_functions=dict, verbose=False):
+    
+    """
+    :param df: dataframe with a "datetime" column.
+    :type df: pandas.DataFrame
+    :param resolution: boolean dataframe of the subsampling resolution.
+    :type resolution: pandas.DataFrame(dtype=bool)
+    :param columns_functions: dictionary giving for each specified column the function to apply.
+    :type columns_functions: dict
+    :param verbose: display progress if True.
+    :type verbose: bool
+    :return: the dataframe with the additional columns "column_function" composed of NaN values everywhere except at the subsampling resolution where the function was applied to every elements between two subsamples.
+    :rtype: pandas.DataFrame
+    
+    Apply a chosen function (e.g. sum, mean, min, max) over every high resolution elements between two subsamples defined by a given resolution.
+    This function is key to handle data with different resolutions, such as high-resolution acceleration measures and low-resolution position and 
+    pressure measures. It thus allows to produce a low-resolution version of the high-resolution data by summarising it using a function between 
+    subsamples. Find below the exhaustive table of possible functions to apply.
+    
+    .. important::
+        Output dataframe is of same size as the input dataframe, though only indices corresponding to the subsampling resolution have non-NaN values.
+    
+    .. csv-table::  
+        :header: "function", "description"
+        :widths: auto
+
+        ``sum``, "compute the sum of every elements bewteen two subsamples"
+        ``mean``, "compute the mean of every elements bewteen two subsamples"
+        ``min``, "keep the minimum value of every elements bewteen two subsamples"
+        ``max``, "keep the maximum value of every elements bewteen two subsamples"
+        ``len_unique_pos``, "compute the number of different positive values of every elements bewteen two subsamples"
+    """
     
     # set of possible values for funcs
     funcs_possible_values = ["sum", "mean", "min", "max", "len_unique_pos"]
