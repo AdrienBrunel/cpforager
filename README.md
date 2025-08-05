@@ -39,7 +39,7 @@ First, clone this repository:
 git clone https://github.com/AdrienBrunel/seabird-movement-cpf
 ```
 
-TO BE DONE
+*(WORK IN PROGRESS)*
 
 # User guide 
 
@@ -63,8 +63,9 @@ rm -rfv generated/
 make html
 ```
 
-The resulting html documentation is generated in [./doc/_build/html/](./doc/_build/html/). Open the documentation by opening [index.html](./doc/_build/html/index.html) file.
+The resulting html documentation is generated in [./doc/_build/html/](./doc/_build/html/). In order to access the entire documentation, open the [index.html](./doc/_build/html/index.html) file and enjoy!
 
+*(WORK IN PROGRESS)*
 
 <!-- <br>
 
