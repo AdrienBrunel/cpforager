@@ -54,7 +54,17 @@ TO BE DONE
 
 # Documentation
 
-* Documentation can be produced using sphinx in the [doc](./doc/) folder. (Work in progress)
+* Documentation can be automatically produced using sphinx, following these command lines :
+
+```bash
+cd doc/
+make clean
+rm -rfv generated/
+make html
+```
+
+The resulting html documentation is generated in `doc/_build/html/index.html`.
+
 
 <br>
 
