@@ -12,33 +12,34 @@ import cartopy.mpl.ticker as cmpl
 def get_params(colony):
     
     """
-    Return a dictionary of parameters required to construct GPS, TDR and AXY classes.
-    
     :param colony: codified name of the considered colony
     :type colony: str
     :return: a dictionary of parameters
     :rtype: dict
     
-    The user-defined colony code allows to define a dictionary of parameters according to a specific dataset.
-    Users should thus modify the values according to their dataset. Find below the exhaustive table of parameters within the dictionary.
+    Return a dictionary of parameters required to construct GPS, TDR and AXY classes. The user-defined colony code allows to define a 
+    dictionary of parameters according to a specific dataset. Find below the exhaustive table of parameters within the dictionary.
+    
+    .. important::
+        Users should modify the parameters values according to their dataset and/or add if block with the colony code of their choice. 
     
     .. csv-table::  
         :header: "name", "description", "required"
-        :widths: 20, 30, 20
+        :widths: auto
 
-        "colony", "longitude/latitude bounding box inside which the searbird's nest is to be found.", "GPS"
-        "local_tz", "local timezone of the seabird's nest.", "GPS, TDR, AXY"
-        "max_possible_speed", "speed threshold in km/h above which a longitude/latitude measure can be considered as an error and will be deleted.", "GPS"
-        "dist_threshold", "distance from the nest threshold in km above which the seabird is considered in a foraging trip.", "GPS"
-        "speed_threshold", "speed threshold in km/h above which the seabird is still considered in a foraging trip despite being below the distance threshold.", "GPS"
-        "nesting_speed", "local timezone of the seabird's nest.", "GPS"
-        "trip_min_duration", "duration in seconds above which a trip is valid.", "GPS"
-        "trip_max_duration", "duration in seconds below which a trip is valid.", "GPS"
-        "trip_min_length", "length in km above which a trip is valid.", "GPS"
-        "trip_max_length", "length in km below which a trip is valid.", "GPS"
-        "trip_min_steps", "length in km below which a trip is valid.", "GPS"
-        "diving_depth_threshold", "set the depth threshold above which a seabird is considered to be diving.", "TDR"
-        "dive_min_duration", "set the minimum duration in seconds of a dive for the considered seabird.", "TDR"
+        ``colony``, "longitude/latitude bounding box inside which the searbird's nest is to be found", "GPS"
+        ``local_tz``, "local timezone of the seabird's nest", "GPS, TDR, AXY"
+        ``max_possible_speed``, "speed threshold in km/h above which a longitude/latitude measure can be considered as an error and will be deleted", "GPS"
+        ``dist_threshold``, "distance from the nest threshold in km above which the seabird is considered in a foraging trip", "GPS"
+        ``speed_threshold``, "speed threshold in km/h above which the seabird is still considered in a foraging trip despite being below the distance threshold", "GPS"
+        ``nesting_speed``, "local timezone of the seabird's nest", "GPS"
+        ``trip_min_duration``, "duration in seconds above which a trip is valid", "GPS"
+        ``trip_max_duration``, "duration in seconds below which a trip is valid", "GPS"
+        ``trip_min_length``, "length in km above which a trip is valid", "GPS"
+        ``trip_max_length``, "length in km below which a trip is valid", "GPS"
+        ``trip_min_steps``, "length in km below which a trip is valid", "GPS"
+        ``diving_depth_threshold``, "depth threshold above which a seabird is considered to be diving", "TDR"
+        ``dive_min_duration``, "minimum duration in seconds of a dive", "TDR"
     """        
     
     # colony parameters 
@@ -121,40 +122,39 @@ def get_params(colony):
 # ======================================================= #
 def get_plot_params():
     
-    """
-    Return a dictionary of plot parameters required to produce the diagnostic of GPS, TDR and AXY classes.
-    
+    """    
     :param: None
     :return: a dictionary of plot parameters
     :rtype: dict 
     
-    Find below the exhaustive table of parameters within the dictionary.
+    Return a dictionary of plot parameters required to produce the diagnostic of GPS, TDR and AXY classes. Find below the 
+    exhaustive table of parameters within the dictionary.
     
     .. csv-table::  
         :header: "name", "description", "required"
         :widths: 20, 30, 20
 
-        "cols_1", "", "GPS"
-        "cols_2", "", "GPS"
-        "cols_3", "", "GPS"
-        "main_fs", "", "GPS"
-        "labs_fs", "", "GPS"
-        "axis_fs", "", "GPS"
-        "text_fs", "", "GPS"
-        "pnt_size", "", "GPS"
-        "eph_size", "", "GPS"
-        "mrk_size", "", "GPS"
-        "pnt_type", "", "GPS"
-        "grid_lwd", "", "GPS"
-        "grid_col", "", "GPS"
-        "grid_lty", "", "GPS"
-        "night_transp", "", "GPS"
-        "cb_shrink", "", "GPS"
-        "cb_pad", "", "GPS"
-        "cb_aspect", "", "GPS"
-        "fig_dpi", "", "GPS"
-        "lon_fmt", "", "GPS"
-        "lat_fmt", "", "GPS"
+        ``cols_1``, "discrete contrasted color palette for trips", "GPS, AXY"
+        ``cols_2``, "continuous color palette for speed gradient", "GPS, AXY"
+        ``cols_3``, "continuous color palette for time gradient", "GPS, AXY"
+        ``main_fs``, "fontsize of the plot title", "GPS, TDR, AXY"
+        ``labs_fs``, "fontsize of the plot labels", "GPS, TDR, AXY"
+        ``axis_fs``, "fontsize of the plot axes", "GPS, TDR, AXY"
+        ``text_fs``, "fontsize of the plot texts", "GPS, TDR, AXY"
+        ``pnt_size``, "size of the scatter plot points", "GPS, TDR, AXY"
+        ``eph_size``, "size of the scatter plot emphasized points", "GPS, TDR, AXY"
+        ``mrk_size``, "size of vplot markers", "GPS, TDR, AXY"
+        ``pnt_type``, "type of the scatter plot points", "GPS, TDR, AXY"
+        ``grid_lwd``, "linewidth of the plot background grid", "GPS, TDR, AXY"
+        ``grid_col``, "line color of the plot background grid", "GPS, TDR, AXY"
+        ``grid_lty``, "line type of the plot background grid", "GPS, TDR, AXY"
+        ``night_transp``, "transparency applied to night grey box in timeserie plot", "GPS, TDR, AXY"
+        ``cb_shrink``, "colorbar shrink factor", "GPS, AXY"
+        ``cb_pad``, "colorbar padding factor", "GPS, AXY"
+        ``cb_aspect``, "colorbar size", "GPS, AXY"
+        ``fig_dpi``, "dots per inch of a saved figure", "GPS, TDR, AXY"
+        ``lon_fmt``, "longitude formatter", "GPS, AXY"
+        ``lat_fmt``, "latitude formatter", "GPS, AXY"
     """
     
     # colors
