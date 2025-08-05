@@ -54,7 +54,7 @@ TO BE DONE
 
 # Documentation
 
-* Documentation can be automatically produced using sphinx, following these command lines :
+Using [Sphinx](https://www.sphinx-doc.org/en/master/index.html), the package documentation is automatically produced with these command lines :
 
 ```bash
 cd doc/
@@ -63,10 +63,10 @@ rm -rfv generated/
 make html
 ```
 
-The resulting html documentation is generated in `doc/_build/html/index.html`.
+The resulting html documentation is generated in [./doc/_build/html/](./doc/_build/html/). Open the documentation by opening [index.html](./doc/_build/html/index.html) file.
 
 
-<br>
+<!-- <br>
 
 # Parameters 
 * In [parameters.py](./cpforager/parameters.py), the `get_params(colony)` function produces a dictionary of parameters. This dictionary is required as an argument in the `GPS`, `TDR`, `AXY` and `GPS_Collection` classes. Users can modify the following parameters :
@@ -166,7 +166,7 @@ TO BE DONE.
 Constructor `AXY_Collection(axy_collection)`
 * `axy_collection` is an array of AXY object.
 
-TO BE DONE.
+TO BE DONE. -->
 
 <br>
 <br>
