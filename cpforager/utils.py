@@ -13,15 +13,15 @@ def ortho_distance(lon_1, lat_1, lon_2, lat_2):
     
     """
     :param lon_1: longitude in degrees of the first position.
-    :type lon_1: float64
+    :type lon_1: float
     :param lat_1: latitude in degrees of the first position.
-    :type lat_1: float64
+    :type lat_1: float
     :param lon_2: longitude in degrees of the second position.
-    :type lon_2: float64
+    :type lon_2: float
     :param lat_2: latitude in degrees of the second position.
-    :type lat_2: float64
+    :type lat_2: float
     :return: the distance in kilometers between (lon_1, lat_1) and (lon_2, lat_2).
-    :rtype: float64
+    :rtype: float
     
     Return the distance in kilometers between (lon_1, lat_1) and (lon_2, lat_2) following the trigonometric haversine formula.
     """
@@ -57,15 +57,15 @@ def spherical_heading(lon_1, lat_1, lon_2, lat_2):
 
     """
     :param lon_1: longitude in degrees of the first position.
-    :type lon_1: float64
+    :type lon_1: float
     :param lat_1: latitude in degrees of the first position.
-    :type lat_1: float64
+    :type lat_1: float
     :param lon_2: longitude in degrees of the second position.
-    :type lon_2: float64
+    :type lon_2: float
     :param lat_2: latitude in degrees of the second position.
-    :type lat_2: float64
+    :type lat_2: float
     :return: the spherical heading in degrees between the north and the direction formed by the two positions (lon_1, lat_1) and (lon_2, lat_2).
-    :rtype: float64
+    :rtype: float
     
     Return the spherical heading in degrees between the north and the direction formed by the two positions (lon_1, lat_1) and (lon_2, lat_2).
     """
@@ -157,7 +157,7 @@ def apply_functions_between_samples(df, resolution, columns_functions=dict, verb
     :return: the dataframe with the additional columns "column_function" composed of NaN values everywhere except at the subsampling resolution where the function was applied to every elements between two subsamples.
     :rtype: pandas.DataFrame
     
-    Apply a chosen function (e.g. sum, mean, min, max) over every high resolution elements between two subsamples defined by a given resolution.
+    Apply a chosen function (*e.g.* sum, mean, min, max) over every high resolution elements between two subsamples defined by a given resolution.
     This function is key to handle data with different resolutions, such as high-resolution acceleration measures and low-resolution position and 
     pressure measures. It thus allows to produce a low-resolution version of the high-resolution data by summarising it using a function between 
     subsamples. Find below the exhaustive table of possible functions to apply.

@@ -13,10 +13,10 @@ def derive_separator(file_path):
     """    
     :param file_path: complete path of the csv file to be read.
     :type file_path: str
-    :return: the determined separator of the csv file among the following list [";", "\t", ",", " "].
+    :return: the determined separator of the csv file.
     :rtype: str 
     
-    Return the determined separator of the csv file among the following list [";", "\t", ",", " "] by testing the first line.
+    Return the determined separator of the csv file among the following list ``[";", "\\t", ",", " "]`` by testing the first line.
     """
 
     # list of possible separators
