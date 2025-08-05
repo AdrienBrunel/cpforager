@@ -6,18 +6,31 @@ import pytz
     
 
 # ================================================================================================ #
-# GOAL   : estimate the nest position inside the colony from longitude and latitude data.
-#
-# INPUT  : - df            : dataframe with "longitude" and "latitude" columns.
-#          - params        : structure of parameters with "colony" giving the bounding box of the 
-#                            colony, "nesting_speed" giving the speed below which we consider the 
-#                            bird at nest. 
-#          - nest_position : nest position if known beforehand. 
-#          - verbose       : if True print all information to the terminal. 
-#
-# OUTPUT : - nest : estimated longitude and latitude of the nest.
+# ESTIMATION OF THE NEST POSITION
 # ================================================================================================ #
 def estimate_nest_position(df, params, nest_position=None, verbose=False):
+     
+    """    
+    :param df: dataframe with ``longitude`` and ``latitude`` columns.
+    :type df: pandas.DataFrame
+    :param params: parameters dictionary. 
+    :type params: dict
+    :param nest_position: nest position if known beforehand.
+    :type nest_position: array(float)
+    :param verbose: display information if True.
+    :type verbose: bool
+    :return: the estimated nest position.
+    :rtype: array(float) 
+    
+    Return the estimated nest position from longitude and latitude data. The nest position is estimated as the median 
+    of the positions inside the colony rectangle with a small enough speed. If not possible, the nest position is estimated 
+    at the center of the colony. 
+    
+    .. note::
+        The required fields in the parameters dictionary are :
+            * ``colony`` is giving the bounding box of the colony.
+            * ``nesting_speed`` is giving the speed below which we consider the bird at nest.
+    """
     
     # get parameters
     colony = params.get("colony")
@@ -51,14 +64,68 @@ def estimate_nest_position(df, params, nest_position=None, verbose=False):
 
 
 # ================================================================================================ #
-# GOAL   : compute the duration in seconds between every measure of position.
-#
-# INPUT  : - df : dataframe with a "datetime" column.
-#
-# OUTPUT : - df : dataframe with an additional column "step_time" that gives the step time in
-#                 seconds.
+# IS NIGHT
+# ================================================================================================ #
+def add_is_night(df, params):
+    
+    """    
+    :param df: dataframe with a ``datetime`` column.
+    :type df: pandas.DataFrame
+    :param params: parameters dictionary. 
+    :type params: dict
+    :return: the dataframe with an additional ``is_night`` boolean column worth 1 if it is night, 0 otherwise.
+    :rtype: pandas.DataFrame
+    
+    Return the the dataframe with an additional ``is_night`` boolean column worth 1 if it is night, 0 otherwise.
+    This boolean value is computed using suntime and pytz Python package. The position used is the colony center.
+    
+    .. note::
+        The required fields in the parameters dictionary are :
+            * ``colony`` is giving the bounding box of the colony.
+            * ``local_tz`` is giving the local timezone of the colony.
+    """
+
+    # get parameters
+    colony = params.get("colony")
+    local_timezone = params.get("local_tz")
+    
+    # lon/lat of colony
+    colony_lon = colony["center"][0]
+    colony_lat = colony["center"][1]
+    
+    # first row of datetime
+    datetime_0 = df.loc[0, "datetime"]
+    
+    # derive sunrise and sunset    
+    sunrise = Sun(colony_lat, colony_lon).get_sunrise_time(datetime_0).astimezone(pytz.timezone(local_timezone))
+    sunset = Sun(colony_lat, colony_lon).get_sunset_time(datetime_0).astimezone(pytz.timezone(local_timezone))
+    
+    # add column to dataframe
+    df["is_night"] = (df["datetime"].dt.time < sunrise.time()) | (df["datetime"].dt.time > sunset.time())
+
+    # reformat column
+    df["is_night"] = df["is_night"].astype(int)
+
+    return(df)
+
+
+# ================================================================================================ #
+# STEP TIME
 # ================================================================================================ #
 def add_step_time(df):
+    
+    """    
+    :param df: dataframe with a ``datetime`` column.
+    :type df: pandas.DataFrame
+    :return: the dataframe with an additional column ``step_time`` that gives the step time in seconds.
+    :rtype: pandas.DataFrame
+    
+    Return the dataframe with an additional column ``step_time`` that gives the step time in seconds. 
+    Step time is computed as the duration in seconds between every measure of position.
+    
+    .. note::
+        First step time value is NaN.
+    """
     
     # compute step time in seconds
     df["step_time"] = (df["datetime"] - df["datetime"].shift(1)).dt.total_seconds()
@@ -70,14 +137,22 @@ def add_step_time(df):
 
 
 # ================================================================================================ #
-# GOAL   : compute the length in kilometers between every measure of position.
-#
-# INPUT  : - df : dataframe with "longitude" and "latitude" columns.
-#
-# OUTPUT : - df : dataframe with an additional column "step_length" that gives the step length in 
-#                 kilometers.
+# STEP LENGTH
 # ================================================================================================ #
 def add_step_length(df):
+    
+    """    
+    :param df: dataframe with ``longitude`` and ``latitude`` columns.
+    :type df: pandas.DataFrame
+    :return: the dataframe with an additional column ``step_length`` that gives the step length in kilometers.
+    :rtype: pandas.DataFrame
+    
+    Return the dataframe with an additional column ``step_length`` that gives the step length in kilometers.
+    Step length is computed as the length in kilometers between every measure of position.
+    
+    .. note::
+        First step length value is NaN.
+    """
     
     # compute step distance in km
     df["step_length"]  = utils.ortho_distance(df["longitude"].shift(1), df["latitude"].shift(1), df["longitude"], df["latitude"])
@@ -89,14 +164,21 @@ def add_step_length(df):
 
 
 # ================================================================================================ #
-# GOAL   : compute the length in kilometers between every measure of position.
-#
-# INPUT  : - df : dataframe with "longitude" and "latitude" columns.
-#
-# OUTPUT : - df : dataframe with an additional column "step_length" that gives the step length in 
-#                 kilometers.
+# STEP SPEED
 # ================================================================================================ #
 def add_step_speed(df):
+    
+    """    
+    :param df: dataframe with ``step_time`` and ``step_length`` columns.
+    :type df: pandas.DataFrame
+    :return: the dataframe with an additional column ``step_speed`` that gives the step speed in kilometers per hour.
+    :rtype: pandas.DataFrame
+    
+    Return the dataframe with an additional column ``step_speed`` that gives the step speed in kilometers per hour.
+    
+    .. note::
+        First step speed value is NaN.
+    """
 
     # compute step distance in km
     dist_in_km = df["step_length"]
@@ -105,7 +187,7 @@ def add_step_speed(df):
     dt_in_hours = df["step_time"]/3600
 
     # compute step speed in km/h
-    df["step_speed"]  = dist_in_km / dt_in_hours
+    df["step_speed"]  = dist_in_km/dt_in_hours
 
     # reformat column
     df["step_speed"] = df["step_speed"].round(3)
@@ -114,14 +196,23 @@ def add_step_speed(df):
 
 
 # ================================================================================================ #
-# GOAL   : compute the heading in degrees between the north and the direction formed by two
-#          successive positions. (N=0°, E=90°, S=180°, W=270°).
-# 
-# INPUT  : - df : dataframe with "longitude" and "latitude" columns.
-#
-# OUTPUT : - df : dataframe with an additional column "step_heading" that gives heading in degrees. 
+# STEP HEADING
 # ================================================================================================ #
 def add_step_heading(df):
+    
+    """    
+    :param df: dataframe with ``longitude`` and ``latitude`` columns.
+    :type df: pandas.DataFrame
+    :return: the dataframe with an additional column ``step_heading`` that gives heading in degrees. 
+    :rtype: pandas.DataFrame
+    
+    Return the dataframe with an additional column ``step_heading`` that gives heading in degrees. Step heading 
+    is computed as the angle in degrees between the North and the direction formed by two successive positions. 
+    (N=0°, E=90°, S=180°, W=270°).
+    
+    .. note::
+        First step heading value is NaN.
+    """
     
     # compute step heading
     df["step_heading"] = utils.spherical_heading(df["longitude"].shift(1), df["latitude"].shift(1), df["longitude"], df["latitude"])
@@ -133,14 +224,22 @@ def add_step_heading(df):
 
 
 # ================================================================================================ #
-# GOAL   : compute the turning angle in degrees between every measure of position.
-# 
-# INPUT  : - df : dataframe with "longitude" and "latitude" columns.
-#
-# OUTPUT : - df : dataframe with an additional column "step_turning_angle" that gives the step
-#                 turning angle in degrees (between -180 and +180). 
+# STEP TURNING ANGLE
 # ================================================================================================ #
 def add_step_turning_angle(df):
+    
+    """    
+    :param df: dataframe with a ``step_heading`` column.
+    :type df: pandas.DataFrame
+    :return: the dataframe with an additional column ``step_turning_angle`` that gives the step turning angle in degrees (between -180° and +180°). 
+    :rtype: pandas.DataFrame
+    
+    Return the dataframe with an additional column ``step_turning_angle`` that gives the step turning angle in degrees (between -180° and +180°).
+    Step turning angle is computed as the difference step heading.
+    
+    .. note::
+        First two steps turning angle value are NaN.
+    """
     
     # compute step turning angle
     dheading = np.diff(df["step_heading"])
@@ -158,16 +257,24 @@ def add_step_turning_angle(df):
 
 
 # ================================================================================================ #
-# GOAL   : compute the heading in degrees between the colony and the position of the animal.
-# 
-# INPUT  : - df : dataframe with "longitude" and "latitude" columns.
-#          - params : structure of parameters with "colony" giving the bounding box of the colony, 
-#                     "nesting_speed" giving the speed below which we consider the bird at nest. 
-#
-# OUTPUT : - df : dataframe with an additional column "step_heading_to_colony" that gives heading 
-#                 of bird related to the colony in degrees. 
+# STEP HEADING TO COLONY
 # ================================================================================================ #
 def add_step_heading_to_colony(df, params):
+    
+    """    
+    :param df: dataframe with ``longitude`` and ``latitude`` columns.
+    :type df: pandas.DataFrame
+    :param params: parameters dictionary.
+    :type params: dict
+    :return: the dataframe with an additional column ``step_heading_to_colony`` that gives heading to the colony in degrees. 
+    :rtype: pandas.DataFrame
+    
+    Return the dataframe with an additional column "step_heading_to_colony" that gives heading to the colony in degrees. 
+    
+    .. note::
+        The required fields in the parameters dictionary are :
+            * ``colony`` is giving the bounding box of the colony.
+    """
     
     # get parameters
     colony = params.get("colony")
@@ -184,16 +291,25 @@ def add_step_heading_to_colony(df, params):
 
 
 # ================================================================================================ #
-# GOAL   : compute the distance to the estimated nest position from longitude and latitude data.
-#
-# INPUT  : - df     : dataframe with "longitude" and "latitude" columns.
-#          - params : structure of parameters with "colony" giving the bounding box of the colony, 
-#                     "nesting_speed" giving the speed below which we consider the bird at nest.
-#
-# OUTPUT : - df : dataframe with an additional "dist_to_nest" column that gives the distance to the
-#                 estimated nest position.
+# DISTANCE TO THE NEST
 # ================================================================================================ #
 def add_dist_to_nest(df, params):
+    
+    """    
+    :param df: dataframe with ``longitude`` and ``latitude`` columns.
+    :type df: pandas.DataFrame
+    :param params: parameters dictionary.
+    :type params: dict
+    :return: the dataframe with an additional ``dist_to_nest`` column that gives the orthodromic distance to the estimated nest position in kilometers.
+    :rtype: pandas.DataFrame
+    
+    Return the dataframe with an additional ``dist_to_nest`` column that gives the orthodromic distance to the estimated nest position in kilometers.
+    
+    .. note::
+        The required fields in the parameters dictionary are :
+            * ``colony`` is giving the bounding box of the colony.
+            * ``nesting_speed`` is giving the speed below which we consider the bird at nest.  
+    """
     
     # estimate the nest position
     [nest_lon, nest_lat] = estimate_nest_position(df, params)
@@ -208,22 +324,29 @@ def add_dist_to_nest(df, params):
 
 
 # ================================================================================================ #
-# GOAL   : segment the full recording of positions in foraging trips by labelling every positions 
-# 	       with a trip id.
-#
-# INPUT  : - df     : dataframe with "dist_to_nest", "step_speed", "datetime" and "step_length" 
-# 		              columns.
-#          - params : structure of parameters with "dist_threshold" giving the distance to the nest 
-#                     from which we consider a trip may start, "speed_threshold" giving the speed
-#                     above which the trip is still ongoing, "trip_min_duration" giving the trip 
-#                     duration below which we do not consider it to be a trip, "trip_min_length" 
-#                     giving the trip length below which we do not consider it to be a trip,  
-#                     "trip_min_steps" giving the trip number of position below which we do not 
-#                     consider it to be a trip.
-# 
-# OUTPUT : - df : dataframe with an additional column "trip" that gives the trip number. 
+# TRIP SEGMENTATION
 # ================================================================================================ #
 def add_trip(df, params):
+    
+    """    
+    :param df: dataframe with ``datetime``, ``dist_to_nest``, ``step_speed`` and ``step_length`` columns.
+    :type df: pandas.DataFrame
+    :param params: parameters dictionary. 
+    :type params: dict
+    :return: the dataframe with an additional column ``trip`` that gives the trip id number.
+    :rtype: pandas.DataFrame
+       
+    Return the dataframe with an additional column ``trip`` that gives the trip identifier number. The idea is to segment the full recording of positions in 
+    foraging trips by labelling every positions with a trip id. 
+    
+    .. note::
+        The required fields in the parameters dictionary are :
+            * ``dist_threshold`` is giving the distance to the nest from which we consider a trip may start. 
+            * ``speed_threshold`` is giving the speed above which the trip is still ongoing. 
+            * ``trip_min_duration`` is giving the trip duration below which we do not consider it to be a trip. 
+            * ``trip_min_length`` is giving the trip length below which we do not consider it to be a trip. 
+            * ``trip_min_steps`` is giving the trip number of position below which we do not consider it to be a trip.    
+    """
     
     # get parameters
     dist_threshold = params.get("dist_threshold")
@@ -325,17 +448,54 @@ def add_trip(df, params):
 
 
 # ================================================================================================ #
-# GOAL   : segment the full recording of pressure in foraging dives by labelling every measure 
-# 	       with a dive id.
-#
-# INPUT  : - df     : dataframe with "depth" and"datetime" columns.
-#          - params : structure of parameters with "diving_depth_threshold" giving the depth at 
-#                     which we consider a dive may start, "dive_min_duration" giving the dive 
-#                     duration below which we do not consider it to be a dive.
-# 
-# OUTPUT : - df : dataframe with an additional column "dive" that gives the dive number. 
+# DEPTH
+# ================================================================================================ #
+def add_depth(df):
+    
+    """    
+    :param df: dataframe with a ``pressure``column in hPa.
+    :type df: pandas.DataFrame
+    :return: the dataframe with an additional column ``depth`` that gives the estimated underwater depth in meters.
+    :rtype: pandas.DataFrame
+    
+    Return the dataframe with an additional column ``depth`` that gives the estimated underwater depth in meters.    
+    """
+    
+    # physical constants
+    salt_water_density = 1023.6
+    earth_acceleration = 9.80665
+
+    # compute depth
+    p_atm = df["pressure"].median()
+    df["depth"] = 100*(df["pressure"] - p_atm)/(salt_water_density*earth_acceleration)
+    
+    # reformat column
+    df["depth"] = df["depth"].round(2)
+    
+    return(df)
+
+
+# ================================================================================================ #
+# DIVE SEGMENTATION
 # ================================================================================================ #
 def add_dive(df, params):
+    
+    """    
+    :param df: dataframe with ``datetime`` and ``depth`` columns.
+    :type df: pandas.DataFrame
+    :param params: parameters dictionary. 
+    :type params: dict
+    :return: the dataframe with an additional column ``dive`` that gives the dive id number.
+    :rtype: pandas.DataFrame
+       
+    Return the dataframe with an additional column ``dive`` that gives the dive id number. The idea is to segment the full 
+    recording of pressure in foraging dives by labelling every measure with a dive id.
+    
+    .. note::
+        The required fields in the parameters dictionary are :
+            * ``diving_depth_threshold`` is giving the depth at which we consider a dive may start.
+            * ``dive_min_duration`` is giving the dive duration below which we do not consider it to be a dive.
+    """
     
     # get parameters
     diving_depth_threshold = params.get("diving_depth_threshold")
@@ -407,99 +567,23 @@ def add_dive(df, params):
 
 
 # ================================================================================================ #
-# GOAL   : compute the boolean value informing if it is night at a given position and time.
-#
-# INPUT  : - df     : dataframe with a "datetime" column.
-#          - params : structure of parameters with "colony".
-#
-# OUTPUT : - df : dataframe with an additional "is_night" column that is 1 if it is night, 
-#                 0 otherwise.
-# ================================================================================================ #
-def add_is_night(df, params):
-
-    # get parameters
-    colony = params.get("colony")
-    local_timezone = params.get("local_tz")
-    
-    # lon/lat of colony
-    colony_lon = colony["center"][0]
-    colony_lat = colony["center"][1]
-    
-    # first row of datetime
-    datetime_0 = df.loc[0, "datetime"]
-    
-    # derive sunrise and sunset    
-    sunrise = Sun(colony_lat, colony_lon).get_sunrise_time(datetime_0).astimezone(pytz.timezone(local_timezone))
-    sunset = Sun(colony_lat, colony_lon).get_sunset_time(datetime_0).astimezone(pytz.timezone(local_timezone))
-    
-    # add column to dataframe
-    df["is_night"] = (df["datetime"].dt.time < sunrise.time()) | (df["datetime"].dt.time > sunset.time())
-
-    # reformat column
-    df["is_night"] = df["is_night"].astype(int)
-
-    return(df)
-
-
-# ================================================================================================ #
-# GOAL   : compute the depth in meters at every measure of pressure.
-#
-# INPUT  : - df : dataframe with a "pressure" column in hPa.
-#
-# OUTPUT : - df : dataframe with an additional column "depth" that gives the underwater depth in 
-#                 meters.
-# ================================================================================================ #
-def add_depth(df):
-    
-    # physical constants
-    salt_water_density = 1023.6
-    earth_acceleration = 9.80665
-
-    # compute depth
-    p_atm = df["pressure"].median()
-    df["depth"] = 100*(df["pressure"] - p_atm)/(salt_water_density*earth_acceleration)
-    
-    # reformat column
-    df["depth"] = df["depth"].round(2)
-    
-    return(df)
-
-
-# # ================================================================================================ #
-# # GOAL   : compute the boolean value informing bird is diving based on depth measure.
-# #
-# # INPUT  : - df : dataframe with a "depth" column.
-# #          - params : structure of parameters with "diving_depth_threshold" giving the depth in meter
-# #                     above which we consider the bird to be diving. 
-# #
-# # OUTPUT : - df : dataframe with an additional "is_diving" column that is 1 if depth above a dive 
-# #                 threshold.
-# # ================================================================================================ #
-# def add_is_diving(df, params):
-    
-#     # get parameters
-#     diving_depth_threshold = params.get("diving_depth_threshold")
-    
-#     # add column to dataframe
-#     df["is_diving"] = (df["depth"] > diving_depth_threshold)
-
-#     # reformat colum
-#     df["is_diving"] = df["is_diving"].astype(int)
-
-#     return(df)
-
-
-# ================================================================================================ #
-# GOAL   : compute the filtered acceleration.
-#
-# INPUT  : - df : dataframe with "datetime", "ax", "ay" and "az" columns.
-#
-# OUTPUT : - df : dataframe with additional "ax_f", "ay_f" and "az_f" columns containing the moving
-#                 average of the 3 axes accelerations.
+# FILTER ACCELERATIONS
 # ================================================================================================ #
 def add_filtered_acc(df, time_window):
     
-    # filter accelerations (moving average + bias removal)
+    """    
+    :param df: dataframe with ``step_time``, ``ax``, ``ay`` and ``az`` columns.
+    :type df: pandas.DataFrame
+    :param time_window: duration in seconds of the window used for the rolling average.
+    :type time_window: float
+    :return: the dataframe with the additional ``ax_f``, ``ay_f`` and ``az_f`` columns of the filtered tri-axial accelerations.
+    :rtype: pandas.DataFrame
+    
+    Return the dataframe with the additional ``ax_f``, ``ay_f`` and ``az_f`` columns of the filtered tri-axial accelerations. 
+    Fitlered accelerations are computed as the rolling average of the dynamical acceleration over the time window. 
+    """
+    
+    # determine window size in number of steps
     resolution = df["step_time"].median()
     window = int(time_window/resolution)
     
@@ -517,13 +601,20 @@ def add_filtered_acc(df, time_window):
 
 
 # ================================================================================================ #
-# GOAL   : compute the overall dynamical budget acceleration.
-#
-# INPUT  : - df : dataframe with "ax", "ay", "az", "ax_f", "ay_f" and "az_f" columns.
-#
-# OUTPUT : - df : dataframe with additional "odba" and "odba_f" columns.
+# ODBA
 # ================================================================================================ #
 def add_odba(df, p=1): 
+        
+    """    
+    :param df: dataframe with ``ax``, ``ay``, ``az``, ``ax_f``, ``ay_f`` and ``az_f`` columns.
+    :type df: pandas.DataFrame
+    :param p: degree of the euclidean norm.
+    :type p: float
+    :return: the dataframe with the additional ``odba`` and ``odba_f`` columns of the raw and filtered overall dynamical body acceleration.
+    :rtype: pandas.DataFrame
+    
+    Return the dataframe with the additional ``odba`` and ``odba_f`` columns of the raw and filtered overall dynamical body acceleration.
+    """
     
     # compute odba as the euclidean p-norm of the acceleration vector
     df["odba"] = (abs(df["ax"])**p + abs(df["ay"])**p + abs(df["az"])**p)**(1/p)
@@ -537,14 +628,28 @@ def add_odba(df, p=1):
 
 
 # ================================================================================================ #
-# GOAL   : clean gps data.
-#
-# INPUT  : - df     : dataframe with a "step_speed" column.
-#          - params : structure of parameters.
-#
-# OUTPUT : - df : dataframe with a "is_suspicious" additional column.
+# REMOVE SUSPICIOUS ROWS
 # ================================================================================================ #
 def remove_suspicious(df, params):
+    
+    """    
+    :param df: dataframe with a ``step_speed`` column.
+    :type df: pandas.DataFrame
+    :param params: parameters dictionary. 
+    :type params: dict
+    :return: the dataframe without the rows with a step speed above the max possible speed threshold.
+    :rtype: pandas.DataFrame
+    
+    Return the dataframe without the rows with a step speed above the max possible speed threshold. The idea is to clean 
+    the data of its recording bugs.
+    
+    .. note::
+        The required fields in the parameters dictionary are :
+            * ``max_possible_speed`` is giving the ground speed above which we consider it to be a recording bug.
+            
+    .. important::
+        Bugs in the position recordings may suggest a dive.
+    """
     
     # get parameters
     max_possible_speed = params.get("max_possible_speed")
@@ -557,17 +662,26 @@ def remove_suspicious(df, params):
 
 
 # ================================================================================================ #
-# GOAL   : interpolate longitude and latitude at a desired datetime.
-#
-# INPUT  : - df              : dataframe with "datetime", "longitude" and "latitude" columns.
-#          - interp_datetime : array of the desired datetime for interpolation. 
-#          - add_proxy       : boolean True if we want to compute the interpolation proxy computed 
-#                              as the duration in seconds between the interp_datetime and the closest
-#                              GPS measure.
-#
-# OUTPUT : - df_interp : dataframe with longitude and latitude interpolated at interp_datetime.
+# POSITION INTERPOLATION
 # ================================================================================================ #
 def interpolate_lat_lon(df, interp_datetime, add_proxy=False):
+            
+    """    
+    :param df: dataframe with ``datetime``, ``longitude``and ``latitude`` columns.
+    :type df: pandas.DataFrame
+    :param interp_datetime: desired datetime for interpolation.
+    :type interp_datetime: pandas.DatetimeIndex
+    :param add_proxy: add an ``interp_proxy`` column to the resulting dataframe if True.
+    :type add_proxy: bool
+    :return: a dataframe with ``datetime``, ``longitude`` and ``latitude`` interpolated at the desired datetime.
+    :rtype: pandas.DataFrame
+    
+    Return a dataframe with ``datetime``, ``longitude`` and ``latitude`` interpolated at the desired datetime using NumPy. 
+    The interpolation proxy is computed as the duration in seconds between the desired datetime and the closest position measure. 
+    
+    .. warning::
+        Computing the interpolation proxy significantly slows down the computation.  
+    """
 
     # number of interpolation step
     n_step = len(interp_datetime)
@@ -609,13 +723,20 @@ def interpolate_lat_lon(df, interp_datetime, add_proxy=False):
 
 
 # ================================================================================================ #
-# GOAL   : XXXX
-#
-# INPUT  : - XXXX : XXXX.
-#
-# OUTPUT : - df : dataframe.
+# BASIC DATA
 # ================================================================================================ #
 def add_basic_data(df, params):
+    
+    """    
+    :param df: dataframe with a ``datetime`` column.
+    :type df: pandas.DataFrame
+    :param params: parameters dictionary. 
+    :type params: dict
+    :return: the dataframe enhanced with the additional basic data.
+    :rtype: pandas.DataFrame
+    
+    Return the dataframe enhanced with the additional basic data.
+    """
     
     # compute basic data
     df = add_step_time(df)
@@ -625,14 +746,20 @@ def add_basic_data(df, params):
     
     
 # ================================================================================================ #
-# GOAL   : add the gps data.
-#
-# INPUT  : - df     : dataframe with "datetime", "longitude" and "latitude" columns.
-#          - params : structure of parameters.
-#
-# OUTPUT : - df : dataframe with many additional columns.
+# GPS DATA
 # ================================================================================================ #
 def add_gps_data(df, params):
+        
+    """    
+    :param df: dataframe with ``datetime``, ``longitude`` and ``latitude`` columns.
+    :type df: pandas.DataFrame
+    :param params: parameters dictionary. 
+    :type params: dict
+    :return: the dataframe enhanced with the additional gps data.
+    :rtype: pandas.DataFrame
+    
+    Return the dataframe enhanced with the additional gps data.
+    """
     
     # compute basic data
     df = add_basic_data(df, params)
@@ -655,13 +782,20 @@ def add_gps_data(df, params):
 
 
 # ================================================================================================ #
-# GOAL   : XXXX
-#
-# INPUT  : - XXXX : XXXX.
-#
-# OUTPUT : - df : dataframe.
+# TDR DATA
 # ================================================================================================ #
 def add_tdr_data(df, params):
+    
+    """    
+    :param df: dataframe with ``datetime``, ``pressure`` and ``temperature`` columns.
+    :type df: pandas.DataFrame
+    :param params: parameters dictionary. 
+    :type params: dict
+    :return: the dataframe enhanced with the additional tdr data.
+    :rtype: pandas.DataFrame
+    
+    Return the dataframe enhanced with the additional tdr data.
+    """
     
     # compute basic data
     df = add_basic_data(df, params)
@@ -674,14 +808,20 @@ def add_tdr_data(df, params):
 
 
 # ================================================================================================ #
-# GOAL   : XXXX
-#
-# INPUT  : - XXXX : XXXX.
-#
-# OUTPUT : - df : dataframe.
-#          - df_gps : dataframe.
+# AXY DATA
 # ================================================================================================ #
 def add_axy_data(df, params):
+    
+    """    
+    :param df: dataframe with a ``datetime``, ``ax``, ``ay``, ``az``, ``longitude``, ``latitude``, ``pressure`` and ``temperature`` columns.
+    :type df: pandas.DataFrame
+    :param params: parameters dictionary. 
+    :type params: dict
+    :return: the dataframe enhanced with the additional axy data.
+    :rtype: pandas.DataFrame
+    
+    Return the dataframe enhanced with the additional axy data.
+    """
     
     # compute basic data
     df = add_basic_data(df, params)
@@ -731,6 +871,8 @@ def add_axy_data(df, params):
     # df_tdr = df.loc[tdr_resolution].reset_index(drop=True)
     # df_tdr = df_tdr.drop(["odba", "odba_f", "step_time", "dive", "pressure", "depth", "temperature"], axis=1)
     # df_tdr = df_tdr.rename(columns={"odba_sum":"odba", "odba_f_sum":"odba_f", "step_time_sum":"step_time"}) # longitude latitude ?
+    
+    # process tdr data
     df_tdr = df_tdr_tmp     
 
     # rearrange full dataframe
@@ -741,13 +883,18 @@ def add_axy_data(df, params):
 
 
 # ================================================================================================ #
-# GOAL   : build the basic infos structure of the data.
-#
-# INPUT  : - df     : dataframe with all the processed columns.
-#
-# OUTPUT : - infos : data structure with the basic information about the data.
+# BASIC INFOS
 # ================================================================================================ #
 def compute_basic_infos(df):
+     
+    """    
+    :param df: dataframe enhanced with the additional basic data.
+    :type df: pandas.DataFrame
+    :return: the dictionary of basic infos.
+    :rtype: dict
+    
+    Return the dictionary of basic infos.
+    """
     
     # compute basic information
     start_datetime = df["datetime"].min()
@@ -767,14 +914,20 @@ def compute_basic_infos(df):
 
     
 # ================================================================================================ #
-# GOAL   : build the infos structure of the gps data.
-#
-# INPUT  : - df     : dataframe with all the processed columns.
-#          - params : structure of parameters.
-#
-# OUTPUT : - infos : data structure with information about the gps data.
+# GPS INFOS
 # ================================================================================================ #
 def compute_gps_infos(df, params):
+    
+    """    
+    :param df: dataframe enhanced with the additional gps data.
+    :type df: pandas.DataFrame
+    :param params: parameters dictionary. 
+    :type params: dict
+    :return: the dictionary of gps infos.
+    :rtype: dict
+    
+    Return the dictionary of gps infos.
+    """
     
     # compute gps infos
     total_length = df["step_length"].sum()
@@ -804,14 +957,20 @@ def compute_gps_infos(df, params):
 
 
 # ================================================================================================ #
-# GOAL   : build the infos structure of the tdr data.
-#
-# INPUT  : - df     : dataframe with all the processed columns.
-#          - params : structure of parameters.
-#
-# OUTPUT : - infos : data structure with information about the gps data.
+# TDR INFOS
 # ================================================================================================ #
 def compute_tdr_infos(df):
+    
+    """    
+    :param df: dataframe enhanced with the additional tdr data.
+    :type df: pandas.DataFrame
+    :param params: parameters dictionary. 
+    :type params: dict
+    :return: the dictionary of tdr infos.
+    :rtype: dict
+    
+    Return the dictionary of tdr infos.
+    """
     
     # compute tdr infos
     nb_dives = df["dive"].max()
@@ -841,14 +1000,20 @@ def compute_tdr_infos(df):
     
     
 # ================================================================================================ #
-# GOAL   : build the infos structure of the axy data.
-#
-# INPUT  : - df     : dataframe with all the processed columns.
-#          - params : structure of parameters.
-#
-# OUTPUT : - infos : data structure with information about the gps data.
+# AXY INFOS
 # ================================================================================================ #
 def compute_axy_infos(df):
+        
+    """    
+    :param df: dataframe enhanced with the additional axy data.
+    :type df: pandas.DataFrame
+    :param params: parameters dictionary. 
+    :type params: dict
+    :return: the dictionary of axy infos.
+    :rtype: dict
+    
+    Return the dictionary of axy infos.
+    """
     
     # compute axy infos
     max_odba = df["odba"].max()
