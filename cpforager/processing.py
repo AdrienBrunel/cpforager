@@ -453,7 +453,7 @@ def add_trip(df, params):
 def add_depth(df):
     
     """    
-    :param df: dataframe with a ``pressure``column in hPa.
+    :param df: dataframe with a ``pressure`` column in hPa.
     :type df: pandas.DataFrame
     :return: the dataframe with an additional column ``depth`` that gives the estimated underwater depth in meters.
     :rtype: pandas.DataFrame

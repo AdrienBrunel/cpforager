@@ -11,6 +11,7 @@ Processing
    :toctree: generated
 
    processing.estimate_nest_position
+   processing.add_is_night
    processing.add_step_time
    processing.add_step_length
    processing.add_step_speed
@@ -19,9 +20,8 @@ Processing
    processing.add_step_heading_to_colony
    processing.add_dist_to_nest
    processing.add_trip
-   processing.add_dive
-   processing.add_is_night
    processing.add_depth
+   processing.add_dive
    processing.add_filtered_acc
    processing.add_odba
    processing.remove_suspicious
