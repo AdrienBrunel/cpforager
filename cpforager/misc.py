@@ -6,17 +6,24 @@ import numpy as np
 
 
 # ================================================================================================ #
-# INPUT  : - filename : complete path of the csv file to be read.
-#
-# OUTPUT : - sep : determined separator of the csv file among ";", "\t", ",", " ".
+# DERIVE SEPARATOR FROM CSV
 # ================================================================================================ #
-def derive_separator(filename):
+def derive_separator(file_path):
+    
+    """    
+    :param file_path: complete path of the csv file to be read.
+    :type file_path: str
+    :return: the determined separator of the csv file among the following list [";", "\t", ",", " "].
+    :rtype: str 
+    
+    Return the determined separator of the csv file among the following list [";", "\t", ",", " "] by testing the first line.
+    """
 
     # list of possible separators
     separators = [";", "\t", ",", " "]
 
     # read first line
-    with open(filename, 'r') as f:
+    with open(file_path, 'r') as f:
         first_line = f.readline()
 
     # read as dataframe with all possible separators
@@ -28,7 +35,7 @@ def derive_separator(filename):
         
         sep = separators[nb_fields.index(max(nb_fields))]
     else:
-        print("WARNING: %s is empty" % filename)
+        print("WARNING: %s is empty" % file_path)
         sep = ""
 
     # return the separator with greater number of fields in dataframe
@@ -36,12 +43,20 @@ def derive_separator(filename):
 
 
 # ================================================================================================ #
-# INPUT  : - strings : array of strings.
-#          - pattern : pattern to be found in strings.
-#
-# OUTPUT : - strings_with_pattern : array of strings that contain the pattern.
+# GREP PATTERN
 # ================================================================================================ #
 def grep_pattern(strings, pattern):
+    
+    """    
+    :param strings: array of strings.
+    :type strings: array(str)
+    :param pattern: pattern to be found in strings.
+    :type pattern: str
+    :return: the array of strings that contain the pattern.
+    :rtype: array(str) 
+    
+    Return the array of strings that contain the pattern. Useful to sort file names.
+    """
 
     strings_with_pattern = [s for s in strings if pattern in s]
 
@@ -49,21 +64,39 @@ def grep_pattern(strings, pattern):
 
 
 # ================================================================================================ #
-# INPUT  : - n_cols : number of random colors desired.
-#
-# OUTPUT : - rand_colors : array of n_cols random colors (3 RGB numbers between 0 and 1).
+# RANDOM COLORS
 # ================================================================================================ #
 def random_colors(n_cols=1):
+    
+    """    
+    :param n_cols: number of random colors desired.
+    :type n_cols: int
+    :return: the array of n_cols random colors.
+    :rtype: array(array(float)) 
+    
+    Return the array of size (n_cols,3) composed of n_cols random colors defined by 3 RGB numbers between 0 and 1.
+    """
+    
     rand_colors = np.random.uniform(0,1,(n_cols,3))
+    
     return(rand_colors)
 
 
 # ================================================================================================ #
-# INPUT  : - n_cols : number of random colors desired.
-#
-# OUTPUT : - rand_colors : array of n_cols random colors (3 RGB numbers between 0 and 1).
+# RGB TO HEX
 # ================================================================================================ #
 def rgb_to_hex(rgb_col):
+    
+    """    
+    :param rgb_col: RGB color array
+    :type rgb_col: array(float)
+    :return: the hexadecimal code of the RGB color
+    :rtype: str
+    
+    Return the hexadecimal code of the RGB color.
+    """
+    
     hex_col = "#{:02x}{:02x}{:02x}".format(int(255*rgb_col[0]),int(255*rgb_col[1]),int(255*rgb_col[2]))
+    
     return(hex_col)
 
