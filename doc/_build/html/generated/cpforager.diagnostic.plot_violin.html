@@ -1,0 +1,161 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>4.8. cpforager.diagnostic.plot_violin &mdash; cpforager 0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=8dde47fa"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="4.9. cpforager.diagnostic.plot_hist" href="cpforager.diagnostic.plot_hist.html" />
+    <link rel="prev" title="4.7. cpforager.diagnostic.plot_box" href="cpforager.diagnostic.plot_box.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            cpforager
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Overview</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../classes.html">1. Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parameters.html">2. Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../processing.html">3. Processing</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../diagnostic.html">4. Plots</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cpforager.diagnostic.get_datetime_locator_formatter.html">4.1. cpforager.diagnostic.get_datetime_locator_formatter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpforager.diagnostic.plot_night.html">4.2. cpforager.diagnostic.plot_night</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpforager.diagnostic.plot_ts.html">4.3. cpforager.diagnostic.plot_ts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpforager.diagnostic.plot_ts_wtrips.html">4.4. cpforager.diagnostic.plot_ts_wtrips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpforager.diagnostic.plot_ts_twinx.html">4.5. cpforager.diagnostic.plot_ts_twinx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpforager.diagnostic.plot_cumulative_distribution.html">4.6. cpforager.diagnostic.plot_cumulative_distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpforager.diagnostic.plot_box.html">4.7. cpforager.diagnostic.plot_box</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">4.8. cpforager.diagnostic.plot_violin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cpforager.diagnostic.plot_violin"><code class="docutils literal notranslate"><span class="pre">plot_violin()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="cpforager.diagnostic.plot_hist.html">4.9. cpforager.diagnostic.plot_hist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpforager.diagnostic.plot_angle_polar.html">4.10. cpforager.diagnostic.plot_angle_polar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpforager.diagnostic.plot_colony.html">4.11. cpforager.diagnostic.plot_colony</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpforager.diagnostic.plot_map_wtrips.html">4.12. cpforager.diagnostic.plot_map_wtrips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpforager.diagnostic.plot_map_colorgrad.html">4.13. cpforager.diagnostic.plot_map_colorgrad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpforager.diagnostic.plot_folium_map.html">4.14. cpforager.diagnostic.plot_folium_map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpforager.diagnostic.plot_folium_map_wtrips.html">4.15. cpforager.diagnostic.plot_folium_map_wtrips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpforager.diagnostic.plot_folium_map_colorgrad.html">4.16. cpforager.diagnostic.plot_folium_map_colorgrad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpforager.diagnostic.plot_infos.html">4.17. cpforager.diagnostic.plot_infos</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../utils.html">5. Utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc.html">6. Miscellaneous</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">cpforager</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../diagnostic.html"><span class="section-number">4. </span>Plots</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">4.8. </span>cpforager.diagnostic.plot_violin</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/generated/cpforager.diagnostic.plot_violin.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="cpforager-diagnostic-plot-violin">
+<h1><span class="section-number">4.8. </span>cpforager.diagnostic.plot_violin<a class="headerlink" href="#cpforager-diagnostic-plot-violin" title="Link to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="cpforager.diagnostic.plot_violin">
+<span class="sig-prename descclassname"><span class="pre">cpforager.diagnostic.</span></span><span class="sig-name descname"><span class="pre">plot_violin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var_lab</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quantiles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[0.25,</span> <span class="pre">0.5,</span> <span class="pre">0.75]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cpforager.diagnostic.plot_violin" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pandas.DataFrame</em>) – dataframe of trip/dive statistics.</p></li>
+<li><p><strong>plot_params</strong> (<em>dict</em>) – plot parameters dictionary.</p></li>
+<li><p><strong>var</strong> (<em>str</em>) – name of the column in df.</p></li>
+<li><p><strong>title</strong> (<em>str</em>) – plot title.</p></li>
+<li><p><strong>var_lab</strong> (<em>str</em>) – x-axis label.</p></li>
+<li><p><strong>quantiles</strong> (<em>array</em><em>(</em><em>float</em><em>)</em>) – array of quantiles to emphasize.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the violin plot.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>matplotlib.pyplot</p>
+</dd>
+</dl>
+<p>Return the violin plot.</p>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="cpforager.diagnostic.plot_box.html" class="btn btn-neutral float-left" title="4.7. cpforager.diagnostic.plot_box" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="cpforager.diagnostic.plot_hist.html" class="btn btn-neutral float-right" title="4.9. cpforager.diagnostic.plot_hist" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Adrien Brunel.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

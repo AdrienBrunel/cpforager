@@ -1,0 +1,252 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1.1. cpforager.GPS &mdash; cpforager 0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=8dde47fa"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="1.2. cpforager.TDR" href="cpforager.TDR.html" />
+    <link rel="prev" title="1. Classes" href="../classes.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            cpforager
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Overview</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../classes.html">1. Classes</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">1.1. cpforager.GPS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cpforager.GPS"><code class="docutils literal notranslate"><span class="pre">GPS</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cpforager.GPS.__init__"><code class="docutils literal notranslate"><span class="pre">GPS.__init__()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="cpforager.TDR.html">1.2. cpforager.TDR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpforager.AXY.html">1.3. cpforager.AXY</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpforager.GPS_Collection.html">1.4. cpforager.GPS_Collection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../parameters.html">2. Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../processing.html">3. Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../diagnostic.html">4. Plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils.html">5. Utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc.html">6. Miscellaneous</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">cpforager</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../classes.html"><span class="section-number">1. </span>Classes</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">1.1. </span>cpforager.GPS</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/generated/cpforager.GPS.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="cpforager-gps">
+<h1><span class="section-number">1.1. </span>cpforager.GPS<a class="headerlink" href="#cpforager-gps" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="cpforager.GPS">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cpforager.</span></span><span class="sig-name descname"><span class="pre">GPS</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df=&lt;class</span> <span class="pre">'pandas.core.frame.DataFrame'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group=&lt;class</span> <span class="pre">'str'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id=&lt;class</span> <span class="pre">'str'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params=&lt;class</span> <span class="pre">'dict'&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cpforager.GPS" title="Link to this definition"></a></dt>
+<dd><p>A class to represent the GPS data of a central-place foraging seabird.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="cpforager.GPS.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df=&lt;class</span> <span class="pre">'pandas.core.frame.DataFrame'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group=&lt;class</span> <span class="pre">'str'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id=&lt;class</span> <span class="pre">'str'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params=&lt;class</span> <span class="pre">'dict'&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cpforager.GPS.__init__" title="Link to this definition"></a></dt>
+<dd><section id="parameters">
+<h2><span class="section-number">1.1. </span>Parameters<a class="headerlink" href="#parameters" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>df<span class="classifier">pandas.DataFrame</span></dt><dd><p>The dataframe containing “datetime”, “longitude” and “latitude” columns. Type of “datetime” column must be converted to datetime64.</p>
+</dd>
+<dt>group<span class="classifier">str</span></dt><dd><p>The string representing the group to which the GPS data belongs (<em>e.g.</em> species, year, fieldwork, <em>etc</em>.) useful for statistics and filtering.</p>
+</dd>
+<dt>id<span class="classifier">str</span></dt><dd><p>The string representing the unique identifier of the central-place foraging seabird.</p>
+</dd>
+<dt>params<span class="classifier">dict</span></dt><dd><p>The dictionary of parameters.</p>
+</dd>
+</dl>
+</section>
+<section id="attributes">
+<h2><span class="section-number">1.1. </span>Attributes<a class="headerlink" href="#attributes" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>df<span class="classifier">pandas.DataFrame</span></dt><dd><p>The dataframe containing the raw and processed GPS data.</p>
+</dd>
+<dt>group<span class="classifier">str</span></dt><dd><p>The string representing the group to which the GPS data belongs (<em>e.g.</em> species, year, fieldwork, <em>etc</em>.) useful for statistics and filtering.</p>
+</dd>
+<dt>id<span class="classifier">str</span></dt><dd><p>The string representing the unique identifier of the central-place foraging seabird.</p>
+</dd>
+<dt>params<span class="classifier">dict</span></dt><dd><p>The dictionary containing the parameters used for the GPS data processing.</p>
+</dd>
+<dt>n_df<span class="classifier">int</span></dt><dd><p>The number of measures in the GPS recording.</p>
+</dd>
+<dt>start_datetime<span class="classifier">datetime.datetime</span></dt><dd><p>The starting datetime of the GPS recording.</p>
+</dd>
+<dt>end_datetime<span class="classifier">datetime.datetime</span></dt><dd><p>The ending datetime of the GPS recording.</p>
+</dd>
+<dt>resolution<span class="classifier">float</span></dt><dd><p>The time resolution of the GPS data in seconds estimated as the median value of the step times.</p>
+</dd>
+<dt>total_duration<span class="classifier">float</span></dt><dd><p>The total duration of the GPS recording in days.</p>
+</dd>
+<dt>total_length<span class="classifier">float</span></dt><dd><p>The total length of the GPS recording in kilometers.</p>
+</dd>
+<dt>dmax<span class="classifier">float</span></dt><dd><p>The maximum distance to the nest reached by the central place-foraging seabird.</p>
+</dd>
+<dt>n_trip<span class="classifier">int</span></dt><dd><p>The number of foraging trips realised by the seabird.</p>
+</dd>
+<dt>nest_position<span class="classifier">[float, float]</span></dt><dd><p>The longitude and latitude of the estimated nest position.</p>
+</dd>
+<dt>trip_statistics<span class="classifier">pandas.DataFrame</span></dt><dd><p>The dataframe containing the trip statistics where one row corresponds to one foraging trip.</p>
+</dd>
+</dl>
+</section>
+<section id="methods">
+<h2><span class="section-number">1.1. </span>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>display_data_summary()</dt><dd><p>Prints the GPS data summary.</p>
+</dd>
+<dt>full_diag()</dt><dd><p>Produces the full diagnostic of the GPS data.</p>
+</dd>
+<dt>maps_diag()</dt><dd><p>Produces the maps of the GPS data.</p>
+</dd>
+<dt>folium_map()</dt><dd><p>Produces the html map of the GPS data.</p>
+</dd>
+<dt>folium_map_colorgrad()</dt><dd><p>Produces the html map of the GPS data with a speed color gradient.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cpforager.GPS.__init__" title="cpforager.GPS.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>([df, group, id, params])</p></td>
+<td><p>Parameters
+
+df
+
+pandas.DataFrame
+
+The dataframe containing &quot;datetime&quot;, &quot;longitude&quot; and &quot;latitude&quot; columns. Type of &quot;datetime&quot; column must be converted to datetime64.
+
+group
+
+str
+
+The string representing the group to which the GPS data belongs (e.g. species, year, fieldwork, etc.) useful for statistics and filtering.
+
+id
+
+str
+
+The string representing the unique identifier of the central-place foraging seabird.
+
+params
+
+dict
+
+The dictionary of parameters.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">display_data_summary</span></code>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">folium_map</span></code>([fig_dir, file_id])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">folium_map_colorgrad</span></code>([fig_dir, file_id, ...])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">folium_map_wtrips</span></code>([fig_dir, file_id, ...])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">full_diag</span></code>([fig_dir, file_id, plot_params])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">interpolate_lat_lon</span></code>(interp_datetime[, add_proxy])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">maps_diag</span></code>([fig_dir, file_id, plot_params])</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../classes.html" class="btn btn-neutral float-left" title="1. Classes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="cpforager.TDR.html" class="btn btn-neutral float-right" title="1.2. cpforager.TDR" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Adrien Brunel.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
