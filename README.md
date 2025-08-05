@@ -182,4 +182,4 @@ TO BE DONE. -->
 # Infos
 * Python version used is 3.13.3
 * OS used is Ubuntu 20.04
-* Environment used is [environment.yml](environment.yml)
+* Environment can be loaded using [environment.yml](environment.yml)
