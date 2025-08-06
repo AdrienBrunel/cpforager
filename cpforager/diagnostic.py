@@ -226,7 +226,7 @@ def plot_ts_twinx(ax, df, plot_params, var, title, var_lab, custom_locator=None,
 # ======================================================= #
 # PLOT CUMULATIVE DISTRIB OF TRIP/DIVE STATS
 # ======================================================= #   
-def plot_cumulative_distribution(df, var, title, var_lab, plot_params, v_qs=[0.25, 0.50, 0.75]):
+def plot_cumulative_distribution(df, plot_params, var, title, var_lab, v_qs=[0.25, 0.50, 0.75]):
         
     """    
     :param df: dataframe of trip/dive statistics.
