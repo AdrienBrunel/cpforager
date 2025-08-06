@@ -1,0 +1,6 @@
+﻿cpforager.processing.remove\_suspicious
+=======================================
+
+.. currentmodule:: cpforager.processing
+
+.. autofunction:: remove_suspicious
