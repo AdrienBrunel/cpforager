@@ -145,11 +145,11 @@ def add_step_time(df):
 def add_step_length(df):
     
     """    
-    Add to the dataframe an additional``step_length`` column that gives the step length in kilometers.
+    Add to the dataframe an additional ``step_length`` column that gives the step length in kilometers.
     
     :param df: dataframe with ``longitude`` and ``latitude`` columns.
     :type df: pandas.DataFrame
-    :return: the dataframe with an additional``step_length`` column that gives the step length in kilometers.
+    :return: the dataframe with an additional ``step_length`` column that gives the step length in kilometers.
     :rtype: pandas.DataFrame
     
     Step length is computed as the length in kilometers between consecutive measures of position.
@@ -173,11 +173,11 @@ def add_step_length(df):
 def add_step_speed(df):
     
     """    
-    Add to the dataframe an additional``step_speed`` column that gives the step ground speed in kilometers per hour.
+    Add to the dataframe an additional ``step_speed`` column that gives the step ground speed in kilometers per hour.
     
     :param df: dataframe with ``step_time`` and ``step_length`` columns.
     :type df: pandas.DataFrame
-    :return: the dataframe with an additional``step_speed`` column that gives the step ground speed in kilometers per hour.
+    :return: the dataframe with an additional ``step_speed`` column that gives the step ground speed in kilometers per hour.
     :rtype: pandas.DataFrame
     
     Step speed is computed as the average ground speed in kilometers per hour between consecutive measures of position.
