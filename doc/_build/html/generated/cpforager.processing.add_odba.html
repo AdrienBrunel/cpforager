@@ -79,6 +79,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../diagnostic.html">4. Plots</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../utils.html">5. Utils</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../misc.html">6. Miscellaneous</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../example.html">7. Example</a></li>
 </ul>
 
         </div>
@@ -111,7 +112,8 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="cpforager.processing.add_odba">
 <span class="sig-prename descclassname"><span class="pre">cpforager.processing.</span></span><span class="sig-name descname"><span class="pre">add_odba</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cpforager.processing.add_odba" title="Link to this definition"></a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Add to the dataframe the additional <code class="docutils literal notranslate"><span class="pre">odba</span></code> and <code class="docutils literal notranslate"><span class="pre">odba_f</span></code> columns of the raw and filtered overall dynamical body acceleration.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>df</strong> (<em>pandas.DataFrame</em>) – dataframe with <code class="docutils literal notranslate"><span class="pre">ax</span></code>, <code class="docutils literal notranslate"><span class="pre">ay</span></code>, <code class="docutils literal notranslate"><span class="pre">az</span></code>, <code class="docutils literal notranslate"><span class="pre">ax_f</span></code>, <code class="docutils literal notranslate"><span class="pre">ay_f</span></code> and <code class="docutils literal notranslate"><span class="pre">az_f</span></code> columns.</p></li>
@@ -125,15 +127,9 @@
 <dd class="field-odd"><p>pandas.DataFrame</p>
 </dd>
 </dl>
-<p>Return the dataframe with the additional <code class="docutils literal notranslate"><span class="pre">odba</span></code> and <code class="docutils literal notranslate"><span class="pre">odba_f</span></code> columns of the raw and filtered overall dynamical body acceleration.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<dl class="simple">
-<dt>The required fields in the parameters dictionary are :</dt><dd><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">odba_p_norm</span></code> is giving the p-norm used for the computation of overall dyanmical body acceleration.</p></li>
-</ul>
-</dd>
-</dl>
+<p>The required fields in the parameters dictionary are <code class="docutils literal notranslate"><span class="pre">odba_p_norm</span></code>.</p>
 </div>
 </dd></dl>
 

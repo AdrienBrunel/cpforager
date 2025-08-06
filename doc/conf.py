@@ -26,7 +26,10 @@ html_theme = "sphinx_rtd_theme"
 extensions = ["sphinx.ext.duration",
               "sphinx.ext.doctest",
               "sphinx.ext.autodoc",
-              "sphinx.ext.autosummary"]
+              "sphinx.ext.autosummary",
+              "sphinx.ext.todo"]
+
+todo_include_todos = True
 
 # command line for building documentation : 
 # make clean

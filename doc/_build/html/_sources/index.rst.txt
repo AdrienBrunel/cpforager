@@ -23,3 +23,4 @@ cpforager documentation
       diagnostic.rst
       utils.rst
       misc.rst
+      example.rst

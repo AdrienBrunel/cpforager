@@ -76,6 +76,7 @@
 <li class="toctree-l1"><a class="reference internal" href="diagnostic.html">4. Plots</a></li>
 <li class="toctree-l1"><a class="reference internal" href="utils.html">5. Utils</a></li>
 <li class="toctree-l1"><a class="reference internal" href="misc.html">6. Miscellaneous</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example.html">7. Example</a></li>
 </ul>
 
         </div>
@@ -107,76 +108,76 @@
 <table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/cpforager.processing.estimate_nest_position.html#cpforager.processing.estimate_nest_position" title="cpforager.processing.estimate_nest_position"><code class="xref py py-obj docutils literal notranslate"><span class="pre">processing.estimate_nest_position</span></code></a>(df, params)</p></td>
-<td><p></p></td>
+<td><p>Estimate the nest position from longitude and latitude data.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/cpforager.processing.add_is_night.html#cpforager.processing.add_is_night" title="cpforager.processing.add_is_night"><code class="xref py py-obj docutils literal notranslate"><span class="pre">processing.add_is_night</span></code></a>(df, params)</p></td>
-<td><p></p></td>
+<td><p>Add to the dataframe an additional <code class="docutils literal notranslate"><span class="pre">is_night</span></code> boolean column worth 1 if it is night, 0 otherwise.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/cpforager.processing.add_step_time.html#cpforager.processing.add_step_time" title="cpforager.processing.add_step_time"><code class="xref py py-obj docutils literal notranslate"><span class="pre">processing.add_step_time</span></code></a>(df)</p></td>
-<td><p></p></td>
+<td><p>Add to the dataframe an additional column <code class="docutils literal notranslate"><span class="pre">step_time</span></code> that gives the step time in seconds.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/cpforager.processing.add_step_length.html#cpforager.processing.add_step_length" title="cpforager.processing.add_step_length"><code class="xref py py-obj docutils literal notranslate"><span class="pre">processing.add_step_length</span></code></a>(df)</p></td>
-<td><p></p></td>
+<td><p>Add to the dataframe an additional column <code class="docutils literal notranslate"><span class="pre">step_length</span></code> that gives the step length in kilometers.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/cpforager.processing.add_step_speed.html#cpforager.processing.add_step_speed" title="cpforager.processing.add_step_speed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">processing.add_step_speed</span></code></a>(df)</p></td>
-<td><p></p></td>
+<td><p>Add to the dataframe an additional column <code class="docutils literal notranslate"><span class="pre">step_speed</span></code> that gives the step ground speed in kilometers per hour.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/cpforager.processing.add_step_heading.html#cpforager.processing.add_step_heading" title="cpforager.processing.add_step_heading"><code class="xref py py-obj docutils literal notranslate"><span class="pre">processing.add_step_heading</span></code></a>(df)</p></td>
-<td><p></p></td>
+<td><p>Add to the dataframe an additional <code class="docutils literal notranslate"><span class="pre">step_heading</span></code> that gives step heading in degrees.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/cpforager.processing.add_step_turning_angle.html#cpforager.processing.add_step_turning_angle" title="cpforager.processing.add_step_turning_angle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">processing.add_step_turning_angle</span></code></a>(df)</p></td>
-<td><p></p></td>
+<td><p>Add to the dataframe an additional <code class="docutils literal notranslate"><span class="pre">step_turning_angle</span></code> that gives the step turning angle in degrees (between -180° and +180°).</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/cpforager.processing.add_step_heading_to_colony.html#cpforager.processing.add_step_heading_to_colony" title="cpforager.processing.add_step_heading_to_colony"><code class="xref py py-obj docutils literal notranslate"><span class="pre">processing.add_step_heading_to_colony</span></code></a>(df, params)</p></td>
-<td><p></p></td>
+<td><p>Add to the dataframe an additional column <code class="docutils literal notranslate"><span class="pre">step_heading_to_colony</span></code> that gives heading to the colony in degrees.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/cpforager.processing.add_dist_to_nest.html#cpforager.processing.add_dist_to_nest" title="cpforager.processing.add_dist_to_nest"><code class="xref py py-obj docutils literal notranslate"><span class="pre">processing.add_dist_to_nest</span></code></a>(df, params)</p></td>
-<td><p></p></td>
+<td><p>Add to the dataframe an additional <code class="docutils literal notranslate"><span class="pre">dist_to_nest</span></code> column that gives the orthodromic distance to the estimated nest position in kilometers.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/cpforager.processing.add_trip.html#cpforager.processing.add_trip" title="cpforager.processing.add_trip"><code class="xref py py-obj docutils literal notranslate"><span class="pre">processing.add_trip</span></code></a>(df, params)</p></td>
-<td><p></p></td>
+<td><p>Add to the dataframe an additional column <code class="docutils literal notranslate"><span class="pre">trip</span></code> that gives the trip identifier number.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/cpforager.processing.add_depth.html#cpforager.processing.add_depth" title="cpforager.processing.add_depth"><code class="xref py py-obj docutils literal notranslate"><span class="pre">processing.add_depth</span></code></a>(df)</p></td>
-<td><p></p></td>
+<td><p>Add to the dataframe an additional column <code class="docutils literal notranslate"><span class="pre">depth</span></code> that gives the estimated underwater depth in meters.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/cpforager.processing.add_dive.html#cpforager.processing.add_dive" title="cpforager.processing.add_dive"><code class="xref py py-obj docutils literal notranslate"><span class="pre">processing.add_dive</span></code></a>(df, params)</p></td>
-<td><p></p></td>
+<td><p>Add to the dataframe an additional column <code class="docutils literal notranslate"><span class="pre">dive</span></code> that gives the dive id number.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/cpforager.processing.add_filtered_acc.html#cpforager.processing.add_filtered_acc" title="cpforager.processing.add_filtered_acc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">processing.add_filtered_acc</span></code></a>(df, params)</p></td>
-<td><p></p></td>
+<td><p>Add to the dataframe the additional columns <code class="docutils literal notranslate"><span class="pre">ax_f</span></code>, <code class="docutils literal notranslate"><span class="pre">ay_f</span></code> and <code class="docutils literal notranslate"><span class="pre">az_f</span></code> of the filtered triaxial accelerations.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/cpforager.processing.add_odba.html#cpforager.processing.add_odba" title="cpforager.processing.add_odba"><code class="xref py py-obj docutils literal notranslate"><span class="pre">processing.add_odba</span></code></a>(df, params)</p></td>
-<td><p></p></td>
+<td><p>Add to the dataframe the additional <code class="docutils literal notranslate"><span class="pre">odba</span></code> and <code class="docutils literal notranslate"><span class="pre">odba_f</span></code> columns of the raw and filtered overall dynamical body acceleration.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/cpforager.processing.remove_suspicious.html#cpforager.processing.remove_suspicious" title="cpforager.processing.remove_suspicious"><code class="xref py py-obj docutils literal notranslate"><span class="pre">processing.remove_suspicious</span></code></a>(df, params)</p></td>
-<td><p></p></td>
+<td><p>Remove from the dataframe rows with a step speed above the max possible speed threshold.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/cpforager.processing.interpolate_lat_lon.html#cpforager.processing.interpolate_lat_lon" title="cpforager.processing.interpolate_lat_lon"><code class="xref py py-obj docutils literal notranslate"><span class="pre">processing.interpolate_lat_lon</span></code></a>(df, ...[, ...])</p></td>
-<td><p></p></td>
+<td><p>Interpolate longitude and latitude at a given datetime.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/cpforager.processing.add_basic_data.html#cpforager.processing.add_basic_data" title="cpforager.processing.add_basic_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">processing.add_basic_data</span></code></a>(df, params)</p></td>
-<td><p></p></td>
+<td><p>Enhance the dataframe with the additional basic data.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/cpforager.processing.add_gps_data.html#cpforager.processing.add_gps_data" title="cpforager.processing.add_gps_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">processing.add_gps_data</span></code></a>(df, params)</p></td>
-<td><p></p></td>
+<td><p>Enhance the dataframe with the additional gps data.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/cpforager.processing.add_tdr_data.html#cpforager.processing.add_tdr_data" title="cpforager.processing.add_tdr_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">processing.add_tdr_data</span></code></a>(df, params)</p></td>
-<td><p></p></td>
+<td><p>Enhance the dataframe with the additional tdr data.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/cpforager.processing.add_axy_data.html#cpforager.processing.add_axy_data" title="cpforager.processing.add_axy_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">processing.add_axy_data</span></code></a>(df, params)</p></td>
-<td><p></p></td>
+<td><p>Enhance the dataframe with the additional axy data.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/cpforager.processing.compute_basic_infos.html#cpforager.processing.compute_basic_infos" title="cpforager.processing.compute_basic_infos"><code class="xref py py-obj docutils literal notranslate"><span class="pre">processing.compute_basic_infos</span></code></a>(df)</p></td>
-<td><p></p></td>
+<td><p>Produce the dictionary of basic infos.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/cpforager.processing.compute_gps_infos.html#cpforager.processing.compute_gps_infos" title="cpforager.processing.compute_gps_infos"><code class="xref py py-obj docutils literal notranslate"><span class="pre">processing.compute_gps_infos</span></code></a>(df, params)</p></td>
-<td><p></p></td>
+<td><p>Produce the dictionary of gps infos.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/cpforager.processing.compute_tdr_infos.html#cpforager.processing.compute_tdr_infos" title="cpforager.processing.compute_tdr_infos"><code class="xref py py-obj docutils literal notranslate"><span class="pre">processing.compute_tdr_infos</span></code></a>(df)</p></td>
-<td><p></p></td>
+<td><p>Produce the dictionary of tdr infos.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/cpforager.processing.compute_axy_infos.html#cpforager.processing.compute_axy_infos" title="cpforager.processing.compute_axy_infos"><code class="xref py py-obj docutils literal notranslate"><span class="pre">processing.compute_axy_infos</span></code></a>(df)</p></td>
-<td><p></p></td>
+<td><p>Produce the dictionary of axy infos.</p></td>
 </tr>
 </tbody>
 </table>

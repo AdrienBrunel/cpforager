@@ -79,6 +79,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../diagnostic.html">4. Plots</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../utils.html">5. Utils</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../misc.html">6. Miscellaneous</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../example.html">7. Example</a></li>
 </ul>
 
         </div>
@@ -111,7 +112,8 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="cpforager.processing.remove_suspicious">
 <span class="sig-prename descclassname"><span class="pre">cpforager.processing.</span></span><span class="sig-name descname"><span class="pre">remove_suspicious</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cpforager.processing.remove_suspicious" title="Link to this definition"></a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Remove from the dataframe rows with a step speed above the max possible speed threshold.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>df</strong> (<em>pandas.DataFrame</em>) – dataframe with a <code class="docutils literal notranslate"><span class="pre">step_speed</span></code> column.</p></li>
@@ -125,16 +127,10 @@
 <dd class="field-odd"><p>pandas.DataFrame</p>
 </dd>
 </dl>
-<p>Return the dataframe without the rows with a step speed above the max possible speed threshold. The idea is to clean 
-the data of its recording bugs.</p>
+<p>The idea is to clean the data of its recording bugs.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<dl class="simple">
-<dt>The required fields in the parameters dictionary are :</dt><dd><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">max_possible_speed</span></code> is giving the ground speed above which we consider it to be a recording bug.</p></li>
-</ul>
-</dd>
-</dl>
+<p>The required fields in the parameters dictionary are <code class="docutils literal notranslate"><span class="pre">max_possible_speed</span></code>.</p>
 </div>
 <div class="admonition important">
 <p class="admonition-title">Important</p>

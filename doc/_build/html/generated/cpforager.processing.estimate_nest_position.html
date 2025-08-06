@@ -79,6 +79,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../diagnostic.html">4. Plots</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../utils.html">5. Utils</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../misc.html">6. Miscellaneous</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../example.html">7. Example</a></li>
 </ul>
 
         </div>
@@ -111,7 +112,8 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="cpforager.processing.estimate_nest_position">
 <span class="sig-prename descclassname"><span class="pre">cpforager.processing.</span></span><span class="sig-name descname"><span class="pre">estimate_nest_position</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cpforager.processing.estimate_nest_position" title="Link to this definition"></a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Estimate the nest position from longitude and latitude data.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>df</strong> (<em>pandas.DataFrame</em>) – dataframe with <code class="docutils literal notranslate"><span class="pre">longitude</span></code> and <code class="docutils literal notranslate"><span class="pre">latitude</span></code> columns.</p></li>
@@ -123,22 +125,15 @@
 <dd class="field-even"><p>the estimated nest position.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>array(float)</p>
+<dd class="field-odd"><p>[float, float]</p>
 </dd>
 </dl>
-<p>Return the estimated nest position from longitude and latitude data. The nest position is estimated as the median 
-of the positions inside the colony rectangle with a small enough speed. If not possible, the nest position is estimated 
-at the center of the colony.</p>
+<p>If not known beforehand, the nest position is estimated as the median position among positions inside the 
+colony rectangle with a small enough speed. If not possible, the nest position is estimated at the center of 
+the colony.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<dl class="simple">
-<dt>The required fields in the parameters dictionary are :</dt><dd><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">colony</span></code> is giving the bounding box of the colony.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">nesting_speed</span></code> is giving the speed below which we consider the bird at nest.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">nest_position</span></code> is giving the nest position if known beforehand.</p></li>
-</ul>
-</dd>
-</dl>
+<p>The required fields in the parameters dictionary are <code class="docutils literal notranslate"><span class="pre">colony</span></code>, <code class="docutils literal notranslate"><span class="pre">nesting_speed</span></code> and <code class="docutils literal notranslate"><span class="pre">nest_position</span></code>.</p>
 </div>
 </dd></dl>
 

@@ -79,6 +79,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../diagnostic.html">4. Plots</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../utils.html">5. Utils</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../misc.html">6. Miscellaneous</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../example.html">7. Example</a></li>
 </ul>
 
         </div>
@@ -111,7 +112,8 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="cpforager.processing.add_step_heading_to_colony">
 <span class="sig-prename descclassname"><span class="pre">cpforager.processing.</span></span><span class="sig-name descname"><span class="pre">add_step_heading_to_colony</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cpforager.processing.add_step_heading_to_colony" title="Link to this definition"></a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Add to the dataframe an additional column <code class="docutils literal notranslate"><span class="pre">step_heading_to_colony</span></code> that gives heading to the colony in degrees.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>df</strong> (<em>pandas.DataFrame</em>) – dataframe with <code class="docutils literal notranslate"><span class="pre">longitude</span></code> and <code class="docutils literal notranslate"><span class="pre">latitude</span></code> columns.</p></li>
@@ -125,15 +127,9 @@
 <dd class="field-odd"><p>pandas.DataFrame</p>
 </dd>
 </dl>
-<p>Return the dataframe with an additional column “step_heading_to_colony” that gives heading to the colony in degrees.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<dl class="simple">
-<dt>The required fields in the parameters dictionary are :</dt><dd><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">colony</span></code> is giving the bounding box of the colony.</p></li>
-</ul>
-</dd>
-</dl>
+<p>The required fields in the parameters dictionary are <code class="docutils literal notranslate"><span class="pre">colony</span></code>.</p>
 </div>
 </dd></dl>
 

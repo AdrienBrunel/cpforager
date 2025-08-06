@@ -79,6 +79,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../diagnostic.html">4. Plots</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../utils.html">5. Utils</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../misc.html">6. Miscellaneous</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../example.html">7. Example</a></li>
 </ul>
 
         </div>
@@ -111,7 +112,8 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="cpforager.processing.add_axy_data">
 <span class="sig-prename descclassname"><span class="pre">cpforager.processing.</span></span><span class="sig-name descname"><span class="pre">add_axy_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cpforager.processing.add_axy_data" title="Link to this definition"></a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Enhance the dataframe with the additional axy data.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>df</strong> (<em>pandas.DataFrame</em>) – dataframe with a <code class="docutils literal notranslate"><span class="pre">datetime</span></code>, <code class="docutils literal notranslate"><span class="pre">ax</span></code>, <code class="docutils literal notranslate"><span class="pre">ay</span></code>, <code class="docutils literal notranslate"><span class="pre">az</span></code>, <code class="docutils literal notranslate"><span class="pre">longitude</span></code>, <code class="docutils literal notranslate"><span class="pre">latitude</span></code>, <code class="docutils literal notranslate"><span class="pre">pressure</span></code> and <code class="docutils literal notranslate"><span class="pre">temperature</span></code> columns.</p></li>
@@ -125,7 +127,10 @@
 <dd class="field-odd"><p>pandas.DataFrame</p>
 </dd>
 </dl>
-<p>Return the dataframe enhanced with the additional axy data.</p>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<p>Correct discrepancies due to remove_suspicious() function.</p>
+</div>
 </dd></dl>
 
 </section>
