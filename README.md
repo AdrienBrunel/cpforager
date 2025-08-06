@@ -63,7 +63,9 @@ tdr = TDR(df=df, group=fieldwork, id=file_id, params=params)
 axy = AXY(df=df, group=fieldwork, id=file_id, params=params)
 ```
 6. Enjoy the GPS/TDR/AXY attributes and built-in methods ! 
-<h1 align="center"><img src="./doc/_static/axy_terminal_output.png" width="300"></h1>
+<h1 align="center">
+<img src="./doc/_static/axy_terminal_output.png" width="300">
+</h1>
 
 [test.py](./test/test.py) illustrates how the `GPS`, `TDR`, `AXY` and `GPS_Collection` classes should be used to fully benefit the users. Results of this script are found in the [test](./test/) folder.
 
