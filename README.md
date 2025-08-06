@@ -38,7 +38,7 @@ First, clone this repository:
 ```bash
 git clone https://github.com/AdrienBrunel/seabird-movement-cpf
 ```
-
+python install/conda load environment/open main/load your data
 *(WORK IN PROGRESS)*
 
 <br> -->
@@ -87,9 +87,7 @@ rm -rfv generated/
 make html
 ```
 
-The resulting html documentation is generated in [./doc/_build/html/](./doc/_build/html/). In order to access the entire documentation, open the [index.html](./doc/_build/html/index.html) file and enjoy!
-
-*(WORK IN PROGRESS)*
+The resulting html documentation is generated in [./doc/_build/html/](./doc/_build/html/). In order to access and browse the entire documentation, download the folder and open the [index.html](./doc/_build/html/index.html) file.
 
 <br>
 
