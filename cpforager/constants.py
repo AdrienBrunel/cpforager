@@ -1,0 +1,2 @@
+salt_water_density = 1023.6
+earth_acceleration = 9.80665
