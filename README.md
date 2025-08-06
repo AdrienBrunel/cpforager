@@ -72,9 +72,9 @@ axy = AXY(df=df, group="my_group", id="my_id", params=params)
 <img src="https://github.com/AdrienBrunel/seabird-movement-cpf/blob/master/doc/_static/axy_terminal_output.png">
 </h1>
 
-<br>
-
 [test.py](./test/test.py) illustrates how the `GPS`, `TDR`, `AXY` and `GPS_Collection` classes should be used to fully benefit the users. Results of this script are found in the [test](./test/) folder.
+
+<br>
 
 # Documentation
 
