@@ -12,6 +12,8 @@ import pandas as pd
 def ortho_distance(lon_1, lat_1, lon_2, lat_2):
     
     """
+    Compute the orthodromic distance in kilometers between (lon_1, lat_1) and (lon_2, lat_2). 
+    
     :param lon_1: longitude in degrees of the first position.
     :type lon_1: float
     :param lat_1: latitude in degrees of the first position.
@@ -23,7 +25,7 @@ def ortho_distance(lon_1, lat_1, lon_2, lat_2):
     :return: the distance in kilometers between (lon_1, lat_1) and (lon_2, lat_2).
     :rtype: float
     
-    Return the distance in kilometers between (lon_1, lat_1) and (lon_2, lat_2) following the trigonometric haversine formula.
+    Orthodromic distance is computed using the trigonometric haversine formula.
     """
 
     # convert degrees to radians
@@ -56,6 +58,8 @@ def ortho_distance(lon_1, lat_1, lon_2, lat_2):
 def spherical_heading(lon_1, lat_1, lon_2, lat_2):
 
     """
+    Compute the spherical heading in degrees between the north and the direction formed by the two positions (lon_1, lat_1) and (lon_2, lat_2).
+    
     :param lon_1: longitude in degrees of the first position.
     :type lon_1: float
     :param lat_1: latitude in degrees of the first position.
@@ -66,8 +70,6 @@ def spherical_heading(lon_1, lat_1, lon_2, lat_2):
     :type lat_2: float
     :return: the spherical heading in degrees between the north and the direction formed by the two positions (lon_1, lat_1) and (lon_2, lat_2).
     :rtype: float
-    
-    Return the spherical heading in degrees between the north and the direction formed by the two positions (lon_1, lat_1) and (lon_2, lat_2).
     """
     
     # convert degrees to radians
@@ -96,14 +98,14 @@ def spherical_heading(lon_1, lat_1, lon_2, lat_2):
 def convert_utc_to_loc(df, local_timezone):
     
     """
-    :param df: dataframe with a "datetime" column at the UTC timezone.
-    :type df: pandas.DataFrame
-    :param local_timezone: local timezone following the pytz nomenclature.
-    :type local_timezone: str
-    :return: the dataframe with a "datetime" column at the local timezone.
-    :rtype: pandas.DataFrame
+    Convert ``datetime`` from UTC to the local timezone.
     
-    Return the dataframe with its "datetime" column converted at the local timezone.
+    :param df: dataframe with a ``datetime`` column at the UTC timezone.
+    :type df: pandas.DataFrame
+    :param local_timezone: local timezone following the pytz nomenclature (see ``pytz.all_timezones``).
+    :type local_timezone: str
+    :return: the dataframe with a ``datetime`` column converted the local timezone.
+    :rtype: pandas.DataFrame
     """
     
     # convert utc datetime to local time
@@ -121,14 +123,14 @@ def convert_utc_to_loc(df, local_timezone):
 def convert_loc_to_utc(df, local_timezone):
     
     """
-    :param df: dataframe with a "datetime" column at the local timezone.
-    :type df: pandas.DataFrame
-    :param local_timezone: local timezone following the pytz nomenclature.
-    :type local_timezone: str
-    :return: the dataframe with a "datetime" column at the UTC timezone.
-    :rtype: pandas.DataFrame
+    Convert ``datetime`` column from the local timezone to UTC.
     
-    Return the dataframe with its "datetime" column converted at the UTC timezone.
+    :param df: dataframe with a ``datetime`` column at the local timezone.
+    :type df: pandas.DataFrame
+    :param local_timezone: local timezone following the pytz nomenclature (see ``pytz.all_timezones``).
+    :type local_timezone: str
+    :return: the dataframe with a ``datetime`` column to UTC timezone.
+    :rtype: pandas.DataFrame
     """
     
     # convert local datetime to utc
@@ -146,7 +148,9 @@ def convert_loc_to_utc(df, local_timezone):
 def apply_functions_between_samples(df, resolution, columns_functions=dict, verbose=False):
     
     """
-    :param df: dataframe with a "datetime" column.
+    Apply a chosen function (*e.g.* sum, mean, min, max) over every high resolution elements between two subsamples defined by a given resolution.
+    
+    :param df: dataframe with a ``datetime`` column.
     :type df: pandas.DataFrame
     :param resolution: boolean dataframe of the subsampling resolution.
     :type resolution: pandas.DataFrame(dtype=bool)
@@ -157,7 +161,6 @@ def apply_functions_between_samples(df, resolution, columns_functions=dict, verb
     :return: the dataframe with the additional columns "column_function" composed of NaN values everywhere except at the subsampling resolution where the function was applied to every elements between two subsamples.
     :rtype: pandas.DataFrame
     
-    Apply a chosen function (*e.g.* sum, mean, min, max) over every high resolution elements between two subsamples defined by a given resolution.
     This function is key to handle data with different resolutions, such as high-resolution acceleration measures and low-resolution position and 
     pressure measures. It thus allows to produce a low-resolution version of the high-resolution data by summarising it using a function between 
     subsamples. Find below the exhaustive table of possible functions to apply.

@@ -12,12 +12,14 @@ import cartopy.mpl.ticker as cmpl
 def get_params(colony):
     
     """
+    Create a parameters dictionary.
+    
     :param colony: codified name of the considered colony
     :type colony: str
     :return: a dictionary of parameters
     :rtype: dict
     
-    Return a dictionary of parameters required to construct GPS, TDR and AXY classes. The user-defined colony code allows to define a 
+    The parameters dictionary is required to construct GPS, TDR and AXY classes. The user-defined colony code allows to define a 
     dictionary of parameters according to a specific dataset. Find below the exhaustive table of parameters within the dictionary.
     
     .. important::
@@ -130,12 +132,14 @@ def get_params(colony):
 # ======================================================= #
 def get_plot_params():
     
-    """    
+    """
+    Create a plot parameters dictionary.
+        
     :param: None
     :return: a dictionary of plot parameters
     :rtype: dict 
     
-    Return a dictionary of plot parameters required to produce the diagnostic of GPS, TDR and AXY classes. Find below the 
+    The dictionary of plot parameters required to produce the diagnostic of GPS, TDR and AXY classes. Find below the 
     exhaustive table of parameters within the dictionary.
     
     .. csv-table::  

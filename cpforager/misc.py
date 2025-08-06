@@ -11,12 +11,14 @@ import numpy as np
 def derive_separator(file_path):
     
     """    
+    Derive separator of the csv file.
+    
     :param file_path: complete path of the csv file to be read.
     :type file_path: str
     :return: the determined separator of the csv file.
     :rtype: str 
     
-    Return the determined separator of the csv file among the following list ``[";", "\\t", ",", " "]`` by testing the first line.
+    Separator is determined among the following list ``[";", "\\t", ",", " "]`` by testing the first line of the csv file.
     """
 
     # list of possible separators
@@ -33,12 +35,12 @@ def derive_separator(file_path):
             reader = csv.reader([first_line], delimiter=sep)
             nb_fields[k] = len(next(reader))
         
+        # return the separator with greater number of fields in dataframe
         sep = separators[nb_fields.index(max(nb_fields))]
     else:
         print("WARNING: %s is empty" % file_path)
         sep = ""
 
-    # return the separator with greater number of fields in dataframe
     return(sep)
 
 
@@ -47,7 +49,9 @@ def derive_separator(file_path):
 # ================================================================================================ #
 def grep_pattern(strings, pattern):
     
-    """    
+    """
+    Extract array of strings that contain the pattern. 
+        
     :param strings: array of strings.
     :type strings: array(str)
     :param pattern: pattern to be found in strings.
@@ -55,7 +59,7 @@ def grep_pattern(strings, pattern):
     :return: the array of strings that contain the pattern.
     :rtype: array(str) 
     
-    Return the array of strings that contain the pattern. Useful to sort file names.
+    Function useful to sort file names based on a pattern.
     """
 
     strings_with_pattern = [s for s in strings if pattern in s]
@@ -68,13 +72,15 @@ def grep_pattern(strings, pattern):
 # ================================================================================================ #
 def random_colors(n_cols=1):
     
-    """    
+    """
+    Produce an array of random colors.
+        
     :param n_cols: number of random colors desired.
     :type n_cols: int
     :return: the array of n_cols random colors.
     :rtype: array(array(float)) 
     
-    Return the array of size (n_cols,3) composed of n_cols random colors defined by 3 RGB numbers between 0 and 1.
+    The array is composed of n_cols random colors defined by 3 RGB numbers between 0 and 1. The size of the array is (n_cols,3).  
     """
     
     rand_colors = np.random.uniform(0,1,(n_cols,3))
@@ -88,12 +94,12 @@ def random_colors(n_cols=1):
 def rgb_to_hex(rgb_col):
     
     """    
+    Convert RGB color to hexadecimal code.
+    
     :param rgb_col: RGB color array
     :type rgb_col: array(float)
     :return: the hexadecimal code of the RGB color
     :rtype: str
-    
-    Return the hexadecimal code of the RGB color.
     """
     
     hex_col = "#{:02x}{:02x}{:02x}".format(int(255*rgb_col[0]),int(255*rgb_col[1]),int(255*rgb_col[2]))

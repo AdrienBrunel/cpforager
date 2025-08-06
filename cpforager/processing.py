@@ -117,11 +117,11 @@ def add_is_night(df, params):
 def add_step_time(df):
     
     """   
-    Add to the dataframe an additional column ``step_time`` that gives the step time in seconds.
+    Add to the dataframe an additional ``step_time`` column that gives the step time in seconds.
      
     :param df: dataframe with a ``datetime`` column.
     :type df: pandas.DataFrame
-    :return: the dataframe with an additional column ``step_time`` that gives the step time in seconds.
+    :return: the dataframe with an additional ``step_time`` column that gives the step time in seconds.
     :rtype: pandas.DataFrame
     
     Step time is computed as the duration in seconds between consecutive measures of position.
@@ -145,11 +145,11 @@ def add_step_time(df):
 def add_step_length(df):
     
     """    
-    Add to the dataframe an additional column ``step_length`` that gives the step length in kilometers.
+    Add to the dataframe an additional``step_length`` column that gives the step length in kilometers.
     
     :param df: dataframe with ``longitude`` and ``latitude`` columns.
     :type df: pandas.DataFrame
-    :return: the dataframe with an additional column ``step_length`` that gives the step length in kilometers.
+    :return: the dataframe with an additional``step_length`` column that gives the step length in kilometers.
     :rtype: pandas.DataFrame
     
     Step length is computed as the length in kilometers between consecutive measures of position.
@@ -173,11 +173,11 @@ def add_step_length(df):
 def add_step_speed(df):
     
     """    
-    Add to the dataframe an additional column ``step_speed`` that gives the step ground speed in kilometers per hour.
+    Add to the dataframe an additional``step_speed`` column that gives the step ground speed in kilometers per hour.
     
     :param df: dataframe with ``step_time`` and ``step_length`` columns.
     :type df: pandas.DataFrame
-    :return: the dataframe with an additional column ``step_speed`` that gives the step ground speed in kilometers per hour.
+    :return: the dataframe with an additional``step_speed`` column that gives the step ground speed in kilometers per hour.
     :rtype: pandas.DataFrame
     
     Step speed is computed as the average ground speed in kilometers per hour between consecutive measures of position.
@@ -207,11 +207,11 @@ def add_step_speed(df):
 def add_step_heading(df):
     
     """    
-    Add to the dataframe an additional ``step_heading`` that gives step heading in degrees.
+    Add to the dataframe an additional ``step_heading`` column that gives step heading in degrees.
     
     :param df: dataframe with ``longitude`` and ``latitude`` columns.
     :type df: pandas.DataFrame
-    :return: the dataframe with an additional column ``step_heading`` that gives step heading in degrees. 
+    :return: the dataframe with an additional ``step_heading`` column that gives step heading in degrees. 
     :rtype: pandas.DataFrame
     
     Step heading is computed as the angle in degrees between the North and the direction formed by 
@@ -236,11 +236,11 @@ def add_step_heading(df):
 def add_step_turning_angle(df):
     
     """    
-    Add to the dataframe an additional ``step_turning_angle`` that gives the step turning angle in degrees (between -180° and +180°). 
+    Add to the dataframe an additional ``step_turning_angle`` column that gives the step turning angle in degrees (between -180° and +180°). 
     
     :param df: dataframe with a ``step_heading`` column.
     :type df: pandas.DataFrame
-    :return: the dataframe with an additional column ``step_turning_angle`` that gives the step turning angle in degrees (between -180° and +180°). 
+    :return: the dataframe with an additional ``step_turning_angle`` column that gives the step turning angle in degrees (between -180° and +180°). 
     :rtype: pandas.DataFrame
     
     Step turning angle is computed as the difference of step heading between consecutive measures of position.
@@ -270,13 +270,13 @@ def add_step_turning_angle(df):
 def add_step_heading_to_colony(df, params):
     
     """    
-    Add to the dataframe an additional column ``step_heading_to_colony`` that gives heading to the colony in degrees. 
+    Add to the dataframe an additional ``step_heading_to_colony`` column that gives heading to the colony in degrees. 
     
     :param df: dataframe with ``longitude`` and ``latitude`` columns.
     :type df: pandas.DataFrame
     :param params: parameters dictionary.
     :type params: dict
-    :return: the dataframe with an additional column ``step_heading_to_colony`` that gives heading to the colony in degrees. 
+    :return: the dataframe with an additional ``step_heading_to_colony`` column that gives heading to the colony in degrees. 
     :rtype: pandas.DataFrame
     
     .. note::
@@ -334,13 +334,13 @@ def add_dist_to_nest(df, params):
 def add_trip(df, params):
     
     """    
-    Add to the dataframe an additional column ``trip`` that gives the trip identifier number.
+    Add to the dataframe an additional ``trip`` column that gives the trip identifier number.
     
     :param df: dataframe with ``datetime``, ``dist_to_nest``, ``step_speed`` and ``step_length`` columns.
     :type df: pandas.DataFrame
     :param params: parameters dictionary. 
     :type params: dict
-    :return: the dataframe with an additional column ``trip`` that gives the trip id number.
+    :return: the dataframe with an additional ``trip`` column that gives the trip id number.
     :rtype: pandas.DataFrame
        
     The idea is to segment the full recording of positions in foraging trips by labelling every positions with a trip id. 
@@ -455,11 +455,11 @@ def add_trip(df, params):
 def add_depth(df):
     
     """    
-    Add to the dataframe an additional column ``depth`` that gives the estimated underwater depth in meters.   
+    Add to the dataframe an additional ``depth`` column that gives the estimated underwater depth in meters.   
     
     :param df: dataframe with a ``pressure`` column in hPa.
     :type df: pandas.DataFrame
-    :return: the dataframe with an additional column ``depth`` that gives the estimated underwater depth in meters.
+    :return: the dataframe with an additional ``depth`` column that gives the estimated underwater depth in meters.
     :rtype: pandas.DataFrame
     """
     
@@ -483,13 +483,13 @@ def add_depth(df):
 def add_dive(df, params):
     
     """   
-    Add to the dataframe an additional column ``dive`` that gives the dive id number.
+    Add to the dataframe an additional ``dive`` column that gives the dive id number.
      
     :param df: dataframe with ``datetime`` and ``depth`` columns.
     :type df: pandas.DataFrame
     :param params: parameters dictionary. 
     :type params: dict
-    :return: the dataframe with an additional column ``dive`` that gives the dive id number.
+    :return: the dataframe with an additional ``dive`` column that gives the dive id number.
     :rtype: pandas.DataFrame
        
     The idea is to segment the full recording of pressure in foraging dives by labelling every measure with a dive id.
@@ -573,13 +573,13 @@ def add_dive(df, params):
 def add_filtered_acc(df, params):
     
     """    
-    Add to the dataframe the additional columns ``ax_f``, ``ay_f`` and ``az_f`` of the filtered triaxial accelerations. 
+    Add to the dataframe the additional ``ax_f``, ``ay_f`` and ``az_f`` columns of the filtered triaxial accelerations. 
     
     :param df: dataframe with ``step_time``, ``ax``, ``ay`` and ``az`` columns.
     :type df: pandas.DataFrame
     :param params: parameters dictionary. 
     :type params: dict
-    :return: the dataframe with the additional columns ``ax_f``, ``ay_f`` and ``az_f`` of the filtered triaxial accelerations.
+    :return: the dataframe with the additional ``ax_f``, ``ay_f`` and ``az_f`` columns of the filtered triaxial accelerations.
     :rtype: pandas.DataFrame
     
     Fitlered accelerations are computed as the rolling average of the dynamical acceleration over a given time window. 

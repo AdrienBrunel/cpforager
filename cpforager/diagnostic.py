@@ -13,17 +13,17 @@ import folium
 # ======================================================= # 
 def get_datetime_locator_formatter(df, custom_locator=None, custom_formatter=None):
     
-    """    
+    """
+    Get the date locator and formatter for timeserie plots.
+        
     :param df: dataframe with a ``datetime`` column.
     :type df: pandas.DataFrame
     :param custom_locator: data locator. 
     :type custom_locator: matplotlib.dates.DayLocator
     :param custom_formatter: date formatter. 
     :type custom_formatter: matplotlib.dates.DateFormatter
-    :return: the dictionary of axy infos.
-    :rtype: dict
-    
-    Return the date locator and formatter for timeserie plots.
+    :return: the date locator and formatter for timeserie plots.
+    :rtype: (matplotlib.dates.DayLocator, matplotlib.dates.DateFormatter)
     """
     
     # set datetime locator/formatter to auto values
@@ -46,15 +46,13 @@ def get_datetime_locator_formatter(df, custom_locator=None, custom_formatter=Non
 # ======================================================= #
 def plot_night(df, plot_params):
         
-    """    
+    """
+    Plot an empty timeserie with the night represented by grey rectangles. 
+    
     :param df: dataframe with ``datetime`` and ``is_night`` columns.
     :type df: pandas.DataFrame
     :param plot_params: plot parameters dictionary. 
     :type plot_params: dict
-    :return: the timeserie plot with night represented by grey rectangles.
-    :rtype: matplotlib.pyplot
-    
-    Return the timeserie plot with night represented by grey rectangles.
     """
     
     # compute index when night starts and ends
@@ -77,7 +75,9 @@ def plot_night(df, plot_params):
 # ======================================================= #        
 def plot_ts(ax, df, plot_params, var, title, var_lab, custom_locator=None, custom_formatter=None, scatter=True, hline=None, eph_cond=None):
         
-    """    
+    """
+    Plot timeserie of the dataframe column designated by the value of var.
+        
     :param ax: 
     :type ax: 
     :param df: dataframe with a ``datetime`` column.
@@ -100,10 +100,6 @@ def plot_ts(ax, df, plot_params, var, title, var_lab, custom_locator=None, custo
     :type hline: float
     :param eph_cond: condition to emphasize points.
     :type eph_cond: pandas.DataFrame
-    :return: the timeserie plot of dataframe column named var.
-    :rtype: matplotlib.pyplot
-    
-    Return the timeserie plot of dataframe column named var.
     """
     
     # plot timeserie of var in dataframe
