@@ -40,6 +40,7 @@ git clone https://github.com/AdrienBrunel/seabird-movement-cpf
 ```
 
 *(WORK IN PROGRESS)*
+<br>
 
 # User guide 
 
@@ -69,6 +70,7 @@ axy = AXY(df=df, group="my_group", id="my_id", params=params)
 <h1 align="center">
 <img src="https://github.com/AdrienBrunel/seabird-movement-cpf/blob/master/doc/_static/axy_terminal_output.png">
 </h1>
+<br>
 
 [test.py](./test/test.py) illustrates how the `GPS`, `TDR`, `AXY` and `GPS_Collection` classes should be used to fully benefit the users. Results of this script are found in the [test](./test/) folder.
 
@@ -86,6 +88,7 @@ make html
 The resulting html documentation is generated in [./doc/_build/html/](./doc/_build/html/). In order to access the entire documentation, open the [index.html](./doc/_build/html/index.html) file and enjoy!
 
 *(WORK IN PROGRESS)*
+<br>
 
 <!-- <br>
 
@@ -189,15 +192,13 @@ Constructor `AXY_Collection(axy_collection)`
 
 TO BE DONE. -->
 
-<br>
-<br>
-
 # Future developments
 - [ ] document code and produce automatically documentation using sphinx
 - [ ] create a function `merge_gps_tdr(GPS, TDR)` that will merge TDR data within GPS data and produce the resulting dataframe.
 - [ ] create a `GPS_TDR` class for biologgers with both GPS and TDR data.
 - [ ] create a `AXY_Collection` class.
 - [ ] create a `TDR_Collection` class.
+<br>
 
 # Infos
 * Python version used is 3.13.3
