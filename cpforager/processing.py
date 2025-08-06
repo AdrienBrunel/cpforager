@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-from cpforager import utils
+from cpforager import utils, constants
 from suntime import Sun
 import pytz
     
@@ -8,15 +8,13 @@ import pytz
 # ================================================================================================ #
 # ESTIMATION OF THE NEST POSITION
 # ================================================================================================ #
-def estimate_nest_position(df, params, nest_position=None, verbose=False):
+def estimate_nest_position(df, params, verbose=False):
      
     """    
     :param df: dataframe with ``longitude`` and ``latitude`` columns.
     :type df: pandas.DataFrame
     :param params: parameters dictionary. 
     :type params: dict
-    :param nest_position: nest position if known beforehand.
-    :type nest_position: array(float)
     :param verbose: display information if True.
     :type verbose: bool
     :return: the estimated nest position.
@@ -30,11 +28,13 @@ def estimate_nest_position(df, params, nest_position=None, verbose=False):
         The required fields in the parameters dictionary are :
             * ``colony`` is giving the bounding box of the colony.
             * ``nesting_speed`` is giving the speed below which we consider the bird at nest.
+            * ``nest_position`` is giving the nest position if known beforehand.
     """
     
     # get parameters
     colony = params.get("colony")
     nesting_speed = params.get("nesting_speed")
+    nest_position = params.get("nest_position")
     
     # consider only the positions inside the colony rectangle
     at_colony = ((df["longitude"] >= colony["box_longitude"][0]) &
@@ -462,8 +462,8 @@ def add_depth(df):
     """
     
     # physical constants
-    salt_water_density = 1023.6
-    earth_acceleration = 9.80665
+    salt_water_density = constants.salt_water_density
+    earth_acceleration = constants.earth_acceleration
 
     # compute depth
     p_atm = df["pressure"].median()
@@ -569,11 +569,13 @@ def add_dive(df, params):
 # ================================================================================================ #
 # FILTER ACCELERATIONS
 # ================================================================================================ #
-def add_filtered_acc(df, time_window):
+def add_filtered_acc(df, params):
     
     """    
     :param df: dataframe with ``step_time``, ``ax``, ``ay`` and ``az`` columns.
     :type df: pandas.DataFrame
+    :param params: parameters dictionary. 
+    :type params: dict
     :param time_window: duration in seconds of the window used for the rolling average.
     :type time_window: float
     :return: the dataframe with the additional ``ax_f``, ``ay_f`` and ``az_f`` columns of the filtered tri-axial accelerations.
@@ -581,7 +583,14 @@ def add_filtered_acc(df, time_window):
     
     Return the dataframe with the additional ``ax_f``, ``ay_f`` and ``az_f`` columns of the filtered tri-axial accelerations. 
     Fitlered accelerations are computed as the rolling average of the dynamical acceleration over the time window. 
+    
+    .. note::
+        The required fields in the parameters dictionary are :
+            * ``acc_time_window`` is giving the duration in seconds of the window used for the rolling average.
     """
+    
+    # get parameters
+    time_window = params.get("acc_time_window")
     
     # determine window size in number of steps
     resolution = df["step_time"].median()
@@ -603,18 +612,25 @@ def add_filtered_acc(df, time_window):
 # ================================================================================================ #
 # ODBA
 # ================================================================================================ #
-def add_odba(df, p=1): 
+def add_odba(df, params): 
         
     """    
     :param df: dataframe with ``ax``, ``ay``, ``az``, ``ax_f``, ``ay_f`` and ``az_f`` columns.
     :type df: pandas.DataFrame
-    :param p: degree of the euclidean norm.
-    :type p: float
+    :param params: parameters dictionary. 
+    :type params: dict
     :return: the dataframe with the additional ``odba`` and ``odba_f`` columns of the raw and filtered overall dynamical body acceleration.
     :rtype: pandas.DataFrame
     
     Return the dataframe with the additional ``odba`` and ``odba_f`` columns of the raw and filtered overall dynamical body acceleration.
+    
+    .. note::
+        The required fields in the parameters dictionary are :
+            * ``odba_p_norm`` is giving the p-norm used for the computation of overall dyanmical body acceleration.
     """
+    
+    # get parameters
+    p = params.get("odba_p_norm")
     
     # compute odba as the euclidean p-norm of the acceleration vector
     df["odba"] = (abs(df["ax"])**p + abs(df["ay"])**p + abs(df["az"])**p)**(1/p)
@@ -827,8 +843,8 @@ def add_axy_data(df, params):
     df = add_basic_data(df, params)
     
     # process acceleration data
-    df = add_filtered_acc(df, time_window=2)
-    df = add_odba(df, p=1)
+    df = add_filtered_acc(df, params)
+    df = add_odba(df, params)
         
     # extract data at gps resolution and add processed gps data
     gps_resolution = (df["longitude"].notna()) & (df["latitude"].notna())

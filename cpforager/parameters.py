@@ -1,3 +1,7 @@
+"""
+Module defining parameters
+"""
+
 # ======================================================= #
 # LIBRARIES
 # ======================================================= #
@@ -33,6 +37,7 @@ def get_params(colony):
         ``dist_threshold``, "distance from the nest threshold in km above which the seabird is considered in a foraging trip", "GPS"
         ``speed_threshold``, "speed threshold in km/h above which the seabird is still considered in a foraging trip despite being below the distance threshold", "GPS"
         ``nesting_speed``, "local timezone of the seabird's nest", "GPS"
+        ``nest_position``, "longitude and latitude of the seabird's nest if known", "GPS, AXY"
         ``trip_min_duration``, "duration in seconds above which a trip is valid", "GPS"
         ``trip_max_duration``, "duration in seconds below which a trip is valid", "GPS"
         ``trip_min_length``, "length in km above which a trip is valid", "GPS"
@@ -40,6 +45,8 @@ def get_params(colony):
         ``trip_min_steps``, "length in km below which a trip is valid", "GPS"
         ``diving_depth_threshold``, "depth threshold above which a seabird is considered to be diving", "TDR"
         ``dive_min_duration``, "minimum duration in seconds of a dive", "TDR"
+        ``acc_time_window``, "duration in seconds of the rolling window used for filtering dynamic acceleration", "AXY"
+        ``odba_p_norm``, "p-norm used for the computation of overall dyanmical body acceleration", "AXY"
     """        
     
     # colony parameters 
@@ -91,20 +98,24 @@ def get_params(colony):
         params_tz = {"local_tz" : "Europe/Paris"} 
     
     # cleaning parameters
-    params_cleaning = {"max_possible_speed" : 150}
+    params_cleaning = {"max_possible_speed" : 150.0}
     
     # trip segmentation parameters
-    params_segmentation = {"dist_threshold" : 2,
-                           "speed_threshold" : 5,
-                           "nesting_speed" : 1,
-                           "trip_min_duration" : 20*60,
-                           "trip_max_duration" : 14*24*60*60,
-                           "trip_min_length": 10,
-                           "trip_max_length": 10000,
+    params_segmentation = {"dist_threshold" : 2.0,
+                           "speed_threshold" : 5.0,
+                           "nesting_speed" : 1.0,
+                           "nest_position" : None,
+                           "trip_min_duration" : 20*60.0,
+                           "trip_max_duration" : 14*24*60*60.0,
+                           "trip_min_length": 10.0,
+                           "trip_max_length": 10000.0,
                            "trip_min_steps": 10}    
     
     # dives parameters    
-    params_dives = {"diving_depth_threshold" : 2, "dive_min_duration" : 2}
+    params_dives = {"diving_depth_threshold" : 2.0, "dive_min_duration" : 2.0}
+    
+    # acceleration parameters    
+    params_acc = {"acc_time_window" : 2.0, "odba_p_norm" : 1}
     
     # append dictionaries
     params = {}
@@ -113,6 +124,7 @@ def get_params(colony):
     params.update(params_cleaning)
     params.update(params_segmentation)
     params.update(params_dives)
+    params.update(params_acc)
     
     return(params)
 
