@@ -44,11 +44,26 @@ git clone https://github.com/AdrienBrunel/seabird-movement-cpf
 # User guide 
 
 1. Load the GPS/TDR/AXY raw data as a dataframe using `pandas.DataFrame`.
+```python
+df = pd.read_csv(file_path, sep=",")
+```
 2. Add a ***datetime*** column at the local timezone of type `datetime64`.
+```python
+df["datetime"] = pd.to_datetime(df["date"] + " " + df["time"], format="mixed", dayfirst=False)
+```
 3. Choose a colony code for your dataset and modify the `get_params(colony)` in [parameters.py](./cpforager/parameters.py) with the appropriate fields (see [Parameters](#Parameters "Go to Parameters section")).
 4. Generate your dictionary of parameters using the `get_params(colony)` function and your colony code.
+```python
+params = parameters.get_params(colony)
+```
 5. Create the GPS/TDR/AXY object using the class constructor. 
+```python
+gps = GPS(df=df, group=fieldwork, id=file_id, params=params)
+tdr = TDR(df=df, group=fieldwork, id=file_id, params=params)
+axy = AXY(df=df, group=fieldwork, id=file_id, params=params)
+```
 6. Enjoy the GPS/TDR/AXY attributes and built-in methods ! 
+<h1 align="center"><img src="./doc/_static/axy_terminal_output.png" width="300"></h1>
 
 [test.py](./test/test.py) illustrates how the `GPS`, `TDR`, `AXY` and `GPS_Collection` classes should be used to fully benefit the users. Results of this script are found in the [test](./test/) folder.
 
