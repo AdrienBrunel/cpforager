@@ -110,13 +110,12 @@
 <h1><span class="section-number">3.1. </span>cpforager.processing.estimate_nest_position<a class="headerlink" href="#cpforager-processing-estimate-nest-position" title="Link to this heading"></a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="cpforager.processing.estimate_nest_position">
-<span class="sig-prename descclassname"><span class="pre">cpforager.processing.</span></span><span class="sig-name descname"><span class="pre">estimate_nest_position</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nest_position</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cpforager.processing.estimate_nest_position" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">cpforager.processing.</span></span><span class="sig-name descname"><span class="pre">estimate_nest_position</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cpforager.processing.estimate_nest_position" title="Link to this definition"></a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>df</strong> (<em>pandas.DataFrame</em>) – dataframe with <code class="docutils literal notranslate"><span class="pre">longitude</span></code> and <code class="docutils literal notranslate"><span class="pre">latitude</span></code> columns.</p></li>
 <li><p><strong>params</strong> (<em>dict</em>) – parameters dictionary.</p></li>
-<li><p><strong>nest_position</strong> (<em>array</em><em>(</em><em>float</em><em>)</em>) – nest position if known beforehand.</p></li>
 <li><p><strong>verbose</strong> (<em>bool</em>) – display information if True.</p></li>
 </ul>
 </dd>
@@ -136,6 +135,7 @@ at the center of the colony.</p>
 <dt>The required fields in the parameters dictionary are :</dt><dd><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">colony</span></code> is giving the bounding box of the colony.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">nesting_speed</span></code> is giving the speed below which we consider the bird at nest.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nest_position</span></code> is giving the nest position if known beforehand.</p></li>
 </ul>
 </dd>
 </dl>

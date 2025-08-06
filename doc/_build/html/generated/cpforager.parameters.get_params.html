@@ -138,33 +138,45 @@ dictionary of parameters according to a specific dataset. Find below the exhaust
 <td><p>local timezone of the seabird’s nest</p></td>
 <td><p>GPS</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trip_min_duration</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">nest_position</span></code></p></td>
+<td><p>longitude and latitude of the seabird’s nest if known</p></td>
+<td><p>GPS, AXY</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trip_min_duration</span></code></p></td>
 <td><p>duration in seconds above which a trip is valid</p></td>
 <td><p>GPS</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trip_max_duration</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trip_max_duration</span></code></p></td>
 <td><p>duration in seconds below which a trip is valid</p></td>
 <td><p>GPS</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trip_min_length</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trip_min_length</span></code></p></td>
 <td><p>length in km above which a trip is valid</p></td>
 <td><p>GPS</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trip_max_length</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trip_max_length</span></code></p></td>
 <td><p>length in km below which a trip is valid</p></td>
 <td><p>GPS</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trip_min_steps</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trip_min_steps</span></code></p></td>
 <td><p>length in km below which a trip is valid</p></td>
 <td><p>GPS</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">diving_depth_threshold</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">diving_depth_threshold</span></code></p></td>
 <td><p>depth threshold above which a seabird is considered to be diving</p></td>
 <td><p>TDR</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">dive_min_duration</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">dive_min_duration</span></code></p></td>
 <td><p>minimum duration in seconds of a dive</p></td>
 <td><p>TDR</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">acc_time_window</span></code></p></td>
+<td><p>duration in seconds of the rolling window used for filtering dynamic acceleration</p></td>
+<td><p>AXY</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">odba_p_norm</span></code></p></td>
+<td><p>p-norm used for the computation of overall dyanmical body acceleration</p></td>
+<td><p>AXY</p></td>
 </tr>
 </tbody>
 </table>

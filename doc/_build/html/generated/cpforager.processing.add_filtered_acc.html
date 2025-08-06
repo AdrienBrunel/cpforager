@@ -110,11 +110,12 @@
 <h1><span class="section-number">3.13. </span>cpforager.processing.add_filtered_acc<a class="headerlink" href="#cpforager-processing-add-filtered-acc" title="Link to this heading"></a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="cpforager.processing.add_filtered_acc">
-<span class="sig-prename descclassname"><span class="pre">cpforager.processing.</span></span><span class="sig-name descname"><span class="pre">add_filtered_acc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_window</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cpforager.processing.add_filtered_acc" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">cpforager.processing.</span></span><span class="sig-name descname"><span class="pre">add_filtered_acc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cpforager.processing.add_filtered_acc" title="Link to this definition"></a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>df</strong> (<em>pandas.DataFrame</em>) – dataframe with <code class="docutils literal notranslate"><span class="pre">step_time</span></code>, <code class="docutils literal notranslate"><span class="pre">ax</span></code>, <code class="docutils literal notranslate"><span class="pre">ay</span></code> and <code class="docutils literal notranslate"><span class="pre">az</span></code> columns.</p></li>
+<li><p><strong>params</strong> (<em>dict</em>) – parameters dictionary.</p></li>
 <li><p><strong>time_window</strong> (<em>float</em>) – duration in seconds of the window used for the rolling average.</p></li>
 </ul>
 </dd>
@@ -127,6 +128,15 @@
 </dl>
 <p>Return the dataframe with the additional <code class="docutils literal notranslate"><span class="pre">ax_f</span></code>, <code class="docutils literal notranslate"><span class="pre">ay_f</span></code> and <code class="docutils literal notranslate"><span class="pre">az_f</span></code> columns of the filtered tri-axial accelerations. 
 Fitlered accelerations are computed as the rolling average of the dynamical acceleration over the time window.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<dl class="simple">
+<dt>The required fields in the parameters dictionary are :</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">acc_time_window</span></code> is giving the duration in seconds of the window used for the rolling average.</p></li>
+</ul>
+</dd>
+</dl>
+</div>
 </dd></dl>
 
 </section>
