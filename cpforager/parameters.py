@@ -1,7 +1,3 @@
-"""
-Module defining parameters
-"""
-
 # ======================================================= #
 # LIBRARIES
 # ======================================================= #
@@ -111,10 +107,10 @@ def get_params(colony):
                            "trip_max_length": 10000.0,
                            "trip_min_steps": 10}    
     
-    # dives parameters    
+    # dive segmentation parameters
     params_dives = {"diving_depth_threshold" : 2.0, "dive_min_duration" : 2.0}
     
-    # acceleration parameters    
+    # acceleration filtering parameters    
     params_acc = {"acc_time_window" : 2.0, "odba_p_norm" : 1}
     
     # append dictionaries

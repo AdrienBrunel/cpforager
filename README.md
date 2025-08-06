@@ -13,9 +13,9 @@ Are you a scientist involved in movement ecology working with biologging data co
 <br>
 
 The main objectives of **cpforager** package are :  
-1. Efficiently handle large-scale biologging datasets, including high-resolution sensor data.
-2. Provide a modular and extensible architecture, allowing users to tailor the code to specific research needs.
-3. Facilitate a smooth transition to Python for movement ecology researchers familiar with other languages (*e.g.*, R).
+1. Efficiently handle large-scale biologging datasets, including high-resolution sensor data (*e.g.* accelerometers).
+2. Provide a modular and extensible architecture, allowing users to tailor the code to their specific research needs.
+3. Facilitate a smooth transition to Python for movement ecology researchers familiar with other languages (*e.g.* R).
 
 <br>
 
@@ -32,7 +32,7 @@ Each class automatically enhances raw data but also computes key features specif
 <br>
 <br>
 
-# Installation
+<!-- # Installation
 
 First, clone this repository:
 ```bash
@@ -41,7 +41,7 @@ git clone https://github.com/AdrienBrunel/seabird-movement-cpf
 
 *(WORK IN PROGRESS)*
 
-<br>
+<br> -->
 
 # User guide 
 
