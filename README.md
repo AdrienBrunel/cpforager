@@ -32,53 +32,27 @@ Each class automatically enhances raw data but also computes key features specif
 <br>
 <br>
 
-<!-- # Installation
+# Installation
 
-First, clone this repository:
+1. Clone this repository on your local machine :
 ```bash
 git clone https://github.com/AdrienBrunel/seabird-movement-cpf
 ```
-python install/conda load environment/open main/load your data
-*(WORK IN PROGRESS)*
 
-<br> -->
+2. Create a conda environment using the [environment.yml](environment.yml) file :
+```bash
+conda env create --name seabird-movement-cpf --file environment.yml
+```
 
-# User guide 
+3. Open the [main.py](main.py) or [test.py](./test/test.py) file and start running line by line to check that everything is working.
 
-1. Load the GPS/TDR/AXY raw data as a dataframe.
-```python
-df = pandas.DataFrame.read_csv(file_path, sep=",")
-```
-2. Add a ***datetime*** column at the local timezone of type `datetime64`.
-```python
-df["datetime"] = pandas.DataFrame.to_datetime(df["date"] + " " + df["time"], format="mixed", dayfirst=False)
-```
-3. Choose a colony code for your dataset and modify the `get_params(colony)` in [parameters.py](./cpforager/parameters.py) accordingly (see documentation for more details).
-```python
-colony = "my_colony_code"
-```
-4. Generate your parameters dictionary using the `get_params(colony)` function and your colony code.
-```python
-params = parameters.get_params(colony)
-```
-5. Create the GPS/TDR/AXY object using the class constructor. 
-```python
-gps = GPS(df=df, group="my_group", id="my_id", params=params)
-tdr = TDR(df=df, group="my_group", id="my_id", params=params)
-axy = AXY(df=df, group="my_group", id="my_id", params=params)
-```
-6. Enjoy the GPS/TDR/AXY attributes and built-in methods !
-<h1 align="center">
-<img src="https://github.com/AdrienBrunel/seabird-movement-cpf/blob/master/doc/_static/axy_terminal_output.png">
-</h1>
-
-[test.py](./test/test.py) illustrates how the `GPS`, `TDR`, `AXY` and `GPS_Collection` classes should be used to fully benefit the users. Results of this script are found in the [test](./test/) folder.
+4. Load your raw data in the [data/](./data/) folder,  create your own script and enjoy :) 
 
 <br>
 
 # Documentation
 
-Using [Sphinx](https://www.sphinx-doc.org/en/master/index.html), the package documentation is automatically produced with these command lines :
+Using [Sphinx](https://www.sphinx-doc.org/en/master/index.html), the entire documentation of **cpforager** package is automatically generated with the following command lines :
 
 ```bash
 cd doc/
@@ -87,114 +61,18 @@ rm -rfv generated/
 make html
 ```
 
-The resulting html documentation is generated in [./doc/_build/html/](./doc/_build/html/). In order to access and browse the entire documentation, download the folder and open the [index.html](./doc/_build/html/index.html) file.
+The resulting html documentation is generated in the [./doc/_build/html/](./doc/_build/html/) folder. In order to browse the entire documentation, you just have to double-click on the [index.html](./doc/_build/html/index.html) file.
 
 <br>
 
-<!-- <br>
+# User guide 
 
-# Parameters 
-* In [parameters.py](./cpforager/parameters.py), the `get_params(colony)` function produces a dictionary of parameters. This dictionary is required as an argument in the `GPS`, `TDR`, `AXY` and `GPS_Collection` classes. Users can modify the following parameters :
-
-name                        | description           | class
---------------------------- | ----------------------| ----------------------
-`colony`                    | longitude/latitude bounding box inside which the searbird's nest is to be found. | GPS
-`local_tz`                  | local timezone of the seabird's nest. | GPS, TDR, AXY
-`max_possible_speed`        | speed threshold in km/h above which a longitude/latitude measure can be considered as an error and will be deleted. | GPS
-`dist_threshold`            | distance from the nest threshold in km above which the seabird is considered in a foraging trip. | GPS
-`speed_threshold`           | speed threshold in km/h above which the seabird is still considered in a foraging trip despite being below the distance threshold. | GPS
-`nesting_speed`             | speed threshold in km/h below which the seabird is considered at nest. | GPS
-`trip_min_duration`         | duration in seconds above which a trip is valid. | GPS
-`trip_max_duration`         | duration in seconds below which a trip is valid. | GPS
-`trip_min_length`           | length in km above which a trip is valid. | GPS
-`trip_max_length`           | length in km below which a trip is valid. | GPS
-`trip_min_steps`            | number of steps above which a trip is valid. | GPS
-`diving_depth_threshold`    | set the depth threshold above which a seabird is considered to be diving. | TDR
-`dive_min_duration`         | set the minimum duration in seconds of a dive for the considered seabird. | TDR
+The script [test.py](./test/test.py) illustrates how the `GPS`, `TDR`, `AXY` and `GPS_Collection` classes should be used to fully benefit the users. Results of the methods called within the script are found in the [test](./test/) folder. For more details, you can browse the package documentation.
 
 <br>
-
-# GPS
-Constructor `GPS(df, group, id, params)` : 
-* `df` is a pandas DataFrame containing ***datetime***, ***longitude*** and ***latitude*** columns. The user must input the ***datetime*** at the local timezone and converted to `datetime64` type (see [test.py](./test/test.py)).
-* `group` is a string representing the group to which the data belongs (year, fieldwork, specie, etc.) which can be relevant for future statistics.
-* `id` is a string representing the unique identifier of the central-place foraging seabird.
-* `params` is the list of parameters that should at least include the fields present in parameters.py.
-
-The resulting GPS object adds step metrics to the initial DataFrame but also provides the central-place foraging trip statistics. See the documentation for more details.
-
-methods                | description
----------------------- | ----------------------
-`display_data_summary` | display a summary of the GPS data.
-`full_diag`            | produce a full png diagnostic showing the GPS data.
-`maps_diag`            | produce the png maps showing the GPS data.
-`folium_map`           | produce the html map showing the GPS data.
-`folium_map_wtrips`    | produce the html map showing the GPS data with trip colors.
-`folium_map_colorgrad` | produce the html map showing the GPS data with a speed color gradient.
-`interpolate_lat_lon`  | produce the interpolated dataframe along a desired datetime numpy array.
-
-# TDR
-Constructor `TDR(df, group, id, params)` : 
-* `df` is a pandas DataFrame containing ***datetime***, ***pressure*** and ***temperature*** columns. The user must input the ***datetime*** at the local timezone and converted to `datetime64` type (see [test.py](./test/test.py)).
-* `group` is a string representing the group to which the data belongs (year, fieldwork, specie, etc.) which can be relevant for future statistics.
-* `id` is a string representing the unique identifier of the central-place foraging seabird.
-* `params` is the list of parameters that should at least include the fields present in [parameters.py](./cpforager/parameters.py).
-
-The resulting TDR object adds segmented dives to the initial DataFrame. See the documentation for more details.
-
-methods                | description
----------------------- | ----------------------
-`display_data_summary` | display a summary of the TDR data.
-`full_diag`            | produce a full png diagnostic showing the TDR data.
-
-# AXY
-Constructor `AXY(df, group, id, params)` : 
-* `df` is a pandas DataFrame containing ***datetime***, ***longitude***, ***latitude***, ***ax***, ***ay*** and ***az*** columns. The user must input the ***datetime*** at the local timezone and converted to `datetime64` type (see [test.py](./test/test.py)).
-* `group` is a string representing the group to which the data belongs (year, fieldwork, specie, etc.) which can be relevant for future statistics.
-* `id` is a string representing the unique identifier of the central-place foraging seabird.
-* `params` is the list of parameters that should at least include the fields present in [parameters.py](./cpforager/parameters.py).
-
-The resulting AXY object adds step metrics to the initial DataFrame and accelerations metrics (*e.g.* ODBA), but also provides the central-place foraging trip statistics. See the documentation for more details.
-
-methods                | description
----------------------- | ----------------------
-`display_data_summary` | display a summary of the AXY data.
-`full_diag`            | produce a full png diagnostic showing the AXY data.
-`maps_diag`            | produce the png maps showing the GPS data.
-`folium_map`           | produce the html map showing the GPS data.
-`folium_map_wtrips`    | produce the html map showing the GPS data with trip colors.
-`folium_map_colorgrad` | produce the html map showing the GPS data with a speed color gradient.
-
-<br>
-
-# GPS_Collection
-Constructor `GPS_Collection(gps_collection)`
-* `gps_collection` is an array of GPS object.
-
-The resulting GPS_Collection object allows to handle several GPS biologgers at once to produce overall central-place foraging trip statistics and relevant plots. See the documentation for more details.
-
-methods                | description
----------------------- | ----------------------
-`display_data_summary` | display a summary of the GPS collection.
-`plot_stats_summary`   | produce the png showing the trip statistics of the GPS collection.
-`maps_diag`            | produce the png map showing all the trips in the GPS collection.
-`folium_map`           | produce the html map showing all the trips in the GPS collection.
-
-
-# TDR_Collection
-Constructor `TDR_Collection(tdr_collection)`
-* `tdr_collection` is an array of TDR object.
-
-TO BE DONE.
-
-# AXY_Collection
-Constructor `AXY_Collection(axy_collection)`
-* `axy_collection` is an array of AXY object.
-
-TO BE DONE. -->
 
 # Future developments
-- [ ] document code and produce automatically documentation using sphinx
+- [ ] improve documentation
 - [ ] create a function `merge_gps_tdr(GPS, TDR)` that will merge TDR data within GPS data and produce the resulting dataframe.
 - [ ] create a `GPS_TDR` class for biologgers with both GPS and TDR data.
 - [ ] create a `AXY_Collection` class.
