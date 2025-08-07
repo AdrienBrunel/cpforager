@@ -72,11 +72,19 @@ The script [test.py](./test/test.py) illustrates how the `GPS`, `TDR`, `AXY` and
 <br>
 
 # Future developments
-- [ ] improve documentation
+- [ ] improve documentation (add images of test results, uniformize, add logo)
 - [ ] create a function `merge_gps_tdr(GPS, TDR)` that will merge TDR data within GPS data and produce the resulting dataframe.
 - [ ] create a `GPS_TDR` class for biologgers with both GPS and TDR data.
 - [ ] create a `AXY_Collection` class.
 - [ ] create a `TDR_Collection` class.
+- [ ] add a test block where gps data is cutted by trip and written as csv.
+- [ ] add a test block where gps data are read from SeabirdTracking Database.
+- [ ] add a method to_SeabirdTracking() in `GPS_Collection`.
+- [ ] add a `fast=True` argument to the full_diag() method of `AXY`.
+- [ ] find out how fully benefit from `GPS` and `TDR` methods in `AXY` (*e.g.* display, diagnostic).
+- [ ] nb_dives --> n_dives and n_trip --> n_trips.
+- [ ] correction associated to remove_suspicious() bug in `AXY`.
+- [ ] emphasize dives on the GPS_TDR plots.
 
 <br>
 
