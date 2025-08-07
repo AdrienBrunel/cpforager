@@ -62,7 +62,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../diagnostic.html">4. Plots</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../utils.html">5. Utils</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../misc.html">6. Miscellaneous</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../example.html">7. Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples.html">7. Examples</a></li>
 </ul>
 
         </div>
@@ -99,34 +99,84 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="cpforager.AXY.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df=&lt;class</span> <span class="pre">'pandas.core.frame.DataFrame'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group=&lt;class</span> <span class="pre">'str'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id=&lt;class</span> <span class="pre">'str'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params=&lt;class</span> <span class="pre">'dict'&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cpforager.AXY.__init__" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Constructor of an AXY object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pandas.DataFrame</em>) – the dataframe containing <code class="docutils literal notranslate"><span class="pre">datetime</span></code>, <code class="docutils literal notranslate"><span class="pre">ax</span></code>, <code class="docutils literal notranslate"><span class="pre">ay</span></code>, <code class="docutils literal notranslate"><span class="pre">az</span></code>, <code class="docutils literal notranslate"><span class="pre">longitude</span></code>, <code class="docutils literal notranslate"><span class="pre">latitude</span></code>, <code class="docutils literal notranslate"><span class="pre">pressure</span></code> and <code class="docutils literal notranslate"><span class="pre">temperature</span></code> columns. Type of <code class="docutils literal notranslate"><span class="pre">datetime</span></code> column must be datetime64.</p></li>
+<li><p><strong>group</strong> (<em>str</em>) – the string representing the group to which the AXY data belongs (<em>e.g.</em> species, year, fieldwork, <em>etc</em>.) useful for statistics and filtering.</p></li>
+<li><p><strong>id</strong> (<em>str</em>) – the string representing the unique identifier of the central-place foraging seabird.</p></li>
+<li><p><strong>params</strong> (<em>dict</em>) – the parameters dictionary.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Variables<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>df</strong> – the dataframe containing the raw and processed AXY data.</p></li>
+<li><p><strong>group</strong> – The string representing the group to which the AXY data belongs (<em>e.g.</em> species, year, fieldwork, <em>etc</em>.) useful for statistics and filtering.</p></li>
+<li><p><strong>id</strong> – The string representing the unique identifier of the central-place foraging seabird.</p></li>
+<li><p><strong>params</strong> – The dictionary containing the parameters used for the AXY data processing.</p></li>
+<li><p><strong>df_gps</strong> – the dataframe containing AXY data at GPS resolution.</p></li>
+<li><p><strong>n_df_gps</strong> – the number of GPS measures.</p></li>
+<li><p><strong>gps</strong> – the GPS object of AXY data at GPS resolution.</p></li>
+<li><p><strong>df_tdr</strong> – the dataframe containing AXY data at TDR resolution.</p></li>
+<li><p><strong>n_df_tdr</strong> – the number of TDR measures.</p></li>
+<li><p><strong>n_df</strong> – the number of measures in the AXY recording.</p></li>
+<li><p><strong>start_datetime</strong> – the starting datetime of the AXY recording.</p></li>
+<li><p><strong>end_datetime</strong> – the ending datetime of the AXY recording.</p></li>
+<li><p><strong>frequency</strong> – the frequency of the AXY data in Hz.</p></li>
+<li><p><strong>total_duration</strong> – the total duration of the AXY recording in days.</p></li>
+<li><p><strong>gps_resolution</strong> – the time resolution of the GPS data.</p></li>
+<li><p><strong>total_length</strong> – the total length of the AXY recording in kilometers.</p></li>
+<li><p><strong>dmax</strong> – the maximum distance to the nest reached by the central place-foraging seabird.</p></li>
+<li><p><strong>n_trip</strong> – the number of foraging trips realised by the seabird.</p></li>
+<li><p><strong>nest_position</strong> – the longitude and latitude of the estimated nest position.</p></li>
+<li><p><strong>trip_statistics</strong> – the dataframe containing the trip statistics where one row corresponds to one foraging trip.</p></li>
+<li><p><strong>tdr_resolution</strong> – the time resolution of the TDR data.</p></li>
+<li><p><strong>nb_dives</strong> – the number of dives realised by the seabird.</p></li>
+<li><p><strong>median_pressure</strong> – the median pressure in hPa.</p></li>
+<li><p><strong>median_depth</strong> – the median depth in meters.</p></li>
+<li><p><strong>max_depth</strong> – the maximum depth in meters.</p></li>
+<li><p><strong>mean_temperature</strong> – the mean temperature in °C.</p></li>
+<li><p><strong>dive_statistics</strong> – the dataframe containing the dive statistics where one row corresponds to one dive.</p></li>
+<li><p><strong>max_odba</strong> – the maximum overall dynamical body acceleration.</p></li>
+<li><p><strong>median_odba</strong> – the median overall dynamical body acceleration.</p></li>
+<li><p><strong>max_odba_f</strong> – the maximum filtered overall dynamical body acceleration.</p></li>
+<li><p><strong>median_odba_f</strong> – the median filtered overall dynamical body acceleration.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<p>Better organise attributes and add TDR object as a field. Improve methods to benefit from the GPS and TDR methods (<em>e.g.</em> display)</p>
+</div>
+</dd></dl>
 
 <p class="rubric">Methods</p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#cpforager.AXY.__init__" title="cpforager.AXY.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>([df, group, id, params])</p></td>
-<td><p></p></td>
+<td><p>Constructor of an AXY object.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">display_data_summary</span></code>()</p></td>
-<td><p></p></td>
+<td><p>Print in terminal the AXY data summary.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">folium_map</span></code>([fig_dir, file_id])</p></td>
-<td><p></p></td>
+<td><p>Produce the html map of the GPS data.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">folium_map_colorgrad</span></code>([fig_dir, file_id, ...])</p></td>
-<td><p></p></td>
+<td><p>Produce the html map of the GPS data with a speed color gradient.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">folium_map_wtrips</span></code>([fig_dir, file_id, ...])</p></td>
-<td><p></p></td>
+<td><p>Produce the html map of the GPS data colored by trips.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">full_diag</span></code>([fig_dir, file_id, plot_params])</p></td>
-<td><p></p></td>
+<td><p>Produce the full diagnostic of the AXY data.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">interpolate_lat_lon</span></code>(interp_datetime[, add_proxy])</p></td>
-<td><p></p></td>
+<td><p>Interpolate longitude and latitude at a given datetime.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">maps_diag</span></code>([fig_dir, file_id, plot_params])</p></td>
-<td><p></p></td>
+<td><p>Produce the maps of the GPS data.</p></td>
 </tr>
 </tbody>
 </table>

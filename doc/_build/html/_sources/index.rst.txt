@@ -8,7 +8,7 @@ cpforager documentation
 
    .. only:: html
       
-      .. image:: _static/logo_tmp.JPG
+      .. image:: _static/images/logo_tmp.JPG
          :width: 250 px
          :align: center
 
@@ -23,4 +23,4 @@ cpforager documentation
       diagnostic.rst
       utils.rst
       misc.rst
-      example.rst
+      examples.rst

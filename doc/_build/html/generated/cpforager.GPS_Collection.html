@@ -62,7 +62,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../diagnostic.html">4. Plots</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../utils.html">5. Utils</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../misc.html">6. Miscellaneous</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../example.html">7. Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples.html">7. Examples</a></li>
 </ul>
 
         </div>
@@ -95,28 +95,44 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="cpforager.GPS_Collection">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cpforager.</span></span><span class="sig-name descname"><span class="pre">GPS_Collection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gps_collection</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">list[cpforager.gps.gps.GPS]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cpforager.GPS_Collection" title="Link to this definition"></a></dt>
-<dd><dl class="py method">
+<dd><p>A class to represent a list of GPS data of a central-place foraging seabird.</p>
+<dl class="py method">
 <dt class="sig sig-object py" id="cpforager.GPS_Collection.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gps_collection</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">list[cpforager.gps.gps.GPS]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cpforager.GPS_Collection.__init__" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Constructor of a GPS_Collection object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>gps_collection</strong> (<em>list</em><em>[</em><a class="reference internal" href="cpforager.GPS.html#cpforager.GPS" title="cpforager.GPS"><em>cpforager.GPS</em></a><em>]</em>) – the list of GPS.</p>
+</dd>
+<dt class="field-even">Variables<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>gps_collection</strong> – the list of GPS.</p></li>
+<li><p><strong>n_gps</strong> – the total number of GPS included in the list.</p></li>
+<li><p><strong>n_trip</strong> – the number of trips summed over every GPS included in the list.</p></li>
+<li><p><strong>trip_statistics_all</strong> – the trip statistics dataframe merged over every GPS included in the list.</p></li>
+<li><p><strong>df_all</strong> – the enhanced GPS dataframe merged over every GPS included in the list.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <p class="rubric">Methods</p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#cpforager.GPS_Collection.__init__" title="cpforager.GPS_Collection.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>([gps_collection])</p></td>
-<td><p></p></td>
+<td><p>Constructor of a GPS_Collection object.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">display_data_summary</span></code>()</p></td>
-<td><p></p></td>
+<td><p>Print in terminal the GPS_Collection data summary.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">folium_map</span></code>([fig_dir, file_id])</p></td>
-<td><p></p></td>
+<td><p>Produce the html map with every GPS data colored randomly.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">maps_diag</span></code>([fig_dir, file_id, plot_params])</p></td>
-<td><p></p></td>
+<td><p>Produce the maps with every GPS data.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_stats_summary</span></code>([fig_dir, file_id, ...])</p></td>
-<td><p></p></td>
+<td><p>Produce the trip statistics summary of every GPS data.</p></td>
 </tr>
 </tbody>
 </table>

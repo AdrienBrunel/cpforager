@@ -72,7 +72,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../utils.html">5. Utils</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../misc.html">6. Miscellaneous</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../example.html">7. Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples.html">7. Examples</a></li>
 </ul>
 
         </div>
@@ -105,7 +105,29 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="cpforager.diagnostic.plot_map_colorgrad">
 <span class="sig-prename descclassname"><span class="pre">cpforager.diagnostic.</span></span><span class="sig-name descname"><span class="pre">plot_map_colorgrad</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color_palette</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nest_lon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nest_lat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q_th</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zoom</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cpforager.diagnostic.plot_map_colorgrad" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Plot map of the trajectory with a color gradient along the column designated by the value of var.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ax</strong> (<em>matplotlib.Axes</em>) – plot axes.</p></li>
+<li><p><strong>df</strong> (<em>pandas.DataFrame</em>) – dataframe with <code class="docutils literal notranslate"><span class="pre">longitude</span></code>, <code class="docutils literal notranslate"><span class="pre">latitude</span></code> columns and the column designated by the value of var.</p></li>
+<li><p><strong>params</strong> (<em>dict</em>) – parameters dictionary.</p></li>
+<li><p><strong>plot_params</strong> (<em>dict</em>) – plot parameters dictionary.</p></li>
+<li><p><strong>var</strong> (<em>str</em>) – name of the column in df.</p></li>
+<li><p><strong>color_palette</strong> (<em>array</em><em>(</em><em>[</em><em>float</em><em>, </em><em>float</em><em>, </em><em>float</em><em>]</em><em>)</em>) – continuous color palette.</p></li>
+<li><p><strong>nest_lon</strong> (<em>float</em>) – nest longitude.</p></li>
+<li><p><strong>nest_lat</strong> (<em>float</em>) – nest latitude.</p></li>
+<li><p><strong>title</strong> (<em>str</em>) – plot title.</p></li>
+<li><p><strong>q_th</strong> (<em>float</em>) – quantile max threshold for coloring.</p></li>
+<li><p><strong>zoom</strong> (<em>float</em>) – zooming factor around nest.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The required fields in the parameters dictionary are <code class="docutils literal notranslate"><span class="pre">colony</span></code>.</p>
+</div>
+</dd></dl>
 
 </section>
 
