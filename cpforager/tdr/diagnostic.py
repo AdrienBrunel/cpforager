@@ -11,6 +11,21 @@ import matplotlib.pyplot as plt
 # ======================================================= #
 def full_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict):   
     
+    """    
+    Produce the full diagnostic of the TDR data.
+    
+    :param self: a TDR object
+    :type self: cpforager.TDR
+    :param fig_dir: figure saving directory.
+    :type fig_dir: str
+    :param file_id: name of the saved figure.
+    :type file_id: str
+    :param plot_params: plot parameters dictionary. 
+    :type plot_params: dict
+    :return: the full diagnostic figure.
+    :rtype: matplotlib.pyplot.Figure 
+    """
+    
     # get attributes
     df = self.df
     group = self.group

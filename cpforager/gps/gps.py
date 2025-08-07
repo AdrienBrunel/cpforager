@@ -7,7 +7,7 @@ from cpforager.gps import diagnostic, display, interpolation
 
 
 # ======================================================= #
-# BIOLOGGER SUPER-CLASS
+# GPS CLASS
 # ======================================================= #
 class GPS:
 
@@ -17,61 +17,47 @@ class GPS:
 
     # [CONSTRUCTOR] GPS
     def __init__(self, df=pd.DataFrame, group=str, id=str, params=dict):
+        
         """
-        Parameters
-        ----------
-        df : pandas.DataFrame
-            The dataframe containing "datetime", "longitude" and "latitude" columns. Type of "datetime" column must be converted to datetime64.
-        group : str
-            The string representing the group to which the GPS data belongs (*e.g.* species, year, fieldwork, *etc*.) useful for statistics and filtering.
-        id : str
-            The string representing the unique identifier of the central-place foraging seabird.
-        params : dict
-            The dictionary of parameters.
-            
-        Attributes
-        ----------
-        df : pandas.DataFrame
-            The dataframe containing the raw and processed GPS data.
-        group : str
-            The string representing the group to which the GPS data belongs (*e.g.* species, year, fieldwork, *etc*.) useful for statistics and filtering.
-        id : str
-            The string representing the unique identifier of the central-place foraging seabird.
-        params : dict
-            The dictionary containing the parameters used for the GPS data processing.
-        n_df : int
-            The number of measures in the GPS recording.
-        start_datetime : datetime.datetime
-            The starting datetime of the GPS recording.
-        end_datetime : datetime.datetime
-            The ending datetime of the GPS recording.
-        resolution : float
-            The time resolution of the GPS data in seconds estimated as the median value of the step times.
-        total_duration : float
-            The total duration of the GPS recording in days.
-        total_length : float
-            The total length of the GPS recording in kilometers.
-        dmax : float
-            The maximum distance to the nest reached by the central place-foraging seabird.
-        n_trip : int
-            The number of foraging trips realised by the seabird.
-        nest_position : [float, float]
-            The longitude and latitude of the estimated nest position.
-        trip_statistics : pandas.DataFrame
-            The dataframe containing the trip statistics where one row corresponds to one foraging trip.
-
-        Methods
-        -------
-        display_data_summary()
-            Prints the GPS data summary.
-        full_diag()
-            Produces the full diagnostic of the GPS data.
-        maps_diag()
-            Produces the maps of the GPS data.
-        folium_map()
-            Produces the html map of the GPS data.
-        folium_map_colorgrad()
-            Produces the html map of the GPS data with a speed color gradient.
+        Constructor of a GPS object.
+        
+        :param df: the dataframe containing ``datetime``, ``longitude`` and ``latitude`` columns. Type of ``datetime`` column must be datetime64.
+        :type df: pandas.DataFrame
+        :param group: the string representing the group to which the GPS data belongs (*e.g.* species, year, fieldwork, *etc*.) useful for statistics and filtering.
+        :type group: str
+        :param id: the string representing the unique identifier of the central-place foraging seabird.
+        :type id: str
+        :param params: the parameters dictionary.
+        :type params: dict
+        
+        :ivar df: the dataframe containing the raw and processed GPS data.
+        :type df: pandas.DataFrame
+        :ivar group: The string representing the group to which the GPS data belongs (*e.g.* species, year, fieldwork, *etc*.) useful for statistics and filtering.
+        :type group: str
+        :ivar id: The string representing the unique identifier of the central-place foraging seabird.
+        :type id: str
+        :ivar params: The dictionary containing the parameters used for the GPS data processing.
+        :type params: dict
+        :ivar n_df: the number of measures in the GPS recording.
+        :type n_df: int
+        :ivar start_datetime:  the starting datetime of the GPS recording.
+        :type start_datetime: datetime.datetime
+        :ivar end_datetime: the ending datetime of the GPS recording.
+        :type end_datetime: datetime.datetime
+        :ivar resolution: the time resolution of the GPS data in seconds estimated as the median value of the step times.
+        :type resolution: float
+        :ivar total_duration: the total duration of the GPS recording in days.
+        :type total_duration: float
+        :ivar total_length: the total length of the GPS recording in kilometers.
+        :type total_length: float
+        :ivar dmax: the maximum distance to the nest reached by the central place-foraging seabird.
+        :type dmax: float
+        :ivar n_trip: the number of foraging trips realised by the seabird.
+        :type n_trip: int
+        :ivar nest_position: the longitude and latitude of the estimated nest position.
+        :type nest_position: [float, float]
+        :ivar trip_statistics: the dataframe containing the trip statistics where one row corresponds to one foraging trip.
+        :type trip_statistics: pandas.DataFrame        
         """
         
         # process data

@@ -12,6 +12,23 @@ import cartopy.crs as ccrs
 # ======================================================= #
 def full_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict):   
     
+    """    
+    Produce the full diagnostic of the GPS data.
+    
+    :param self: a GPS object
+    :type self: cpforager.GPS
+    :param fig_dir: figure saving directory.
+    :type fig_dir: str
+    :param file_id: name of the saved figure.
+    :type file_id: str
+    :param plot_params: plot parameters dictionary. 
+    :type plot_params: dict
+    :return: the full diagnostic figure.
+    :rtype: matplotlib.pyplot.Figure 
+    
+    The figure is save at the png format.
+    """
+    
     # get parameters
     cols_1 = plot_params.get("cols_1")
     cols_2 = plot_params.get("cols_2")
@@ -135,13 +152,30 @@ def full_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict):
     fig.clear()
     plt.close(fig)
     
-    return fig
+    return(fig)
 
 
 # ======================================================= #
 # GPS MAPS DIAG [GPS METHOD]
 # ======================================================= #
 def maps_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict):
+    
+    """    
+    Produce the maps of the GPS data.
+    
+    :param self: a GPS object
+    :type self: cpforager.GPS
+    :param fig_dir: figure saving directory.
+    :type fig_dir: str
+    :param file_id: name of the saved figure.
+    :type file_id: str
+    :param plot_params: plot parameters dictionary. 
+    :type plot_params: dict
+    :return: the full diagnostic figure.
+    :rtype: matplotlib.pyplot.Figure 
+    
+    The figure is save at the png format.
+    """
     
     # get parameters
     cols_1 = plot_params.get("cols_1")
@@ -196,6 +230,21 @@ def maps_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict):
 # GPS FOLIUM MAP [GPS METHOD]
 # ======================================================= #
 def folium_map(self, fig_dir=str, file_id=str):
+        
+    """    
+    Produce the html map of the GPS data.
+    
+    :param self: a GPS object
+    :type self: cpforager.GPS
+    :param fig_dir: figure saving directory.
+    :type fig_dir: str
+    :param file_id: name of the saved figure.
+    :type file_id: str
+    :return: the folium map.
+    :rtype: folium.Map
+
+    The figure is save at the html format.
+    """
     
     # get attributes
     params = self.params
@@ -215,6 +264,23 @@ def folium_map(self, fig_dir=str, file_id=str):
 # GPS FOLIUM MAP [GPS METHOD]
 # ======================================================= #
 def folium_map_wtrips(self, fig_dir=str, file_id=str, plot_params=dict):
+    
+    """    
+    Produce the html map of the GPS data colored by trips.
+    
+    :param self: a GPS object
+    :type self: cpforager.GPS
+    :param fig_dir: figure saving directory.
+    :type fig_dir: str
+    :param file_id: name of the saved figure.
+    :type file_id: str
+    :param plot_params: plot parameters dictionary. 
+    :type plot_params: dict
+    :return: the folium map.
+    :rtype: folium.Map
+
+    The figure is save at the html format.
+    """
     
     # get parameters
     cols_1 = plot_params.get("cols_1")
@@ -238,6 +304,23 @@ def folium_map_wtrips(self, fig_dir=str, file_id=str, plot_params=dict):
 # GPS FOLIUM MAP COLORGRAD [GPS METHOD]
 # ======================================================= #
 def folium_map_colorgrad(self, fig_dir=str, file_id=str, plot_params=dict):
+    
+    """    
+    Produce the html map of the GPS data with a speed color gradient.
+    
+    :param self: a GPS object
+    :type self: cpforager.GPS
+    :param fig_dir: figure saving directory.
+    :type fig_dir: str
+    :param file_id: name of the saved figure.
+    :type file_id: str
+    :param plot_params: plot parameters dictionary. 
+    :type plot_params: dict
+    :return: the folium map.
+    :rtype: folium.Map
+    
+    The figure is save at the html format.
+    """
     
     # get parameters
     cols_2 = plot_params.get("cols_2")

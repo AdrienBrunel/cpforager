@@ -9,6 +9,13 @@ from cpforager import utils
 # DISPLAY [GPS_COLLECTION METHODS]
 # ======================================================= #
 def display_data_summary(self):
+    
+    """    
+    Print in terminal the GPS_Collection data summary.
+    
+    :param self: a GPS_Collection object
+    :type self: cpforager.GPS_Collection
+    """
 
     # get attributes
     gps_collection = self.gps_collection

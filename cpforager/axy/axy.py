@@ -8,7 +8,7 @@ from cpforager.axy import diagnostic, display, interpolation
 
 
 # ======================================================= #
-# BIOLOGGER SUPER-CLASS
+# AXY CLASS
 # ======================================================= #
 class AXY:
     
@@ -18,6 +18,85 @@ class AXY:
 
     # [CONSTRUCTOR] AXY
     def __init__(self, df=pd.DataFrame, group=str, id=str, params=dict):
+        
+        """
+        Constructor of an AXY object.
+        
+        :param df: the dataframe containing ``datetime``, ``ax``, ``ay``, ``az``, ``longitude``, ``latitude``, ``pressure`` and ``temperature`` columns. Type of ``datetime`` column must be datetime64.
+        :type df: pandas.DataFrame
+        :param group: the string representing the group to which the AXY data belongs (*e.g.* species, year, fieldwork, *etc*.) useful for statistics and filtering.
+        :type group: str
+        :param id: the string representing the unique identifier of the central-place foraging seabird.
+        :type id: str
+        :param params: the parameters dictionary.
+        :type params: dict
+        
+        :ivar df: the dataframe containing the raw and processed AXY data.
+        :type df: pandas.DataFrame
+        :ivar group: The string representing the group to which the AXY data belongs (*e.g.* species, year, fieldwork, *etc*.) useful for statistics and filtering.
+        :type group: str
+        :ivar id: The string representing the unique identifier of the central-place foraging seabird.
+        :type id: str
+        :ivar params: The dictionary containing the parameters used for the AXY data processing.
+        :type params: dict
+        :ivar df_gps: the dataframe containing AXY data at GPS resolution.
+        :type df_gps: pandas.DataFrame
+        :ivar n_df_gps: the number of GPS measures.
+        :type n_df_gps: int
+        :ivar gps: the GPS object of AXY data at GPS resolution.
+        :type gps: cpforager.GPS
+        :ivar df_tdr: the dataframe containing AXY data at TDR resolution.
+        :type df_tdr: pandas.DataFrame
+        :ivar n_df_tdr: the number of TDR measures.
+        :type n_df_tdr: int
+        :ivar n_df: the number of measures in the AXY recording.
+        :type n_df: int
+        :ivar start_datetime:  the starting datetime of the AXY recording.
+        :type start_datetime: datetime.datetime
+        :ivar end_datetime: the ending datetime of the AXY recording.
+        :type end_datetime: datetime.datetime
+        :ivar frequency: the frequency of the AXY data in Hz.
+        :type frequency: float
+        :ivar total_duration: the total duration of the AXY recording in days.
+        :type total_duration: float
+        :ivar gps_resolution: the time resolution of the GPS data.
+        :type gps_resolution: float
+        :ivar total_length: the total length of the AXY recording in kilometers.
+        :type total_length: float
+        :ivar dmax: the maximum distance to the nest reached by the central place-foraging seabird.
+        :type dmax: float
+        :ivar n_trip: the number of foraging trips realised by the seabird.
+        :type n_trip: int
+        :ivar nest_position: the longitude and latitude of the estimated nest position.
+        :type nest_position: [float, float]
+        :ivar trip_statistics: the dataframe containing the trip statistics where one row corresponds to one foraging trip.
+        :type trip_statistics: pandas.DataFrame  
+        :ivar tdr_resolution: the time resolution of the TDR data.
+        :type tdr_resolution: float      
+        :ivar nb_dives: the number of dives realised by the seabird.
+        :type nb_dives: int
+        :ivar median_pressure: the median pressure in hPa.
+        :type median_pressure: float
+        :ivar median_depth: the median depth in meters.
+        :type median_depth: float
+        :ivar max_depth: the maximum depth in meters.
+        :type max_depth: float
+        :ivar mean_temperature: the mean temperature in °C.
+        :type mean_temperature: float
+        :ivar dive_statistics: the dataframe containing the dive statistics where one row corresponds to one dive.
+        :type dive_statistics: pandas.DataFrame 
+        :ivar max_odba: the maximum overall dynamical body acceleration.
+        :type max_odba: float
+        :ivar median_odba: the median overall dynamical body acceleration.
+        :type median_odba: float
+        :ivar max_odba_f: the maximum filtered overall dynamical body acceleration.
+        :type max_odba_f: float
+        :ivar median_odba_f: the median filtered overall dynamical body acceleration.
+        :type median_odba_f: float
+        
+        .. todo::
+            Better organise attributes and add TDR object as a field. Improve methods to benefit from the GPS and TDR methods (*e.g.* display)
+        """
 
         # process data
         df, df_gps, df_tdr = processing.add_axy_data(df, params)
@@ -81,10 +160,10 @@ class AXY:
     # [METHODS] interpolate data
     interpolate_lat_lon = interpolation.interpolate_lat_lon
 
-    # # [METHODS] display the summary of the data
+    # [METHODS] display the summary of the data
     display_data_summary = display.display_data_summary
 
-    # # [METHODS] plot data
+    # [METHODS] plot data
     full_diag = diagnostic.full_diagnostic
     maps_diag = diagnostic.maps_diagnostic
     folium_map = diagnostic.folium_map

@@ -2,18 +2,34 @@
 # LIBRARIES
 # ======================================================= #
 import os
-import numpy as np
-import pandas as pd
 from cpforager import diagnostic, misc
 import matplotlib.pyplot as plt
 import cartopy.crs as ccrs
-import matplotlib.dates as mdates
 import folium
 
 # ======================================================= #
 # STATS SUMMARY [GPS_COLLECTION METHOD]
 # ======================================================= #
 def plot_stats_summary(self, fig_dir=str, file_id=str, plot_params=dict, quantiles=[0.25, 0.50, 0.75, 0.90]):
+    
+    """    
+    Produce the trip statistics summary of every GPS data.
+    
+    :param self: a GPS object
+    :type self: cpforager.GPS
+    :param fig_dir: figure saving directory.
+    :type fig_dir: str
+    :param file_id: name of the saved figure.
+    :type file_id: str
+    :param plot_params: plot parameters dictionary. 
+    :type plot_params: dict
+    :param quantiles: quantiles to emphasize. 
+    :type quantiles: array(float)
+    :return: the full diagnostic figure.
+    :rtype: matplotlib.pyplot.Figure 
+    
+    The figure is save at the png format. Plots are histogram, boxplot and cumulative distribution.
+    """
     
     # get parameters
     dpi = plot_params.get("fig_dpi")
@@ -69,6 +85,23 @@ def plot_stats_summary(self, fig_dir=str, file_id=str, plot_params=dict, quantil
 # ======================================================= #
 def maps_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict):
     
+    """    
+    Produce the maps with every GPS data.
+    
+    :param self: a GPS object
+    :type self: cpforager.GPS
+    :param fig_dir: figure saving directory.
+    :type fig_dir: str
+    :param file_id: name of the saved figure.
+    :type file_id: str
+    :param plot_params: plot parameters dictionary. 
+    :type plot_params: dict
+    :return: the full diagnostic figure.
+    :rtype: matplotlib.pyplot.Figure 
+    
+    The figure is save at the png format.
+    """
+    
     # get parameters
     dpi = plot_params.get("fig_dpi")
     cols_2 = plot_params.get("cols_2")
@@ -117,6 +150,21 @@ def maps_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict):
 # GPS FOLIUM MAPS [GPS_COLLECTION METHOD]
 # ======================================================= #
 def folium_map(self, fig_dir=str, file_id=str):
+    
+    """    
+    Produce the html map with every GPS data colored randomly.
+    
+    :param self: a GPS object
+    :type self: cpforager.GPS
+    :param fig_dir: figure saving directory.
+    :type fig_dir: str
+    :param file_id: name of the saved figure.
+    :type file_id: str
+    :return: the folium map.
+    :rtype: folium.Map
+    
+    The figure is save at the html format.
+    """
     
     # get attributes
     params = self.gps_collection[0].params

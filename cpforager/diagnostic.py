@@ -83,7 +83,7 @@ def plot_ts(ax, df, plot_params, var, title, var_lab, custom_locator=None, custo
         
     :param ax: plot axes. 
     :type ax: matplotlib.Axes 
-    :param df: dataframe with a ``datetime`` column.
+    :param df: dataframe with a ``datetime`` column and the column designated by the value of var.
     :type df: pandas.DataFrame
     :param plot_params: plot parameters dictionary. 
     :type plot_params: dict
@@ -134,7 +134,7 @@ def plot_ts_wtrips(ax, df, plot_params, n_trip, var, title, var_lab, custom_loca
     
     :param ax: plot axes.
     :type ax: matplotlib.Axes 
-    :param df: dataframe with a ``datetime`` column.
+    :param df: dataframe with a ``datetime`` column and the column designated by the value of var.
     :type df: pandas.DataFrame
     :param plot_params: plot parameters dictionary. 
     :type plot_params: dict
@@ -175,11 +175,11 @@ def plot_ts_wtrips(ax, df, plot_params, n_trip, var, title, var_lab, custom_loca
 def plot_ts_twinx(ax, df, plot_params, var, title, var_lab, custom_locator=None, custom_formatter=None, scatter=True):
         
     """    
-    Plot timeserie plot of dataframe column designated by the value of var and var_f with two distinct axes. 
+    Plot timeserie of dataframe column designated by the value of var and var_f with two distinct axes. 
     
     :param ax: plot axes.
     :type ax: matplotlib.Axes 
-    :param df: dataframe with a ``datetime`` column.
+    :param df: dataframe with a ``datetime`` column and the column designated by the value of var.
     :type df: pandas.DataFrame
     :param plot_params: plot parameters dictionary. 
     :type plot_params: dict
@@ -228,7 +228,7 @@ def plot_cumulative_distribution(df, plot_params, var, title, var_lab, v_qs=[0.2
     """   
     Plot the cumulative distribution of dataframe column designated by the value of var.
     
-    :param df: dataframe of trip/dive statistics.
+    :param df: dataframe with the column designated by the value of var. 
     :type df: pandas.DataFrame
     :param plot_params: plot parameters dictionary. 
     :type plot_params: dict
@@ -275,8 +275,8 @@ def plot_box(df, plot_params, var, title, var_lab):
     """    
     Plot the boxplot of dataframe column designated by the value of var.
     
-    :param df: dataframe of trip/dive statistics.
-    :type df: pandas.DataFrame
+    :param df: dataframe with the column designated by the value of var. 
+    :type df: pandas.DataFrame 
     :param plot_params: plot parameters dictionary. 
     :type plot_params: dict
     :param var: name of the column in df.
@@ -303,8 +303,8 @@ def plot_violin(df, plot_params, var, title, var_lab, quantiles=[0.25, 0.50, 0.7
     """    
     Plot the violin plot of dataframe column designated by the value of var.
     
-    :param df: dataframe of trip/dive statistics.
-    :type df: pandas.DataFrame
+    :param df: dataframe with the column designated by the value of var.
+    :type df: pandas.DataFrame 
     :param plot_params: plot parameters dictionary. 
     :type plot_params: dict
     :param var: name of the column in df.
@@ -333,7 +333,7 @@ def plot_hist(df, plot_params, var, title, var_lab, bins=None, color=None, alpha
     """    
     Plot the histogram of dataframe column designated by the value of var.
     
-    :param df: dataframe with ``datetime`` and ``is_night`` columns.
+    :param df: dataframe with ``datetime`` and ``is_night`` columns and the column designated by the value of var. .
     :type df: pandas.DataFrame
     :param plot_params: plot parameters dictionary. 
     :type plot_params: dict
@@ -377,7 +377,7 @@ def plot_angle_polar(ax, df, plot_params, var, title, var_lab):
     
     :param ax: plot axes.
     :type ax: matplotlib.Axes 
-    :param df: dataframe with ``datetime`` and ``is_night`` columns.
+    :param df: dataframe with ``datetime`` and ``is_night`` columns and the column designated by the value of var. .
     :type df: pandas.DataFrame
     :param plot_params: plot parameters dictionary. 
     :type plot_params: dict
@@ -404,7 +404,7 @@ def plot_angle_polar(ax, df, plot_params, var, title, var_lab):
     
     
 # ================================================================================================ #
-# PLOT MAPS WITH COLONY COLORS
+# PLOT COLONY
 # ================================================================================================ #  
 def plot_colony(ax, params):
         
@@ -429,16 +429,35 @@ def plot_colony(ax, params):
 # ================================================================================================ #  
 def plot_map_wtrips(ax, df, params, plot_params, color_palette, n_trip, nest_lon, nest_lat, zoom, trip_length=None, trip_duration=None):
         
-    # """    
-    # :param df: dataframe with ``datetime`` and ``is_night`` columns.
-    # :type df: pandas.DataFrame
-    # :param plot_params: plot parameters dictionary. 
-    # :type plot_params: dict
-    # :return: XXXX.
-    # :rtype: matplotlib.pyplot
+    """    
+    Plot map of the trajectory colored by trips. 
     
-    # Return the date locator and formatter for timeserie plots.
-    # """
+    :param ax: plot axes.
+    :type ax: matplotlib.Axes 
+    :param df: dataframe with ``longitude``, ``latitude`` and ``trip`` columns.
+    :type df: pandas.DataFrame
+    :param params: parameters dictionary. 
+    :type params: dict
+    :param plot_params: plot parameters dictionary. 
+    :type plot_params: dict
+    :param color_palette: discrete color palette for the trip coloring along trajectory.
+    :type color_palette: array([float, float, float])
+    :param n_trip: number of trips.
+    :type n_trip: int
+    :param nest_lon: nest longitude.
+    :type nest_lon: float
+    :param nest_lat: nest latitude.
+    :type nest_lat: float
+    :param zoom: zooming factor around nest. 
+    :type zoom: float
+    :param trip_length: trip lengths for the legend. 
+    :type trip_length: array(str)
+    :param trip_duration: trip durations for the legend. 
+    :type trip_duration: array(str)
+
+    .. note::
+        The required fields in the parameters dictionary are ``colony``.
+    """
     
     # get parameters
     colony = params.get("colony")
@@ -482,16 +501,35 @@ def plot_map_wtrips(ax, df, params, plot_params, color_palette, n_trip, nest_lon
 # ================================================================================================ #  
 def plot_map_colorgrad(ax, df, params, plot_params, var, color_palette, nest_lon, nest_lat, title, q_th, zoom):
         
-    # """    
-    # :param df: dataframe with ``datetime`` and ``is_night`` columns.
-    # :type df: pandas.DataFrame
-    # :param plot_params: plot parameters dictionary. 
-    # :type plot_params: dict
-    # :return: XXXX.
-    # :rtype: matplotlib.pyplot
+    """    
+    Plot map of the trajectory with a color gradient along the column designated by the value of var. 
     
-    # Return the date locator and formatter for timeserie plots.
-    # """
+    :param ax: plot axes.
+    :type ax: matplotlib.Axes 
+    :param df: dataframe with ``longitude``, ``latitude`` columns and the column designated by the value of var. 
+    :type df: pandas.DataFrame
+    :param params: parameters dictionary. 
+    :type params: dict
+    :param plot_params: plot parameters dictionary. 
+    :type plot_params: dict
+    :param var: name of the column in df.
+    :type var: str
+    :param color_palette: continuous color palette.
+    :type color_palette: array([float, float, float])
+    :param nest_lon: nest longitude.
+    :type nest_lon: float
+    :param nest_lat: nest latitude.
+    :type nest_lat: float
+    :param title: plot title. 
+    :type title: str
+    :param q_th: quantile max threshold for coloring. 
+    :type q_th: float
+    :param zoom: zooming factor around nest. 
+    :type zoom: float
+
+    .. note::
+        The required fields in the parameters dictionary are ``colony``.
+    """
     
     # get parameters
     colony = params.get("colony")
@@ -526,7 +564,6 @@ def plot_map_colorgrad(ax, df, params, plot_params, var, color_palette, nest_lon
         plt.xlim([colony_clon - zoom*colony_dlon, colony_clon + zoom*colony_dlon])
         plt.ylim([colony_clat - zoom*colony_dlat, colony_clat + zoom*colony_dlat])
     else:
-        # plt.legend(loc="best", fontsize=plot_params["text_fs"], markerscale=5)
         plt.axis("equal")
     
     
@@ -535,17 +572,22 @@ def plot_map_colorgrad(ax, df, params, plot_params, var, color_palette, nest_lon
 # ================================================================================================ # 
 def plot_folium_map(df, params, id):
         
-    # """    
-    # :param df: dataframe with ``datetime`` and ``is_night`` columns.
-    # :type df: pandas.DataFrame
-    # :param plot_params: plot parameters dictionary. 
-    # :type plot_params: dict
-    # :return: XXXX.
-    # :rtype: matplotlib.pyplot
+    """    
+    Plot folium map of the trajectory. 
     
-    # Return the date locator and formatter for timeserie plots.
-    # """
-    
+    :param df: dataframe with ``longitude``, ``latitude``. 
+    :type df: pandas.DataFrame
+    :param params: parameters dictionary. 
+    :type params: dict
+    :param id: trajectory id.
+    :type id: str
+    :return: the folium map.
+    :rtype: folium.Map
+
+    .. note::
+        The required fields in the parameters dictionary are ``colony``.
+    """
+
     # get parameters
     colony = params.get("colony")
     
@@ -563,16 +605,25 @@ def plot_folium_map(df, params, id):
 # ================================================================================================ # 
 def plot_folium_map_wtrips(df, params, id, n_trip, color_palette):
         
-    # """    
-    # :param df: dataframe with ``datetime`` and ``is_night`` columns.
-    # :type df: pandas.DataFrame
-    # :param plot_params: plot parameters dictionary. 
-    # :type plot_params: dict
-    # :return: XXXX.
-    # :rtype: matplotlib.pyplot
+    """    
+    Plot folium map of the trajectory colored by trips. 
     
-    # Return the date locator and formatter for timeserie plots.
-    # """
+    :param df: dataframe with ``longitude``, ``latitude`` and ``trip`` columns.
+    :type df: pandas.DataFrame
+    :param params: parameters dictionary. 
+    :type params: dict
+    :param id: trajectory id.
+    :type id: str
+    :param n_trip: number of trips.
+    :type n_trip: int
+    :param color_palette: discrete color palette for the trip coloring along trajectory.
+    :type color_palette: array([float, float, float])
+    :return: the folium map.
+    :rtype: folium.Map
+
+    .. note::
+        The required fields in the parameters dictionary are ``colony``.
+    """
     
     # get parameters
     colony = params.get("colony")
@@ -597,16 +648,25 @@ def plot_folium_map_wtrips(df, params, id, n_trip, color_palette):
 # ================================================================================================ # 
 def plot_folium_map_colorgrad(df, params, var, color_palette, q_th):
         
-    # """    
-    # :param df: dataframe with ``datetime`` and ``is_night`` columns.
-    # :type df: pandas.DataFrame
-    # :param plot_params: plot parameters dictionary. 
-    # :type plot_params: dict
-    # :return: XXXX.
-    # :rtype: matplotlib.pyplot
+    """    
+    Plot folium map of the trajectory with a color gradient along the column designated by the value of var. 
     
-    # Return the date locator and formatter for timeserie plots.
-    # """
+    :param df: dataframe with ``longitude``, ``latitude`` columns and the column designated by the value of var. 
+    :type df: pandas.DataFrame
+    :param params: parameters dictionary. 
+    :type params: dict
+    :param var: name of the column in df.
+    :type var: str
+    :param color_palette: continuous color palette.
+    :type color_palette: array([float, float, float])
+    :param q_th: quantile max threshold for coloring. 
+    :type q_th: float
+    :return: the folium map.
+    :rtype: folium.Map
+
+    .. note::
+        The required fields in the parameters dictionary are ``colony``.
+    """
     
     # get parameters
     colony = params.get("colony")
@@ -635,16 +695,16 @@ def plot_folium_map_colorgrad(df, params, var, color_palette, q_th):
 # ================================================================================================ #
 def plot_infos(infos, plot_params):
         
-    # """    
-    # :param df: dataframe with ``datetime`` and ``is_night`` columns.
-    # :type df: pandas.DataFrame
-    # :param plot_params: plot parameters dictionary. 
-    # :type plot_params: dict
-    # :return: XXXX.
-    # :rtype: matplotlib.pyplot
+    """    
+    Plot text infos.
     
-    # Return the date locator and formatter for timeserie plots.
-    # """
+    :param infos: an information dictionary.
+    :type infos: dict
+    :param plot_params: plot parameters dictionary. 
+    :type plot_params: dict
+    
+    Every field of the dictionary is displayed one below the other.
+    """
     
     n_infos = len(infos)
     plt.scatter(np.linspace(0,1,n_infos), range(n_infos), color="white", s=plot_params.get("pnt_size"))

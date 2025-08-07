@@ -7,6 +7,13 @@
 # DISPLAY [TDR METHODS]
 # ======================================================= #
 def display_data_summary(self):
+    
+    """    
+    Print in terminal the TDR data summary.
+    
+    :param self: a TDR object
+    :type self: cpforager.TDR
+    """
                 
     # print information
     print("# ============================== SUMMARY ============================== #")

@@ -9,6 +9,13 @@ from cpforager import utils
 # ======================================================= #
 def display_data_summary(self):
                 
+    """    
+    Print in terminal the AXY data summary.
+    
+    :param self: a AXY object
+    :type self: cpforager.AXY
+    """
+    
     # compute distance between first position and the estimated nest position    
     pos0 = [self.df_gps.loc[0,"longitude"], self.df_gps.loc[0,"latitude"]]
     nest = self.nest_position

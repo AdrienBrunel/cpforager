@@ -7,7 +7,7 @@ from cpforager.tdr import diagnostic, display
 
 
 # ======================================================= #
-# BIOLOGGER SUPER-CLASS
+# TDR CLASS
 # ======================================================= #
 class TDR:
     """
@@ -16,6 +16,50 @@ class TDR:
 
     # [CONSTRUCTOR] TDR
     def __init__(self, df=pd.DataFrame, group=str, id=str, params=dict):
+        
+        """
+        Constructor of a TDR object.
+        
+        :param df: the dataframe containing ``datetime``, ``pressure`` and ``temperature`` columns. Type of ``datetime`` column must be datetime64.
+        :type df: pandas.DataFrame
+        :param group: the string representing the group to which the TDR data belongs (*e.g.* species, year, fieldwork, *etc*.) useful for statistics and filtering.
+        :type group: str
+        :param id: the string representing the unique identifier of the central-place foraging seabird.
+        :type id: str
+        :param params: the parameters dictionary.
+        :type params: dict
+        
+        :ivar df: the dataframe containing the raw and processed TDR data.
+        :type df: pandas.DataFrame
+        :ivar group: The string representing the group to which the TDR data belongs (*e.g.* species, year, fieldwork, *etc*.) useful for statistics and filtering.
+        :type group: str
+        :ivar id: The string representing the unique identifier of the central-place foraging seabird.
+        :type id: str
+        :ivar params: The dictionary containing the parameters used for the TDR data processing.
+        :type params: dict
+        :ivar n_df: the number of measures in the TDR recording.
+        :type n_df: int
+        :ivar start_datetime:  the starting datetime of the TDR recording.
+        :type start_datetime: datetime.datetime
+        :ivar end_datetime: the ending datetime of the TDR recording.
+        :type end_datetime: datetime.datetime
+        :ivar resolution: the time resolution of the TDR data in seconds estimated as the median value of the step times.
+        :type resolution: float
+        :ivar total_duration: the total duration of the TDR recording in days.
+        :type total_duration: float
+        :ivar nb_dives: the number of dives realised by the seabird.
+        :type nb_dives: int
+        :ivar median_pressure: the median pressure in hPa.
+        :type median_pressure: float
+        :ivar median_depth: the median depth in meters.
+        :type median_depth: float
+        :ivar max_depth: the maximum depth in meters.
+        :type max_depth: float
+        :ivar mean_temperature: the mean temperature in °C.
+        :type mean_temperature: float
+        :ivar dive_statistics: the dataframe containing the dive statistics where one row corresponds to one dive.
+        :type dive_statistics: pandas.DataFrame        
+        """
         
         # process data
         df = processing.add_tdr_data(df, params)

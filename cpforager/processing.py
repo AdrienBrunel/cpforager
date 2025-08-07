@@ -13,7 +13,7 @@ import pytz
 # ================================================================================================ #
 def estimate_nest_position(df, params, verbose=False):
      
-    """
+    """   
     Estimate the nest position from longitude and latitude data.
         
     :param df: dataframe with ``longitude`` and ``latitude`` columns.

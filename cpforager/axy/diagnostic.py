@@ -12,6 +12,29 @@ import cartopy.crs as ccrs
 # ======================================================= #
 def full_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict):   
     
+    """    
+    Produce the full diagnostic of the AXY data.
+    
+    :param self: an AXY object
+    :type self: cpforager.AXY
+    :param fig_dir: figure saving directory.
+    :type fig_dir: str
+    :param file_id: name of the saved figure.
+    :type file_id: str
+    :param plot_params: plot parameters dictionary. 
+    :type plot_params: dict
+    :return: the full diagnostic figure.
+    :rtype: matplotlib.pyplot.Figure 
+    
+    The figure is save at the png format.
+    
+    .. warning::
+        Calling this method may takes some if data is heavy.
+        
+    .. todo::
+        Add a boolean argument ``fast`` that plot only 10% of the heavy accelerometry data to allow fast plot generation.
+    """
+    
     # get attributes
     df = self.df
     df_gps = self.df_gps
@@ -202,6 +225,23 @@ def full_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict):
 # GPS MAPS DIAG [AXY METHOD]
 # ======================================================= #
 def maps_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict):
+    
+    """    
+    Produce the maps of the GPS data.
+    
+    :param self: an AXY object
+    :type self: cpforager.AXY
+    :param fig_dir: figure saving directory.
+    :type fig_dir: str
+    :param file_id: name of the saved figure.
+    :type file_id: str
+    :param plot_params: plot parameters dictionary. 
+    :type plot_params: dict
+    :return: the full diagnostic figure.
+    :rtype: matplotlib.pyplot.Figure 
+    
+    The figure is save at the png format.
+    """
         
     # get attributes
     gps = self.gps
@@ -216,6 +256,21 @@ def maps_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict):
 # GPS FOLIUM MAP [AXY METHOD]
 # ======================================================= #
 def folium_map(self, fig_dir=str, file_id=str):
+    
+    """    
+    Produce the html map of the GPS data.
+    
+    :param self: an AXY object
+    :type self: cpforager.AXY
+    :param fig_dir: figure saving directory.
+    :type fig_dir: str
+    :param file_id: name of the saved figure.
+    :type file_id: str
+    :return: the folium map.
+    :rtype: folium.Map
+
+    The figure is save at the html format.
+    """
         
     # get attributes
     gps = self.gps
@@ -229,6 +284,23 @@ def folium_map(self, fig_dir=str, file_id=str):
 # GPS FOLIUM MAP [AXY METHOD]
 # ======================================================= #
 def folium_map_wtrips(self, fig_dir=str, file_id=str, plot_params=dict):
+    
+    """    
+    Produce the html map of the GPS data colored by trips.
+    
+    :param self: an AXY object
+    :type self: cpforager.AXY
+    :param fig_dir: figure saving directory.
+    :type fig_dir: str
+    :param file_id: name of the saved figure.
+    :type file_id: str
+    :param plot_params: plot parameters dictionary. 
+    :type plot_params: dict
+    :return: the folium map.
+    :rtype: folium.Map
+
+    The figure is save at the html format.
+    """
         
     # get attributes
     gps = self.gps
@@ -242,6 +314,23 @@ def folium_map_wtrips(self, fig_dir=str, file_id=str, plot_params=dict):
 # GPS FOLIUM MAP COLORGRAD [AXY METHOD]
 # ======================================================= #
 def folium_map_colorgrad(self, fig_dir=str, file_id=str, plot_params=dict):
+    
+    """    
+    Produce the html map of the GPS data with a speed color gradient.
+    
+    :param self: an AXY object
+    :type self: cpforager.AXY
+    :param fig_dir: figure saving directory.
+    :type fig_dir: str
+    :param file_id: name of the saved figure.
+    :type file_id: str
+    :param plot_params: plot parameters dictionary. 
+    :type plot_params: dict
+    :return: the folium map.
+    :rtype: folium.Map
+    
+    The figure is save at the html format.
+    """
     
     # get attributes
     gps = self.gps

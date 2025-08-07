@@ -11,9 +11,31 @@ from cpforager.gps.gps import GPS
 # BIOLOGGER SUPER-CLASS
 # ======================================================= #
 class GPS_Collection:
+    
+    """
+    A class to represent a list of GPS data of a central-place foraging seabird.
+    """
 
     # [CONSTRUCTOR] BIOLOGGERS
     def __init__(self, gps_collection=list[GPS]):
+        
+        """
+        Constructor of a GPS_Collection object.
+        
+        :param gps_collection: the list of GPS.
+        :type gps_collection: list[cpforager.GPS]
+        
+        :ivar gps_collection: the list of GPS.
+        :type gps_collection: list[cpforager.GPS]
+        :ivar n_gps: the total number of GPS included in the list.
+        :type n_gps: int
+        :ivar n_trip: the number of trips summed over every GPS included in the list.
+        :type n_trip: str
+        :ivar trip_statistics_all: the trip statistics dataframe merged over every GPS included in the list.
+        :type trip_statistics_all: pandas.DataFrame
+        :ivar df_all: the enhanced GPS dataframe merged over every GPS included in the list.
+        :type df_all: pandas.DataFrame
+        """
 
         # init dataframes
         dtypes_1 = {"group":"str", "id":"str", "trip_id":"str", "length":"float", "duration":"float", "max_hole":"float", "dmax":"float", "n_step":"int"}

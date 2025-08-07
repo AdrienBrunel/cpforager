@@ -8,6 +8,13 @@ from cpforager import utils
 # DISPLAY [GPS METHODS]
 # ======================================================= #
 def display_data_summary(self):
+    
+    """    
+    Print in terminal the GPS data summary.
+    
+    :param self: a GPS object
+    :type self: cpforager.GPS
+    """
                 
     # compute distance between first position and the estimated nest position    
     pos0 = [self.df.loc[0,"longitude"], self.df.loc[0,"latitude"]]
