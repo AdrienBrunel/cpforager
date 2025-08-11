@@ -77,13 +77,13 @@ The script [test.py](./test/test.py) illustrates how the `GPS`, `TDR`, `AXY` and
 - [ ] create a `GPS_TDR` class for biologgers with both GPS and TDR data.
 - [ ] create a `AXY_Collection` class.
 - [ ] create a `TDR_Collection` class.
-- [ ] add a test block where gps data is cutted by trip and written as csv.
-- [ ] add a test block where gps data are read from (Seabird Tracking Database)[https://www.seabirdtracking.org/].
+- [x] add a test block where gps data is cutted by trip and written as csv.
+- [ ] add a test block where gps data are read from [https://www.seabirdtracking.org/](Seabird Tracking Database).
 - [ ] add a method to_SeabirdTracking() in `GPS_Collection`.
 - [x] add a `fast=True` argument to the full_diag() method of `AXY`.
 - [ ] find a way to how fully benefit from `GPS` and `TDR` methods in `AXY` (*e.g.* display, diagnostic).
 - [x] nb_dives --> n_dives and n_trip --> n_trips.
-- [ ] correction associated to remove_suspicious() bug in `AXY`.
+- [ ] correction to patch the bug implied by remove_suspicious() in `AXY`.
 - [ ] emphasize dives on the GPS_TDR plots.
 
 <br>
