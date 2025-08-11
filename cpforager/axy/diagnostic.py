@@ -52,10 +52,10 @@ def full_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict):
     total_duration = self.total_duration
     total_length = self.total_length
     dmax = self.dmax
-    n_trip = self.n_trip
+    n_trips = self.n_trips
     median_odba = self.median_odba
     median_odba_f = self.median_odba_f
-    nb_dives = self.nb_dives
+    n_dives = self.n_dives
     median_pressure = self.median_pressure
     median_depth = self.median_depth
     max_depth = self.max_depth
@@ -85,20 +85,20 @@ def full_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict):
     infos.append("Total duration = %.2f days" % total_duration)
     infos.append("Total length = %.1f km" % total_length)
     infos.append("Maximum distance to nest = %.1f km" % dmax)
-    infos.append("Number of trips = %d" % n_trip)
-    if n_trip>0:
+    infos.append("Number of trips = %d" % n_trips)
+    if n_trips>0:
         infos.append("Longest trip = %.1f h" % trip_statistics["duration"].max())
         infos.append("Median trip duration = %.1f h" % trip_statistics["duration"].quantile(0.5))
         infos.append("Largest trip = %.1f km" % trip_statistics["length"].max())
         infos.append("Median trip length = %.1f km" % trip_statistics["length"].quantile(0.5))
     infos.append("Median odba = %.3f" % median_odba)
     infos.append("Median odba_f = %.3f" % median_odba_f)
-    infos.append("Number of dives = %d" % nb_dives)
+    infos.append("Number of dives = %d" % n_dives)
     infos.append("Median pressure = %.1f hPa" % median_pressure)
     infos.append("Median depth = %.2f m" % median_depth)
     infos.append("Max depth = %.2f m" % max_depth)
     infos.append("Mean temperature = %.1f °C" % mean_temperature)
-    if nb_dives>0:
+    if n_dives>0:
         infos.append("Longest dive = %.1f s" % dive_statistics["duration"].max())
         infos.append("Median dive duration = %.1f s" % dive_statistics["duration"].quantile(0.5))
         infos.append("Median dive max depth = %.2f m" % dive_statistics["max_depth"].quantile(0.5))
@@ -111,11 +111,11 @@ def full_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict):
     
     # trajectory with a trip color gradient
     ax = fig.add_subplot(gs[0,0], projection=ccrs.PlateCarree())
-    diagnostic.plot_map_wtrips(ax, df_gps, params, plot_params, cols_1, n_trip, nest_lon, nest_lat, 0, trip_length, trip_duration)
+    diagnostic.plot_map_wtrips(ax, df_gps, params, plot_params, cols_1, n_trips, nest_lon, nest_lat, 0, trip_length, trip_duration)
     
     # zoom trajectory with a trip color gradient
     ax = fig.add_subplot(gs[0,1], projection=ccrs.PlateCarree())
-    diagnostic.plot_map_wtrips(ax, df_gps, params, plot_params, cols_1, n_trip, nest_lon, nest_lat, 10, trip_length, trip_duration)
+    diagnostic.plot_map_wtrips(ax, df_gps, params, plot_params, cols_1, n_trips, nest_lon, nest_lat, 10, trip_length, trip_duration)
     
     # global trajectory with a step speed color gradient
     ax = fig.add_subplot(gs[0,2], projection=ccrs.PlateCarree())
@@ -169,7 +169,7 @@ def full_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict):
     
     # heading polar plot
     ax = fig.add_subplot(gs[2,4], projection="polar")
-    if(n_trip>0):
+    if(n_trips>0):
         df_gps["step_heading_to_colony_trip"] = df_gps.loc[df_gps["trip"]>0, "step_heading_to_colony"]
         diagnostic.plot_angle_polar(ax, df_gps, plot_params, "step_heading_to_colony_trip", "Step heading to colony", "Angle [°]")
         del df_gps["step_heading_to_colony_trip"]
@@ -178,7 +178,7 @@ def full_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict):
     
     # distance to nest by trip
     ax = fig.add_subplot(gs[3,0:5])
-    diagnostic.plot_ts_wtrips(ax, df_gps, plot_params, n_trip, "dist_to_nest", "Distance to nest", "Distance [km]")
+    diagnostic.plot_ts_wtrips(ax, df_gps, plot_params, n_trips, "dist_to_nest", "Distance to nest", "Distance [km]")
     
     # ax timeserie
     ax = fig.add_subplot(gs[4,0])
@@ -202,11 +202,11 @@ def full_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict):
     
     # pressure
     ax = fig.add_subplot(gs[5,0])
-    diagnostic.plot_ts(ax, df_tdr, plot_params, "pressure", "%d Dives" % nb_dives, "Pressure [hPa]", eph_cond=(df_tdr["dive"]>0))
+    diagnostic.plot_ts(ax, df_tdr, plot_params, "pressure", "%d Dives" % n_dives, "Pressure [hPa]", eph_cond=(df_tdr["dive"]>0))
         
     # depth
     ax = fig.add_subplot(gs[5,1:3])
-    diagnostic.plot_ts(ax, df_tdr, plot_params, "depth", "%d Dives" % nb_dives, "Depth [m]", hline=diving_depth_threshold, eph_cond=(df_tdr["dive"]>0))
+    diagnostic.plot_ts(ax, df_tdr, plot_params, "depth", "%d Dives" % n_dives, "Depth [m]", hline=diving_depth_threshold, eph_cond=(df_tdr["dive"]>0))
     
     # temperature
     ax = fig.add_subplot(gs[5,3:5])

@@ -127,7 +127,7 @@ def plot_ts(ax, df, plot_params, var, title, var_lab, custom_locator=None, custo
 # ================================================================================================ #
 # PLOT TIMESERIES WITH TRIP COLORS
 # ================================================================================================ # 
-def plot_ts_wtrips(ax, df, plot_params, n_trip, var, title, var_lab, custom_locator=None, custom_formatter=None):
+def plot_ts_wtrips(ax, df, plot_params, n_trips, var, title, var_lab, custom_locator=None, custom_formatter=None):
         
     """    
     Plot timeserie of the dataframe column designated by the value of var colored by trips.
@@ -138,8 +138,8 @@ def plot_ts_wtrips(ax, df, plot_params, n_trip, var, title, var_lab, custom_loca
     :type df: pandas.DataFrame
     :param plot_params: plot parameters dictionary. 
     :type plot_params: dict
-    :param n_trip: number of trips.
-    :type n_trip: int
+    :param n_trips: number of trips.
+    :type n_trips: int
     :param var: name of the column in df.
     :type var: str
     :param title: plot title.
@@ -157,8 +157,8 @@ def plot_ts_wtrips(ax, df, plot_params, n_trip, var, title, var_lab, custom_loca
     datetime_locator, datetime_formatter = get_datetime_locator_formatter(df, custom_locator, custom_formatter)
     plot_night(df, plot_params)
     plt.scatter(df["datetime"], df[var], s=plot_params["pnt_size"], marker=plot_params["pnt_type"], color="black")
-    if n_trip >= 1:
-        for i in range(n_trip):
+    if n_trips >= 1:
+        for i in range(n_trips):
             trip_id = i+1
             plt.scatter(df.loc[df["trip"] == trip_id, "datetime"], df.loc[df["trip"] == trip_id, var], s=plot_params["pnt_size"], color=plot_params["cols_1"][i % n_cols])
     plt.title(title, fontsize=plot_params["main_fs"])
@@ -427,7 +427,7 @@ def plot_colony(ax, params):
 # ================================================================================================ #
 # PLOT MAPS WITH TRIP COLORS
 # ================================================================================================ #  
-def plot_map_wtrips(ax, df, params, plot_params, color_palette, n_trip, nest_lon, nest_lat, zoom, trip_length=None, trip_duration=None):
+def plot_map_wtrips(ax, df, params, plot_params, color_palette, n_trips, nest_lon, nest_lat, zoom, trip_length=None, trip_duration=None):
         
     """    
     Plot map of the trajectory colored by trips. 
@@ -442,8 +442,8 @@ def plot_map_wtrips(ax, df, params, plot_params, color_palette, n_trip, nest_lon
     :type plot_params: dict
     :param color_palette: discrete color palette for the trip coloring along trajectory.
     :type color_palette: array([float, float, float])
-    :param n_trip: number of trips.
-    :type n_trip: int
+    :param n_trips: number of trips.
+    :type n_trips: int
     :param nest_lon: nest longitude.
     :type nest_lon: float
     :param nest_lat: nest latitude.
@@ -465,8 +465,8 @@ def plot_map_wtrips(ax, df, params, plot_params, color_palette, n_trip, nest_lon
     # trajectory with a trip color gradient
     n_cols = len(color_palette)
     plt.scatter(df["longitude"], df["latitude"], s=plot_params["pnt_size"], marker=plot_params["pnt_type"], color="black")
-    if n_trip >= 1:
-        for i in range(n_trip):
+    if n_trips >= 1:
+        for i in range(n_trips):
             trip_id = i+1
             if((trip_length is not None) and (trip_duration is not None)):
                 trip_lgd_lab = "%.1fkm - %.1fh " % (trip_length[i], trip_duration[i])
@@ -603,7 +603,7 @@ def plot_folium_map(df, params, id):
 # ================================================================================================ #
 # PLOT MAP FOLIUM WITH TRIP COLORS
 # ================================================================================================ # 
-def plot_folium_map_wtrips(df, params, id, n_trip, color_palette):
+def plot_folium_map_wtrips(df, params, id, n_trips, color_palette):
         
     """    
     Plot folium map of the trajectory colored by trips. 
@@ -614,8 +614,8 @@ def plot_folium_map_wtrips(df, params, id, n_trip, color_palette):
     :type params: dict
     :param id: trajectory id.
     :type id: str
-    :param n_trip: number of trips.
-    :type n_trip: int
+    :param n_trips: number of trips.
+    :type n_trips: int
     :param color_palette: discrete color palette for the trip coloring along trajectory.
     :type color_palette: array([float, float, float])
     :return: the folium map.
@@ -634,8 +634,8 @@ def plot_folium_map_wtrips(df, params, id, n_trip, color_palette):
     folium.Marker(location=[colony["center"][1], colony["center"][0]], popup="<i>Colony</i>").add_to(fmap)
     folium.PolyLine(tooltip=id, locations=df[["latitude", "longitude"]].values.tolist(), 
                     color="black", weight=3, opacity=0.7).add_to(fmap)
-    if n_trip >= 1:
-        for i in range(n_trip):
+    if n_trips >= 1:
+        for i in range(n_trips):
             trip_id = i+1
             folium.PolyLine(tooltip="%s - %d" % (id, trip_id), locations=df.loc[df["trip"] == trip_id, ["latitude", "longitude"]].values.tolist(), 
                             color=misc.rgb_to_hex(color_palette[i % n_cols]), weight=3, opacity=0.7).add_to(fmap)

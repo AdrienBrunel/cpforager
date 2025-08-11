@@ -110,7 +110,7 @@ def maps_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict):
     
     # get attributes
     df_all = self.df_all
-    n_trip = self.n_trip
+    n_trips = self.n_trips
         
     # produce diagnostic
     fig = plt.figure(figsize=(10, 10), dpi=dpi)
@@ -123,11 +123,11 @@ def maps_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict):
     
     # trajectory with a trip color gradient
     ax = fig.add_subplot(gs[0,0], projection=ccrs.PlateCarree())
-    diagnostic.plot_map_wtrips(ax, df_all, params, plot_params, cols_rand, n_trip, colony["center"][0], colony["center"][1], 0)
+    diagnostic.plot_map_wtrips(ax, df_all, params, plot_params, cols_rand, n_trips, colony["center"][0], colony["center"][1], 0)
     
     # zoom trajectory with a trip color gradient
     ax = fig.add_subplot(gs[0,1], projection=ccrs.PlateCarree())
-    diagnostic.plot_map_wtrips(ax, df_all, params, plot_params, cols_rand, n_trip, colony["center"][0], colony["center"][1], 10)
+    diagnostic.plot_map_wtrips(ax, df_all, params, plot_params, cols_rand, n_trips, colony["center"][0], colony["center"][1], 10)
 
     # global trajectory with a step speed color gradient
     ax = fig.add_subplot(gs[1,0], projection=ccrs.PlateCarree())

@@ -41,7 +41,7 @@ def display_data_summary(self):
     print("# ============================== SUMMARY ============================== #")
     print("# ------------------------------ METADATA ----------------------------- #")
     print("# + Nb of GPS   = %d" % self.n_gps)
-    print("# + Nb of trips = %d" % self.n_trip)
+    print("# + Nb of trips = %d" % self.n_trips)
     print("# + Groups      = %s" % groups_str)
     print("# ------------------------------ DATA --------------------------------- #")
     print("# + Trip length   : mean=%.1fkm | std=%.1fkm" % (trip_statistics_all["length"].mean(), trip_statistics_all["length"].std()))

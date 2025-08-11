@@ -46,7 +46,7 @@ def full_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict):
     total_duration = self.total_duration
     total_length = self.total_length
     dmax = self.dmax
-    n_trip = self.n_trip
+    n_trips = self.n_trips
     [nest_lon, nest_lat] = self.nest_position
     trip_statistics = self.trip_statistics
     trip_duration = trip_statistics["duration"]
@@ -62,8 +62,8 @@ def full_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict):
     infos.append("Total duration = %.2f days" % total_duration)
     infos.append("Total length = %.1f km" % total_length)
     infos.append("Maximum distance to nest = %.1f km" % dmax)
-    infos.append("Number of trips = %d" % n_trip)
-    if n_trip>0:
+    infos.append("Number of trips = %d" % n_trips)
+    if n_trips>0:
         infos.append("Longest trip = %.1f h" % trip_statistics["duration"].max())
         infos.append("Median trip duration = %.1f h" % trip_statistics["duration"].quantile(0.5))
         infos.append("Largest trip = %.1f km" % trip_statistics["length"].max())
@@ -77,11 +77,11 @@ def full_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict):
     
     # trajectory with a trip color gradient
     ax = fig.add_subplot(gs[0,0], projection=ccrs.PlateCarree())
-    diagnostic.plot_map_wtrips(ax, df, params, plot_params, cols_1, n_trip, nest_lon, nest_lat, 0, trip_length, trip_duration)
+    diagnostic.plot_map_wtrips(ax, df, params, plot_params, cols_1, n_trips, nest_lon, nest_lat, 0, trip_length, trip_duration)
     
     # zoom trajectory with a trip color gradient
     ax = fig.add_subplot(gs[0,1], projection=ccrs.PlateCarree())
-    diagnostic.plot_map_wtrips(ax, df, params, plot_params, cols_1, n_trip, nest_lon, nest_lat, 10, trip_length, trip_duration)
+    diagnostic.plot_map_wtrips(ax, df, params, plot_params, cols_1, n_trips, nest_lon, nest_lat, 10, trip_length, trip_duration)
     
     # global trajectory with a step speed color gradient
     ax = fig.add_subplot(gs[0,2], projection=ccrs.PlateCarree())
@@ -135,7 +135,7 @@ def full_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict):
     
     # heading polar plot
     ax = fig.add_subplot(gs[2,4], projection="polar")
-    if(n_trip>0):
+    if(n_trips>0):
         df["step_heading_to_colony_trip"] = df.loc[df["trip"]>0, "step_heading_to_colony"]
         diagnostic.plot_angle_polar(ax, df, plot_params, "step_heading_to_colony_trip", "Step heading to colony", "Angle [°]")
         del df["step_heading_to_colony_trip"]
@@ -144,7 +144,7 @@ def full_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict):
     
     # distance to nest by trip
     ax = fig.add_subplot(gs[3,0:5])
-    diagnostic.plot_ts_wtrips(ax, df, plot_params, n_trip, "dist_to_nest", "Distance to nest", "Distance [km]")
+    diagnostic.plot_ts_wtrips(ax, df, plot_params, n_trips, "dist_to_nest", "Distance to nest", "Distance [km]")
     
     # save figure
     fig_path = os.path.join(fig_dir, "%s.png" % file_id)
@@ -187,7 +187,7 @@ def maps_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict):
     params = self.params
     
     # get infos
-    n_trip = self.n_trip
+    n_trips = self.n_trips
     [nest_lon, nest_lat] = self.nest_position
     trip_statistics = self.trip_statistics
     trip_duration = trip_statistics["duration"]
@@ -201,11 +201,11 @@ def maps_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict):
     
     # trajectory with a colony color gradient
     ax = fig.add_subplot(gs[0,0], projection=ccrs.PlateCarree())
-    diagnostic.plot_map_wtrips(ax, df, params, plot_params, cols_1, n_trip, nest_lon, nest_lat, 0, trip_length, trip_duration)
+    diagnostic.plot_map_wtrips(ax, df, params, plot_params, cols_1, n_trips, nest_lon, nest_lat, 0, trip_length, trip_duration)
     
     # zoom trajectory with a trip color gradient
     ax = fig.add_subplot(gs[0,1], projection=ccrs.PlateCarree())
-    diagnostic.plot_map_wtrips(ax, df, params, plot_params, cols_1, n_trip, nest_lon, nest_lat, 10)
+    diagnostic.plot_map_wtrips(ax, df, params, plot_params, cols_1, n_trips, nest_lon, nest_lat, 10)
     
     # global trajectory with a step speed color gradient
     ax = fig.add_subplot(gs[1,0], projection=ccrs.PlateCarree())
@@ -289,10 +289,10 @@ def folium_map_wtrips(self, fig_dir=str, file_id=str, plot_params=dict):
     params = self.params
     df = self.df
     id = self.id
-    n_trip = self.n_trip
+    n_trips = self.n_trips
     
     # produce folium map
-    fmap = diagnostic.plot_folium_map_wtrips(df, params, id, n_trip, cols_1)
+    fmap = diagnostic.plot_folium_map_wtrips(df, params, id, n_trips, cols_1)
     
     # save figure
     fig_path = os.path.join(fig_dir, "%s.html" % file_id)

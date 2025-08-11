@@ -52,8 +52,8 @@ class GPS:
         :type total_length: float
         :ivar dmax: the maximum distance to the nest reached by the central place-foraging seabird.
         :type dmax: float
-        :ivar n_trip: the number of foraging trips realised by the seabird.
-        :type n_trip: int
+        :ivar n_trips: the number of foraging trips realised by the seabird.
+        :type n_trips: int
         :ivar nest_position: the longitude and latitude of the estimated nest position.
         :type nest_position: [float, float]
         :ivar trip_statistics: the dataframe containing the trip statistics where one row corresponds to one foraging trip.
@@ -79,7 +79,7 @@ class GPS:
         self.total_duration = basic_infos["total_duration"]
         self.total_length = gps_infos["total_length"]
         self.dmax = gps_infos["dmax"]
-        self.n_trip = gps_infos["n_trip"]
+        self.n_trips = gps_infos["n_trips"]
         self.nest_position = gps_infos["nest_position"]
         self.trip_statistics = gps_infos["trip_statistics"]
 
@@ -93,7 +93,7 @@ class GPS:
 
     # [BUILT-IN METHODS] string representation of the class
     def __repr__(self):
-        return "%s(group=%s, id=%s, trips=%d, n=%d)" % (type(self).__name__, self.group, self.id, self.n_trip, self.n_df)
+        return "%s(group=%s, id=%s, trips=%d, n=%d)" % (type(self).__name__, self.group, self.id, self.n_trips, self.n_df)
 
     # [METHODS] interpolate data
     interpolate_lat_lon = interpolation.interpolate_lat_lon

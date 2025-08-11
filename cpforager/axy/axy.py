@@ -65,16 +65,16 @@ class AXY:
         :type total_length: float
         :ivar dmax: the maximum distance to the nest reached by the central place-foraging seabird.
         :type dmax: float
-        :ivar n_trip: the number of foraging trips realised by the seabird.
-        :type n_trip: int
+        :ivar n_trips: the number of foraging trips realised by the seabird.
+        :type n_trips: int
         :ivar nest_position: the longitude and latitude of the estimated nest position.
         :type nest_position: [float, float]
         :ivar trip_statistics: the dataframe containing the trip statistics where one row corresponds to one foraging trip.
         :type trip_statistics: pandas.DataFrame  
         :ivar tdr_resolution: the time resolution of the TDR data.
         :type tdr_resolution: float      
-        :ivar nb_dives: the number of dives realised by the seabird.
-        :type nb_dives: int
+        :ivar n_dives: the number of dives realised by the seabird.
+        :type n_dives: int
         :ivar median_pressure: the median pressure in hPa.
         :type median_pressure: float
         :ivar median_depth: the median depth in meters.
@@ -130,11 +130,11 @@ class AXY:
         self.gps_resolution = basic_gps_infos["resolution"]
         self.total_length = gps_infos["total_length"]
         self.dmax = gps_infos["dmax"]
-        self.n_trip = gps_infos["n_trip"]
+        self.n_trips = gps_infos["n_trips"]
         self.nest_position = gps_infos["nest_position"]
         self.trip_statistics = gps_infos["trip_statistics"]
         self.tdr_resolution = basic_tdr_infos["resolution"]
-        self.nb_dives = tdr_infos["nb_dives"]
+        self.n_dives = tdr_infos["n_dives"]
         self.median_pressure = tdr_infos["median_pressure"]
         self.median_depth = tdr_infos["median_depth"]
         self.max_depth = tdr_infos["max_depth"]
@@ -155,7 +155,7 @@ class AXY:
 
     # [BUILT-IN METHODS] string representation of the class
     def __repr__(self):
-        return "%s(group=%s, id=%s, trips=%d, n=%d, n_gps=%d, n_tdr=%d)" % (type(self).__name__, self.group, self.id, self.n_trip, self.n_df, self.n_df_gps, self.n_df_tdr)
+        return "%s(group=%s, id=%s, trips=%d, n=%d, n_gps=%d, n_tdr=%d)" % (type(self).__name__, self.group, self.id, self.n_trips, self.n_df, self.n_df_gps, self.n_df_tdr)
 
     # [METHODS] interpolate data
     interpolate_lat_lon = interpolation.interpolate_lat_lon

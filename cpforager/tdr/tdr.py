@@ -47,8 +47,8 @@ class TDR:
         :type resolution: float
         :ivar total_duration: the total duration of the TDR recording in days.
         :type total_duration: float
-        :ivar nb_dives: the number of dives realised by the seabird.
-        :type nb_dives: int
+        :ivar n_dives: the number of dives realised by the seabird.
+        :type n_dives: int
         :ivar median_pressure: the median pressure in hPa.
         :type median_pressure: float
         :ivar median_depth: the median depth in meters.
@@ -78,7 +78,7 @@ class TDR:
         self.end_datetime = basic_infos["end_datetime"]
         self.resolution = basic_infos["resolution"]
         self.total_duration = basic_infos["total_duration"]
-        self.nb_dives = tdr_infos["nb_dives"]
+        self.n_dives = tdr_infos["n_dives"]
         self.median_pressure = tdr_infos["median_pressure"]
         self.median_depth = tdr_infos["median_depth"]
         self.max_depth = tdr_infos["max_depth"]
@@ -95,7 +95,7 @@ class TDR:
 
     # [BUILT-IN METHODS] string representation of the class
     def __repr__(self):
-        return "%s(group=%s, id=%s, dives=%d, n=%d)" % (type(self).__name__, self.group, self.id, self.nb_dives, self.n_df)
+        return "%s(group=%s, id=%s, dives=%d, n=%d)" % (type(self).__name__, self.group, self.id, self.n_dives, self.n_df)
 
     # [METHODS] display the summary of the data
     display_data_summary = display.display_data_summary

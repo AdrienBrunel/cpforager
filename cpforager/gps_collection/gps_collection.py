@@ -29,8 +29,8 @@ class GPS_Collection:
         :type gps_collection: list[cpforager.GPS]
         :ivar n_gps: the total number of GPS included in the list.
         :type n_gps: int
-        :ivar n_trip: the number of trips summed over every GPS included in the list.
-        :type n_trip: str
+        :ivar n_trips: the number of trips summed over every GPS included in the list.
+        :type n_trips: str
         :ivar trip_statistics_all: the trip statistics dataframe merged over every GPS included in the list.
         :type trip_statistics_all: pandas.DataFrame
         :ivar df_all: the enhanced GPS dataframe merged over every GPS included in the list.
@@ -83,7 +83,7 @@ class GPS_Collection:
         # set attributes
         self.gps_collection = gps_collection
         self.n_gps = len(gps_collection)
-        self.n_trip = len(trip_statistics_all)
+        self.n_trips = len(trip_statistics_all)
         self.trip_statistics_all = trip_statistics_all
         self.df_all = df_all
 
@@ -97,7 +97,7 @@ class GPS_Collection:
 
     # [METHODS] string representation of the class
     def __repr__(self):
-        return "%s(%d GPS, %d trips)" % (type(self).__name__, self.n_gps, self.n_trip)
+        return "%s(%d GPS, %d trips)" % (type(self).__name__, self.n_gps, self.n_trips)
 
     # [METHODS] display the summary of the data
     display_data_summary = display.display_data_summary

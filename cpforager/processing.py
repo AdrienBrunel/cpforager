@@ -885,7 +885,7 @@ def add_axy_data(df, params):
     df_gps = df.loc[gps_resolution].reset_index(drop=True)
     df_gps = df_gps.drop(["odba", "odba_f", "step_time", "dive", "pressure", "depth", "temperature"], axis=1)
     df_gps = df_gps.rename(columns={"odba_sum":"odba", "odba_f_sum":"odba_f", "step_time_sum":"step_time", 
-                                    "dive_max":"dive", "dive_len_unique_pos":"nb_dives",
+                                    "dive_max":"dive", "dive_len_unique_pos":"n_dives",
                                     "pressure_max":"pressure", "depth_max":"depth", "temperature_mean":"temperature"})
     df_gps["trip"] = df_gps["trip"].astype(int)
         
@@ -954,9 +954,9 @@ def compute_gps_infos(df, params):
     # compute gps infos
     total_length = df["step_length"].sum()
     dmax = df["dist_to_nest"].max()
-    n_trip = df["trip"].max()
+    n_trips = df["trip"].max()
     trip_statistics = pd.DataFrame(columns=["id", "length", "duration", "max_hole", "dmax"])
-    for k in range(n_trip):
+    for k in range(n_trips):
         trip_id = k+1
         df_trip = df.loc[df["trip"] == trip_id].reset_index(drop=True)  
         n_df_trip = len(df_trip)
@@ -971,7 +971,7 @@ def compute_gps_infos(df, params):
     # store gps infos
     infos = {"total_length" : total_length,
              "dmax" : dmax,
-             "n_trip" : n_trip,
+             "n_trips" : n_trips,
              "nest_position" : nest_position,
              "trip_statistics" : trip_statistics}
     
@@ -995,14 +995,13 @@ def compute_tdr_infos(df):
     """
     
     # compute tdr infos
-    nb_dives = df["dive"].max()
+    n_dives = df["dive"].max()
     median_pressure = df["pressure"].median()
     median_depth = df["depth"].median()
     max_depth = df["depth"].max()
     mean_temperature = df["temperature"].mean()
-    nb_dives = df["dive"].max()
     dive_statistics = pd.DataFrame(columns=["id", "duration", "max_depth"])
-    for k in range(nb_dives):
+    for k in range(n_dives):
         dive_id = k+1
         df_dive = df.loc[df["dive"] == dive_id].reset_index(drop=True)
         n_df_dive = len(df_dive)
@@ -1011,7 +1010,7 @@ def compute_tdr_infos(df):
         dive_statistics.loc[k, "max_depth"] = df_dive["depth"].max()
             
     # store tdr infos
-    infos = {"nb_dives" : nb_dives,
+    infos = {"n_dives" : n_dives,
              "median_pressure" : median_pressure, 
              "median_depth" : median_depth, 
              "max_depth" : max_depth, 

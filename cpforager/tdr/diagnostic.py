@@ -36,7 +36,7 @@ def full_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict):
     end_datetime = self.end_datetime
     resolution = self.resolution
     total_duration = self.total_duration
-    nb_dives = self.nb_dives
+    n_dives = self.n_dives
     median_pressure = self.median_pressure
     median_depth = self.median_depth
     max_depth = self.max_depth
@@ -54,12 +54,12 @@ def full_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict):
     infos.append("Start date = %s | End date = %s" % (start_datetime.strftime("%Y-%m-%d"), end_datetime.strftime("%Y-%m-%d")))
     infos.append("TDR time resolution = %.1f s" % resolution)
     infos.append("Total duration = %.2f days" % total_duration)
-    infos.append("Number of dives = %d" % nb_dives)
+    infos.append("Number of dives = %d" % n_dives)
     infos.append("Median pressure = %.1f hPa" % median_pressure)
     infos.append("Median depth = %.2f m" % median_depth)
     infos.append("Max depth = %.2f m" % max_depth)
     infos.append("Mean temperature = %.1f °C" % mean_temperature)
-    if nb_dives>0:
+    if n_dives>0:
         infos.append("Longest dive = %.1f s" % dive_statistics["duration"].max())
         infos.append("Median dive duration = %.1f s" % dive_statistics["duration"].quantile(0.5))
         infos.append("Median dive max depth = %.2f m" % dive_statistics["max_depth"].quantile(0.5))
@@ -72,7 +72,7 @@ def full_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict):
 
     # pressure
     ax = fig.add_subplot(gs[0,0])
-    diagnostic.plot_ts(ax, df, plot_params, "pressure", "%d Dives" % nb_dives, "Pressure [hPa]", eph_cond=(df["dive"]>0))
+    diagnostic.plot_ts(ax, df, plot_params, "pressure", "%d Dives" % n_dives, "Pressure [hPa]", eph_cond=(df["dive"]>0))
     
     # step time timeserie
     ax = fig.add_subplot(gs[0,1])
@@ -84,7 +84,7 @@ def full_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict):
     
     # depth
     ax = fig.add_subplot(gs[1,0])
-    diagnostic.plot_ts(ax, df, plot_params, "depth", "%d Dives" % nb_dives, "Depth [m]", hline=diving_depth_threshold, eph_cond=(df["dive"]>0))
+    diagnostic.plot_ts(ax, df, plot_params, "depth", "%d Dives" % n_dives, "Depth [m]", hline=diving_depth_threshold, eph_cond=(df["dive"]>0))
     
     # temperature
     ax = fig.add_subplot(gs[1,1])
