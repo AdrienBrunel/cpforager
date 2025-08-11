@@ -4,6 +4,7 @@
 import os
 import csv
 import pandas as pd
+import time
 from cpforager import parameters, utils, GPS, TDR, AXY, GPS_Collection
 
 
@@ -45,6 +46,9 @@ df = pd.read_csv(file_path, sep=",")
 
 # produce "datetime" column of type datetime64
 df["datetime"] = pd.to_datetime(df["date"] + " " + df["time"], format="mixed", dayfirst=False)
+
+# if time is at UTC, convert it to local datetime
+if "_UTC" in file_name: df = utils.convert_utc_to_loc(df, params.get("local_tz"))
 
 # build GPS object
 gps = GPS(df=df, group=fieldwork, id=file_id, params=params)
@@ -180,13 +184,12 @@ file_path = os.path.join(data_dir, fieldwork, file_name)
 
 # load raw data
 df = pd.read_csv(file_path, sep=",")
-# df = df.loc[~df["pressure"].isna()][["date", "time", "pressure", "temperature"]].reset_index(drop=True)
-# df.to_csv("/home/adrien/Bureau/BRA_FDN_MEI_2022-04-26_SDAC_01_U61556_F_TDR_G5_RT10_UTC.csv", index=False, quoting=csv.QUOTE_NONNUMERIC)
-# df = pd.read_csv("/home/adrien/Téléchargements/LB_validation.csv", sep=",")
-# df["pressure"] = df["pressure"]*(1013.25/df["pressure"].median())
 
 # produce "datetime" column of type datetime64
 df["datetime"] = pd.to_datetime(df["date"] + " " + df["time"], format="mixed", dayfirst=False)
+
+# if time is at UTC, convert it to local datetime
+if "_UTC" in file_name: df = utils.convert_utc_to_loc(df, params.get("local_tz"))
 
 # build TDR object
 tdr = TDR(df=df, group=fieldwork, id=file_id, params=params)
@@ -246,6 +249,13 @@ _ = axy.maps_diag(test_dir, "%s_map" % file_id, plot_params)
 _ = axy.folium_map(test_dir, "%s_fmap" % file_id)
 _ = axy.folium_map_wtrips(test_dir, "%s_fmap_wtrips" % file_id, plot_params)
 _ = axy.folium_map_colorgrad(test_dir, "%s_fmap_speed" % file_id, plot_params)
+
+# compare plotting speed of full diagnostic
+for fast in [False, True]:
+    start = time.time()
+    _ = axy.full_diag(test_dir, "%s_diag_fast=%r" % (file_id, fast), plot_params, fast=fast)
+    end = time.time()
+    print("Full diagnostic [fast=%r] : %.1f minutes" % (fast, (end-start)/60))
 
 
 # ======================================================= #

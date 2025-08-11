@@ -155,7 +155,7 @@ class AXY:
 
     # [BUILT-IN METHODS] string representation of the class
     def __repr__(self):
-        return "%s(group=%s, id=%s, trips=%d, n=%d, n_gps=%d, n_tdr=%d)" % (type(self).__name__, self.group, self.id, self.n_trips, self.n_df, self.n_df_gps, self.n_df_tdr)
+        return "%s(group=%s, id=%s, trips=%d, dives=%d, n=%d, n_gps=%d, n_tdr=%d)" % (type(self).__name__, self.group, self.id, self.n_trips, self.n_dives, self.n_df, self.n_df_gps, self.n_df_tdr)
 
     # [METHODS] interpolate data
     interpolate_lat_lon = interpolation.interpolate_lat_lon

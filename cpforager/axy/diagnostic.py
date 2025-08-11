@@ -8,9 +8,9 @@ import cartopy.crs as ccrs
 
 
 # ======================================================= #
-# GPS FULL DIAG [GPS METHOD]
+# AXY FULL DIAG [AXY METHOD]
 # ======================================================= #
-def full_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict):   
+def full_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict, fast=False):   
     
     """    
     Produce the full diagnostic of the AXY data.
@@ -23,10 +23,12 @@ def full_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict):
     :type file_id: str
     :param plot_params: plot parameters dictionary. 
     :type plot_params: dict
+    :param fast: faster plotting if True. 
+    :type fast: bool
     :return: the full diagnostic figure.
     :rtype: matplotlib.pyplot.Figure 
     
-    The figure is save at the png format.
+    The figure is save at the png format. Faster plotting is achieved by considering 1 over 10 acceleration measures.
     
     .. warning::
         Calling this method may takes some if data is heavy.
@@ -71,6 +73,9 @@ def full_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict):
     cols_2 = plot_params.get("cols_2")
     cols_3 = plot_params.get("cols_3")
     diving_depth_threshold = params.get("diving_depth_threshold")
+    
+    # set a small version of the dataframe for fast plotting
+    df_small = df[0:n_df:10].reset_index(drop=True)
     
     # set infos to print on diagnostic
     infos = []
@@ -180,21 +185,33 @@ def full_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict):
     ax = fig.add_subplot(gs[3,0:5])
     diagnostic.plot_ts_wtrips(ax, df_gps, plot_params, n_trips, "dist_to_nest", "Distance to nest", "Distance [km]")
     
-    # ax timeserie
+    # ax timeserie        
     ax = fig.add_subplot(gs[4,0])
-    diagnostic.plot_ts_twinx(ax, df, plot_params, "ax", "Acceleration x-axis", "Ax [g]")
+    if fast: 
+        diagnostic.plot_ts_twinx(ax, df_small, plot_params, "ax", "Acceleration x-axis", "Ax [g]")
+    else:
+        diagnostic.plot_ts_twinx(ax, df, plot_params, "ax", "Acceleration x-axis", "Ax [g]")
     
     # ay timeserie
     ax = fig.add_subplot(gs[4,1])
-    diagnostic.plot_ts_twinx(ax, df, plot_params, "ay", "Acceleration y-axis", "Ay [g]")
+    if fast: 
+        diagnostic.plot_ts_twinx(ax, df_small, plot_params, "ay", "Acceleration y-axis", "Ay [g]")
+    else:
+        diagnostic.plot_ts_twinx(ax, df, plot_params, "ay", "Acceleration y-axis", "Ay [g]")
     
     # az timeserie
     ax = fig.add_subplot(gs[4,2])
-    diagnostic.plot_ts_twinx(ax, df, plot_params, "az", "Acceleration z-axis", "Az [g]")
+    if fast: 
+        diagnostic.plot_ts_twinx(ax, df_small, plot_params, "az", "Acceleration z-axis", "Az [g]")
+    else:
+        diagnostic.plot_ts_twinx(ax, df, plot_params, "az", "Acceleration z-axis", "Az [g]")
      
     # odba timeserie
     ax = fig.add_subplot(gs[4,3])
-    diagnostic.plot_ts_twinx(ax, df, plot_params, "odba", "Overall Dynamic Body Acceleration", "ODBA [g]")
+    if fast: 
+        diagnostic.plot_ts_twinx(ax, df_small, plot_params, "odba", "Overall Dynamic Body Acceleration", "ODBA [g]")
+    else:
+        diagnostic.plot_ts_twinx(ax, df, plot_params, "odba", "Overall Dynamic Body Acceleration", "ODBA [g]")
         
     # odba timeserie zoom (50% to 50.1% dataframe length)
     ax = fig.add_subplot(gs[4,4])
