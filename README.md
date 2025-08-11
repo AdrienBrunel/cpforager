@@ -91,4 +91,3 @@ The script [test.py](./test/test.py) illustrates how the `GPS`, `TDR`, `AXY` and
 # Infos
 * Python version used is 3.13.3
 * OS used is Ubuntu 20.04
-* Environment can be loaded using [environment.yml](environment.yml)
