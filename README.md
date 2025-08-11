@@ -67,7 +67,7 @@ The resulting html documentation is generated in the [./doc/_build/html/](./doc/
 
 # User guide 
 
-The script [test.py](./test/test.py) illustrates how the `GPS`, `TDR`, `AXY` and `GPS_Collection` classes should be used to fully benefit the users. Results of the methods called within the script are found in the [test](./test/) folder. For more details, you can browse the package documentation.
+The Python scripts in the [test](./test/) folder illustrate how the `GPS`, `TDR`, `AXY` and `GPS_Collection` classes can be used to fully benefit the users. Results of the scripts are also found in the [test](./test/) folder. For more details, you can browse the package documentation.
 
 <br>
 
@@ -78,7 +78,7 @@ The script [test.py](./test/test.py) illustrates how the `GPS`, `TDR`, `AXY` and
 - [ ] create a `AXY_Collection` class.
 - [ ] create a `TDR_Collection` class.
 - [x] add a test block where gps data is cutted by trip and written as csv.
-- [ ] add a test block where gps data are read from [https://www.seabirdtracking.org/](Seabird Tracking Database).
+- [ ] add a test block where gps data are read from [Seabird Tracking Database](https://www.seabirdtracking.org/).
 - [ ] add a method to_SeabirdTracking() in `GPS_Collection`.
 - [x] add a `fast=True` argument to the full_diag() method of `AXY`.
 - [ ] find a way to how fully benefit from `GPS` and `TDR` methods in `AXY` (*e.g.* display, diagnostic).
