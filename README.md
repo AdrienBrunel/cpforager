@@ -82,7 +82,7 @@ The script [test.py](./test/test.py) illustrates how the `GPS`, `TDR`, `AXY` and
 - [ ] add a method to_SeabirdTracking() in `GPS_Collection`.
 - [ ] add a `fast=True` argument to the full_diag() method of `AXY`.
 - [ ] find out how fully benefit from `GPS` and `TDR` methods in `AXY` (*e.g.* display, diagnostic).
-- [ ] nb_dives --> n_dives and n_trip --> n_trips.
+- [x] nb_dives --> n_dives and n_trip --> n_trips.
 - [ ] correction associated to remove_suspicious() bug in `AXY`.
 - [ ] emphasize dives on the GPS_TDR plots.
 
