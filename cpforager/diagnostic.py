@@ -497,6 +497,63 @@ def plot_map_wtrips(ax, df, params, plot_params, color_palette, n_trips, nest_lo
 
 
 # ================================================================================================ #
+# PLOT MAPS WITH EMPHASIZED POINTS
+# ================================================================================================ #  
+def plot_map_weph(ax, df, params, plot_params, nest_lon, nest_lat, zoom, eph_cond):
+        
+    """    
+    Plot map of the trajectory with points emphasized according to a condition. 
+    
+    :param ax: plot axes.
+    :type ax: matplotlib.Axes 
+    :param df: dataframe with ``longitude``, ``latitude`` and ``trip`` columns.
+    :type df: pandas.DataFrame
+    :param params: parameters dictionary. 
+    :type params: dict
+    :param plot_params: plot parameters dictionary. 
+    :type plot_params: dict
+    :param nest_lon: nest longitude.
+    :type nest_lon: float
+    :param nest_lat: nest latitude.
+    :type nest_lat: float
+    :param zoom: zooming factor around nest. 
+    :type zoom: float
+    :param eph_cond: condition to emphasize points.
+    :type eph_cond: pandas.DataFrame(dtype=bool)
+    
+    .. note::
+        The required fields in the parameters dictionary are ``colony``.
+    """
+    
+    # get parameters
+    colony = params.get("colony")
+
+    # trajectory with emphasized points
+    plt.scatter(df["longitude"], df["latitude"], s=plot_params["pnt_size"], marker=plot_params["pnt_type"], color="black")
+    if not(eph_cond is None):
+        plt.scatter(df.loc[eph_cond, "longitude"], df.loc[eph_cond, "latitude"], s=plot_params["eph_size"], color="red")
+    plot_colony(ax, params)
+    plt.title("Trajectory [points emphasized]", fontsize=plot_params["main_fs"])
+    ax.set_xlabel("Longitude [°]", fontsize=plot_params["labs_fs"])
+    ax.set_ylabel("Latitude [°]", fontsize=plot_params["labs_fs"])
+    ax.gridlines(linestyle=plot_params["grid_lty"], linewidth=plot_params["grid_lwd"], color=plot_params["grid_col"],
+                 draw_labels=["bottom", "left"], xformatter=plot_params["lon_fmt"], yformatter=plot_params["lat_fmt"], 
+                 xlabel_style={"size": plot_params["labs_fs"]}, ylabel_style={"size": plot_params["labs_fs"]})
+    ax.add_feature(cfeature.LAND.with_scale("10m"), zorder=0)
+    ax.add_feature(cfeature.COASTLINE.with_scale("10m"), zorder=1)
+    if zoom>0:
+        plt.scatter(nest_lon, nest_lat, marker="*", s=10*plot_params["mrk_size"], color="yellow", edgecolor="black")
+        colony_clon = (colony["box_longitude"][0]+colony["box_longitude"][1])/2
+        colony_clat = (colony["box_latitude"][0]+colony["box_latitude"][1])/2
+        colony_dlon = (colony["box_longitude"][1]-colony["box_longitude"][0])/2
+        colony_dlat = (colony["box_latitude"][1]-colony["box_latitude"][0])/2
+        plt.xlim([colony_clon - zoom*colony_dlon, colony_clon + zoom*colony_dlon])
+        plt.ylim([colony_clat - zoom*colony_dlat, colony_clat + zoom*colony_dlat])
+    else:
+        plt.axis("equal")
+        
+        
+# ================================================================================================ #
 # PLOT MAPS WITH COLOR GRADIENT
 # ================================================================================================ #  
 def plot_map_colorgrad(ax, df, params, plot_params, var, color_palette, nest_lon, nest_lat, title, q_th, zoom):

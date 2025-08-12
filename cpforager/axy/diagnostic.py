@@ -113,7 +113,7 @@ def full_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict, fast=False
     fig.tight_layout()
     fig.subplots_adjust(hspace=0.3, wspace=0.25, bottom=0.06, top=0.95, left=0.05, right=0.95)
     gs = fig.add_gridspec(6, 5)
-    
+
     # trajectory with a trip color gradient
     ax = fig.add_subplot(gs[0,0], projection=ccrs.PlateCarree())
     diagnostic.plot_map_wtrips(ax, df_gps, params, plot_params, cols_1, n_trips, nest_lon, nest_lat, 0, trip_length, trip_duration)
@@ -132,10 +132,10 @@ def full_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict, fast=False
     diagnostic.plot_map_colorgrad(ax, df_gps, params, plot_params, "duration", cols_3, nest_lon, nest_lat, "Trajectory [duration color gradient]", 1.0, 0)
     del df_gps["duration"]
     
-    # plot infos
-    ax = fig.add_subplot(gs[0,4])
-    diagnostic.plot_infos(infos, plot_params)
-    
+    # trajectory with dives emphasized
+    ax = fig.add_subplot(gs[0,4], projection=ccrs.PlateCarree())
+    diagnostic.plot_map_weph(ax, df_gps, params, plot_params, nest_lon, nest_lat, 0, (df_gps["n_dives"]>0))
+        
     # step time timeserie
     ax = fig.add_subplot(gs[1,0])
     diagnostic.plot_ts(ax, df_gps, plot_params, "step_time", "GPS step time", "Time [s]")
@@ -182,8 +182,12 @@ def full_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict, fast=False
         diagnostic.plot_angle_polar(ax, df_gps, plot_params, "step_heading_to_colony", "Step heading to colony", "Angle [°]")
     
     # distance to nest by trip
-    ax = fig.add_subplot(gs[3,0:5])
+    ax = fig.add_subplot(gs[3,0:4])
     diagnostic.plot_ts_wtrips(ax, df_gps, plot_params, n_trips, "dist_to_nest", "Distance to nest", "Distance [km]")
+
+    # plot infos
+    ax = fig.add_subplot(gs[3,4])
+    diagnostic.plot_infos(infos, plot_params)
     
     # ax timeserie        
     ax = fig.add_subplot(gs[4,0])
