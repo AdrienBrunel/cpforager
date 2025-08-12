@@ -33,42 +33,39 @@ class AXY:
         :type params: dict
         
         :ivar df: the dataframe containing the raw and processed AXY data.
-        :type df: pandas.DataFrame
+        :vartype df: pandas.DataFrame
         :ivar group: The string representing the group to which the AXY data belongs (*e.g.* species, year, fieldwork, *etc*.) useful for statistics and filtering.
-        :type group: str
+        :vartype group: str
         :ivar id: The string representing the unique identifier of the central-place foraging seabird.
-        :type id: str
+        :vartype id: str
         :ivar params: The dictionary containing the parameters used for the AXY data processing.
-        :type params: dict
+        :vartype params: dict
         :ivar n_df: the number of measures in the AXY recording.
-        :type n_df: int
+        :vartype n_df: int
         :ivar gps: the GPS data of AXY at GPS resolution.
-        :type gps: cpforager.GPS
+        :vartype gps: cpforager.GPS
         :ivar df_gps: the dataframe containing AXY data at GPS resolution.
-        :type df_gps: pandas.DataFrame
+        :vartype df_gps: pandas.DataFrame
         :ivar tdr: the TDR data of AXY at TDR resolution.
-        :type tdr: cpforager.TDR
+        :vartype tdr: cpforager.TDR
         :ivar df_tdr: the dataframe containing AXY data at TDR resolution.
-        :type df_tdr: pandas.DataFrame
+        :vartype df_tdr: pandas.DataFrame
         :ivar start_datetime:  the starting datetime of the AXY recording.
-        :type start_datetime: datetime.datetime
+        :vartype start_datetime: datetime.datetime
         :ivar end_datetime: the ending datetime of the AXY recording.
-        :type end_datetime: datetime.datetime
+        :vartype end_datetime: datetime.datetime
         :ivar frequency: the frequency of the AXY data in Hz.
-        :type frequency: float
+        :vartype frequency: float
         :ivar total_duration: the total duration of the AXY recording in days.
-        :type total_duration: float
+        :vartype total_duration: float
         :ivar max_odba: the maximum overall dynamical body acceleration.
-        :type max_odba: float
+        :vartype max_odba: float
         :ivar median_odba: the median overall dynamical body acceleration.
-        :type median_odba: float
+        :vartype median_odba: float
         :ivar max_odba_f: the maximum filtered overall dynamical body acceleration.
-        :type max_odba_f: float
+        :vartype max_odba_f: float
         :ivar median_odba_f: the median filtered overall dynamical body acceleration.
-        :type median_odba_f: float
-        
-        .. todo::
-            Better organise attributes and add TDR object as a field. Improve methods to benefit from the GPS and TDR methods (*e.g.* display)
+        :vartype median_odba_f: float        
         """
 
         # process data

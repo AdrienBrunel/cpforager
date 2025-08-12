@@ -31,33 +31,33 @@ class GPS:
         :type params: dict
         
         :ivar df: the dataframe containing the raw and processed GPS data.
-        :type df: pandas.DataFrame
+        :vartype df: pandas.DataFrame
         :ivar group: The string representing the group to which the GPS data belongs (*e.g.* species, year, fieldwork, *etc*.) useful for statistics and filtering.
-        :type group: str
+        :vartype group: str
         :ivar id: The string representing the unique identifier of the central-place foraging seabird.
-        :type id: str
+        :vartype id: str
         :ivar params: The dictionary containing the parameters used for the GPS data processing.
-        :type params: dict
+        :vartype params: dict
         :ivar n_df: the number of measures in the GPS recording.
-        :type n_df: int
+        :vartype n_df: int
         :ivar start_datetime:  the starting datetime of the GPS recording.
-        :type start_datetime: datetime.datetime
+        :vartype start_datetime: datetime.datetime
         :ivar end_datetime: the ending datetime of the GPS recording.
-        :type end_datetime: datetime.datetime
+        :vartype end_datetime: datetime.datetime
         :ivar resolution: the time resolution of the GPS data in seconds estimated as the median value of the step times.
-        :type resolution: float
+        :vartype resolution: float
         :ivar total_duration: the total duration of the GPS recording in days.
-        :type total_duration: float
+        :vartype total_duration: float
         :ivar total_length: the total length of the GPS recording in kilometers.
-        :type total_length: float
+        :vartype total_length: float
         :ivar dmax: the maximum distance to the nest reached by the central place-foraging seabird.
-        :type dmax: float
+        :vartype dmax: float
         :ivar n_trips: the number of foraging trips realised by the seabird.
-        :type n_trips: int
+        :vartype n_trips: int
         :ivar nest_position: the longitude and latitude of the estimated nest position.
-        :type nest_position: [float, float]
+        :vartype nest_position: [float, float]
         :ivar trip_statistics: the dataframe containing the trip statistics where one row corresponds to one foraging trip.
-        :type trip_statistics: pandas.DataFrame        
+        :vartype trip_statistics: pandas.DataFrame        
         """
         
         # process data

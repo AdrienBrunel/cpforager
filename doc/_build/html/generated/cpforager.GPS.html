@@ -111,20 +111,20 @@
 </dd>
 <dt class="field-even">Variables<span class="colon">:</span></dt>
 <dd class="field-even"><ul class="simple">
-<li><p><strong>df</strong> – the dataframe containing the raw and processed GPS data.</p></li>
-<li><p><strong>group</strong> – The string representing the group to which the GPS data belongs (<em>e.g.</em> species, year, fieldwork, <em>etc</em>.) useful for statistics and filtering.</p></li>
-<li><p><strong>id</strong> – The string representing the unique identifier of the central-place foraging seabird.</p></li>
-<li><p><strong>params</strong> – The dictionary containing the parameters used for the GPS data processing.</p></li>
-<li><p><strong>n_df</strong> – the number of measures in the GPS recording.</p></li>
-<li><p><strong>start_datetime</strong> – the starting datetime of the GPS recording.</p></li>
-<li><p><strong>end_datetime</strong> – the ending datetime of the GPS recording.</p></li>
-<li><p><strong>resolution</strong> – the time resolution of the GPS data in seconds estimated as the median value of the step times.</p></li>
-<li><p><strong>total_duration</strong> – the total duration of the GPS recording in days.</p></li>
-<li><p><strong>total_length</strong> – the total length of the GPS recording in kilometers.</p></li>
-<li><p><strong>dmax</strong> – the maximum distance to the nest reached by the central place-foraging seabird.</p></li>
-<li><p><strong>n_trips</strong> – the number of foraging trips realised by the seabird.</p></li>
-<li><p><strong>nest_position</strong> – the longitude and latitude of the estimated nest position.</p></li>
-<li><p><strong>trip_statistics</strong> – the dataframe containing the trip statistics where one row corresponds to one foraging trip.</p></li>
+<li><p><strong>df</strong> (<em>pandas.DataFrame</em>) – the dataframe containing the raw and processed GPS data.</p></li>
+<li><p><strong>group</strong> (<em>str</em>) – The string representing the group to which the GPS data belongs (<em>e.g.</em> species, year, fieldwork, <em>etc</em>.) useful for statistics and filtering.</p></li>
+<li><p><strong>id</strong> (<em>str</em>) – The string representing the unique identifier of the central-place foraging seabird.</p></li>
+<li><p><strong>params</strong> (<em>dict</em>) – The dictionary containing the parameters used for the GPS data processing.</p></li>
+<li><p><strong>n_df</strong> (<em>int</em>) – the number of measures in the GPS recording.</p></li>
+<li><p><strong>start_datetime</strong> (<em>datetime.datetime</em>) – the starting datetime of the GPS recording.</p></li>
+<li><p><strong>end_datetime</strong> (<em>datetime.datetime</em>) – the ending datetime of the GPS recording.</p></li>
+<li><p><strong>resolution</strong> (<em>float</em>) – the time resolution of the GPS data in seconds estimated as the median value of the step times.</p></li>
+<li><p><strong>total_duration</strong> (<em>float</em>) – the total duration of the GPS recording in days.</p></li>
+<li><p><strong>total_length</strong> (<em>float</em>) – the total length of the GPS recording in kilometers.</p></li>
+<li><p><strong>dmax</strong> (<em>float</em>) – the maximum distance to the nest reached by the central place-foraging seabird.</p></li>
+<li><p><strong>n_trips</strong> (<em>int</em>) – the number of foraging trips realised by the seabird.</p></li>
+<li><p><strong>nest_position</strong> (<em>[</em><em>float</em><em>, </em><em>float</em><em>]</em>) – the longitude and latitude of the estimated nest position.</p></li>
+<li><p><strong>trip_statistics</strong> (<em>pandas.DataFrame</em>) – the dataframe containing the trip statistics where one row corresponds to one foraging trip.</p></li>
 </ul>
 </dd>
 </dl>
@@ -136,7 +136,7 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#cpforager.GPS.__init__" title="cpforager.GPS.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>([df, group, id, params])</p></td>
 <td><p>Constructor of a GPS object.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">display_data_summary</span></code>()</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">display_data_summary</span></code>([standalone])</p></td>
 <td><p>Print in terminal the GPS data summary.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">folium_map</span></code>([fig_dir, file_id])</p></td>

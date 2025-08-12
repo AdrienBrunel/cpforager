@@ -30,35 +30,35 @@ class TDR:
         :type params: dict
         
         :ivar df: the dataframe containing the raw and processed TDR data.
-        :type df: pandas.DataFrame
+        :vartype df: pandas.DataFrame
         :ivar group: The string representing the group to which the TDR data belongs (*e.g.* species, year, fieldwork, *etc*.) useful for statistics and filtering.
-        :type group: str
+        :vartype group: str
         :ivar id: The string representing the unique identifier of the central-place foraging seabird.
-        :type id: str
+        :vartype id: str
         :ivar params: The dictionary containing the parameters used for the TDR data processing.
-        :type params: dict
+        :vartype params: dict
         :ivar n_df: the number of measures in the TDR recording.
-        :type n_df: int
+        :vartype n_df: int
         :ivar start_datetime:  the starting datetime of the TDR recording.
-        :type start_datetime: datetime.datetime
+        :vartype start_datetime: datetime.datetime
         :ivar end_datetime: the ending datetime of the TDR recording.
-        :type end_datetime: datetime.datetime
+        :vartype end_datetime: datetime.datetime
         :ivar resolution: the time resolution of the TDR data in seconds estimated as the median value of the step times.
-        :type resolution: float
+        :vartype resolution: float
         :ivar total_duration: the total duration of the TDR recording in days.
-        :type total_duration: float
+        :vartype total_duration: float
         :ivar n_dives: the number of dives realised by the seabird.
-        :type n_dives: int
+        :vartype n_dives: int
         :ivar median_pressure: the median pressure in hPa.
-        :type median_pressure: float
+        :vartype median_pressure: float
         :ivar median_depth: the median depth in meters.
-        :type median_depth: float
+        :vartype median_depth: float
         :ivar max_depth: the maximum depth in meters.
-        :type max_depth: float
+        :vartype max_depth: float
         :ivar mean_temperature: the mean temperature in °C.
-        :type mean_temperature: float
+        :vartype mean_temperature: float
         :ivar dive_statistics: the dataframe containing the dive statistics where one row corresponds to one dive.
-        :type dive_statistics: pandas.DataFrame        
+        :vartype dive_statistics: pandas.DataFrame        
         """
         
         # process data

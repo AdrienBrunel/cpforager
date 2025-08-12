@@ -26,15 +26,15 @@ class GPS_Collection:
         :type gps_collection: list[cpforager.GPS]
         
         :ivar gps_collection: the list of GPS.
-        :type gps_collection: list[cpforager.GPS]
+        :vartype gps_collection: list[cpforager.GPS]
         :ivar n_gps: the total number of GPS included in the list.
-        :type n_gps: int
+        :vartype n_gps: int
         :ivar n_trips: the number of trips summed over every GPS included in the list.
-        :type n_trips: str
+        :vartype n_trips: str
         :ivar trip_statistics_all: the trip statistics dataframe merged over every GPS included in the list.
-        :type trip_statistics_all: pandas.DataFrame
+        :vartype trip_statistics_all: pandas.DataFrame
         :ivar df_all: the enhanced GPS dataframe merged over every GPS included in the list.
-        :type df_all: pandas.DataFrame
+        :vartype df_all: pandas.DataFrame
         """
 
         # init dataframes
