@@ -645,21 +645,21 @@ def add_odba(df, params):
 
 
 # ================================================================================================ #
-# REMOVE SUSPICIOUS ROWS
+# TAG SUSPICIOUS ROWS
 # ================================================================================================ #
-def remove_suspicious(df, params):
+def add_is_suspicious(df, params):
     
     """    
-    Remove from the dataframe rows with a step speed above the max possible speed threshold.
+    Add to the dataframe the additional ``is_suspicious`` boolean column tagging suspicious position recordings.
     
     :param df: dataframe with a ``step_speed`` column.
     :type df: pandas.DataFrame
     :param params: parameters dictionary. 
     :type params: dict
-    :return: the dataframe without the rows with a step speed above the max possible speed threshold.
+    :return: the dataframe with the additional ``is_suspicious`` boolean column tagging suspicious position recordings.
     :rtype: pandas.DataFrame
     
-    The idea is to clean the data of its recording bugs.
+    The idea is to make it possible to clean the data of its position recording bugs.
     
     .. note::
         The required fields in the parameters dictionary are ``max_possible_speed``.
@@ -671,11 +671,44 @@ def remove_suspicious(df, params):
     # get parameters
     max_possible_speed = params.get("max_possible_speed")
     
-    # remove suspicious rows
-    is_suspicious = (df["step_speed"] > max_possible_speed)
-    df = df.loc[~(is_suspicious)].reset_index(drop=True)
+    # tag suspicious rows
+    df["is_suspicious"] = (df["step_speed"] > max_possible_speed).astype(int)
     
     return(df)
+
+
+# # ================================================================================================ #
+# # REMOVE SUSPICIOUS ROWS
+# # ================================================================================================ #
+# def remove_suspicious(df, params):
+    
+#     """    
+#     Remove from the dataframe rows with a step speed above the max possible speed threshold.
+    
+#     :param df: dataframe with a ``step_speed`` column.
+#     :type df: pandas.DataFrame
+#     :param params: parameters dictionary. 
+#     :type params: dict
+#     :return: the dataframe without the rows with a step speed above the max possible speed threshold.
+#     :rtype: pandas.DataFrame
+    
+#     The idea is to clean the data of its recording bugs.
+    
+#     .. note::
+#         The required fields in the parameters dictionary are ``max_possible_speed``.
+            
+#     .. important::
+#         Bugs in the position recordings may suggest a dive.
+#     """
+    
+#     # get parameters
+#     max_possible_speed = params.get("max_possible_speed")
+    
+#     # remove suspicious rows
+#     is_suspicious = (df["step_speed"] > max_possible_speed)
+#     df = df.loc[~(is_suspicious)].reset_index(drop=True)
+    
+#     return(df)
 
 
 # ================================================================================================ #
@@ -767,7 +800,7 @@ def add_basic_data(df, params):
 # ================================================================================================ #
 # GPS DATA
 # ================================================================================================ #
-def add_gps_data(df, params):
+def add_gps_data(df, params, clean=True):
         
     """    
     Enhance the dataframe with the additional gps data.
@@ -776,8 +809,13 @@ def add_gps_data(df, params):
     :type df: pandas.DataFrame
     :param params: parameters dictionary. 
     :type params: dict
+    :param clean: clean gps data if True. 
+    :type clean: bool
     :return: the dataframe enhanced with the additional gps data.
     :rtype: pandas.DataFrame
+    
+    .. warning::
+        If clean is True, size of the output dataframe may differ from the input dataframe.
     """
     
     # compute basic data
@@ -791,7 +829,9 @@ def add_gps_data(df, params):
     df = add_step_heading_to_colony(df, params)
     
     # clean gps data
-    df = remove_suspicious(df, params)
+    df = add_is_suspicious(df, params)
+    if clean:        
+        df = df.loc[df["is_suspicious"]==0].reset_index(drop=True)
     
     # trip segmentation
     df = add_dist_to_nest(df, params)
@@ -856,7 +896,7 @@ def add_axy_data(df, params):
     gps_resolution = (df["longitude"].notna()) & (df["latitude"].notna())
     gps_indices = df.loc[gps_resolution].index
     df_gps_tmp = df.loc[gps_resolution, ["datetime", "longitude", "latitude"]].reset_index(drop=True)
-    df_gps_tmp = add_gps_data(df_gps_tmp, params)
+    df_gps_tmp = add_gps_data(df_gps_tmp, params, clean=False)
     
     # extract data at tdr resolution and add processed tdr data
     tdr_resolution = (df["pressure"].notna()) & (df["temperature"].notna())
