@@ -27,7 +27,7 @@ The main objectives of **cpforager** package are :
 * (`TDR_Collection` : for working with datasets composed of multiple TDR loggers.)
 * (`AXY_Collection` : for working with datasets composed of multiple AXY loggers.)
 
-Each class automatically enhances raw data but also computes key features specific to each biologger (*e.g.* trip segmentation for GPS, dive segmentation for TDR, ODBA calculation for AXY). They are also accompanied with built-in methods for data processing and visualisation.
+Each class automatically enhances raw data but also computes key features specific to each biologger (*e.g.* trip segmentation for GPS, dive segmentation for TDR, ODBA calculation for AXY). They are also accompanied with methods for data processing and visualisation.
 
 <br>
 <br>
@@ -72,7 +72,7 @@ The Python scripts in the [test](./test/) folder illustrate how the `GPS`, `TDR`
 <br>
 
 # Future developments
-- [ ] improve documentation (add images of test results, uniformize, add logo)
+- [ ] improve documentation (add images of test results, uniformise types, add logo)
 - [ ] create a function `merge_gps_tdr(GPS, TDR)` that will merge TDR data within GPS data and produce the resulting dataframe.
 - [ ] create a `GPS_TDR` class for biologgers with both GPS and TDR data.
 - [ ] create a `AXY_Collection` class.
@@ -81,10 +81,10 @@ The Python scripts in the [test](./test/) folder illustrate how the `GPS`, `TDR`
 - [x] add a test block where gps data are read from [Seabird Tracking Database](https://www.seabirdtracking.org/).
 - [x] add a method to_SeabirdTracking() in `GPS_Collection`.
 - [x] add a `fast=True` argument to the full_diag() method of `AXY`.
-- [ ] find a way to how fully benefit from `GPS` and `TDR` methods in `AXY` (*e.g.* display, diagnostic).
+- [ ] find a way to better benefit from `GPS` and `TDR` methods in `AXY` (*e.g.* display, diagnostic).
 - [x] nb_dives --> n_dives and n_trip --> n_trips.
 - [ ] correction to patch the bug implied by remove_suspicious() in `AXY`.
-- [ ] emphasize dives on the GPS_TDR plots.
+- [x] emphasize dives on the `AXY` plots.
 
 <br>
 
