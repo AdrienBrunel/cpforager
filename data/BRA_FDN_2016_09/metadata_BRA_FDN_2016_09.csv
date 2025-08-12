@@ -1,0 +1,5 @@
+"bird_id","country","archipelago","island","species","morph","sex","age","breed_stage","nb_eggs","nb_chicks","chicks_age","chicks_age_weeks","metal_ring","darvik_band","sensor","sensor_model","sensor_id","freq_gps_s","freq_tdr_s","freq_acc_hz","timezone","wing_mm","bill_mm","tarsus_mm","mass_g"
+"BRA_FDN_MEI_2016-09-15_SSUL_01_T32840_NA_GPS_IGU120_BR023_LOC","BRA","FDN","ME","SSUL","white","unknown","adult","chick-rearing",0,1,"N1","NA","T32840","NA","GPS","IGU","BR023",15,,"NA","LOC",382,87,"40,6",855
+"BRA_FDN_MEI_2016-09-15_SSUL_02_NA_NA_GPS_IGU120_BR011_LOC","BRA","FDN","ME","SSUL","white","unknown","adult","chick-rearing",0,1,"N2","NA","NA","NA","GPS","IGU","BR011",15,,"NA","LOC",393,"84,2","38,9",875
+"BRA_FDN_MEI_2016-09-15_SSUL_03_T32837_NA_GPS_IGU120_BR010_LOC","BRA","FDN","ME","SSUL","white","unknown","adult","chick-rearing",0,1,"N1","NA","T32837","NA","GPS","IGU","BR010",15,,"NA","LOC",377,78,"37,5",735
+"BRA_FDN_MEI_2016-09-15_SSUL_04_T32839_NA_GPS_IGU120_BR012_LOC","BRA","FDN","ME","SSUL","white","unknown","adult","chick-rearing",0,1,"N2","NA","T32839","NA","GPS","IGU","BR012",15,,"NA","LOC",382,"86,2",37,955

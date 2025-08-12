@@ -4,7 +4,8 @@
 import os
 import csv
 import pandas as pd
-from cpforager import parameters, utils, GPS, GPS_Collection
+from cpforager import parameters, utils, misc, GPS, GPS_Collection
+from cpforager.gps_collection import stdb
 
 
 # ======================================================= #
@@ -36,7 +37,7 @@ gps_collection_all = []
 for (fieldwork, colony) in zip(fieldworks, colonies):
 
     # list of files to process
-    files = os.listdir(os.path.join(data_dir, fieldwork))
+    files = misc.grep_pattern(os.listdir(os.path.join(data_dir, fieldwork)), "_GPS_IGU")
     n_files = len(files)
 
     # get structure of parameters
@@ -104,3 +105,53 @@ gps_collection_all.trip_statistics_all.to_csv("%s/trip_statistics_all.csv" % (te
 # ======================================================= #
 # TEST SEABIRD TRACKING DATABASE
 # ======================================================= #
+
+# set data parameters
+fieldwork = "BRA_FDN_2016_09"
+colony = "BRA_FDN_MEI"
+
+# load metadata
+metadata_file_path = os.path.join(data_dir, fieldwork, "metadata_%s.csv" % (fieldwork))
+metadata = pd.read_csv(metadata_file_path, sep=",")
+
+# list of files to process
+files = misc.grep_pattern(os.listdir(os.path.join(data_dir, fieldwork)), "_GPS_IGU")
+n_files = len(files)
+
+# get structure of parameters
+params = parameters.get_params(colony)
+plot_params = parameters.get_plot_params()
+
+# loop over files in directory
+gps_collection = []
+for k in range(n_files):
+
+    # set file infos
+    file_name = files[k]
+    file_id = file_name.replace(".csv", "")
+    file_path = os.path.join(data_dir, fieldwork, file_name)
+
+    # load raw data
+    df = pd.read_csv(file_path, sep=",")
+
+    # produce "datetime" column of type datetime64
+    df["datetime"] = pd.to_datetime(df["date"] + " " + df["time"], format="mixed", dayfirst=False)
+    
+    # if time is at UTC, convert it to local datetime
+    if "_UTC" in file_name: df = utils.convert_utc_to_loc(df, params.get("local_tz"))
+
+    # build GPS object
+    gps = GPS(df, fieldwork, file_id, params)
+
+    # append gps to the overall collections
+    gps_collection.append(gps)
+    
+# build GPS_Collection object
+gps_collection = GPS_Collection(gps_collection)
+
+# produce dataframe at the Seabird Tracking format
+df_stdb = gps_collection.to_SeabirdTracking(metadata)
+
+# produce gps collection from Seabird Tracking format
+new_gps_collection, new_metadata = stdb.convert_to_gps_collection(df_stdb, fieldwork, params)
+new_gps_collection = GPS_Collection(gps_collection)

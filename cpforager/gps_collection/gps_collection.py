@@ -1,22 +1,22 @@
-# ======================================================= #
+# ================================================================================================ #
 # LIBRARIES
-# ======================================================= #
+# ================================================================================================ #
 import pandas as pd
 import numpy as np
-from cpforager.gps_collection import diagnostic, display
+from cpforager.gps_collection import diagnostic, display, stdb
 from cpforager.gps.gps import GPS
 
 
-# ======================================================= #
-# BIOLOGGER SUPER-CLASS
-# ======================================================= #
+# ================================================================================================ #
+# GPS_COLLECTION CLASS
+# ================================================================================================ #
 class GPS_Collection:
     
     """
     A class to represent a list of GPS data of a central-place foraging seabird.
     """
 
-    # [CONSTRUCTOR] BIOLOGGERS
+    # [CONSTRUCTOR] GPS_COLLECTION
     def __init__(self, gps_collection=list[GPS]):
         
         """
@@ -106,3 +106,6 @@ class GPS_Collection:
     plot_stats_summary = diagnostic.plot_stats_summary
     maps_diag = diagnostic.maps_diagnostic
     folium_map = diagnostic.folium_map
+    
+    # [METHODS] Seabird Tracking Database formatting
+    to_SeabirdTracking = stdb.convert_to_stdb_format
