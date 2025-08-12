@@ -18,6 +18,7 @@
       ~GPS_Collection.folium_map
       ~GPS_Collection.maps_diag
       ~GPS_Collection.plot_stats_summary
+      ~GPS_Collection.to_SeabirdTracking
    
    
 

@@ -61,7 +61,7 @@
 <li class="toctree-l2"><a class="reference internal" href="cpforager.processing.add_dive.html">3.12. cpforager.processing.add_dive</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cpforager.processing.add_filtered_acc.html">3.13. cpforager.processing.add_filtered_acc</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cpforager.processing.add_odba.html">3.14. cpforager.processing.add_odba</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cpforager.processing.remove_suspicious.html">3.15. cpforager.processing.remove_suspicious</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpforager.processing.add_is_suspicious.html">3.15. cpforager.processing.add_is_suspicious</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cpforager.processing.interpolate_lat_lon.html">3.16. cpforager.processing.interpolate_lat_lon</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cpforager.processing.add_basic_data.html">3.17. cpforager.processing.add_basic_data</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">3.18. cpforager.processing.add_gps_data</a><ul>
@@ -111,13 +111,14 @@
 <h1><span class="section-number">3.18. </span>cpforager.processing.add_gps_data<a class="headerlink" href="#cpforager-processing-add-gps-data" title="Link to this heading"></a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="cpforager.processing.add_gps_data">
-<span class="sig-prename descclassname"><span class="pre">cpforager.processing.</span></span><span class="sig-name descname"><span class="pre">add_gps_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cpforager.processing.add_gps_data" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">cpforager.processing.</span></span><span class="sig-name descname"><span class="pre">add_gps_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clean</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cpforager.processing.add_gps_data" title="Link to this definition"></a></dt>
 <dd><p>Enhance the dataframe with the additional gps data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>df</strong> (<em>pandas.DataFrame</em>) – dataframe with <code class="docutils literal notranslate"><span class="pre">datetime</span></code>, <code class="docutils literal notranslate"><span class="pre">longitude</span></code> and <code class="docutils literal notranslate"><span class="pre">latitude</span></code> columns.</p></li>
 <li><p><strong>params</strong> (<em>dict</em>) – parameters dictionary.</p></li>
+<li><p><strong>clean</strong> (<em>bool</em>) – clean gps data if True.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -127,6 +128,10 @@
 <dd class="field-odd"><p>pandas.DataFrame</p>
 </dd>
 </dl>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If clean is True, size of the output dataframe may differ from the input dataframe.</p>
+</div>
 </dd></dl>
 
 </section>

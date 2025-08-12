@@ -61,7 +61,7 @@
 <li class="toctree-l2"><a class="reference internal" href="generated/cpforager.processing.add_dive.html">3.12. cpforager.processing.add_dive</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/cpforager.processing.add_filtered_acc.html">3.13. cpforager.processing.add_filtered_acc</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/cpforager.processing.add_odba.html">3.14. cpforager.processing.add_odba</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.processing.remove_suspicious.html">3.15. cpforager.processing.remove_suspicious</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.processing.add_is_suspicious.html">3.15. cpforager.processing.add_is_suspicious</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/cpforager.processing.interpolate_lat_lon.html">3.16. cpforager.processing.interpolate_lat_lon</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/cpforager.processing.add_basic_data.html">3.17. cpforager.processing.add_basic_data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/cpforager.processing.add_gps_data.html">3.18. cpforager.processing.add_gps_data</a></li>
@@ -149,8 +149,8 @@
 <tr class="row-even"><td><p><a class="reference internal" href="generated/cpforager.processing.add_odba.html#cpforager.processing.add_odba" title="cpforager.processing.add_odba"><code class="xref py py-obj docutils literal notranslate"><span class="pre">processing.add_odba</span></code></a>(df, params)</p></td>
 <td><p>Add to the dataframe the additional <code class="docutils literal notranslate"><span class="pre">odba</span></code> and <code class="docutils literal notranslate"><span class="pre">odba_f</span></code> columns of the raw and filtered overall dynamical body acceleration.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/cpforager.processing.remove_suspicious.html#cpforager.processing.remove_suspicious" title="cpforager.processing.remove_suspicious"><code class="xref py py-obj docutils literal notranslate"><span class="pre">processing.remove_suspicious</span></code></a>(df, params)</p></td>
-<td><p>Remove from the dataframe rows with a step speed above the max possible speed threshold.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/cpforager.processing.add_is_suspicious.html#cpforager.processing.add_is_suspicious" title="cpforager.processing.add_is_suspicious"><code class="xref py py-obj docutils literal notranslate"><span class="pre">processing.add_is_suspicious</span></code></a>(df, params)</p></td>
+<td><p>Add to the dataframe the additional <code class="docutils literal notranslate"><span class="pre">is_suspicious</span></code> boolean column tagging suspicious position recordings.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/cpforager.processing.interpolate_lat_lon.html#cpforager.processing.interpolate_lat_lon" title="cpforager.processing.interpolate_lat_lon"><code class="xref py py-obj docutils literal notranslate"><span class="pre">processing.interpolate_lat_lon</span></code></a>(df, ...[, ...])</p></td>
 <td><p>Interpolate longitude and latitude at a given datetime.</p></td>
@@ -158,7 +158,7 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/cpforager.processing.add_basic_data.html#cpforager.processing.add_basic_data" title="cpforager.processing.add_basic_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">processing.add_basic_data</span></code></a>(df, params)</p></td>
 <td><p>Enhance the dataframe with the additional basic data.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/cpforager.processing.add_gps_data.html#cpforager.processing.add_gps_data" title="cpforager.processing.add_gps_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">processing.add_gps_data</span></code></a>(df, params)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/cpforager.processing.add_gps_data.html#cpforager.processing.add_gps_data" title="cpforager.processing.add_gps_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">processing.add_gps_data</span></code></a>(df, params[, clean])</p></td>
 <td><p>Enhance the dataframe with the additional gps data.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/cpforager.processing.add_tdr_data.html#cpforager.processing.add_tdr_data" title="cpforager.processing.add_tdr_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">processing.add_tdr_data</span></code></a>(df, params)</p></td>

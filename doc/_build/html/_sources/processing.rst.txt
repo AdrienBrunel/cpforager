@@ -24,7 +24,7 @@ Processing
    processing.add_dive
    processing.add_filtered_acc
    processing.add_odba
-   processing.remove_suspicious
+   processing.add_is_suspicious
    processing.interpolate_lat_lon
    processing.add_basic_data
    processing.add_gps_data

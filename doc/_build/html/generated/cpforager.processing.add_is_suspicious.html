@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>3.15. cpforager.processing.remove_suspicious &mdash; cpforager 0 documentation</title>
+  <title>3.15. cpforager.processing.add_is_suspicious &mdash; cpforager 0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
@@ -61,8 +61,8 @@
 <li class="toctree-l2"><a class="reference internal" href="cpforager.processing.add_dive.html">3.12. cpforager.processing.add_dive</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cpforager.processing.add_filtered_acc.html">3.13. cpforager.processing.add_filtered_acc</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cpforager.processing.add_odba.html">3.14. cpforager.processing.add_odba</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">3.15. cpforager.processing.remove_suspicious</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#cpforager.processing.remove_suspicious"><code class="docutils literal notranslate"><span class="pre">remove_suspicious()</span></code></a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3.15. cpforager.processing.add_is_suspicious</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cpforager.processing.add_is_suspicious"><code class="docutils literal notranslate"><span class="pre">add_is_suspicious()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="cpforager.processing.interpolate_lat_lon.html">3.16. cpforager.processing.interpolate_lat_lon</a></li>
@@ -97,9 +97,9 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../processing.html"><span class="section-number">3. </span>Processing</a></li>
-      <li class="breadcrumb-item active"><span class="section-number">3.15. </span>cpforager.processing.remove_suspicious</li>
+      <li class="breadcrumb-item active"><span class="section-number">3.15. </span>cpforager.processing.add_is_suspicious</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/generated/cpforager.processing.remove_suspicious.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/generated/cpforager.processing.add_is_suspicious.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -107,12 +107,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="cpforager-processing-remove-suspicious">
-<h1><span class="section-number">3.15. </span>cpforager.processing.remove_suspicious<a class="headerlink" href="#cpforager-processing-remove-suspicious" title="Link to this heading"></a></h1>
+  <section id="cpforager-processing-add-is-suspicious">
+<h1><span class="section-number">3.15. </span>cpforager.processing.add_is_suspicious<a class="headerlink" href="#cpforager-processing-add-is-suspicious" title="Link to this heading"></a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="cpforager.processing.remove_suspicious">
-<span class="sig-prename descclassname"><span class="pre">cpforager.processing.</span></span><span class="sig-name descname"><span class="pre">remove_suspicious</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cpforager.processing.remove_suspicious" title="Link to this definition"></a></dt>
-<dd><p>Remove from the dataframe rows with a step speed above the max possible speed threshold.</p>
+<dt class="sig sig-object py" id="cpforager.processing.add_is_suspicious">
+<span class="sig-prename descclassname"><span class="pre">cpforager.processing.</span></span><span class="sig-name descname"><span class="pre">add_is_suspicious</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cpforager.processing.add_is_suspicious" title="Link to this definition"></a></dt>
+<dd><p>Add to the dataframe the additional <code class="docutils literal notranslate"><span class="pre">is_suspicious</span></code> boolean column tagging suspicious position recordings.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -121,13 +121,13 @@
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>the dataframe without the rows with a step speed above the max possible speed threshold.</p>
+<dd class="field-even"><p>the dataframe with the additional <code class="docutils literal notranslate"><span class="pre">is_suspicious</span></code> boolean column tagging suspicious position recordings.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>pandas.DataFrame</p>
 </dd>
 </dl>
-<p>The idea is to clean the data of its recording bugs.</p>
+<p>The idea is to make it possible to clean the data of its position recording bugs.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The required fields in the parameters dictionary are <code class="docutils literal notranslate"><span class="pre">max_possible_speed</span></code>.</p>

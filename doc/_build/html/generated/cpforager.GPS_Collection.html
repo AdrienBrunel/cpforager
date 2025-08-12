@@ -108,7 +108,7 @@
 <dd class="field-even"><ul class="simple">
 <li><p><strong>gps_collection</strong> – the list of GPS.</p></li>
 <li><p><strong>n_gps</strong> – the total number of GPS included in the list.</p></li>
-<li><p><strong>n_trip</strong> – the number of trips summed over every GPS included in the list.</p></li>
+<li><p><strong>n_trips</strong> – the number of trips summed over every GPS included in the list.</p></li>
 <li><p><strong>trip_statistics_all</strong> – the trip statistics dataframe merged over every GPS included in the list.</p></li>
 <li><p><strong>df_all</strong> – the enhanced GPS dataframe merged over every GPS included in the list.</p></li>
 </ul>
@@ -133,6 +133,9 @@
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_stats_summary</span></code>([fig_dir, file_id, ...])</p></td>
 <td><p>Produce the trip statistics summary of every GPS data.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_SeabirdTracking</span></code>(metadata)</p></td>
+<td><p>Produce the dataframe formatted for Seabird Tracking Database from GPS_collection.</p></td>
 </tr>
 </tbody>
 </table>
