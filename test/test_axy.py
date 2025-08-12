@@ -19,12 +19,12 @@ test_dir = os.path.join(root_dir, "test")
 # PARAMETERS
 # ======================================================= #
 
-# set data parameters
+# set metadata
 fieldwork = "BRA_FDN_2022_04"
 colony = "BRA_FDN_MEI"
 file_name = "BRA_FDN_MEI_2022-04-26_SDAC_01_U61556_F_GPS_AXY_RT10_UTC.csv"
 
-# get parameters structure
+# set parameters dictionaries
 params = parameters.get_params(colony)
 plot_params = parameters.get_plot_params()
 
@@ -100,4 +100,4 @@ axy_interp = AXY(df=df_interp, group=fieldwork, id="%s_%s" % (axy.id, "interp"),
 print("df     : %d/%d = %.2f%%" % (len(axy_interp), len(axy), 100*len(axy_interp)/len(axy)))
 print("df_gps : %d/%d = %.2f%%" % (len(axy_interp.df_gps), len(axy.df_gps), 100*len(axy_interp.df_gps)/len(axy.df_gps)))
 _ = axy_interp.full_diag(test_dir, "%s_diag" % axy_interp.id, plot_params, fast=True)
-_ = axy_interp.maps_diag(test_dir, "%s_map" % axy_interp.id, plot_params, fast=True)
+_ = axy_interp.maps_diag(test_dir, "%s_map" % axy_interp.id, plot_params)

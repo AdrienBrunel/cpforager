@@ -18,12 +18,12 @@ test_dir = os.path.join(root_dir, "test")
 # PARAMETERS
 # ======================================================= #
 
-# set data parameters
+# set metadata
 fieldwork = "BRA_FDN_2022_04"
 colony = "BRA_FDN_MEI"
 file_name = "BRA_FDN_MEI_2022-04-26_SDAC_01_U61556_F_TDR_G5_RT10_UTC.csv"
 
-# get parameters structure
+# set parameters dictionaries
 params = parameters.get_params(colony)
 plot_params = parameters.get_plot_params()
 
