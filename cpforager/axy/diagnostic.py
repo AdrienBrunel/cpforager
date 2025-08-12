@@ -39,34 +39,33 @@ def full_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict, fast=False
     
     # get attributes
     df = self.df
-    df_gps = self.df_gps
-    df_tdr = self.df_tdr
     group = self.group
     id = self.id
     params = self.params
     n_df = self.n_df
-    n_df_gps = self.n_df_gps
-    n_df_tdr = self.n_df_tdr
     start_datetime = self.start_datetime
     end_datetime = self.end_datetime
-    gps_resolution = self.gps_resolution
+    gps_resolution = self.gps.resolution
     frequency = self.frequency
     total_duration = self.total_duration
-    total_length = self.total_length
-    dmax = self.dmax
-    n_trips = self.n_trips
     median_odba = self.median_odba
     median_odba_f = self.median_odba_f
-    n_dives = self.n_dives
-    median_pressure = self.median_pressure
-    median_depth = self.median_depth
-    max_depth = self.max_depth
-    mean_temperature = self.mean_temperature
-    dive_statistics = self.dive_statistics
-    [nest_lon, nest_lat] = self.nest_position
-    trip_statistics = self.trip_statistics
-    trip_duration = trip_statistics["duration"]
-    trip_length = trip_statistics["length"]
+    df_tdr = self.df_tdr
+    df_gps = self.df_gps
+    n_df_gps = self.gps.n_df
+    n_df_tdr = self.tdr.n_df
+    total_length = self.gps.total_length
+    dmax = self.gps.dmax
+    n_trips = self.gps.n_trips
+    [nest_lon, nest_lat] = self.gps.nest_position
+    trip_duration = self.gps.trip_statistics["duration"]
+    trip_length = self.gps.trip_statistics["length"]
+    n_dives = self.tdr.n_dives
+    median_pressure = self.tdr.median_pressure
+    median_depth = self.tdr.median_depth
+    max_depth = self.tdr.max_depth
+    mean_temperature = self.tdr.mean_temperature
+    dive_statistics = self.tdr.dive_statistics
 
     # get parameters
     cols_1 = plot_params.get("cols_1")
@@ -92,10 +91,10 @@ def full_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict, fast=False
     infos.append("Maximum distance to nest = %.1f km" % dmax)
     infos.append("Number of trips = %d" % n_trips)
     if n_trips>0:
-        infos.append("Longest trip = %.1f h" % trip_statistics["duration"].max())
-        infos.append("Median trip duration = %.1f h" % trip_statistics["duration"].quantile(0.5))
-        infos.append("Largest trip = %.1f km" % trip_statistics["length"].max())
-        infos.append("Median trip length = %.1f km" % trip_statistics["length"].quantile(0.5))
+        infos.append("Longest trip = %.1f h" % trip_duration.max())
+        infos.append("Median trip duration = %.1f h" % trip_duration.quantile(0.5))
+        infos.append("Largest trip = %.1f km" % trip_length.max())
+        infos.append("Median trip length = %.1f km" % trip_length.quantile(0.5))
     infos.append("Median odba = %.3f" % median_odba)
     infos.append("Median odba_f = %.3f" % median_odba_f)
     infos.append("Number of dives = %d" % n_dives)
