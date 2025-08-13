@@ -24,6 +24,7 @@ The main objectives of **cpforager** package are :
 * `TDR` : for handling pressure recordings.
 * `AXY` : for handling tri-axial acceleration recordings at high resolution combined with lower resolution position and pressure recordings.
 * `GPS_Collection` : for working with datasets composed of multiple GPS loggers.
+* (`GPS_TDR` : for handling position and pressure recordings.)
 * (`TDR_Collection` : for working with datasets composed of multiple TDR loggers.)
 * (`AXY_Collection` : for working with datasets composed of multiple AXY loggers.)
 
@@ -86,7 +87,9 @@ The Python scripts in the [test](./test/) folder illustrate how the `GPS`, `TDR`
 - [x] nb_dives --> n_dives and n_trip --> n_trips.
 - [x] correction to patch the bug implied by remove_suspicious() in `AXY`.
 - [x] emphasize dives on the `AXY` plots.
-- [ ] produce a complete and beautiful html plot of `AXY`.
+- [ ] improve and enhance folium map of `GPS`.
+- [x] improve and enhance folium map of `AXY`.
+- [ ] improve and enhance folium map of `GPS_Collection`.
 
 <br>
 
