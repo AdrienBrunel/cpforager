@@ -122,5 +122,3 @@ class AXY:
     full_diag = diagnostic.full_diagnostic
     maps_diag = diagnostic.maps_diagnostic
     folium_map = diagnostic.folium_map
-    folium_map_wtrips = diagnostic.folium_map_wtrips
-    folium_map_colorgrad = diagnostic.folium_map_colorgrad

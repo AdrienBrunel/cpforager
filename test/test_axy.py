@@ -61,9 +61,7 @@ axy.display_data_summary()
 # test full_diag, maps_diag, folium_map, folium_map_colorgrad methods
 _ = axy.full_diag(test_dir, "%s_diag" % file_id, plot_params)
 _ = axy.maps_diag(test_dir, "%s_map" % file_id, plot_params)
-_ = axy.folium_map(test_dir, "%s_fmap" % file_id)
-_ = axy.folium_map_wtrips(test_dir, "%s_fmap_wtrips" % file_id, plot_params)
-_ = axy.folium_map_colorgrad(test_dir, "%s_fmap_speed" % file_id, plot_params)
+_ = axy.folium_map(test_dir, "%s_fmap" % file_id, plot_params)
 
 
 # ======================================================= #

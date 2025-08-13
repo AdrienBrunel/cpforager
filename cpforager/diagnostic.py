@@ -9,6 +9,7 @@ import matplotlib.colors as mcols
 from matplotlib.patches import Rectangle
 import cartopy.feature as cfeature
 import folium
+from folium.plugins import GroupedLayerControl
 
 
 # ================================================================================================ #
@@ -625,9 +626,9 @@ def plot_map_colorgrad(ax, df, params, plot_params, var, color_palette, nest_lon
     
     
 # ================================================================================================ #
-# PLOT MAP FOLIUM
+# PLOT MAP FOLIUM TRAJECTORY
 # ================================================================================================ # 
-def plot_folium_map(df, params, id):
+def plot_folium_traj(df, params, traj_id, colony_label):
         
     """    
     Plot folium map of the trajectory. 
@@ -636,8 +637,10 @@ def plot_folium_map(df, params, id):
     :type df: pandas.DataFrame
     :param params: parameters dictionary. 
     :type params: dict
-    :param id: trajectory id.
-    :type id: str
+    :param traj_id: trajectory id.
+    :type traj_id: str
+    :param colony_label: label appearing at colony center.
+    :type colony_label: str
     :return: the folium map.
     :rtype: folium.Map
 
@@ -647,63 +650,122 @@ def plot_folium_map(df, params, id):
 
     # get parameters
     colony = params.get("colony")
+        
+    # init folium map centered around colony
+    fmap = folium.Map(location=[colony["center"][1], colony["center"][0]], overlay=True, control=False, show=True)
     
     # produce folium map
-    fmap = folium.Map(location = [colony["center"][1], colony["center"][0]])
-    folium.Marker(location=[colony["center"][1], colony["center"][0]], popup="<i>Colony</i>").add_to(fmap)
-    folium.PolyLine(tooltip=id, locations=df[["latitude", "longitude"]].values.tolist(), 
-                    color=misc.rgb_to_hex(misc.random_colors()[0]), weight=3, opacity=0.7).add_to(fmap)
+    folium.Marker(location=[colony["center"][1], colony["center"][0]], popup="<i>Colony %s</i>" % (colony_label)).add_to(fmap)
+    folium.PolyLine(tooltip="<i>Id %s</i>" % (traj_id), locations=df[["latitude", "longitude"]].values.tolist(), 
+                    color="black", weight=1, opacity=0.9).add_to(fmap)
     
     return(fmap)
 
 
 # ================================================================================================ #
-# PLOT MAP FOLIUM WITH TRIP COLORS
+# PLOT MAP FOLIUM DISCRETE COLORGRAD 
 # ================================================================================================ # 
-def plot_folium_map_wtrips(df, params, id, n_trips, color_palette):
-        
-    """    
-    Plot folium map of the trajectory colored by trips. 
+def plot_folium_traj_disc_colorgrad(fmap, df, color_palettes):
     
-    :param df: dataframe with ``longitude``, ``latitude`` and ``trip`` columns.
+    """    
+    Add to the folium map the trajectory with a discrete color gradient along the column designated by the value of var. 
+    
+    :param fmap: the folium map.
+    :type fmap: folium.Map
+    :param df: dataframe with ``longitude``, ``latitude``. 
     :type df: pandas.DataFrame
-    :param params: parameters dictionary. 
-    :type params: dict
-    :param id: trajectory id.
-    :type id: str
-    :param n_trips: number of trips.
-    :type n_trips: int
-    :param color_palette: discrete color palette for the trip coloring along trajectory.
-    :type color_palette: array([float, float, float])
-    :return: the folium map.
-    :rtype: folium.Map
-
-    .. note::
-        The required fields in the parameters dictionary are ``colony``.
+    :param color_palettes: dictionary of variables and associated discrete color palettes.
+    :type color_palettes: array([float, float, float])
+    :return: the folium map and the feature groups.
+    :rtype: (folium.Map, list[folium.FeatureGroupe])
+        
+    .. warning::
+        Zero values are not considered in discrete color gradient.
     """
     
-    # get parameters
-    colony = params.get("colony")
-    
-    # produce folium map with a trip color gradient
-    n_cols = len(color_palette)
-    fmap = folium.Map(location = [colony["center"][1], colony["center"][0]])
-    folium.Marker(location=[colony["center"][1], colony["center"][0]], popup="<i>Colony</i>").add_to(fmap)
-    folium.PolyLine(tooltip=id, locations=df[["latitude", "longitude"]].values.tolist(), 
-                    color="black", weight=3, opacity=0.7).add_to(fmap)
-    if n_trips >= 1:
-        for i in range(n_trips):
-            trip_id = i+1
-            folium.PolyLine(tooltip="%s - %d" % (id, trip_id), locations=df.loc[df["trip"] == trip_id, ["latitude", "longitude"]].values.tolist(), 
-                            color=misc.rgb_to_hex(color_palette[i % n_cols]), weight=3, opacity=0.7).add_to(fmap)
-    
-    return(fmap)
+    # loop over var and associated discrete color palette
+    fgs = []
+    for var, color_palette in color_palettes.items():
+        
+        # define feature group
+        fg = folium.FeatureGroup(name=var, overlay=True, control=True, show=False)
+        fgs.append(fg)
+        
+        # get size of color palette
+        n_cols = len(color_palette)
+        
+        # determine discrete values (without zeros)
+        df[var] = df[var].fillna(0)
+        var_vals = df[var].unique()
+        var_vals = var_vals[var_vals>0]
+        n_var_vals = len(var_vals)
+        
+        # add points with discrete color gradient
+        if n_var_vals >= 1:
+            for i in range(n_var_vals):
+                var_val = var_vals[i]
+                df_var_val = df.loc[df[var] == var_val].reset_index(drop=True)
+                n_df_var = len(df_var_val)
+                for k in range(n_df_var):
+                    fg.add_child(folium.CircleMarker(location=(df_var_val.loc[k,"latitude"], df_var_val.loc[k,"longitude"]), 
+                                                     fill=True, fill_opacity=0.7, popup="%s=%s" % (var, var_val), radius=1,
+                                                     color=misc.rgb_to_hex(color_palette[i % n_cols])))
+        fmap.add_child(fg) 
+         
+    return(fmap, fgs)
 
 
 # ================================================================================================ #
-# PLOT MAP COLORGRAD FOLIUM
+# PLOT MAP FOLIUM CONTINUOUS COLORGRAD 
 # ================================================================================================ # 
-def plot_folium_map_colorgrad(df, params, var, color_palette, q_th):
+def plot_folium_traj_cont_colorgrad(fmap, df, color_palettes, q_th):
+    
+    """    
+    Add to the folium map the trajectory with a continuous color gradient along the column designated by the value of var. 
+    
+    :param fmap: the folium map.
+    :type fmap: folium.Map
+    :param df: dataframe with ``longitude``, ``latitude``. 
+    :type df: pandas.DataFrame
+    :param color_palettes: dictionary of variables and associated continuous color palettes.
+    :type color_palettes: array([float, float, float])
+    :param q_th: quantile max threshold for coloring. 
+    :type q_th: float
+    :return: the folium map and the feature groups.
+    :rtype: (folium.Map, list[folium.FeatureGroupe])
+    """
+    
+    # loop over var and associated continuous color palette
+    fgs = []    
+    for var, color_palette in color_palettes.items():
+        
+        # define feature group
+        fg = folium.FeatureGroup(name=var, overlay=True, control=True, show=False)
+        fgs.append(fg)
+        
+        # get size of color palette and dataframe
+        n_df = len(df)
+        n_cols = len(color_palette)
+
+        # compute normalized values of var
+        df[var] = df[var].fillna(0)
+        t = (df[var]-df[var].min())/(df[var].max()-df[var].min())
+        t[t > t.quantile(q_th)] = 1
+
+        # add points with continuous color gradient
+        for k in range(n_df):
+            fg.add_child(folium.CircleMarker(location=(df.loc[k,"latitude"], df.loc[k,"longitude"]), 
+                                             fill=True, fill_opacity=0.7, popup="%s=%.1f" % (var, df.loc[k,var]),radius=1, 
+                                             color=misc.rgb_to_hex(color_palette[np.round((n_cols-1)*t[k]).round().astype(int)])))
+        fmap.add_child(fg)
+        
+    return(fmap, fgs)
+    
+    
+# ================================================================================================ #
+# PLOT MAP MULTIPLE COLORGRAD FOLIUM
+# ================================================================================================ # 
+def plot_folium_map_multiple_colorgrad(df, params, traj_id, colony_label, cpals_disc, cpals_cont, q_th):
         
     """    
     Plot folium map of the trajectory with a color gradient along the column designated by the value of var. 
@@ -712,41 +774,36 @@ def plot_folium_map_colorgrad(df, params, var, color_palette, q_th):
     :type df: pandas.DataFrame
     :param params: parameters dictionary. 
     :type params: dict
-    :param var: name of the column in df.
-    :type var: str
-    :param color_palette: continuous color palette.
-    :type color_palette: array([float, float, float])
-    :param q_th: quantile max threshold for coloring. 
+    :param traj_id: trajectory id.
+    :type traj_id: str
+    :param colony_label: label appearing at colony center.
+    :type colony_label: str
+    :param cpals_disc: dictionary of variables and associated discrete color palettes.
+    :type cpals_disc: array([float, float, float])
+    :param cpals_cont: dictionary of variables and associated continuous color palettes.
+    :type cpals_cont: array([float, float, float])
+    :param q_th: quantile max threshold for continuous coloring. 
     :type q_th: float
     :return: the folium map.
     :rtype: folium.Map
-
-    .. note::
-        The required fields in the parameters dictionary are ``colony``.
     """
-    
-    # get parameters
-    colony = params.get("colony")
 
-    # get size of color palette and dataframe
-    n_df = len(df)
-    n_cols = len(color_palette)
+    # plot base trajectory
+    fmap = plot_folium_traj(df, params, traj_id, colony_label)  
     
-    # compute normalized values of var
-    df[var] = df[var].fillna(0)
-    t = (df[var]-df[var].min())/(df[var].max()-df[var].min())
-    t[t > t.quantile(q_th)] = 1
-    
-    # produce folium map
-    fmap = folium.Map(location=[colony["center"][1], colony["center"][0]])
-    folium.Marker(location=[colony["center"][1], colony["center"][0]], popup="<i>Colony</i>").add_to(fmap)
-    for k in range(n_df):
-        folium.CircleMarker(location=(df.loc[k,"latitude"], df.loc[k,"longitude"]), fill=True, fill_opacity=0.7,
-                            popup="Step Speed: %.1f" % (df.loc[k,"step_speed"]),radius=1, 
-                            color=misc.rgb_to_hex(color_palette[np.round((n_cols-1)*t[k]).round().astype(int)])).add_to(fmap)
+    # plot discrete color gradients
+    fmap, fgs_disc = plot_folium_traj_disc_colorgrad(fmap, df, cpals_disc) 
+     
+    # plot continuous color gradients
+    fmap, fgs_cont = plot_folium_traj_cont_colorgrad(fmap, df, cpals_cont, q_th)    
+
+    # add layer control to toggle between color gradients
+    fmap.add_child(folium.LayerControl(collapsed=False))
+    GroupedLayerControl(groups={"discrete color gradient": fgs_disc, "continuous color gradient": fgs_cont}, collapsed=False).add_to(fmap)
+
     return(fmap)
-    
-    
+
+
 # ================================================================================================ #
 # PLOT INFOS AS TEXT
 # ================================================================================================ #
