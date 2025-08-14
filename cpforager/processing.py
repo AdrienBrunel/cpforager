@@ -883,9 +883,6 @@ def add_axy_data(df, params):
     :type params: dict
     :return: the dataframe enhanced with the additional axy data.
     :rtype: pandas.DataFrame
-    
-    .. todo::
-        Correct discrepancies due to remove_suspicious() function.
     """
     
     # compute basic data
