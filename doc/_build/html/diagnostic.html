@@ -61,10 +61,11 @@
 <li class="toctree-l2"><a class="reference internal" href="generated/cpforager.diagnostic.plot_colony.html">4.11. cpforager.diagnostic.plot_colony</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/cpforager.diagnostic.plot_map_wtrips.html">4.12. cpforager.diagnostic.plot_map_wtrips</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/cpforager.diagnostic.plot_map_colorgrad.html">4.13. cpforager.diagnostic.plot_map_colorgrad</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.diagnostic.plot_folium_map.html">4.14. cpforager.diagnostic.plot_folium_map</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.diagnostic.plot_folium_map_wtrips.html">4.15. cpforager.diagnostic.plot_folium_map_wtrips</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.diagnostic.plot_folium_map_colorgrad.html">4.16. cpforager.diagnostic.plot_folium_map_colorgrad</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.diagnostic.plot_infos.html">4.17. cpforager.diagnostic.plot_infos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.diagnostic.plot_folium_traj.html">4.14. cpforager.diagnostic.plot_folium_traj</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.diagnostic.plot_folium_traj_disc_colorgrad.html">4.15. cpforager.diagnostic.plot_folium_traj_disc_colorgrad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.diagnostic.plot_folium_traj_cont_colorgrad.html">4.16. cpforager.diagnostic.plot_folium_traj_cont_colorgrad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.diagnostic.plot_folium_map_multiple_colorgrad.html">4.17. cpforager.diagnostic.plot_folium_map_multiple_colorgrad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.diagnostic.plot_infos.html">4.18. cpforager.diagnostic.plot_infos</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="utils.html">5. Utils</a></li>
@@ -139,16 +140,19 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/cpforager.diagnostic.plot_map_colorgrad.html#cpforager.diagnostic.plot_map_colorgrad" title="cpforager.diagnostic.plot_map_colorgrad"><code class="xref py py-obj docutils literal notranslate"><span class="pre">diagnostic.plot_map_colorgrad</span></code></a>(ax, df, ...)</p></td>
 <td><p>Plot map of the trajectory with a color gradient along the column designated by the value of var.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/cpforager.diagnostic.plot_folium_map.html#cpforager.diagnostic.plot_folium_map" title="cpforager.diagnostic.plot_folium_map"><code class="xref py py-obj docutils literal notranslate"><span class="pre">diagnostic.plot_folium_map</span></code></a>(df, params, id)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/cpforager.diagnostic.plot_folium_traj.html#cpforager.diagnostic.plot_folium_traj" title="cpforager.diagnostic.plot_folium_traj"><code class="xref py py-obj docutils literal notranslate"><span class="pre">diagnostic.plot_folium_traj</span></code></a>(df, params, ...)</p></td>
 <td><p>Plot folium map of the trajectory.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/cpforager.diagnostic.plot_folium_map_wtrips.html#cpforager.diagnostic.plot_folium_map_wtrips" title="cpforager.diagnostic.plot_folium_map_wtrips"><code class="xref py py-obj docutils literal notranslate"><span class="pre">diagnostic.plot_folium_map_wtrips</span></code></a>(df, ...)</p></td>
-<td><p>Plot folium map of the trajectory colored by trips.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/cpforager.diagnostic.plot_folium_traj_disc_colorgrad.html#cpforager.diagnostic.plot_folium_traj_disc_colorgrad" title="cpforager.diagnostic.plot_folium_traj_disc_colorgrad"><code class="xref py py-obj docutils literal notranslate"><span class="pre">diagnostic.plot_folium_traj_disc_colorgrad</span></code></a>(...)</p></td>
+<td><p>Add to the folium map the trajectory with a discrete color gradient along the column designated by the value of var.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/cpforager.diagnostic.plot_folium_map_colorgrad.html#cpforager.diagnostic.plot_folium_map_colorgrad" title="cpforager.diagnostic.plot_folium_map_colorgrad"><code class="xref py py-obj docutils literal notranslate"><span class="pre">diagnostic.plot_folium_map_colorgrad</span></code></a>(df, ...)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/cpforager.diagnostic.plot_folium_traj_cont_colorgrad.html#cpforager.diagnostic.plot_folium_traj_cont_colorgrad" title="cpforager.diagnostic.plot_folium_traj_cont_colorgrad"><code class="xref py py-obj docutils literal notranslate"><span class="pre">diagnostic.plot_folium_traj_cont_colorgrad</span></code></a>(...)</p></td>
+<td><p>Add to the folium map the trajectory with a continuous color gradient along the column designated by the value of var.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/cpforager.diagnostic.plot_folium_map_multiple_colorgrad.html#cpforager.diagnostic.plot_folium_map_multiple_colorgrad" title="cpforager.diagnostic.plot_folium_map_multiple_colorgrad"><code class="xref py py-obj docutils literal notranslate"><span class="pre">diagnostic.plot_folium_map_multiple_colorgrad</span></code></a>(df, ...)</p></td>
 <td><p>Plot folium map of the trajectory with a color gradient along the column designated by the value of var.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/cpforager.diagnostic.plot_infos.html#cpforager.diagnostic.plot_infos" title="cpforager.diagnostic.plot_infos"><code class="xref py py-obj docutils literal notranslate"><span class="pre">diagnostic.plot_infos</span></code></a>(infos, plot_params)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/cpforager.diagnostic.plot_infos.html#cpforager.diagnostic.plot_infos" title="cpforager.diagnostic.plot_infos"><code class="xref py py-obj docutils literal notranslate"><span class="pre">diagnostic.plot_infos</span></code></a>(infos, plot_params)</p></td>
 <td><p>Plot text infos.</p></td>
 </tr>
 </tbody>

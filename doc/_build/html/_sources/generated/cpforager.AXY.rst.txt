@@ -16,8 +16,6 @@
       ~AXY.__init__
       ~AXY.display_data_summary
       ~AXY.folium_map
-      ~AXY.folium_map_colorgrad
-      ~AXY.folium_map_wtrips
       ~AXY.full_diag
       ~AXY.interpolate_lat_lon
       ~AXY.maps_diag

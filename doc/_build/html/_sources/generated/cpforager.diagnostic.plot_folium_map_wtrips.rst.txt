@@ -1,6 +1,0 @@
-﻿cpforager.diagnostic.plot\_folium\_map\_wtrips
-==============================================
-
-.. currentmodule:: cpforager.diagnostic
-
-.. autofunction:: plot_folium_map_wtrips

@@ -23,7 +23,8 @@ Plots
    diagnostic.plot_colony
    diagnostic.plot_map_wtrips
    diagnostic.plot_map_colorgrad
-   diagnostic.plot_folium_map
-   diagnostic.plot_folium_map_wtrips
-   diagnostic.plot_folium_map_colorgrad
+   diagnostic.plot_folium_traj
+   diagnostic.plot_folium_traj_disc_colorgrad
+   diagnostic.plot_folium_traj_cont_colorgrad
+   diagnostic.plot_folium_map_multiple_colorgrad
    diagnostic.plot_infos

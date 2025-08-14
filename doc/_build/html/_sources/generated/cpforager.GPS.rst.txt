@@ -16,8 +16,6 @@
       ~GPS.__init__
       ~GPS.display_data_summary
       ~GPS.folium_map
-      ~GPS.folium_map_colorgrad
-      ~GPS.folium_map_wtrips
       ~GPS.full_diag
       ~GPS.interpolate_lat_lon
       ~GPS.maps_diag
