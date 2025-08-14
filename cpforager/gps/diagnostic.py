@@ -227,86 +227,12 @@ def maps_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict):
 
 
 # ======================================================= #
-# GPS FOLIUM MAP [GPS METHOD]
+# GPS FOLIUM MAP BEAUTIFUL [GPS METHOD]
 # ======================================================= #
-def folium_map(self, fig_dir=str, file_id=str):
-        
-    """    
-    Produce the html map of the GPS data.
-    
-    :param self: a GPS object
-    :type self: cpforager.GPS
-    :param fig_dir: figure saving directory.
-    :type fig_dir: str
-    :param file_id: name of the saved figure.
-    :type file_id: str
-    :return: the folium map.
-    :rtype: folium.Map
-
-    The figure is save at the html format.
-    """
-    
-    # get attributes
-    params = self.params
-    df = self.df
-    id = self.id
-    
-    # produce folium map
-    fmap = diagnostic.plot_folium_map(df, params, id)
-    
-    # save figure
-    fig_path = os.path.join(fig_dir, "%s.html" % file_id)
-    fmap.save(fig_path) 
-
-    return(fmap)
-
-# ======================================================= #
-# GPS FOLIUM MAP [GPS METHOD]
-# ======================================================= #
-def folium_map_wtrips(self, fig_dir=str, file_id=str, plot_params=dict):
+def folium_map(self, fig_dir=str, file_id=str, plot_params=dict):
     
     """    
-    Produce the html map of the GPS data colored by trips.
-    
-    :param self: a GPS object
-    :type self: cpforager.GPS
-    :param fig_dir: figure saving directory.
-    :type fig_dir: str
-    :param file_id: name of the saved figure.
-    :type file_id: str
-    :param plot_params: plot parameters dictionary. 
-    :type plot_params: dict
-    :return: the folium map.
-    :rtype: folium.Map
-
-    The figure is save at the html format.
-    """
-    
-    # get parameters
-    cols_1 = plot_params.get("cols_1")
-    
-    # get attributes
-    params = self.params
-    df = self.df
-    id = self.id
-    n_trips = self.n_trips
-    
-    # produce folium map
-    fmap = diagnostic.plot_folium_map_wtrips(df, params, id, n_trips, cols_1)
-    
-    # save figure
-    fig_path = os.path.join(fig_dir, "%s.html" % file_id)
-    fmap.save(fig_path) 
-
-    return(fmap)
-
-# ======================================================= #
-# GPS FOLIUM MAP COLORGRAD [GPS METHOD]
-# ======================================================= #
-def folium_map_colorgrad(self, fig_dir=str, file_id=str, plot_params=dict):
-    
-    """    
-    Produce the html map of the GPS data with a speed color gradient.
+    Produce the html map of the GPS data with the possibility to choose a color gradient.
     
     :param self: a GPS object
     :type self: cpforager.GPS
@@ -319,21 +245,23 @@ def folium_map_colorgrad(self, fig_dir=str, file_id=str, plot_params=dict):
     :return: the folium map.
     :rtype: folium.Map
     
-    The figure is save at the html format.
+    The figure is saved at the html format.
+    
+    .. warning::
+        Producing the figure may take some time and the resulting html may be heavy.
     """
     
-    # get parameters
-    cols_2 = plot_params.get("cols_2")
-    
-    # get attributes
-    params = self.params
-    df = self.df
-    
-    # produce folium map with a colorgrad
-    fmap = diagnostic.plot_folium_map_colorgrad(df, params, "step_speed", cols_2, 0.99)
+    # define color palettes
+    discrete_color_palettes = {"trip":plot_params.get("cols_1")}
+    continuous_color_palettes = {"step_speed":plot_params.get("cols_2"), "duration":plot_params.get("cols_2")}
+
+    # produce beautiful map
+    self.df["duration"] = (self.df["datetime"]-self.df["datetime"].min()).dt.total_seconds()/3600
+    fmap = diagnostic.plot_folium_map_multiple_colorgrad(self.df, self.params, self.id, self.group, discrete_color_palettes, continuous_color_palettes, 0.99)
+    del self.df["duration"]
     
     # save figure
     fig_path = os.path.join(fig_dir, "%s.html" % file_id)
     fmap.save(fig_path) 
-
+    
     return(fmap)
