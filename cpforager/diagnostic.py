@@ -10,6 +10,7 @@ from matplotlib.patches import Rectangle
 import cartopy.feature as cfeature
 import folium
 from folium.plugins import GroupedLayerControl
+import branca.colormap as cm
 
 
 # ================================================================================================ #
@@ -683,8 +684,13 @@ def plot_folium_traj_disc_colorgrad(fmap, df, color_palettes):
         Zero values are not considered in discrete color gradient.
     """
     
-    # loop over var and associated discrete color palette
+    # initialize groups with an empty layer
     fgs = []
+    fg = folium.FeatureGroup(name="none", overlay=True, control=True, show=True)
+    fmap.add_child(fg)
+    fgs.append(fg)
+    
+    # loop over var and associated discrete color palette
     for var, color_palette in color_palettes.items():
         
         # define feature group
@@ -695,11 +701,14 @@ def plot_folium_traj_disc_colorgrad(fmap, df, color_palettes):
         n_cols = len(color_palette)
         
         # determine discrete values (without zeros)
-        df[var] = df[var].fillna(0)
+        df_var_isna = df[var].isna()
         var_vals = df[var].unique()
         var_vals = var_vals[var_vals>0]
         n_var_vals = len(var_vals)
         
+        # set colorbar
+        cb = cm.StepColormap([misc.rgb_to_hex(rgb_col) for rgb_col in color_palette], vmin=0, vmax=n_cols, caption=var)
+
         # add points with discrete color gradient
         if n_var_vals >= 1:
             for i in range(n_var_vals):
@@ -707,11 +716,13 @@ def plot_folium_traj_disc_colorgrad(fmap, df, color_palettes):
                 df_var_val = df.loc[df[var] == var_val].reset_index(drop=True)
                 n_df_var = len(df_var_val)
                 for k in range(n_df_var):
-                    fg.add_child(folium.CircleMarker(location=(df_var_val.loc[k,"latitude"], df_var_val.loc[k,"longitude"]), 
-                                                     fill=True, fill_opacity=0.7, popup="%s=%s" % (var, var_val), radius=1,
-                                                     color=misc.rgb_to_hex(color_palette[i % n_cols])))
+                    if not df_var_isna[k]:
+                        fg.add_child(folium.CircleMarker(location=(df_var_val.loc[k,"latitude"], df_var_val.loc[k,"longitude"]), 
+                                                        fill=True, fill_opacity=0.7, popup="%s=%s" % (var, var_val), radius=1,
+                                                        color=misc.rgb_to_hex(color_palette[i % n_cols])))
         fmap.add_child(fg) 
-         
+        fmap.add_child(cb)
+
     return(fmap, fgs)
 
 
@@ -735,8 +746,13 @@ def plot_folium_traj_cont_colorgrad(fmap, df, color_palettes, q_th):
     :rtype: (folium.Map, list[folium.FeatureGroupe])
     """
     
+    # initialize groups with an empty layer
+    fgs = []
+    fg = folium.FeatureGroup(name="none", overlay=True, control=True, show=True)
+    fmap.add_child(fg)
+    fgs.append(fg)
+    
     # loop over var and associated continuous color palette
-    fgs = []    
     for var, color_palette in color_palettes.items():
         
         # define feature group
@@ -748,19 +764,24 @@ def plot_folium_traj_cont_colorgrad(fmap, df, color_palettes, q_th):
         n_cols = len(color_palette)
 
         # compute normalized values of var
-        df[var] = df[var].fillna(0)
+        df_var_isna = df[var].isna()
         t = (df[var]-df[var].min())/(df[var].max()-df[var].min())
         t[t > t.quantile(q_th)] = 1
-
+        
+        # set colorbar
+        cb = cm.LinearColormap([misc.rgb_to_hex(rgb_col) for rgb_col in color_palette], vmin=df[var].min(), vmax=df[var].max(), caption=var)
+        
         # add points with continuous color gradient
         for k in range(n_df):
-            fg.add_child(folium.CircleMarker(location=(df.loc[k,"latitude"], df.loc[k,"longitude"]), 
-                                             fill=True, fill_opacity=0.7, popup="%s=%.1f" % (var, df.loc[k,var]),radius=1, 
-                                             color=misc.rgb_to_hex(color_palette[np.round((n_cols-1)*t[k]).round().astype(int)])))
+            if not df_var_isna[k]:
+                fg.add_child(folium.CircleMarker(location=(df.loc[k,"latitude"], df.loc[k,"longitude"]), 
+                                                fill=True, fill_opacity=0.7, popup="%s=%.1f" % (var, df.loc[k,var]),radius=1, 
+                                                color=misc.rgb_to_hex(color_palette[np.round((n_cols-1)*t[k]).round().astype(int)])))
         fmap.add_child(fg)
+        fmap.add_child(cb)
         
     return(fmap, fgs)
-    
+
     
 # ================================================================================================ #
 # PLOT MAP MULTIPLE COLORGRAD FOLIUM
