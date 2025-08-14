@@ -3,7 +3,7 @@
 # ================================================================================================ #
 import numpy as np
 import pandas as pd
-from cpforager import utils, constants
+from cpforager import utils, constants, check
 from suntime import Sun
 import pytz
     
@@ -789,6 +789,9 @@ def add_basic_data(df, params):
     :return: the dataframe enhanced with the additional basic data.
     :rtype: pandas.DataFrame
     """
+    
+    # check if datetime is ok
+    _ = check.check_full(df, verbose=True)
     
     # compute basic data
     df = add_step_time(df)
