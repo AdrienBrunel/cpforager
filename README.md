@@ -90,6 +90,7 @@ The Python scripts in the [test](./test/) folder illustrate how the `GPS`, `TDR`
 - [x] improve and enhance folium map of `GPS`.
 - [x] improve and enhance folium map of `AXY`.
 - [ ] improve and enhance folium map of `GPS_Collection`.
+- [x] add methods to check if dataframe required for constructors will not raise errors (sorted datetime, duplicates, day change bugs, *etc.*).
 
 <br>
 
