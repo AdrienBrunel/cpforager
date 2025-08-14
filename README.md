@@ -23,8 +23,8 @@ The main objectives of **cpforager** package are :
 * `GPS` : for handling position recordings. 
 * `TDR` : for handling pressure recordings.
 * `AXY` : for handling tri-axial acceleration recordings at high resolution combined with lower resolution position and pressure recordings.
+* `GPS_TDR` : for handling position and pressure recordings.
 * `GPS_Collection` : for working with datasets composed of multiple GPS loggers.
-* (`GPS_TDR` : for handling position and pressure recordings.)
 * (`TDR_Collection` : for working with datasets composed of multiple TDR loggers.)
 * (`AXY_Collection` : for working with datasets composed of multiple AXY loggers.)
 
