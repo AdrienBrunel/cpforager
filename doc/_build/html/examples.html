@@ -9,6 +9,7 @@
   <title>8. Examples &mdash; cpforager 0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/style.css?v=547657ed" />
 
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
@@ -88,7 +89,7 @@
 <p>Examples showing how to simply benefit from <strong>cpforager</strong> package with you biologging data.</p>
 <section id="gps">
 <h2><span class="section-number">8.1. </span>GPS<a class="headerlink" href="#gps" title="Link to this heading"></a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ======================================================= #</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ======================================================= #</span>
 <span class="c1"># LIBRARIES</span>
 <span class="c1"># ======================================================= #</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
@@ -124,7 +125,7 @@
 <span class="c1"># BUILD GPS OBJECT</span>
 <span class="c1"># ======================================================= #</span>
 
-<span class="c1"># load raw data </span>
+<span class="c1"># load raw data</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
 
 <span class="c1"># add a &quot;datetime&quot; column of type datetime64</span>

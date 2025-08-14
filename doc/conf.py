@@ -17,11 +17,15 @@ language = "en"
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 templates_path = ["../doc/_templates"]
 exclude_patterns = ["../doc/_build", "Thumbs.db", ".DS_Store"]
+html_static_path = ["_static/css"]
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 html_theme = "sphinx_rtd_theme"
 
+def setup(app):
+    app.add_css_file("style.css")
+    
 # -- Authorized extensions -------------------------------------------------
 extensions = ["sphinx.ext.duration",
               "sphinx.ext.doctest",
