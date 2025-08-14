@@ -82,7 +82,7 @@ for (fieldwork, colony) in zip(fieldworks, colonies):
 
     # test plot_stats_summary, folium_map, maps_diag methods
     _ = gps_collection.plot_stats_summary(test_dir, "trip_statistics_%s" % fieldwork, plot_params)
-    _ = gps_collection.folium_map(test_dir, "folium_%s" % fieldwork)
+    _ = gps_collection.folium_map(test_dir, "fmaps_%s" % fieldwork)
     _ = gps_collection.maps_diag(test_dir, "maps_%s" % fieldwork, plot_params)
 
 # analysis of all data
@@ -98,7 +98,7 @@ gps_collection_all.display_data_summary()
 
 # test plot_stats_summary, folium_map, maps_diag methods
 _ = gps_collection_all.plot_stats_summary(test_dir, "trip_statistics_all", plot_params)
-_ = gps_collection_all.folium_map(test_dir, "folium_all")
+_ = gps_collection_all.folium_map(test_dir, "fmaps_all")
 gps_collection_all.trip_statistics_all.to_csv("%s/trip_statistics_all.csv" % (test_dir), index=False, quoting=csv.QUOTE_NONNUMERIC)
 
 
