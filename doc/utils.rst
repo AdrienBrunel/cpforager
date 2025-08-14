@@ -7,6 +7,8 @@
 Utils
 --------------------------
 
+General functions that may be useful.
+
 .. autosummary::
    :toctree: generated
 

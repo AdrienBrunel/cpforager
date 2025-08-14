@@ -7,6 +7,8 @@
 Plots
 --------------------------
 
+Basis functions used to visualise biologging data of a central-place foraging seabird.
+
 .. autosummary::
    :toctree: generated
 

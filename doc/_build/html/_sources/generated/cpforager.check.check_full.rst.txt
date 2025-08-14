@@ -1,0 +1,6 @@
+﻿cpforager.check.check\_full
+===========================
+
+.. currentmodule:: cpforager.check
+
+.. autofunction:: check_full

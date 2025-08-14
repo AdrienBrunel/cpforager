@@ -6,6 +6,16 @@
 cpforager documentation
 ==================================
 
+Are you a scientist involved in movement ecology working with biologging data collected from central-place foraging seabirds? 
+
+**cpforager** is a Python package designed to help you manipulate, process, analyse and visualise the biologging datasets with ease.
+
+The main objectives of **cpforager** package are :  
+
+1. Efficiently handle large-scale biologging datasets, including high-resolution sensor data (*e.g.* accelerometers).
+2. Provide a modular and extensible architecture, allowing users to tailor the code to their specific research needs.
+3. Facilitate a smooth transition to Python for movement ecology researchers familiar with other languages (*e.g.* R).
+
    .. only:: html
       
       .. image:: _static/images/logo_tmp.JPG
@@ -23,4 +33,5 @@ cpforager documentation
       diagnostic.rst
       utils.rst
       misc.rst
+      check.rst
       examples.rst
