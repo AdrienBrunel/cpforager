@@ -87,7 +87,7 @@ The Python scripts in the [test](./test/) folder illustrate how the `GPS`, `TDR`
 - [x] nb_dives --> n_dives and n_trip --> n_trips.
 - [x] correction to patch the bug implied by remove_suspicious() in `AXY`.
 - [x] emphasize dives on the `AXY` plots.
-- [ ] improve and enhance folium map of `GPS`.
+- [x] improve and enhance folium map of `GPS`.
 - [x] improve and enhance folium map of `AXY`.
 - [ ] improve and enhance folium map of `GPS_Collection`.
 
