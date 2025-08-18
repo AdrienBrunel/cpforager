@@ -80,7 +80,7 @@ The Python scripts in the [test](./test/) folder illustrate how the `GPS`, `TDR`
 <br>
 
 # Future developments
-- [ ] improve documentation (add images of test results, uniformise types, add logo)
+- [x] improve documentation (add images of test results, uniformise types, add logo)
 - [x] create a `GPS_TDR` class for biologgers with both GPS and TDR data.
 - [ ] create a function `GPS_TDR = merge_gps_tdr(GPS, TDR)` that will merge TDR data within GPS data and produce the resulting dataframe.
 - [ ] create a `AXY_Collection` class.
