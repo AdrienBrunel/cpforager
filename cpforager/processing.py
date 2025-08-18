@@ -791,7 +791,7 @@ def add_basic_data(df, params):
     """
     
     # check if datetime is ok
-    _ = check.check_full(df, verbose=True)
+    _ = check.check_datetime(df, verbose=True)
     
     # compute basic data
     df = add_step_time(df)
@@ -840,6 +840,9 @@ def add_gps_data(df, params, clean=True):
     df = add_dist_to_nest(df, params)
     df = add_trip(df, params)
     
+    # check if gps data is ok
+    _ = check.check_gps(df, verbose=True)
+    
     return(df)
 
 
@@ -861,6 +864,9 @@ def add_tdr_data(df, params):
     
     # compute basic data
     df = add_basic_data(df, params)
+    
+    # check if tdr data is ok
+    _ = check.check_tdr(df, verbose=True)
     
     # process tdr data
     df = add_depth(df)
@@ -887,6 +893,9 @@ def add_axy_data(df, params):
     
     # compute basic data
     df = add_basic_data(df, params)
+    
+    # check if acc data is ok
+    _ = check.check_acc(df, verbose=True)
     
     # process acceleration data
     df = add_filtered_acc(df, params)
