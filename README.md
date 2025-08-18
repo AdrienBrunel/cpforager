@@ -52,9 +52,9 @@ git clone https://github.com/AdrienBrunel/seabird-movement-cpf
 conda env create --name seabird-movement-cpf --file environment.yml
 ```
 
-3. Open the [main.py](main.py) or any Python scripts in [tests/](./tests/) folder and start running line by line to check that everything is working.
+3. Open any Python script in [tests/](./tests/) folder and start running line by line to check that everything is working.
 
-4. Load your raw data in the [data/](./data/) folder,  create your own script and enjoy :) 
+4. Load your raw data in the [data/](./data/) folder, create your own script and enjoy !
 
 <br>
 
@@ -88,7 +88,7 @@ The Python scripts in the [tests/](./tests/) folder illustrate how the `GPS`, `T
 - [ ] add a function `GPS_TDR = merge_gps_tdr(GPS, TDR)` that will merge TDR data within GPS data and produce the resulting dataframe.
 - [ ] create a `AXY_Collection` class.
 - [ ] create a `TDR_Collection` class.
-- [ ] clarify the purpose of `main.py` and thus folder `plots` and `results`.
+- [x] clarify the purpose of `main.py` and thus folder `plots` and `results`.
 - [x] rename `test` folder to `tests` folder.
 - [ ] improve folium map of `GPS_Collection`.
 - [ ] improve `GPS_TDR` class constructor.
