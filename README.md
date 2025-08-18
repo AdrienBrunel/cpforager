@@ -12,8 +12,13 @@ Are you a scientist involved in movement ecology working with biologging data co
 
 <br>
 
-<img src="doc/_static/images/logo_cpforager_text_color.png" alt="cpforager text logo with colors">
-<img src="doc/_static/images/logo_cpforager_color.png" alt="cpforager logo with colors" style="width: 300px;">
+<!-- <div align="center">
+  <img src="doc/_static/images/logo_cpforager_text_color.png" alt="cpforager text logo with colors" style="width: 200px;">
+</div> -->
+
+<div align="center">
+  <img src="doc/_static/images/logo_cpforager_color.png" alt="cpforager logo with colors" style="width: 200px;">
+</div>
 
 <br>
 
