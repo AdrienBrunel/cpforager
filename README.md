@@ -52,7 +52,7 @@ git clone https://github.com/AdrienBrunel/seabird-movement-cpf
 conda env create --name seabird-movement-cpf --file environment.yml
 ```
 
-3. Open the [main.py](main.py) or [test.py](./test/test.py) file and start running line by line to check that everything is working.
+3. Open the [main.py](main.py) or any Python scripts in [tests](./tests/) folder and start running line by line to check that everything is working.
 
 4. Load your raw data in the [data/](./data/) folder,  create your own script and enjoy :) 
 
@@ -75,7 +75,7 @@ The resulting html documentation is generated in the [./doc/_build/html/](./doc/
 
 # User guide 
 
-The Python scripts in the [test](./test/) folder illustrate how the `GPS`, `TDR`, `AXY` and `GPS_Collection` classes can be used to fully benefit the users. Results of the scripts are also found in the [test](./test/) folder. For more details, you can browse the package documentation.
+The Python scripts in the [tests](./tests/) folder illustrate how the `GPS`, `TDR`, `AXY` and `GPS_Collection` classes can be used to fully benefit the users. Results of the scripts are also found in the [tests](./tests/) folder. For more details, you can browse the package documentation.
 
 <br>
 
@@ -89,7 +89,7 @@ The Python scripts in the [test](./test/) folder illustrate how the `GPS`, `TDR`
 - [ ] create a `AXY_Collection` class.
 - [ ] create a `TDR_Collection` class.
 - [ ] clarify the purpose of `main.py` and thus folder `plots` and `results`.
-- [ ] rename `test` folder to `tests` folder.
+- [x] rename `test` folder to `tests` folder.
 - [ ] improve folium map of `GPS_Collection`.
 - [ ] improve `GPS_TDR` class constructor.
 - [ ] create `pyproject.toml` file for [Python package building](https://packaging.python.org/en/latest/tutorials/packaging-projects/).

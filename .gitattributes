@@ -4,4 +4,4 @@ data/** linguist-vendored
 doc/** linguist-vendored
 plots/** linguist-vendored
 results/** linguist-vendored
-test/** linguist-vendored
+tests/** linguist-vendored

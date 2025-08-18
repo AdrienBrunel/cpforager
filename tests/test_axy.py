@@ -12,7 +12,7 @@ from cpforager import parameters, utils, AXY
 # ======================================================= #
 root_dir = os.getcwd()
 data_dir = os.path.join(root_dir, "data")
-test_dir = os.path.join(root_dir, "test")
+test_dir = os.path.join(root_dir, "tests")
 
 
 # ======================================================= #
