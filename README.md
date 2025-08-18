@@ -1,10 +1,15 @@
 # cpforager
 
-<div align="center">
+<h1 align="center">
+  <!-- <img src="doc/_static/images/logo_cpforager_color.png" alt="cpforager logo with colors" width="200"> -->
+  <img src="doc/_static/images/logo_cpforager_text_color.png" alt="cpforager text logo with colors" width="300">
+</h1><br>
+
+<h1 align="center">
   <a href="https://github.com/AdrienBrunel/seabird-movement-cpf/stargazers"><img alt="github stars" src="https://img.shields.io/github/stars/AdrienBrunel/seabird-movement-cpf"></a>
   <a href="https://github.com/AdrienBrunel/seabird-movement-cpf/forks"><img alt="github forks" src="https://img.shields.io/github/forks/AdrienBrunel/seabird-movement-cpf"></a>
   <a href="https://github.com/AdrienBrunel/seabird-movement-cpf/blob/master/LICENSE"><img alt="license" src="https://img.shields.io/badge/license-AGPLv3-blue"></a>
-</div>
+</h1><br>
 
 <br>
 
@@ -14,13 +19,13 @@ Are you a scientist involved in movement ecology working with biologging data co
 
 <!-- <div align="center">
   <img src="doc/_static/images/logo_cpforager_text_color.png" alt="cpforager text logo with colors" style="width: 200px;">
-</div> -->
+</div>
 
 <div align="center">
   <img src="doc/_static/images/logo_cpforager_color.png" alt="cpforager logo with colors" style="width: 200px;">
 </div>
 
-<br>
+<br> -->
 
 The main objectives of **cpforager** package are :  
 1. Efficiently handle large-scale biologging datasets, including high-resolution sensor data (*e.g.* accelerometers).
