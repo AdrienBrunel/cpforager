@@ -1,15 +1,15 @@
-# cpforager
+<!-- # cpforager -->
 
 <h1 align="center">
   <!-- <img src="doc/_static/images/logo_cpforager_color.png" alt="cpforager logo with colors" width="200"> -->
-  <img src="doc/_static/images/logo_cpforager_text_color.png" alt="cpforager text logo with colors" width="300">
+  <img src="doc/_static/images/logo_cpforager_text_color.png" alt="cpforager text logo with colors" width="600">
 </h1><br>
 
-<h1 align="center">
+<div align="center">
   <a href="https://github.com/AdrienBrunel/seabird-movement-cpf/stargazers"><img alt="github stars" src="https://img.shields.io/github/stars/AdrienBrunel/seabird-movement-cpf"></a>
   <a href="https://github.com/AdrienBrunel/seabird-movement-cpf/forks"><img alt="github forks" src="https://img.shields.io/github/forks/AdrienBrunel/seabird-movement-cpf"></a>
   <a href="https://github.com/AdrienBrunel/seabird-movement-cpf/blob/master/LICENSE"><img alt="license" src="https://img.shields.io/badge/license-AGPLv3-blue"></a>
-</h1><br>
+</div><br>
 
 <br>
 
