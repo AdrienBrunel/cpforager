@@ -80,24 +80,19 @@ The Python scripts in the [test](./test/) folder illustrate how the `GPS`, `TDR`
 <br>
 
 # Future developments
-- [x] improve documentation (add images of test results, uniformise types, add logo)
-- [x] create a `GPS_TDR` class for biologgers with both GPS and TDR data.
+- [ ] make classes' methods clickable in documentation.
+- [ ] uniformise types of arguments/atttributes in documentation.
+- [ ] add Butterworth filter for `AXY`.
+- [ ] add parameters in `parameters.py` to be able to choose between rolling average and Butterworth filter for `AXY`.
 - [ ] create a function `GPS_TDR = merge_gps_tdr(GPS, TDR)` that will merge TDR data within GPS data and produce the resulting dataframe.
 - [ ] create a `AXY_Collection` class.
 - [ ] create a `TDR_Collection` class.
-- [x] better organise attributes and add `TDR` object as a field in `AXY`.
-- [x] add a test block where gps data is cutted by trip and written as csv.
-- [x] add a test block where gps data are read from [Seabird Tracking Database](https://www.seabirdtracking.org/).
-- [x] add a method to_SeabirdTracking() in `GPS_Collection`.
-- [x] add a `fast=True` argument to the full_diag() method of `AXY`.
-- [x] find a way to better benefit from `GPS` and `TDR` methods in `AXY` (*e.g.* display, diagnostic).
-- [x] nb_dives --> n_dives and n_trip --> n_trips.
-- [x] correction to patch the bug implied by remove_suspicious() in `AXY`.
-- [x] emphasize dives on the `AXY` plots.
-- [x] improve and enhance folium map of `GPS`.
-- [x] improve and enhance folium map of `AXY`.
-- [ ] improve and enhance folium map of `GPS_Collection`.
-- [x] add methods to check if dataframe required for constructors will not raise errors (sorted datetime, duplicates, day change bugs, *etc.*).
+- [ ] clarify the purpose of `main.py` and thus folder `plots` and `results`.
+- [ ] rename `test` folder to `tests` folder.
+- [ ] improve folium map of `GPS_Collection`.
+- [ ] add functions that raise warnings (datetime order, datetime duplicates, interrupted trips, not normal datetime range, no trip found, not normal dataframe size, absent data, *etc.*).
+- [ ] create `pyproject.toml` file for [Python package building](https://packaging.python.org/en/latest/tutorials/packaging-projects/).
+- [ ] create first release. 
 
 <br>
 
