@@ -107,7 +107,7 @@ def check_datetime_range(df=pd.DataFrame, verbose=True):
     # trigger warning if datetime range is bigger than 12 hours and smaller than 7 days
     if (((df["datetime"].max()-df["datetime"].min()).total_seconds()/(3600*24) < 0.5) | ((df["datetime"].max()-df["datetime"].min()).total_seconds()/(3600*24) > 30)):
         check = False
-        if verbose: print("WARNING : the \"datetime\" range of %.1f days seems suspicious" % ((df["datetime"].max()-df["datetime"].min()).total_seconds()/(3600*24)))
+        if verbose: print("WARNING : the recording covers a time range of %.2f days which seems suspicious" % ((df["datetime"].max()-df["datetime"].min()).total_seconds()/(3600*24)))
         
     return(check)
 
