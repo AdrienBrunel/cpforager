@@ -1,7 +1,4 @@
-<!-- # cpforager -->
-
 <h1 align="center">
-  <!-- <img src="doc/_static/images/logo_cpforager_color.png" alt="cpforager logo with colors" width="200"> -->
   <img src="doc/_static/images/logo_cpforager_text_color.png" alt="cpforager text logo with colors" width="600">
 </h1><br>
 
@@ -17,17 +14,13 @@ Are you a scientist involved in movement ecology working with biologging data co
 
 <br>
 
-<!-- <div align="center">
-  <img src="doc/_static/images/logo_cpforager_text_color.png" alt="cpforager text logo with colors" style="width: 200px;">
-</div>
-
 <div align="center">
-  <img src="doc/_static/images/logo_cpforager_color.png" alt="cpforager logo with colors" style="width: 200px;">
+  <img src="doc/_static/images/logo_cpforager_color.png" alt="cpforager logo with colors" width="300">
 </div>
 
-<br> -->
+<br>
 
-The main objectives of **cpforager** package are :  
+The main objectives of **cpforager** are :  
 1. Efficiently handle large-scale biologging datasets, including high-resolution sensor data (*e.g.* accelerometers).
 2. Provide a modular and extensible architecture, allowing users to tailor the code to their specific research needs.
 3. Facilitate a smooth transition to Python for movement ecology researchers familiar with other languages (*e.g.* R).
