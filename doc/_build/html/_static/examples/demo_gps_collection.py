@@ -11,7 +11,7 @@ from cpforager import parameters, utils, misc, GPS, GPS_Collection
 # ======================================================= #
 root_dir = os.getcwd()
 data_dir = os.path.join(root_dir, "data")
-test_dir = os.path.join(root_dir, "test")
+test_dir = os.path.join(root_dir, "tests")
 
 
 # ======================================================= #
