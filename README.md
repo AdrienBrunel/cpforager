@@ -14,11 +14,6 @@ Are you a scientist involved in movement ecology working with biologging data co
 
 <br>
 
-<div align="center">
-  <img src="doc/_static/images/logo_cpforager_color.png" alt="cpforager logo with colors" width="300">
-</div>
-
-<br>
 
 The main objectives of **cpforager** are :  
 1. Efficiently handle large-scale biologging datasets, including high-resolution sensor data (*e.g.* accelerometers).
@@ -39,6 +34,11 @@ The main objectives of **cpforager** are :
 Each class automatically enhances raw data but also computes key features specific to each biologger (*e.g.* trip segmentation for GPS, dive segmentation for TDR, ODBA calculation for AXY). They are also accompanied with methods for data processing and visualisation.
 
 <br>
+
+<div align="center">
+  <img src="doc/_static/images/logo_cpforager_color.png" alt="cpforager logo with colors" width="200">
+</div>
+
 <br>
 
 # Installation
