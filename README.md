@@ -80,19 +80,20 @@ The Python scripts in the [test](./test/) folder illustrate how the `GPS`, `TDR`
 <br>
 
 # Future developments
-- [ ] make classes' methods clickable in documentation.
+- [ ] make classes' methods available in documentation.
 - [ ] uniformise types of arguments/atttributes in documentation.
 - [ ] add Butterworth filter for `AXY`.
 - [ ] add parameters in `parameters.py` to be able to choose between rolling average and Butterworth filter for `AXY`.
-- [ ] create a function `GPS_TDR = merge_gps_tdr(GPS, TDR)` that will merge TDR data within GPS data and produce the resulting dataframe.
+- [ ] add functions that raise warnings (datetime order, datetime duplicates, interrupted trips, not normal datetime range, no trip found, not normal dataframe size, absent data, *etc.*).
+- [ ] add a function `GPS_TDR = merge_gps_tdr(GPS, TDR)` that will merge TDR data within GPS data and produce the resulting dataframe.
 - [ ] create a `AXY_Collection` class.
 - [ ] create a `TDR_Collection` class.
 - [ ] clarify the purpose of `main.py` and thus folder `plots` and `results`.
 - [ ] rename `test` folder to `tests` folder.
 - [ ] improve folium map of `GPS_Collection`.
-- [ ] add functions that raise warnings (datetime order, datetime duplicates, interrupted trips, not normal datetime range, no trip found, not normal dataframe size, absent data, *etc.*).
+- [ ] improve `GPS_TDR` class constructor.
 - [ ] create `pyproject.toml` file for [Python package building](https://packaging.python.org/en/latest/tutorials/packaging-projects/).
-- [ ] create first release. 
+- [ ] create first Github release / version 1.0. 
 
 <br>
 
