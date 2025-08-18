@@ -91,7 +91,7 @@ def check_datetime_duplicates(df=pd.DataFrame, verbose=True):
 def check_datetime_range(df=pd.DataFrame, verbose=True):
     
     """
-    Check if the dataframe ``datetime`` column cover a realistic range, *i.e.* bigger than 12 hours and smaller than 7 days. 
+    Check if the dataframe ``datetime`` column cover a realistic range, *i.e.* bigger than 12 hours and smaller than 30 days. 
     
     :param df: the dataframe with a ``datetime`` column.
     :type df: pandas.DataFrame
@@ -105,7 +105,7 @@ def check_datetime_range(df=pd.DataFrame, verbose=True):
     check = True
     
     # trigger warning if datetime range is bigger than 12 hours and smaller than 7 days
-    if (((df["datetime"].max()-df["datetime"].min()).total_seconds()/(3600*24) < 0.5) | ((df["datetime"].max()-df["datetime"].min()).total_seconds()/(3600*24) > 7)):
+    if (((df["datetime"].max()-df["datetime"].min()).total_seconds()/(3600*24) < 0.5) | ((df["datetime"].max()-df["datetime"].min()).total_seconds()/(3600*24) > 30)):
         check = False
         if verbose: print("WARNING : the \"datetime\" range of %.1f days seems suspicious" % ((df["datetime"].max()-df["datetime"].min()).total_seconds()/(3600*24)))
         
@@ -113,30 +113,30 @@ def check_datetime_range(df=pd.DataFrame, verbose=True):
 
 
 # ================================================================================================ #
-# CHECK IF DATAFRAME HAS A TRIP RECORDING INTERRUPTED
+# CHECK IF DATETIME IS OK OVERALL
 # ================================================================================================ #
-def check_trip_interruption(df=pd.DataFrame, verbose=True):
+def check_datetime(df=pd.DataFrame, verbose=True):
     
     """
-    Check if ``trip`` recording is interrupted. 
+    Check if the dataframe ``datetime`` column is ok overall.
     
-    :param df: the dataframe with the gps data.
+    :param df: the dataframe with a ``datetime`` column.
     :type df: pandas.DataFrame
     :param verbose: display warning if True.
     :type verbose: bool
-    :return: True if ``trip`` recording is interrupted. 
+    :return: True if datetime is ok overall.
     :rtype: bool
+    
+    Practically, check if the dataframe ``datetime`` column type is datetime64, is sorted, does not have duplicates and cover a realistic range. 
     """
     
-    # init boolean
-    check = True
-
-    # trigger warning if last position is not at nest
-    if (df["trip"][-1:].values[0] > 0):
-        check = False
-        if verbose: print("WARNING : last trip recording seems interrupted.")
-        
-    return(check)
+    # check every feature
+    check_1 = check_datetime_type(df, verbose)
+    check_2 = check_datetime_order(df, verbose)
+    check_3 = check_datetime_duplicates(df, verbose)
+    check_4 = check_datetime_range(df, verbose)
+    
+    return(check_1*check_2*check_3*check_4)
 
 
 # ================================================================================================ #
@@ -172,6 +172,86 @@ def check_longitude_latitude(df=pd.DataFrame, verbose=True):
 
 
 # ================================================================================================ #
+# CHECK IF AT LEAST ONE TRIP
+# ================================================================================================ #
+def check_trip_existence(df=pd.DataFrame, verbose=True):
+    
+    """
+    Check if dataframe has at least one trip. 
+    
+    :param df: the dataframe with a ``trip`` column.
+    :type df: pandas.DataFrame
+    :param verbose: display warning if True.
+    :type verbose: bool
+    :return: True if dataframe has at least one trip. 
+    :rtype: bool
+    """
+    
+    # init boolean
+    check = True
+
+    # trigger warning if only one value among trip ids
+    if (len(df["trip"].unique()) > 1):
+        check = False
+        if verbose: print("WARNING : no trip found.")
+        
+    return(check)
+
+
+# ================================================================================================ #
+# CHECK IF DATAFRAME HAS A TRIP RECORDING INTERRUPTED
+# ================================================================================================ #
+def check_trip_interruption(df=pd.DataFrame, verbose=True):
+    
+    """
+    Check if trip recording is interrupted. 
+    
+    :param df: the dataframe with a ``trip`` column.
+    :type df: pandas.DataFrame
+    :param verbose: display warning if True.
+    :type verbose: bool
+    :return: True if trip recording is interrupted. 
+    :rtype: bool
+    """
+    
+    # init boolean
+    check = True
+
+    # trigger warning if last position is not at nest
+    if (df["trip"][-1:].values[0] > 0):
+        check = False
+        if verbose: print("WARNING : last trip recording seems interrupted.")
+        
+    return(check)
+
+
+# ================================================================================================ #
+# CHECK IF GPS DATA IS OK OVERALL
+# ================================================================================================ #
+def check_gps(df=pd.DataFrame, verbose=True):
+    
+    """
+    Check if the gps data is ok overall. 
+    
+    :param df: the dataframe with ``longitude``, ``latitude`` and ``trip`` columns.
+    :type df: pandas.DataFrame
+    :param verbose: display warning if True.
+    :type verbose: bool
+    :return: True if if the gps data is ok overall. 
+    :rtype: bool
+    
+    Practically, check if the dataframe ``longitude`` and ``latitude`` columns do not only contain NaN values, if there is at least one trip and if last trip is not interrupted. 
+    """
+    
+    # check every feature
+    check_1 = check_longitude_latitude(df, verbose)
+    check_2 = check_trip_existence(df, verbose)
+    check_3 = check_trip_interruption(df, verbose)
+    
+    return(check_1*check_2*check_3)
+
+
+# ================================================================================================ #
 # CHECK IF DATAFRAME HAS PRESSURE/TEMPERATURE DATA
 # ================================================================================================ #
 def check_pressure_temperature(df=pd.DataFrame, verbose=True):
@@ -201,6 +281,30 @@ def check_pressure_temperature(df=pd.DataFrame, verbose=True):
         if verbose: print("WARNING : the \"temperature\" column only contains NaN values")
         
     return(check)
+
+
+# ================================================================================================ #
+# CHECK IF TDR DATA IS OK OVERALL
+# ================================================================================================ #
+def check_tdr(df=pd.DataFrame, verbose=True):
+    
+    """
+    Check if the tdr data is ok overall. 
+    
+    :param df: the dataframe with ``pressure`` and ``temperature`` columns.
+    :type df: pandas.DataFrame
+    :param verbose: display warning if True.
+    :type verbose: bool
+    :return: True if the tdr data is ok overall. 
+    :rtype: bool
+    
+    Practically, check if the dataframe ``pressure`` and ``temperature`` columns do not only contain NaN values. 
+    """
+    
+    # check every feature
+    check_1 = check_pressure_temperature(df, verbose)
+    
+    return(check_1)
 
 
 # ================================================================================================ #
@@ -241,102 +345,24 @@ def check_accelerations(df=pd.DataFrame, verbose=True):
 
 
 # ================================================================================================ #
-# CHECK IF DATETIME IS OK OVERALL
-# ================================================================================================ #
-def check_datetime(df=pd.DataFrame, verbose=True):
-    
-    """
-    Check if datetime is ok overall.
-    
-    :param df: the dataframe with a ``datetime`` column.
-    :type df: pandas.DataFrame
-    :param verbose: display warning if True.
-    :type verbose: bool
-    :return: True if datetime is ok overall.
-    :rtype: bool
-    
-    Practically, check if the dataframe ``datetime`` column type is datetime64, is sorted, does not have duplicates and cover a realistic range. 
-    """
-    
-    # init booleans
-    check_1 = check_datetime_type(df, verbose)
-    check_2 = check_datetime_order(df, verbose)
-    check_3 = check_datetime_duplicates(df, verbose)
-    check_4 = check_datetime_range(df, verbose)
-    
-    return(check_1*check_2*check_3*check_4)
-
-
-# ================================================================================================ #
-# CHECK IF GPS DATA IS OK OVERALL
-# ================================================================================================ #
-def check_gps(df=pd.DataFrame, verbose=True):
-    
-    """
-    Check if gps data is ok overall. 
-    
-    :param df: the dataframe with ``longitude`` and ``latitude`` columns.
-    :type df: pandas.DataFrame
-    :param verbose: display warning if True.
-    :type verbose: bool
-    :return: True if if gps data is ok overall. 
-    :rtype: bool
-    
-    Practically, check if the dataframe ``longitude`` and ``latitude`` columns do not only contain NaN values and if last trip is not interrupted. 
-    """
-    
-    # init booleans
-    check_1 = check_trip_interruption(df, verbose)
-    check_2 = check_longitude_latitude(df, verbose)
-    
-    return(check_1*check_2)
-
-
-# ================================================================================================ #
-# CHECK IF TDR DATA IS OK OVERALL
-# ================================================================================================ #
-def check_tdr(df=pd.DataFrame, verbose=True):
-    
-    """
-    Check if tdr data is ok overall. 
-    
-    :param df: the dataframe with ``pressure`` and ``temperature`` columns.
-    :type df: pandas.DataFrame
-    :param verbose: display warning if True.
-    :type verbose: bool
-    :return: True if tdr data is ok overall. 
-    :rtype: bool
-    
-    Practically, check if the dataframe ``pressure`` and ``temperature`` columns do not only contain NaN values. 
-    """
-    
-    # init booleans
-    check_1 = check_pressure_temperature(df, verbose)
-    
-    return(check_1)
-
-
-# ================================================================================================ #
 # CHECK IF ACC DATA IS OK OVERALL
 # ================================================================================================ #
 def check_acc(df=pd.DataFrame, verbose=True):
     
     """
-    Check if acceleration data is ok overall. 
+    Check if the acceleration data is ok overall. 
     
     :param df: the dataframe with ``ax``, ``ay`` and ``az`` columns.
     :type df: pandas.DataFrame
     :param verbose: display warning if True.
     :type verbose: bool
-    :return: True if acceleration data is ok overall. 
+    :return: True if the acceleration data is ok overall. 
     :rtype: bool
     
     Practically, check if the dataframe ``ax``, ``ay`` and ``az`` columns do not only contain NaN values. 
     """
     
-    # init booleans
+    # check every feature
     check_1 = check_accelerations(df, verbose)
     
     return(check_1)
-
-
