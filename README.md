@@ -3,8 +3,8 @@
 </h1><br>
 
 <div align="center">
-  <a href="https://github.com/AdrienBrunel/seabird-movement-cpf/stargazers"><img alt="github stars" src="https://img.shields.io/github/stars/AdrienBrunel/seabird-movement-cpf"></a>
-  <a href="https://github.com/AdrienBrunel/seabird-movement-cpf/forks"><img alt="github forks" src="https://img.shields.io/github/forks/AdrienBrunel/seabird-movement-cpf"></a>
+  <a href="https://github.com/AdrienBrunel/seabird-movement-cpf/stargazers"><img alt="github stars" src="https://img.shields.io/github/stars/AdrienBrunel/seabird-movement-cpf?color=gold"></a>
+  <a href="https://github.com/AdrienBrunel/seabird-movement-cpf/forks"><img alt="github forks" src="https://img.shields.io/github/forks/AdrienBrunel/seabird-movement-cpf?color=purple"></a>
   <a href="https://github.com/AdrienBrunel/seabird-movement-cpf/blob/master/LICENSE"><img alt="license" src="https://img.shields.io/badge/license-AGPLv3-blue"></a>
 </div><br>
 
@@ -14,7 +14,6 @@ Are you a scientist involved in movement ecology working with biologging data co
 
 <br>
 
-
 The main objectives of **cpforager** are :  
 1. Efficiently handle large-scale biologging datasets, including high-resolution sensor data (*e.g.* accelerometers).
 2. Provide a modular and extensible architecture, allowing users to tailor the code to their specific research needs.
@@ -22,7 +21,7 @@ The main objectives of **cpforager** are :
 
 <br>
 
-**cpforager** package supports various biologging sensor types commonly used in the field and provides the following core classes:
+**cpforager** package supports various biologging sensor types commonly used in movement ecology and provides the following core classes:
 * `GPS` : for handling position recordings. 
 * `TDR` : for handling pressure recordings.
 * `AXY` : for handling tri-axial acceleration recordings at high resolution combined with lower resolution position and pressure recordings.
