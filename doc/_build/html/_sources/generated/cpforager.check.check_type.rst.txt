@@ -1,6 +1,0 @@
-﻿cpforager.check.check\_type
-===========================
-
-.. currentmodule:: cpforager.check
-
-.. autofunction:: check_type

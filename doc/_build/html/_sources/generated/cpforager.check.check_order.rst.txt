@@ -1,6 +1,0 @@
-﻿cpforager.check.check\_order
-============================
-
-.. currentmodule:: cpforager.check
-
-.. autofunction:: check_order

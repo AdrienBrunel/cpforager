@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>7.4. cpforager.check.check_full &mdash; cpforager</title>
+  <title>7.4. cpforager.check.check_datetime_range &mdash; cpforager</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=8ac2ccb1" />
@@ -21,8 +21,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="8. Examples" href="../examples.html" />
-    <link rel="prev" title="7.3. cpforager.check.check_duplicates" href="cpforager.check.check_duplicates.html" /> 
+    <link rel="next" title="7.5. cpforager.check.check_datetime" href="cpforager.check.check_datetime.html" />
+    <link rel="prev" title="7.3. cpforager.check.check_datetime_duplicates" href="cpforager.check.check_datetime_duplicates.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -54,13 +54,22 @@
 <li class="toctree-l1"><a class="reference internal" href="../utils.html">5. Utils</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../misc.html">6. Miscellaneous</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../check.html">7. Checks</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="cpforager.check.check_type.html">7.1. cpforager.check.check_type</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cpforager.check.check_order.html">7.2. cpforager.check.check_order</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cpforager.check.check_duplicates.html">7.3. cpforager.check.check_duplicates</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">7.4. cpforager.check.check_full</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#cpforager.check.check_full"><code class="docutils literal notranslate"><span class="pre">check_full()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpforager.check.check_datetime_type.html">7.1. cpforager.check.check_datetime_type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpforager.check.check_datetime_order.html">7.2. cpforager.check.check_datetime_order</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpforager.check.check_datetime_duplicates.html">7.3. cpforager.check.check_datetime_duplicates</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">7.4. cpforager.check.check_datetime_range</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cpforager.check.check_datetime_range"><code class="docutils literal notranslate"><span class="pre">check_datetime_range()</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="cpforager.check.check_datetime.html">7.5. cpforager.check.check_datetime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpforager.check.check_longitude_latitude.html">7.6. cpforager.check.check_longitude_latitude</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpforager.check.check_trip_existence.html">7.7. cpforager.check.check_trip_existence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpforager.check.check_trip_interruption.html">7.8. cpforager.check.check_trip_interruption</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpforager.check.check_gps.html">7.9. cpforager.check.check_gps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpforager.check.check_pressure_temperature.html">7.10. cpforager.check.check_pressure_temperature</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpforager.check.check_tdr.html">7.11. cpforager.check.check_tdr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpforager.check.check_accelerations.html">7.12. cpforager.check.check_accelerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpforager.check.check_acc.html">7.13. cpforager.check.check_acc</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../examples.html">8. Examples</a></li>
@@ -81,9 +90,9 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../check.html"><span class="section-number">7. </span>Checks</a></li>
-      <li class="breadcrumb-item active"><span class="section-number">7.4. </span>cpforager.check.check_full</li>
+      <li class="breadcrumb-item active"><span class="section-number">7.4. </span>cpforager.check.check_datetime_range</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/generated/cpforager.check.check_full.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/generated/cpforager.check.check_datetime_range.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -91,12 +100,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="cpforager-check-check-full">
-<h1><span class="section-number">7.4. </span>cpforager.check.check_full<a class="headerlink" href="#cpforager-check-check-full" title="Link to this heading"></a></h1>
+  <section id="cpforager-check-check-datetime-range">
+<h1><span class="section-number">7.4. </span>cpforager.check.check_datetime_range<a class="headerlink" href="#cpforager-check-check-datetime-range" title="Link to this heading"></a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="cpforager.check.check_full">
-<span class="sig-prename descclassname"><span class="pre">cpforager.check.</span></span><span class="sig-name descname"><span class="pre">check_full</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df=&lt;class</span> <span class="pre">'pandas.core.frame.DataFrame'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose=True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cpforager.check.check_full" title="Link to this definition"></a></dt>
-<dd><p>Check if the dataframe column <code class="docutils literal notranslate"><span class="pre">datetime</span></code> type is datetime64, is sorted and does not have duplicates.</p>
+<dt class="sig sig-object py" id="cpforager.check.check_datetime_range">
+<span class="sig-prename descclassname"><span class="pre">cpforager.check.</span></span><span class="sig-name descname"><span class="pre">check_datetime_range</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df=&lt;class</span> <span class="pre">'pandas.core.frame.DataFrame'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose=True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cpforager.check.check_datetime_range" title="Link to this definition"></a></dt>
+<dd><p>Check if the dataframe <code class="docutils literal notranslate"><span class="pre">datetime</span></code> column cover a realistic range, <em>i.e.</em> bigger than 12 hours and smaller than 30 days.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -105,7 +114,7 @@
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>True if the dataframe column <code class="docutils literal notranslate"><span class="pre">datetime</span></code> type is datetime64, is sorted and does not have duplicates.</p>
+<dd class="field-even"><p>True if the dataframe <code class="docutils literal notranslate"><span class="pre">datetime</span></code> column cover a realistic range.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>bool</p>
@@ -119,8 +128,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="cpforager.check.check_duplicates.html" class="btn btn-neutral float-left" title="7.3. cpforager.check.check_duplicates" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../examples.html" class="btn btn-neutral float-right" title="8. Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="cpforager.check.check_datetime_duplicates.html" class="btn btn-neutral float-left" title="7.3. cpforager.check.check_datetime_duplicates" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="cpforager.check.check_datetime.html" class="btn btn-neutral float-right" title="7.5. cpforager.check.check_datetime" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
