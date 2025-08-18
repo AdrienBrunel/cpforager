@@ -6,12 +6,13 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>cpforager documentation &mdash; cpforager 0 documentation</title>
+  <title>Overview &mdash; cpforager</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
-      <link rel="stylesheet" type="text/css" href="_static/style.css?v=547657ed" />
+      <link rel="stylesheet" type="text/css" href="_static/css/style.css?v=8ac2ccb1" />
 
   
+    <link rel="shortcut icon" href="_static/logo_cpforager_color.png"/>
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="_static/documentation_options.js?v=8dde47fa"></script>
@@ -31,8 +32,9 @@
 
           
           
-          <a href="#" class="icon icon-home">
-            cpforager
+          <a href="#">
+            
+              <img src="_static/logo_cpforager_text_color.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -42,7 +44,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Overview</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="classes.html">1. Classes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="parameters.html">2. Parameters</a></li>
@@ -68,7 +70,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">cpforager documentation</li>
+      <li class="breadcrumb-item active">Overview</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -78,114 +80,52 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="cpforager-documentation">
-<h1>cpforager documentation<a class="headerlink" href="#cpforager-documentation" title="Link to this heading"></a></h1>
-<p>Are you a scientist involved in movement ecology working with biologging data collected from central-place foraging seabirds?</p>
-<p><strong>cpforager</strong> is a Python package designed to help you manipulate, process, analyse and visualise the biologging datasets with ease.</p>
+  <section id="overview">
+<h1>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h1>
+<a class="reference internal image-reference" href="_images/logo_cpforager_color.png"><img alt="_images/logo_cpforager_color.png" class="align-center" src="_images/logo_cpforager_color.png" style="width: 150px;" />
+</a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Are you a scientist involved in movement ecology working with biologging data collected from central-place foraging seabirds?
+<strong>cpforager</strong> is a Python package designed to help you manipulate, process, analyse and visualise the biologging datasets with ease.</p>
 <p>The main objectives of <strong>cpforager</strong> package are :</p>
-<ol class="arabic">
+<blockquote>
+<div><ol class="arabic simple">
 <li><p>Efficiently handle large-scale biologging datasets, including high-resolution sensor data (<em>e.g.</em> accelerometers).</p></li>
 <li><p>Provide a modular and extensible architecture, allowing users to tailor the code to their specific research needs.</p></li>
-<li><p>Facilitate a smooth transition to Python for movement ecology researchers familiar with other languages (<em>e.g.</em> R).</p>
-<a class="reference internal image-reference" href="_images/logo_tmp.JPG"><img alt="_images/logo_tmp.JPG" class="align-center" src="_images/logo_tmp.JPG" style="width: 250px;" />
-</a>
+<li><p>Facilitate a smooth transition to Python for movement ecology researchers familiar with other languages (<em>e.g.</em> R).</p></li>
+</ol>
+</div></blockquote>
+<p><strong>cpforager</strong> package supports various biologging sensor types commonly used in movement ecology and provides the following core classes:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>GPS</strong> : for handling position recordings.</p></li>
+<li><p><strong>TDR</strong> : for handling pressure recordings.</p></li>
+<li><p><strong>AXY</strong> : for handling tri-axial acceleration recordings at high resolution combined with lower resolution position and pressure recordings.</p></li>
+<li><p><strong>GPS_TDR</strong> : for handling position and pressure recordings.</p></li>
+<li><p><strong>GPS_Collection</strong> : for working with datasets composed of multiple GPS loggers.</p></li>
+<li><p>(<strong>TDR_Collection</strong> : for working with datasets composed of multiple TDR loggers.)</p></li>
+<li><p>(<strong>AXY_Collection</strong> : for working with datasets composed of multiple AXY loggers.)</p></li>
+</ul>
+</div></blockquote>
+<p>Each class automatically enhances raw data but also computes key features specific to each biologger (<em>e.g.</em> trip segmentation for GPS, dive segmentation for TDR, ODBA calculation for AXY). They are also accompanied with methods for data processing and visualisation.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
 <div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Overview</span></p>
+<p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="classes.html">1. Classes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.GPS.html">1.1. cpforager.GPS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.TDR.html">1.2. cpforager.TDR</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.AXY.html">1.3. cpforager.AXY</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.GPS_TDR.html">1.4. cpforager.GPS_TDR</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.GPS_Collection.html">1.5. cpforager.GPS_Collection</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="parameters.html">2. Parameters</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.parameters.get_params.html">2.1. cpforager.parameters.get_params</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.parameters.get_plot_params.html">2.2. cpforager.parameters.get_plot_params</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="processing.html">3. Processing</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.processing.estimate_nest_position.html">3.1. cpforager.processing.estimate_nest_position</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.processing.add_is_night.html">3.2. cpforager.processing.add_is_night</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.processing.add_step_time.html">3.3. cpforager.processing.add_step_time</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.processing.add_step_length.html">3.4. cpforager.processing.add_step_length</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.processing.add_step_speed.html">3.5. cpforager.processing.add_step_speed</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.processing.add_step_heading.html">3.6. cpforager.processing.add_step_heading</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.processing.add_step_turning_angle.html">3.7. cpforager.processing.add_step_turning_angle</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.processing.add_step_heading_to_colony.html">3.8. cpforager.processing.add_step_heading_to_colony</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.processing.add_dist_to_nest.html">3.9. cpforager.processing.add_dist_to_nest</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.processing.add_trip.html">3.10. cpforager.processing.add_trip</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.processing.add_depth.html">3.11. cpforager.processing.add_depth</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.processing.add_dive.html">3.12. cpforager.processing.add_dive</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.processing.add_filtered_acc.html">3.13. cpforager.processing.add_filtered_acc</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.processing.add_odba.html">3.14. cpforager.processing.add_odba</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.processing.add_is_suspicious.html">3.15. cpforager.processing.add_is_suspicious</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.processing.interpolate_lat_lon.html">3.16. cpforager.processing.interpolate_lat_lon</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.processing.add_basic_data.html">3.17. cpforager.processing.add_basic_data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.processing.add_gps_data.html">3.18. cpforager.processing.add_gps_data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.processing.add_tdr_data.html">3.19. cpforager.processing.add_tdr_data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.processing.add_axy_data.html">3.20. cpforager.processing.add_axy_data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.processing.compute_basic_infos.html">3.21. cpforager.processing.compute_basic_infos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.processing.compute_gps_infos.html">3.22. cpforager.processing.compute_gps_infos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.processing.compute_tdr_infos.html">3.23. cpforager.processing.compute_tdr_infos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.processing.compute_axy_infos.html">3.24. cpforager.processing.compute_axy_infos</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="diagnostic.html">4. Plots</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.diagnostic.get_datetime_locator_formatter.html">4.1. cpforager.diagnostic.get_datetime_locator_formatter</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.diagnostic.plot_night.html">4.2. cpforager.diagnostic.plot_night</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.diagnostic.plot_ts.html">4.3. cpforager.diagnostic.plot_ts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.diagnostic.plot_ts_wtrips.html">4.4. cpforager.diagnostic.plot_ts_wtrips</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.diagnostic.plot_ts_twinx.html">4.5. cpforager.diagnostic.plot_ts_twinx</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.diagnostic.plot_cumulative_distribution.html">4.6. cpforager.diagnostic.plot_cumulative_distribution</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.diagnostic.plot_box.html">4.7. cpforager.diagnostic.plot_box</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.diagnostic.plot_violin.html">4.8. cpforager.diagnostic.plot_violin</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.diagnostic.plot_hist.html">4.9. cpforager.diagnostic.plot_hist</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.diagnostic.plot_angle_polar.html">4.10. cpforager.diagnostic.plot_angle_polar</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.diagnostic.plot_colony.html">4.11. cpforager.diagnostic.plot_colony</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.diagnostic.plot_map_wtrips.html">4.12. cpforager.diagnostic.plot_map_wtrips</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.diagnostic.plot_map_colorgrad.html">4.13. cpforager.diagnostic.plot_map_colorgrad</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.diagnostic.plot_folium_traj.html">4.14. cpforager.diagnostic.plot_folium_traj</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.diagnostic.plot_folium_traj_disc_colorgrad.html">4.15. cpforager.diagnostic.plot_folium_traj_disc_colorgrad</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.diagnostic.plot_folium_traj_cont_colorgrad.html">4.16. cpforager.diagnostic.plot_folium_traj_cont_colorgrad</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.diagnostic.plot_folium_map_multiple_colorgrad.html">4.17. cpforager.diagnostic.plot_folium_map_multiple_colorgrad</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.diagnostic.plot_infos.html">4.18. cpforager.diagnostic.plot_infos</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="utils.html">5. Utils</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.utils.ortho_distance.html">5.1. cpforager.utils.ortho_distance</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.utils.spherical_heading.html">5.2. cpforager.utils.spherical_heading</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.utils.convert_utc_to_loc.html">5.3. cpforager.utils.convert_utc_to_loc</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.utils.convert_loc_to_utc.html">5.4. cpforager.utils.convert_loc_to_utc</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.utils.apply_functions_between_samples.html">5.5. cpforager.utils.apply_functions_between_samples</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="misc.html">6. Miscellaneous</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.misc.derive_separator.html">6.1. cpforager.misc.derive_separator</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.misc.grep_pattern.html">6.2. cpforager.misc.grep_pattern</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.misc.random_colors.html">6.3. cpforager.misc.random_colors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.misc.rgb_to_hex.html">6.4. cpforager.misc.rgb_to_hex</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="check.html">7. Checks</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.check.check_type.html">7.1. cpforager.check.check_type</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.check.check_order.html">7.2. cpforager.check.check_order</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.check.check_duplicates.html">7.3. cpforager.check.check_duplicates</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.check.check_full.html">7.4. cpforager.check.check_full</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="examples.html">8. Examples</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="examples.html#gps">8.1. GPS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="examples.html#tdr">8.2. TDR</a></li>
-<li class="toctree-l2"><a class="reference internal" href="examples.html#axy">8.3. AXY</a></li>
-<li class="toctree-l2"><a class="reference internal" href="examples.html#gps-collection">8.4. GPS_Collection</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="classes.html">1. Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parameters.html">2. Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="processing.html">3. Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagnostic.html">4. Plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">5. Utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="misc.html">6. Miscellaneous</a></li>
+<li class="toctree-l1"><a class="reference internal" href="check.html">7. Checks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">8. Examples</a></li>
 </ul>
 </div>
-</li>
-</ol>
 </section>
 
 

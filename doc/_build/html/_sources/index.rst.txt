@@ -3,35 +3,50 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-cpforager documentation
+Overview
 ==================================
 
-Are you a scientist involved in movement ecology working with biologging data collected from central-place foraging seabirds? 
+.. only:: html
+      
+      .. image:: _static/images/logo_cpforager_color.png
+         :width: 150 px
+         :align: center
 
+|
+
+Are you a scientist involved in movement ecology working with biologging data collected from central-place foraging seabirds? 
 **cpforager** is a Python package designed to help you manipulate, process, analyse and visualise the biologging datasets with ease.
 
 The main objectives of **cpforager** package are :  
 
-1. Efficiently handle large-scale biologging datasets, including high-resolution sensor data (*e.g.* accelerometers).
-2. Provide a modular and extensible architecture, allowing users to tailor the code to their specific research needs.
-3. Facilitate a smooth transition to Python for movement ecology researchers familiar with other languages (*e.g.* R).
+   1. Efficiently handle large-scale biologging datasets, including high-resolution sensor data (*e.g.* accelerometers).
+   2. Provide a modular and extensible architecture, allowing users to tailor the code to their specific research needs.
+   3. Facilitate a smooth transition to Python for movement ecology researchers familiar with other languages (*e.g.* R).
 
-   .. only:: html
-      
-      .. image:: _static/images/logo_tmp.JPG
-         :width: 250 px
-         :align: center
+**cpforager** package supports various biologging sensor types commonly used in movement ecology and provides the following core classes:
 
-   .. toctree::
-      :maxdepth: 2
-      :caption: Overview
-      :numbered:
+   * **GPS** : for handling position recordings. 
+   * **TDR** : for handling pressure recordings.
+   * **AXY** : for handling tri-axial acceleration recordings at high resolution combined with lower resolution position and pressure recordings.
+   * **GPS_TDR** : for handling position and pressure recordings.
+   * **GPS_Collection** : for working with datasets composed of multiple GPS loggers.
+   * (**TDR_Collection** : for working with datasets composed of multiple TDR loggers.)
+   * (**AXY_Collection** : for working with datasets composed of multiple AXY loggers.)
 
-      classes.rst
-      parameters.rst
-      processing.rst
-      diagnostic.rst
-      utils.rst
-      misc.rst
-      check.rst
-      examples.rst
+Each class automatically enhances raw data but also computes key features specific to each biologger (*e.g.* trip segmentation for GPS, dive segmentation for TDR, ODBA calculation for AXY). They are also accompanied with methods for data processing and visualisation.
+
+|
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Documentation
+   :numbered:
+
+   classes.rst
+   parameters.rst
+   processing.rst
+   diagnostic.rst
+   utils.rst
+   misc.rst
+   check.rst
+   examples.rst

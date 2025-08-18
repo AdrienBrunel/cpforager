@@ -11,8 +11,7 @@ Examples showing how to simply benefit from **cpforager** package with you biolo
 
 GPS
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
-.. include::  _static/examples/demo_gps.py
-   :code: python
+.. literalinclude::  _static/examples/demo_gps.py
 
 .. only:: html
 

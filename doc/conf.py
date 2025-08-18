@@ -15,16 +15,24 @@ language = "en"
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
-templates_path = ["../doc/_templates"]
-exclude_patterns = ["../doc/_build", "Thumbs.db", ".DS_Store"]
-html_static_path = ["_static/css"]
+templates_path = ["_templates"]
+exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
+html_static_path = ["_static"]
+
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 html_theme = "sphinx_rtd_theme"
 
+# customized css
 def setup(app):
-    app.add_css_file("style.css")
+    app.add_css_file("css/style.css")
+
+# logo
+html_logo = "_static/images/logo_cpforager_text_color.png"
+html_title = "cpforager"
+html_favicon = "_static/images/logo_cpforager_color.png"
+html_theme_options = {"logo_only": True}
     
 # -- Authorized extensions -------------------------------------------------
 extensions = ["sphinx.ext.duration",
