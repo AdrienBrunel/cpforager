@@ -84,7 +84,7 @@ The Python scripts in the [tests/](./tests/) folder illustrate how the `GPS`, `T
 - [ ] uniformise types of arguments/atttributes in documentation.
 - [ ] add Butterworth filter for `AXY`.
 - [ ] add parameters in `parameters.py` to be able to choose between rolling average and Butterworth filter for `AXY`.
-- [ ] add functions that raise warnings (datetime order, datetime duplicates, interrupted trips, not normal datetime range, no trip found, not normal dataframe size, absent data, *etc.*).
+- [x] add functions that raise warnings (datetime order, datetime duplicates, interrupted trips, not normal datetime range, no trip found, not normal dataframe size, absent data, *etc.*).
 - [ ] add a function `GPS_TDR = merge_gps_tdr(GPS, TDR)` that will merge TDR data within GPS data and produce the resulting dataframe.
 - [ ] create a `AXY_Collection` class.
 - [ ] create a `TDR_Collection` class.
