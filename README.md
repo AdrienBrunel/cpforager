@@ -1,14 +1,19 @@
 # cpforager
 
 <div align="center">
-  <a href="https://github.com/AdrienBrunel/seabird-movement-cpf/stargazers"><img alt="stars" src="https://img.shields.io/github/stars/AdrienBrunel/seabird-movement-cpf"></a>
-  <a href="https://github.com/AdrienBrunel/seabird-movement-cpf/forks"><img alt="forks" src="https://img.shields.io/github/forks/AdrienBrunel/seabird-movement-cpf"></a>
+  <a href="https://github.com/AdrienBrunel/seabird-movement-cpf/stargazers"><img alt="github stars" src="https://img.shields.io/github/stars/AdrienBrunel/seabird-movement-cpf"></a>
+  <a href="https://github.com/AdrienBrunel/seabird-movement-cpf/forks"><img alt="github forks" src="https://img.shields.io/github/forks/AdrienBrunel/seabird-movement-cpf"></a>
   <a href="https://github.com/AdrienBrunel/seabird-movement-cpf/blob/master/LICENSE"><img alt="license" src="https://img.shields.io/badge/license-AGPLv3-blue"></a>
 </div>
 
 <br>
 
 Are you a scientist involved in movement ecology working with biologging data collected from central-place foraging seabirds? **cpforager** is a Python package designed to help you manipulate, process, analyse and visualise the biologging datasets with ease.
+
+<br>
+
+<img src="doc/_static/images/logo_cpforager_text_color.png" alt="cpforager text logo with colors">
+<img src="doc/_static/images/logo_cpforager_color.png" alt="cpforager logo with colors" style="width: 300px;">
 
 <br>
 
@@ -74,7 +79,7 @@ The Python scripts in the [test](./test/) folder illustrate how the `GPS`, `TDR`
 
 # Future developments
 - [ ] improve documentation (add images of test results, uniformise types, add logo)
-- [ ] create a `GPS_TDR` class for biologgers with both GPS and TDR data.
+- [x] create a `GPS_TDR` class for biologgers with both GPS and TDR data.
 - [ ] create a function `GPS_TDR = merge_gps_tdr(GPS, TDR)` that will merge TDR data within GPS data and produce the resulting dataframe.
 - [ ] create a `AXY_Collection` class.
 - [ ] create a `TDR_Collection` class.
