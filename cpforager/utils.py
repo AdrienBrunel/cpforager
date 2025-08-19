@@ -145,7 +145,7 @@ def convert_loc_to_utc(df, local_timezone):
 # ================================================================================================ #
 # APPLY FUNCTION BETWEEN SAMPLES
 # ================================================================================================ #
-def apply_functions_between_samples(df, resolution, columns_functions=dict, verbose=False):
+def apply_functions_between_samples(df, resolution, columns_functions, verbose=False):
     
     """
     Apply a chosen function (*e.g.* sum, mean, min, max) over every high resolution elements between two subsamples defined by a given resolution.
@@ -191,8 +191,7 @@ def apply_functions_between_samples(df, resolution, columns_functions=dict, verb
     if n_subsamples < n_df:
         
         # initialize new columns in df
-        for c in columns_functions.keys():
-            f = columns_functions[c]
+        for c, f in columns_functions.items():
             new_column = "%s_%s" % (c, f)
             df[new_column] = np.nan*n_df
             
@@ -214,8 +213,7 @@ def apply_functions_between_samples(df, resolution, columns_functions=dict, verb
             
             # loop over columns to be processed (sum, mean, min or max) between samples
             if len(between_subsamples_points) > 0:
-                for c in columns_functions.keys():
-                    f = columns_functions[c]
+                for c, f in columns_functions.items():
                     new_column = "%s_%s" % (c, f)
                     if f=="sum": df.loc[idx_1-1,new_column] = df.loc[between_subsamples_points,c].sum()
                     elif f=="mean": df.loc[idx_1-1,new_column] = df.loc[between_subsamples_points,c].mean()
@@ -226,8 +224,7 @@ def apply_functions_between_samples(df, resolution, columns_functions=dict, verb
                     
     # if subsampling resolution is thiner than sampling resolution
     else:
-        for c in columns_functions.keys():
-            f = columns_functions[c]
+        for c, f in columns_functions.items():
             new_column = "%s_%s" % (c, f)
             df[new_column] = df[c]
             
