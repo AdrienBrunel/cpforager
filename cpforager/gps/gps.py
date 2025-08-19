@@ -16,7 +16,7 @@ class GPS:
     """
 
     # [CONSTRUCTOR] GPS
-    def __init__(self, df=pd.DataFrame, group=str, id=str, params=dict):
+    def __init__(self, df, group, id, params):
         
         """
         Constructor of a GPS object.

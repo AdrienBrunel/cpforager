@@ -18,7 +18,7 @@ class GPS_TDR:
     """
 
     # [CONSTRUCTOR] GPS_TDR
-    def __init__(self, df_gps=pd.DataFrame, df_tdr=pd.DataFrame, group=str, id=str, params=dict):
+    def __init__(self, df_gps, df_tdr, group, id, params):
         
         """
         Constructor of a GPS_TDR object.

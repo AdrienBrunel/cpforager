@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 # ======================================================= #
 # TDR FULL DIAG [TDR METHOD]
 # ======================================================= #
-def full_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict):   
+def full_diagnostic(self, fig_dir, file_id, plot_params):   
     
     """    
     Produce the full diagnostic of the TDR data.

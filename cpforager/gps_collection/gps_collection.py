@@ -17,7 +17,7 @@ class GPS_Collection:
     """
 
     # [CONSTRUCTOR] GPS_COLLECTION
-    def __init__(self, gps_collection=list[GPS]):
+    def __init__(self, gps_collection):
         
         """
         Constructor of a GPS_Collection object.

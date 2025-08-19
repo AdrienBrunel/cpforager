@@ -10,7 +10,7 @@ import folium
 # ======================================================= #
 # STATS SUMMARY [GPS_COLLECTION METHOD]
 # ======================================================= #
-def plot_stats_summary(self, fig_dir=str, file_id=str, plot_params=dict, quantiles=[0.25, 0.50, 0.75, 0.90]):
+def plot_stats_summary(self, fig_dir, file_id, plot_params, quantiles=[0.25, 0.50, 0.75, 0.90]):
     
     """    
     Produce the trip statistics summary of every GPS data.
@@ -83,7 +83,7 @@ def plot_stats_summary(self, fig_dir=str, file_id=str, plot_params=dict, quantil
 # ======================================================= #
 # GPS MAPS DIAG [GPS_COLLECTION METHOD]
 # ======================================================= #
-def maps_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict):
+def maps_diagnostic(self, fig_dir, file_id, plot_params):
     
     """    
     Produce the maps with every GPS data.
@@ -149,7 +149,7 @@ def maps_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict):
 # ======================================================= #
 # GPS FOLIUM MAPS [GPS_COLLECTION METHOD]
 # ======================================================= #
-def folium_map(self, fig_dir=str, file_id=str):
+def folium_map(self, fig_dir, file_id):
     
     """    
     Produce the html map with every GPS data colored randomly.

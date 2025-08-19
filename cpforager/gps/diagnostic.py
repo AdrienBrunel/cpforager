@@ -10,7 +10,7 @@ import cartopy.crs as ccrs
 # ======================================================= #
 # GPS FULL DIAG [GPS METHOD]
 # ======================================================= #
-def full_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict):   
+def full_diagnostic(self, fig_dir, file_id, plot_params):   
     
     """    
     Produce the full diagnostic of the GPS data.
@@ -158,7 +158,7 @@ def full_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict):
 # ======================================================= #
 # GPS MAPS DIAG [GPS METHOD]
 # ======================================================= #
-def maps_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict):
+def maps_diagnostic(self, fig_dir, file_id, plot_params):
     
     """    
     Produce the maps of the GPS data.
@@ -229,7 +229,7 @@ def maps_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict):
 # ======================================================= #
 # GPS FOLIUM MAP BEAUTIFUL [GPS METHOD]
 # ======================================================= #
-def folium_map(self, fig_dir=str, file_id=str, plot_params=dict):
+def folium_map(self, fig_dir, file_id, plot_params):
     
     """    
     Produce the html map of the GPS data with the possibility to choose a color gradient.

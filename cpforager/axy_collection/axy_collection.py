@@ -17,7 +17,7 @@ class AXY_Collection:
     """
 
     # [CONSTRUCTOR] AXY_COLLECTION
-    def __init__(self, axy_collection=list[AXY]):
+    def __init__(self, axy_collection):
         
         """
         Constructor of an AXY_Collection object.

@@ -10,7 +10,7 @@ import cartopy.crs as ccrs
 # ======================================================= #
 # AXY FULL DIAG [AXY METHOD]
 # ======================================================= #
-def full_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict, fast=False):   
+def full_diagnostic(self, fig_dir, file_id, plot_params, fast=False):   
     
     """    
     Produce the full diagnostic of the AXY data.
@@ -244,7 +244,7 @@ def full_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict, fast=False
 # ======================================================= #
 # GPS MAPS DIAG [AXY METHOD]
 # ======================================================= #
-def maps_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict):
+def maps_diagnostic(self, fig_dir, file_id, plot_params):
     
     """    
     Produce the maps of the GPS data.
@@ -275,7 +275,7 @@ def maps_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict):
 # ======================================================= #
 # GPS FOLIUM MAP BEAUTIFUL [AXY METHOD]
 # ======================================================= #
-def folium_map(self, fig_dir=str, file_id=str, plot_params=dict):
+def folium_map(self, fig_dir, file_id, plot_params):
     
     """    
     Produce the html map of the GPS data with the possibility to choose a color gradient.

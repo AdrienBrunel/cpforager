@@ -15,7 +15,7 @@ class TDR:
     """
 
     # [CONSTRUCTOR] TDR
-    def __init__(self, df=pd.DataFrame, group=str, id=str, params=dict):
+    def __init__(self, df, group, id, params):
         
         """
         Constructor of a TDR object.

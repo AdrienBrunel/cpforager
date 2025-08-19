@@ -17,7 +17,7 @@ class TDR_Collection:
     """
 
     # [CONSTRUCTOR] TDR_COLLECTION
-    def __init__(self, tdr_collection=list[TDR]):
+    def __init__(self, tdr_collection):
         
         """
         Constructor of a TDR_Collection object.
