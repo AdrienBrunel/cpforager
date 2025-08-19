@@ -629,7 +629,7 @@ def plot_map_colorgrad(ax, df, params, plot_params, var, color_palette, nest_lon
 # ================================================================================================ #
 # PLOT MAP FOLIUM TRAJECTORY
 # ================================================================================================ # 
-def plot_folium_traj(df, params, traj_id, colony_label):
+def plot_folium_traj(df, params, traj_id):
         
     """    
     Plot folium map of the trajectory. 
@@ -640,8 +640,6 @@ def plot_folium_traj(df, params, traj_id, colony_label):
     :type params: dict
     :param traj_id: trajectory id.
     :type traj_id: str
-    :param colony_label: label appearing at colony center.
-    :type colony_label: str
     :return: the folium map.
     :rtype: folium.Map
 
@@ -656,7 +654,7 @@ def plot_folium_traj(df, params, traj_id, colony_label):
     fmap = folium.Map(location=[colony["center"][1], colony["center"][0]], overlay=True, control=False, show=True)
     
     # produce folium map
-    folium.Marker(location=[colony["center"][1], colony["center"][0]], popup="<i>Colony %s</i>" % (colony_label)).add_to(fmap)
+    folium.Marker(location=[colony["center"][1], colony["center"][0]], popup="<i>Colony %s</i>" % (colony["name"])).add_to(fmap)
     folium.PolyLine(tooltip="<i>Id %s</i>" % (traj_id), locations=df[["latitude", "longitude"]].values.tolist(), 
                     color="black", weight=1, opacity=0.9).add_to(fmap)
     
@@ -786,7 +784,7 @@ def plot_folium_traj_cont_colorgrad(fmap, df, color_palettes, q_th):
 # ================================================================================================ #
 # PLOT MAP MULTIPLE COLORGRAD FOLIUM
 # ================================================================================================ # 
-def plot_folium_map_multiple_colorgrad(df, params, traj_id, colony_label, cpals_disc, cpals_cont, q_th):
+def plot_folium_map_multiple_colorgrad(df, params, traj_id, cpals_disc, cpals_cont, q_th):
         
     """    
     Plot folium map of the trajectory with a color gradient along the column designated by the value of var. 
@@ -797,8 +795,6 @@ def plot_folium_map_multiple_colorgrad(df, params, traj_id, colony_label, cpals_
     :type params: dict
     :param traj_id: trajectory id.
     :type traj_id: str
-    :param colony_label: label appearing at colony center.
-    :type colony_label: str
     :param cpals_disc: dictionary of variables and associated discrete color palettes.
     :type cpals_disc: array([float, float, float])
     :param cpals_cont: dictionary of variables and associated continuous color palettes.
@@ -810,7 +806,7 @@ def plot_folium_map_multiple_colorgrad(df, params, traj_id, colony_label, cpals_
     """
 
     # plot base trajectory
-    fmap = plot_folium_traj(df, params, traj_id, colony_label)  
+    fmap = plot_folium_traj(df, params, traj_id)  
     
     # plot discrete color gradients
     fmap, fgs_disc = plot_folium_traj_disc_colorgrad(fmap, df, cpals_disc) 
