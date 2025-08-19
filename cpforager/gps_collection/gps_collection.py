@@ -43,8 +43,9 @@ class GPS_Collection:
         trip_statistics_all = trip_statistics_all.astype(dtype=dtypes_1)
 
         dtypes_2 = {"group":"str", "id":"str", "datetime":"object", "longitude":"float", "latitude":"float",
-                  "step_time":"float", "step_length":"float", "step_speed":"float", "step_heading":"float",
-                  "step_turning_angle":"float", "step_heading_to_colony":"float", "is_night":"int", "dist_to_nest":"float", "trip":"int"}
+                    "step_time":"float", "step_length":"float", "step_speed":"float", "step_heading":"float",
+                    "step_turning_angle":"float", "step_heading_to_colony":"float", "is_night":"int", "is_suspicious":"int", 
+                    "dist_to_nest":"float", "trip":"int"}
         df_all = pd.DataFrame(columns=dtypes_2.keys())
         df_all = df_all.astype(dtype=dtypes_2)
 
@@ -65,9 +66,9 @@ class GPS_Collection:
 
             # build the full data dataframe of the entire collection
             df_tmp = pd.DataFrame(columns=df_all.columns)
-            df_tmp[["datetime", "longitude", "latitude", "step_time", "step_length", "step_speed","step_heading", "step_turning_angle",
-                    "step_heading_to_colony", "is_night", "dist_to_nest", "trip"]] = gps.df[["datetime", "longitude", "latitude", "step_time", "step_length", "step_speed", "step_heading",
-                                                                                             "step_turning_angle", "step_heading_to_colony", "is_night", "dist_to_nest", "trip"]]
+            df_tmp[["datetime", "longitude", "latitude", "step_time", "step_length", "step_speed","step_heading", 
+                    "step_turning_angle","step_heading_to_colony", "is_night", "is_suspicious", "dist_to_nest", "trip"]] = gps.df[["datetime", "longitude", "latitude", "step_time", "step_length", "step_speed", "step_heading",
+                                                                                                                                   "step_turning_angle", "step_heading_to_colony", "is_night", "is_suspicious", "dist_to_nest", "trip"]]
             df_tmp = df_tmp.astype(dtype=dtypes_2)
 
             # add metadata in df for each trip
