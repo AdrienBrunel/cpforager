@@ -29,7 +29,7 @@ def get_params(colony):
         :header: "name", "description", "required"
         :widths: auto
 
-        ``colony``, "longitude/latitude name, center and bounding box inside which the searbird's nest is to be found", "GPS"
+        ``colony``, "name, longitude/latitude center and bounding box inside which the searbird's nest is to be found", "GPS"
         ``local_tz``, "local timezone of the seabird's nest", "GPS, TDR, AXY"
         ``max_possible_speed``, "speed threshold in km/h above which a longitude/latitude measure can be considered as an error and will be deleted", "GPS"
         ``dist_threshold``, "distance from the nest threshold in km above which the seabird is considered in a foraging trip", "GPS"
