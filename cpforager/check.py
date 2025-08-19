@@ -191,7 +191,7 @@ def check_trip_existence(df=pd.DataFrame, verbose=True):
     check = True
 
     # trigger warning if only one value among trip ids
-    if (len(df["trip"].unique()) > 1):
+    if (len(df["trip"].unique()) <= 1):
         check = False
         if verbose: print("WARNING : no trip found.")
         
