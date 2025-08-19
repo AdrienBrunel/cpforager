@@ -102,15 +102,15 @@ def maps_diagnostic(self, fig_dir=str, file_id=str, plot_params=dict):
     The figure is save at the png format.
     """
     
-    # get parameters
-    dpi = plot_params.get("fig_dpi")
-    cols_2 = plot_params.get("cols_2")
-    params = self.gps_collection[0].params
-    colony = params.get("colony")
-    
     # get attributes
     df_all = self.df_all
     n_trips = self.n_trips
+    params = self.gps_collection[0].params
+    
+    # get parameters
+    dpi = plot_params.get("fig_dpi")
+    cols_2 = plot_params.get("cols_2")
+    colony = params.get("colony")
         
     # produce diagnostic
     fig = plt.figure(figsize=(10, 10), dpi=dpi)
@@ -167,18 +167,18 @@ def folium_map(self, fig_dir=str, file_id=str):
     """
     
     # get attributes
-    params = self.gps_collection[0].params
     gps_collection = self.gps_collection
+    params_0 = self.gps_collection[0].params
     
     # get parameters
-    colony = params.get("colony")
+    colony_0 = params_0.get("colony")
     
     # produce folium map
-    fmap = folium.Map(location=[colony["center"][1], colony["center"][0]])
+    fmap = folium.Map(location=[colony_0["center"][1], colony_0["center"][0]])
     for gps in gps_collection:
         colony = gps.params.get("colony")
-        folium.Marker(location=[colony["center"][1], colony["center"][0]], popup="<i>Colony</i>").add_to(fmap)
-        folium.PolyLine(tooltip=gps.id, locations=gps.df[["latitude", "longitude"]].values.tolist(), 
+        folium.Marker(location=[colony["center"][1], colony["center"][0]], popup="<i>Colony %s</i>" % (colony["name"])).add_to(fmap)
+        folium.PolyLine(tooltip="<i>Id %s</i>" % (gps.id), locations=gps.df[["latitude", "longitude"]].values.tolist(), 
                         color=misc.rgb_to_hex(misc.random_colors()[0]), weight=2, opacity=0.7).add_to(fmap)   
     
     # save figure
