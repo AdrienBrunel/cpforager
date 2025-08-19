@@ -52,7 +52,7 @@ git clone https://github.com/AdrienBrunel/seabird-movement-cpf
 conda env create --name seabird-movement-cpf --file environment.yml
 ```
 
-3. Open any Python script in [tests/](./tests/) folder and start running line by line to check that everything is working.
+3. Open any Python script in [/tests/](./tests/) folder and start running line by line to check that everything is working.
 
 4. Load your raw data in the [data/](./data/) folder, create your own script and enjoy !
 
@@ -60,7 +60,7 @@ conda env create --name seabird-movement-cpf --file environment.yml
 
 # Documentation
 
-Using [Sphinx](https://www.sphinx-doc.org/en/master/index.html), the entire documentation of **cpforager** package is automatically generated with the following command lines :
+Using [Sphinx](https://www.sphinx-doc.org/en/master/index.html), the entire documentation of **cpforager** package is automatically generated with the following bash command lines :
 
 ```bash
 cd doc/
@@ -69,13 +69,13 @@ rm -rfv generated/
 make html
 ```
 
-The resulting html documentation is generated in the [./doc/_build/html/](./doc/_build/html/) folder. In order to browse the entire documentation, you just have to double-click on the [index.html](./doc/_build/html/index.html) file.
+The resulting html documentation is generated in the [/doc/_build/html/](./doc/_build/html/) folder. In order to browse the entire documentation, you just have to double-click on the [index.html](./doc/_build/html/index.html) file.
 
 <br>
 
 # User guide 
 
-The Python scripts in the [tests/](./tests/) folder illustrate how the `GPS`, `TDR`, `AXY` and `GPS_Collection` classes can be used to fully benefit the users. Results of the scripts are also found in the [tests/](./tests/) folder. For more details, you can browse the package documentation.
+The Python scripts in the [/tests/](./tests/) folder illustrate how the `GPS`, `TDR`, `AXY`, `GPS_TDR`, `GPS_Collection`, `TDR_Collection` and `AXY_Collection` classes can be used to fully benefit the users. Results of the scripts are also found in the [/tests/](./tests/) folder. For more details, you can browse the package documentation.
 
 <br>
 
