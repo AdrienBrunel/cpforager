@@ -30,8 +30,8 @@ The main objectives of **cpforager** package are :
    * **AXY** : for handling tri-axial acceleration recordings at high resolution combined with lower resolution position and pressure recordings.
    * **GPS_TDR** : for handling position and pressure recordings.
    * **GPS_Collection** : for working with datasets composed of multiple GPS loggers.
-   * (**TDR_Collection** : for working with datasets composed of multiple TDR loggers.)
-   * (**AXY_Collection** : for working with datasets composed of multiple AXY loggers.)
+   * **TDR_Collection** : for working with datasets composed of multiple TDR loggers.
+   * **AXY_Collection** : for working with datasets composed of multiple AXY loggers.
 
 Each class automatically enhances raw data but also computes key features specific to each biologger (*e.g.* trip segmentation for GPS, dive segmentation for TDR, ODBA calculation for AXY). They are also accompanied with methods for data processing and visualisation.
 
