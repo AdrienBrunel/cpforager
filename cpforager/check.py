@@ -7,7 +7,7 @@ import pandas as pd
 # ================================================================================================ #
 # CHECK DATETIME TYPE
 # ================================================================================================ #
-def check_datetime_type(df=pd.DataFrame, verbose=True):
+def check_datetime_type(df, verbose=True):
     
     """
     Check if the dataframe ``datetime`` column type is datetime64. 
@@ -34,7 +34,7 @@ def check_datetime_type(df=pd.DataFrame, verbose=True):
 # ================================================================================================ #
 # CHECK IF DATETIME ARE SORTED
 # ================================================================================================ #
-def check_datetime_order(df=pd.DataFrame, verbose=True):
+def check_datetime_order(df, verbose=True):
     
     """
     Check if the dataframe ``datetime`` column is sorted. 
@@ -61,7 +61,7 @@ def check_datetime_order(df=pd.DataFrame, verbose=True):
 # ================================================================================================ #
 # CHECK IF DATETIME HAS DUPLICATES
 # ================================================================================================ #
-def check_datetime_duplicates(df=pd.DataFrame, verbose=True):
+def check_datetime_duplicates(df, verbose=True):
     
     """
     Check if the dataframe ``datetime`` column does not have duplicates. 
@@ -88,7 +88,7 @@ def check_datetime_duplicates(df=pd.DataFrame, verbose=True):
 # ================================================================================================ #
 # CHECK IF DATETIME HAS A REALISTIC RANGE
 # ================================================================================================ #
-def check_datetime_range(df=pd.DataFrame, verbose=True):
+def check_datetime_range(df, verbose=True):
     
     """
     Check if the dataframe ``datetime`` column cover a realistic range, *i.e.* bigger than 12 hours and smaller than 30 days. 
@@ -115,7 +115,7 @@ def check_datetime_range(df=pd.DataFrame, verbose=True):
 # ================================================================================================ #
 # CHECK IF DATETIME IS OK OVERALL
 # ================================================================================================ #
-def check_datetime(df=pd.DataFrame, verbose=True):
+def check_datetime(df, verbose=True):
     
     """
     Check if the dataframe ``datetime`` column is ok overall.
@@ -142,7 +142,7 @@ def check_datetime(df=pd.DataFrame, verbose=True):
 # ================================================================================================ #
 # CHECK IF DATAFRAME HAS LON/LAT DATA
 # ================================================================================================ #
-def check_longitude_latitude(df=pd.DataFrame, verbose=True):
+def check_longitude_latitude(df, verbose=True):
     
     """
     Check if ``longitude`` and ``latitude`` columns do not only contain NaN values. 
@@ -174,7 +174,7 @@ def check_longitude_latitude(df=pd.DataFrame, verbose=True):
 # ================================================================================================ #
 # CHECK IF AT LEAST ONE TRIP
 # ================================================================================================ #
-def check_trip_existence(df=pd.DataFrame, verbose=True):
+def check_trip_existence(df, verbose=True):
     
     """
     Check if dataframe has at least one trip. 
@@ -201,7 +201,7 @@ def check_trip_existence(df=pd.DataFrame, verbose=True):
 # ================================================================================================ #
 # CHECK IF DATAFRAME HAS A TRIP RECORDING INTERRUPTED
 # ================================================================================================ #
-def check_trip_interruption(df=pd.DataFrame, verbose=True):
+def check_trip_interruption(df, verbose=True):
     
     """
     Check if trip recording is interrupted. 
@@ -228,7 +228,7 @@ def check_trip_interruption(df=pd.DataFrame, verbose=True):
 # ================================================================================================ #
 # CHECK IF GPS DATA IS OK OVERALL
 # ================================================================================================ #
-def check_gps(df=pd.DataFrame, verbose=True):
+def check_gps(df, verbose=True):
     
     """
     Check if the gps data is ok overall. 
@@ -254,7 +254,7 @@ def check_gps(df=pd.DataFrame, verbose=True):
 # ================================================================================================ #
 # CHECK IF DATAFRAME HAS PRESSURE/TEMPERATURE DATA
 # ================================================================================================ #
-def check_pressure_temperature(df=pd.DataFrame, verbose=True):
+def check_pressure_temperature(df, verbose=True):
     
     """
     Check if ``pressure`` and ``temperature`` columns do not only contain NaN values. 
@@ -286,7 +286,7 @@ def check_pressure_temperature(df=pd.DataFrame, verbose=True):
 # ================================================================================================ #
 # CHECK IF TDR DATA IS OK OVERALL
 # ================================================================================================ #
-def check_tdr(df=pd.DataFrame, verbose=True):
+def check_tdr(df, verbose=True):
     
     """
     Check if the tdr data is ok overall. 
@@ -310,7 +310,7 @@ def check_tdr(df=pd.DataFrame, verbose=True):
 # ================================================================================================ #
 # CHECK IF DATAFRAME HAS ACCELERATIONS DATA
 # ================================================================================================ #
-def check_accelerations(df=pd.DataFrame, verbose=True):
+def check_accelerations(df, verbose=True):
     
     """
     Check if ``ax``, ``ay`` and ``az`` columns do not only contain NaN values. 
@@ -347,7 +347,7 @@ def check_accelerations(df=pd.DataFrame, verbose=True):
 # ================================================================================================ #
 # CHECK IF ACC DATA IS OK OVERALL
 # ================================================================================================ #
-def check_acc(df=pd.DataFrame, verbose=True):
+def check_acc(df, verbose=True):
     
     """
     Check if the acceleration data is ok overall. 
