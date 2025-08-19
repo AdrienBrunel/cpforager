@@ -37,7 +37,7 @@ gps_collection_all = []
 for (fieldwork, colony) in zip(fieldworks, colonies):
 
     # list of files to process
-    files = misc.grep_pattern(os.listdir(os.path.join(data_dir, fieldwork)), "_GPS_IGU")
+    files = misc.grep_pattern(os.listdir(os.path.join(data_dir, fieldwork)), "_GPS_")
     n_files = len(files)
 
     # get structure of parameters
@@ -151,7 +151,10 @@ gps_collection = GPS_Collection(gps_collection)
 
 # produce dataframe at the Seabird Tracking format
 df_stdb = gps_collection.to_SeabirdTracking(metadata)
+df_stdb.to_csv("%s/%s_stdb_format.csv" % (test_dir, fieldwork), index=False, quoting=csv.QUOTE_NONNUMERIC)
 
-# produce gps collection from Seabird Tracking format
+# produce gps collection from the Seabird Tracking format
+df_stdb = pd.read_csv("%s/%s_stdb_format.csv" % (test_dir, fieldwork), sep=",")
 new_gps_collection, new_metadata = stdb.convert_to_gps_collection(df_stdb, fieldwork, params)
 new_gps_collection = GPS_Collection(gps_collection)
+new_gps_collection.display_data_summary()
