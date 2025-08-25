@@ -99,6 +99,7 @@ gps_collection_all.display_data_summary()
 # test plot_stats_summary, folium_map, maps_diag methods
 _ = gps_collection_all.plot_stats_summary(test_dir, "trip_statistics_all", plot_params)
 _ = gps_collection_all.folium_map(test_dir, "fmaps_all")
+_ = gps_collection_all.indiv_map_all(test_dir, "indiv_map_all", plot_params)
 gps_collection_all.trip_statistics_all.to_csv("%s/trip_statistics_all.csv" % (test_dir), index=False, quoting=csv.QUOTE_NONNUMERIC)
 
 
