@@ -2,7 +2,7 @@
 # LIBRARIES
 # ======================================================= #
 import os
-from math import ceil
+import math
 from cpforager import diagnostic, misc
 import matplotlib.pyplot as plt
 import cartopy.crs as ccrs
@@ -41,7 +41,7 @@ def plot_stats_summary(self, fig_dir, file_id, plot_params, quantiles=[0.25, 0.5
     # produce diagnostic
     fig = plt.figure(figsize=(20, 10), dpi=dpi)
     fig.subplots_adjust(hspace=0.45, wspace=0.25, bottom=0.06, top=0.95, left=0.05, right=0.95)
-    gs = fig.add_gridspec(4, 4)
+    gs = fig.add_gridspec(3, 4)
 
     fig.add_subplot(gs[0,0])
     diagnostic.plot_hist(trip_statistics_all, plot_params, "length", "Trip length", "Length [km]")
@@ -179,7 +179,7 @@ def indiv_map_all(self, fig_dir, file_id, plot_params):
     
     # compute figure layout
     n_columns = 4
-    n_rows = ceil(n_gps/n_columns)
+    n_rows = math.ceil(n_gps/n_columns)
     
     # produce diagnostic
     fig = plt.figure(figsize=(n_columns*5, n_rows*5), dpi=dpi)
