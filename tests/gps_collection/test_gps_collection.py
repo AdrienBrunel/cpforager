@@ -13,7 +13,7 @@ from cpforager.gps_collection import stdb
 # ======================================================= #
 root_dir = os.getcwd()
 data_dir = os.path.join(root_dir, "data")
-test_dir = os.path.join(root_dir, "tests")
+test_dir = os.path.join(root_dir, "tests", "gps_collection")
 
 
 # ======================================================= #
