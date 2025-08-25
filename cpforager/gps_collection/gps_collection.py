@@ -106,6 +106,7 @@ class GPS_Collection:
     # [METHODS] plot data
     plot_stats_summary = diagnostic.plot_stats_summary
     maps_diag = diagnostic.maps_diagnostic
+    indiv_map_all = diagnostic.indiv_map_all
     folium_map = diagnostic.folium_map
     
     # [METHODS] Seabird Tracking Database formatting
