@@ -81,11 +81,12 @@ The Python scripts in the [/tests/](./tests/) folder illustrate how the `GPS`, `
 
 # Future developments
 - [ ] make classes' methods available in documentation.
-- [ ] uniformise types of arguments/atttributes in function arguments and accordingly in documentation.
-- [ ] add a zero offset correction inside `TDR` class.
+- [ ] uniformise types of arguments/attributes in function arguments and accordingly in documentation.
+- [ ] add a proper zero offset correction inside `TDR` class.
+- [x] compute depth as a negative number to plot the visual depth.
 - [ ] improve `GPS_TDR` class.
 - [ ] improve `AXY_Collection` class.
-- [ ] improve `TDR_Collection` class.
+- [x] improve `TDR_Collection` class.
 - [ ] add a plot_all method to the `GPS_Collection`, `AXY_Collection` and `TDR_Collection` that plot the raw data in separate plots.
 - [ ] add a function `GPS_TDR = merge_gps_tdr(GPS, TDR)` that will merge TDR data within GPS data and produce the resulting dataframe.
 - [ ] add Butterworth filter for `AXY`.
@@ -94,7 +95,6 @@ The Python scripts in the [/tests/](./tests/) folder illustrate how the `GPS`, `
 - [ ] correction of heading to colony circular plot.
 - [ ] automatically compute n_rows and n_columns for a given number of plots to display.
 - [ ] hmmlearn for a 3-state estimation (foraging, traveling, resting).
-- [ ] depth to compute as a negative number to plot the visual depth.
 - [ ] create first Github release / version 1.0. 
 - [ ] deploy documentation as a static webpage.
 - [ ] build Python package [Python package building](https://packaging.python.org/en/latest/tutorials/packaging-projects/).
