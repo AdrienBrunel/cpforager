@@ -3,8 +3,7 @@
 # ================================================================================================ #
 import pandas as pd
 import numpy as np
-# from cpforager.tdr_collection import diagnostic, display, stdb
-from cpforager.tdr.tdr import TDR
+from cpforager.tdr_collection import diagnostic, display
 
 
 # ================================================================================================ #
@@ -96,13 +95,9 @@ class TDR_Collection:
     def __repr__(self):
         return "%s(%d TDR, %d dives)" % (type(self).__name__, self.n_tdr, self.n_dives)
 
-    # # [METHODS] display the summary of the data
-    # display_data_summary = display.display_data_summary
+    # [METHODS] display the summary of the data
+    display_data_summary = display.display_data_summary
 
-    # # [METHODS] plot data
-    # plot_stats_summary = diagnostic.plot_stats_summary
-    # maps_diag = diagnostic.maps_diagnostic
-    # folium_map = diagnostic.folium_map
-    
-    # # [METHODS] Seabird Tracking Database formatting
-    # to_SeabirdTracking = stdb.convert_to_stdb_format
+    # [METHODS] plot data
+    plot_stats_summary = diagnostic.plot_stats_summary
+    indiv_depth_all = diagnostic.indiv_depth_all

@@ -4,6 +4,7 @@
 import math
 import numpy as np
 import pandas as pd
+import pulp as plp
 
 
 # ================================================================================================ #
@@ -229,3 +230,76 @@ def apply_functions_between_samples(df, resolution, columns_functions, verbose=F
             df[new_column] = df[c]
             
     return(df)
+
+
+# ================================================================================================ #
+# COMPUTE OPTIMAL LAYOUT (NB OF COLUMNS AND ROWS)
+# ================================================================================================ #
+# def rows_columns_computation(n_plots):
+    
+#     # decision variables
+#     n_columns = plp.LpVariable("n_columns", lowBound=1, cat=plp.LpInteger)
+#     n_rows = plp.LpVariable("n_rows", lowBound=1, cat=plp.LpInteger)
+#     # z = plp.LpVariable("z", lowBound=n_plots, cat=plp.LpInteger)
+
+#     # model
+#     model = plp.LpProblem("plot_auto_layout", plp.LpMinimize)
+
+#     # objective function
+#     model.setObjective(n_rows-n_columns)
+#     # model.setObjective(n_rows-n_columns+z)
+
+#     # constraints
+#     model += plp.LpConstraint(e=n_rows-n_columns, sense=plp.LpConstraintGE, name='square_shape', rhs=0)
+#     model += plp.LpConstraint(e=n_rows*n_columns, sense=plp.LpConstraintGE, name='sufficient_nb_panels', rhs=n_plots)
+#     # model += plp.LpConstraint(e=z, sense=plp.LpConstraintGE, name='sufficient_nb_panels', rhs=n_plots)
+    
+#     # solve
+#     model.solve()
+#     print(int(n_columns.value()), int(n_rows.value()), int(z.value()))
+    
+#     return(n_rows, n_columns)
+
+# def get_divisors(n):
+
+#     # compute divisors of n_plots
+#     divisors = []
+    
+#     # compute divisors
+#     for i in np.flip(np.arange(1,int(math.sqrt(n)))):
+#         if n % i == 0: divisors.append(i)
+        
+#     return(divisors)
+    
+# def near_square_layout(n_plots):
+    
+#     # compute divisors of n_plots
+#     divisors = get_divisors(n_plots)
+#     n_divisors = len(divisors)
+        
+#     for k in np.flip(np.arange(math.ceil(math.sqrt(n_plots))**2,n_plots)):
+#         a = get_divisors(k)
+#         b = k/a
+        
+#     m = math.ceil(math.sqrt(n_plots))**2
+    
+#     # init dataframe of possibles values for (n_rows, n_columns) combinations
+#     df_possible_layout = pd.DataFrame(np.zeros((n_divisors, 2), dtype=int), columns=["n_rows", "n_columns"])
+    
+#     # loop over divisors
+#     for k in range(n_divisors):
+#         df_possible_layout.loc[k, "n_rows"] = divisors[k]
+#         df_possible_layout.loc[k, "n_columns"] = n_plots/divisors[k]
+        
+#     # compute squareness index
+#     df_possible_layout["squareness"] = df_possible_layout["n_rows"]-df_possible_layout["n_columns"]
+    
+#     # remove case when n_rows < n_columns
+#     df_possible_layout = df_possible_layout.loc[df_possible_layout["squareness"] >= 0].reset_index(drop=True)
+    
+#     # get smallest n_rows - n_columns
+#     n_rows, n_columns = df_possible_layout.iloc[df_possible_layout["squareness"].argmin()][["n_rows", "n_columns"]].values
+    
+#     return(n_rows, n_columns)
+    
+    
