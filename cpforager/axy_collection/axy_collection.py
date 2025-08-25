@@ -132,10 +132,10 @@ class AXY_Collection:
     # [METHODS] display the summary of the data
     display_data_summary = display.display_data_summary
 
-    # # [METHODS] plot data
-    # plot_stats_summary = diagnostic.plot_stats_summary
-    # maps_diag = diagnostic.maps_diagnostic
-    # folium_map = diagnostic.folium_map
-    
-    # # [METHODS] Seabird Tracking Database formatting
-    # to_SeabirdTracking = stdb.convert_to_stdb_format
+    # [METHODS] plot data
+    plot_trip_stats_summary = diagnostic.plot_trip_stats_summary
+    plot_dive_stats_summary = diagnostic.plot_dive_stats_summary
+    maps_diag = diagnostic.maps_diagnostic
+    indiv_map_all = diagnostic.indiv_map_all
+    indiv_depth_all = diagnostic.indiv_depth_all
+    folium_map = diagnostic.folium_map

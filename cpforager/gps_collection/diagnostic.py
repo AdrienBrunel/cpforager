@@ -16,8 +16,8 @@ def plot_stats_summary(self, fig_dir, file_id, plot_params, quantiles=[0.25, 0.5
     """    
     Produce the trip statistics summary of every GPS data.
     
-    :param self: a GPS object
-    :type self: cpforager.GPS
+    :param self: a GPS_Collection object
+    :type self: cpforager.GPS_Collection
     :param fig_dir: figure saving directory.
     :type fig_dir: str
     :param file_id: name of the saved figure.
@@ -89,8 +89,8 @@ def maps_diagnostic(self, fig_dir, file_id, plot_params):
     """    
     Produce the maps with every GPS data.
     
-    :param self: a GPS object
-    :type self: cpforager.GPS
+    :param self: a GPS_Collection object
+    :type self: cpforager.GPS_Collection_Collection
     :param fig_dir: figure saving directory.
     :type fig_dir: str
     :param file_id: name of the saved figure.
@@ -155,8 +155,8 @@ def indiv_map_all(self, fig_dir, file_id, plot_params):
     """    
     Produce the individual map of every GPS in collection.
     
-    :param self: a GPS object
-    :type self: cpforager.GPS
+    :param self: a GPS_Collection object
+    :type self: cpforager.GPS_Collection
     :param fig_dir: figure saving directory.
     :type fig_dir: str
     :param file_id: name of the saved figure.
@@ -229,8 +229,8 @@ def folium_map(self, fig_dir, file_id):
     """    
     Produce the html map with every GPS data colored randomly.
     
-    :param self: a GPS object
-    :type self: cpforager.GPS
+    :param self: a GPS_Collection object
+    :type self: cpforager.GPS_Collection
     :param fig_dir: figure saving directory.
     :type fig_dir: str
     :param file_id: name of the saved figure.

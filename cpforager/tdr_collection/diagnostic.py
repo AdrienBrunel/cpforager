@@ -15,8 +15,8 @@ def plot_stats_summary(self, fig_dir, file_id, plot_params, quantiles=[0.25, 0.5
     """    
     Produce the dive statistics summary of every TDR data.
     
-    :param self: a TDR object
-    :type self: cpforager.TDR
+    :param self: a TDR_Collection object
+    :type self: cpforager.TDR_Collection
     :param fig_dir: figure saving directory.
     :type fig_dir: str
     :param file_id: name of the saved figure.
@@ -72,8 +72,8 @@ def indiv_depth_all(self, fig_dir, file_id, plot_params):
     """    
     Produce the individual depth plot of every TDR in collection.
     
-    :param self: a TDR object
-    :type self: cpforager.TDR
+    :param self: a TDR_Collection object
+    :type self: cpforager.TDR_Collection
     :param fig_dir: figure saving directory.
     :type fig_dir: str
     :param file_id: name of the saved figure.
