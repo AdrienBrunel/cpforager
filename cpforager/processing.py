@@ -458,21 +458,23 @@ def add_trip(df, params):
 def add_depth(df):
     
     """    
-    Add to the dataframe an additional ``depth`` column that gives the estimated underwater depth in meters.   
+    Add to the dataframe an additional ``depth`` column that gives the estimated underwater depth in negative meters.   
     
     :param df: dataframe with a ``pressure`` column in hPa.
     :type df: pandas.DataFrame
-    :return: the dataframe with an additional ``depth`` column that gives the estimated underwater depth in meters.
+    :return: the dataframe with an additional ``depth`` column that gives the estimated underwater depth in negative meters.
     :rtype: pandas.DataFrame
     """
     
     # physical constants
     salt_water_density = constants.salt_water_density
     earth_acceleration = constants.earth_acceleration
+    
+    # zero offset correction
 
     # compute depth
     p_atm = df["pressure"].median()
-    df["depth"] = 100*(df["pressure"] - p_atm)/(salt_water_density*earth_acceleration)
+    df["depth"] = 100*(p_atm-df["pressure"])/(salt_water_density*earth_acceleration)
     
     # reformat column
     df["depth"] = df["depth"].round(2)
