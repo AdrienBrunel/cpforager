@@ -7,7 +7,7 @@ import numpy as np
 # ======================================================= #
 # DISPLAY [TDR_COLLECTION METHODS]
 # ======================================================= #
-def display_data_summary(self):
+def display_data_summary(self, standalone=True):
     
     """    
     Print in terminal the TDR_Collection data summary.
@@ -35,15 +35,17 @@ def display_data_summary(self):
     dive_dmax_quantiles = dive_statistics_all["max_depth"].quantile([0,0.25,0.5,0.75,1])
     
     # print information
-    print("# ============================== SUMMARY ============================== #")
-    print("# ------------------------------ METADATA ----------------------------- #")
-    print("# + Nb of TDR   = %d" % self.n_tdr)
-    print("# + Nb of dives = %d" % self.n_dives)
-    print("# + Groups      = %s" % groups_str)
-    print("# ------------------------------ DATA --------------------------------- #")
+    if standalone:
+        print("# ============================== SUMMARY ============================== #")
+        print("# ------------------------------ METADATA ----------------------------- #")
+        print("# + Nb of TDR   = %d" % self.n_tdr)
+        print("# + Nb of dives = %d" % self.n_dives)
+        print("# + Groups      = %s" % groups_str)
+    print("# ------------------------------ TDR COLLECTION DATA ------------------ #")
     print("# + Dive duration  : mean=%.1fs | std=%.1fs" % (dive_statistics_all["duration"].mean(), dive_statistics_all["duration"].std()))
     print("# + Dive duration  : min=%.1fs | q25=%.1fs | q50=%.1fs | q75=%.1fs | max=%.1fs" % (dive_duration_quantiles[0], dive_duration_quantiles[0.25], dive_duration_quantiles[0.5], dive_duration_quantiles[0.75], dive_duration_quantiles[1]))
     print("# + Dive max depth : mean=%.1fm | std=%.1fm" % (dive_statistics_all["max_depth"].mean(), dive_statistics_all["max_depth"].std()))
     print("# + Dive max depth : min=%.1fm | q25=%.1fm | q50=%.1fm | q75=%.1fm | max=%.1fm" % (dive_dmax_quantiles[0], dive_dmax_quantiles[0.25], dive_dmax_quantiles[0.5], dive_dmax_quantiles[0.75], dive_dmax_quantiles[1])) 
-    print("# ===================================================================== #")
+    if standalone:
+        print("# ===================================================================== #")
     

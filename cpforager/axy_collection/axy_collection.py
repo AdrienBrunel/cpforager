@@ -3,8 +3,9 @@
 # ================================================================================================ #
 import pandas as pd
 import numpy as np
-# from cpforager.axy_collection import diagnostic, display, stdb
-from cpforager.axy.axy import AXY
+from cpforager.axy_collection import diagnostic, display, stdb
+from cpforager.gps_collection.gps_collection import GPS_Collection
+from cpforager.tdr_collection.tdr_collection import TDR_Collection
 
 
 # ================================================================================================ #
@@ -63,6 +64,8 @@ class AXY_Collection:
         id = []
         trip_id = []
         dive_id = []
+        gps_collection = []
+        tdr_collection = []
         for axy in axy_collection:
 
             # display infos
@@ -93,6 +96,10 @@ class AXY_Collection:
             df_tmp["id"] = axy.id
             df_tmp["group"] = axy.group
             df_all = pd.concat([df_all, df_tmp], ignore_index=True)
+            
+            # build gps and tdr collections
+            gps_collection.append(axy.gps)
+            tdr_collection.append(axy.tdr)
 
         # replace id column with full trip ids
         trip_statistics_all["group"] = group
@@ -102,6 +109,8 @@ class AXY_Collection:
         # set attributes
         self.axy_collection = axy_collection
         self.n_axy = len(axy_collection)
+        self.gps_collection = GPS_Collection(gps_collection)
+        self.tdr_collection = TDR_Collection(tdr_collection)
         self.n_trips = len(trip_statistics_all)
         self.trip_statistics_all = trip_statistics_all
         self.n_dives = len(dive_statistics_all)
@@ -120,8 +129,8 @@ class AXY_Collection:
     def __repr__(self):
         return "%s(%d AXY, %d trips)" % (type(self).__name__, self.n_axy, self.n_trips)
 
-    # # [METHODS] display the summary of the data
-    # display_data_summary = display.display_data_summary
+    # [METHODS] display the summary of the data
+    display_data_summary = display.display_data_summary
 
     # # [METHODS] plot data
     # plot_stats_summary = diagnostic.plot_stats_summary

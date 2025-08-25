@@ -17,14 +17,18 @@ def display_data_summary(self, standalone=True):
     :type standalone: bool
     """
 
+    # get attributes
+    gps = self.gps
+    tdr = self.tdr
+    
     # print information
     if standalone:
         print("# ============================== SUMMARY ============================== #")
         print("# ------------------------------ METADATA ----------------------------- #")
         print("# + Group = %s" % self.group)
         print("# + Id    = %s" % self.id)
-    self.gps.display_data_summary(standalone=False)
-    self.tdr.display_data_summary(standalone=False)
+    gps.display_data_summary(standalone=False)
+    tdr.display_data_summary(standalone=False)
     print("# ------------------------------ ACC DATA ----------------------------- #")
     print("# + Nb of measures            = %d" % self.n_df)
     print("# + Date range                = %s | %s" % (self.start_datetime, self.end_datetime))     
