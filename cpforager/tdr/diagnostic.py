@@ -65,7 +65,7 @@ def full_diagnostic(self, fig_dir, file_id, plot_params):
         infos.append("Median dive max depth = %.2f m" % dive_statistics["max_depth"].quantile(0.5))
     
     # produce diagnostic
-    fig = plt.figure(figsize=(12, 10), dpi=plot_params.get("fig_dpi"))
+    fig = plt.figure(figsize=(20, 10), dpi=plot_params.get("fig_dpi"))
     fig.tight_layout()
     fig.subplots_adjust(hspace=0.3, wspace=0.25, bottom=0.06, top=0.95, left=0.05, right=0.95)
     gs = fig.add_gridspec(2, 3)
