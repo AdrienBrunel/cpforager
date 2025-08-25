@@ -514,7 +514,7 @@ def add_dive(df, params):
     dive_id = np.zeros(n_df, dtype=int)
 
     # determine when bird is flying
-    is_flying = np.where(df["depth"] <= diving_depth_threshold, 1, 0)
+    is_flying = np.where(df["depth"] >= diving_depth_threshold, 1, 0)
     
     # determine when diving state is changing
     changing_state = np.insert(np.diff(is_flying), 0, 0)
