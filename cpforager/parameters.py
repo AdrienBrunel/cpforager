@@ -107,7 +107,7 @@ def get_params(colony):
                            "trip_min_steps": 10}    
     
     # dive segmentation parameters
-    params_dives = {"diving_depth_threshold" : 1.0, "dive_min_duration" : 2.0}
+    params_dives = {"diving_depth_threshold" : -1.0, "dive_min_duration" : 2.0}
     
     # acceleration filtering parameters    
     params_acc = {"acc_time_window" : 2.0, "odba_p_norm" : 1}
