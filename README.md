@@ -60,18 +60,7 @@ conda env create --name seabird-movement-cpf --file environment.yml
 
 # Documentation
 
-The documentation of **cpforager** is automatically generated using [Sphinx](https://www.sphinx-doc.org/en/master/index.html) and can be found at [https://adrienbrunel.github.io/seabird-movement-cpf/](https://adrienbrunel.github.io/seabird-movement-cpf/).  
-
-<!-- Using [Sphinx](https://www.sphinx-doc.org/en/master/index.html), the entire documentation of **cpforager** package is automatically generated with the following bash command lines :
-
-```bash
-cd sphinx-doc/
-make clean
-rm -rfv generated/
-make html
-```
-
-The resulting html documentation is generated in the [/sphinx-doc/_build/html/](./sphinx-doc/_build/html/) folder. In order to browse the entire documentation, you just have to double-click on the [index.html](./sphinx-doc/_build/html/index.html) file. -->
+The documentation of **cpforager** is automatically generated using [Sphinx](https://www.sphinx-doc.org/en/master/index.html) and can be found [here](https://adrienbrunel.github.io/seabird-movement-cpf/).  
 
 <br>
 
@@ -84,7 +73,7 @@ The Python scripts in the [/tests/](./tests/) folder illustrate how the `GPS`, `
 # Future developments
 - [ ] make classes' methods available in documentation.
 - [ ] uniformise types of arguments/attributes in function arguments and accordingly in documentation.
-- [ ] add a proper zero offset correction inside `TDR` class (according to a scientific consensus).
+- [ ] add a proper zero offset correction inside `TDR` class (according to the scientific consensus). See [scikit-diveMove](https://spluque.github.io/scikit-diveMove/modules/tdr.html#skdiveMove.TDR.read_netcdf).
 - [x] compute depth as a negative number to plot the visual depth.
 - [x] improve `AXY_Collection` class.
 - [x] improve `TDR_Collection` class.
@@ -106,4 +95,4 @@ The Python scripts in the [/tests/](./tests/) folder illustrate how the `GPS`, `
 # Infos
 * Python version used is 3.13.3.
 * OS used is Ubuntu 20.04.
-* The graphic design of the logos was done by Lisa Brunel.
+* The graphic design of the logos was done by [Lisa Brunel](https://www.linkedin.com/in/lisa-brunel-60b217230?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app).
