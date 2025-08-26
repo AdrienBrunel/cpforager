@@ -4,7 +4,6 @@
 import math
 import numpy as np
 import pandas as pd
-import pulp as plp
 
 
 # ================================================================================================ #
@@ -233,73 +232,46 @@ def apply_functions_between_samples(df, resolution, columns_functions, verbose=F
 
 
 # ================================================================================================ #
-# COMPUTE OPTIMAL LAYOUT (NB OF COLUMNS AND ROWS)
+# NEAR-SQUARE GRID LAYOUT
 # ================================================================================================ #
-# def rows_columns_computation(n_plots):
+# https://stackoverflow.com/questions/32017327/calculate-the-optimal-grid-layout-dimensions-for-a-given-amount-of-plots-in-r
+def get_largest_factor(n):
+    """
+    Compute the largest factor. 
     
-#     # decision variables
-#     n_columns = plp.LpVariable("n_columns", lowBound=1, cat=plp.LpInteger)
-#     n_rows = plp.LpVariable("n_rows", lowBound=1, cat=plp.LpInteger)
-#     # z = plp.LpVariable("z", lowBound=n_plots, cat=plp.LpInteger)
+    :param n: integer we want the largest factor.
+    :type n: int
+    :return: the largest factor.
+    :rtype: int
+            
+    .. note::
+        n>0.
+    """
+    
+    k = math.floor(math.sqrt(n))
+    while(n % k != 0):
+        k = k-1
+    return(k)
 
-#     # model
-#     model = plp.LpProblem("plot_auto_layout", plp.LpMinimize)
-
-#     # objective function
-#     model.setObjective(n_rows-n_columns)
-#     # model.setObjective(n_rows-n_columns+z)
-
-#     # constraints
-#     model += plp.LpConstraint(e=n_rows-n_columns, sense=plp.LpConstraintGE, name='square_shape', rhs=0)
-#     model += plp.LpConstraint(e=n_rows*n_columns, sense=plp.LpConstraintGE, name='sufficient_nb_panels', rhs=n_plots)
-#     # model += plp.LpConstraint(e=z, sense=plp.LpConstraintGE, name='sufficient_nb_panels', rhs=n_plots)
+def nearsq_grid_layout(n, tol=5/3+0.001):
     
-#     # solve
-#     model.solve()
-#     print(int(n_columns.value()), int(n_rows.value()), int(z.value()))
+    """
+    Compute the near-square grid layout dimensions with a width to height ratio being smaller than a given tolerance.
     
-#     return(n_rows, n_columns)
-
-# def get_divisors(n):
-
-#     # compute divisors of n_plots
-#     divisors = []
+    :param n: integer we want the near-square dimensions.
+    :type n: int
+    :param tol: tolerance.
+    :type tol: float
+    :return: the dimensions (a,b) such that n = a x b and a/b<tol.
+    :rtype: tuple(int, int)
+            
+    .. note::
+        n>0 and tol>1.
+    """
     
-#     # compute divisors
-#     for i in np.flip(np.arange(1,int(math.sqrt(n)))):
-#         if n % i == 0: divisors.append(i)
-        
-#     return(divisors)
-    
-# def near_square_layout(n_plots):
-    
-#     # compute divisors of n_plots
-#     divisors = get_divisors(n_plots)
-#     n_divisors = len(divisors)
-        
-#     for k in np.flip(np.arange(math.ceil(math.sqrt(n_plots))**2,n_plots)):
-#         a = get_divisors(k)
-#         b = k/a
-        
-#     m = math.ceil(math.sqrt(n_plots))**2
-    
-#     # init dataframe of possibles values for (n_rows, n_columns) combinations
-#     df_possible_layout = pd.DataFrame(np.zeros((n_divisors, 2), dtype=int), columns=["n_rows", "n_columns"])
-    
-#     # loop over divisors
-#     for k in range(n_divisors):
-#         df_possible_layout.loc[k, "n_rows"] = divisors[k]
-#         df_possible_layout.loc[k, "n_columns"] = n_plots/divisors[k]
-        
-#     # compute squareness index
-#     df_possible_layout["squareness"] = df_possible_layout["n_rows"]-df_possible_layout["n_columns"]
-    
-#     # remove case when n_rows < n_columns
-#     df_possible_layout = df_possible_layout.loc[df_possible_layout["squareness"] >= 0].reset_index(drop=True)
-    
-#     # get smallest n_rows - n_columns
-#     n_rows, n_columns = df_possible_layout.iloc[df_possible_layout["squareness"].argmin()][["n_rows", "n_columns"]].values
-    
-#     return(n_rows, n_columns)
-    
-    
+    m = math.ceil(math.sqrt(n)) ** 2
+    for i in range(n, m + 1):
+        a = get_largest_factor(i)
+        b = int(i/a)
+        if b/a < tol:
+            return (a, b)
