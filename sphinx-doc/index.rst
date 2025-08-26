@@ -57,4 +57,4 @@ Infos
 ==================================
 * Python version used is 3.13.3.
 * OS used is Ubuntu 20.04.
-* The graphic design of the logos was done by Lisa Brunel.
+* The graphic design of the logos was done by `Lisa Brunel <https://www.linkedin.com/in/lisa-brunel-60b217230?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app>`_.
