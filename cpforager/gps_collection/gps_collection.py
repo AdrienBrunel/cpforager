@@ -30,7 +30,7 @@ class GPS_Collection:
         :ivar n_gps: the total number of GPS included in the list.
         :vartype n_gps: int
         :ivar n_trips: the number of trips summed over every GPS included in the list.
-        :vartype n_trips: str
+        :vartype n_trips: int
         :ivar trip_statistics_all: the trip statistics dataframe merged over every GPS included in the list.
         :vartype trip_statistics_all: pandas.DataFrame
         :ivar df_all: the enhanced GPS dataframe merged over every GPS included in the list.

@@ -29,7 +29,7 @@ class TDR_Collection:
         :ivar n_tdr: the total number of TDR included in the list.
         :vartype n_tdr: int
         :ivar n_dives: the number of dives summed over every TDR included in the list.
-        :vartype n_dives: str
+        :vartype n_dives: int
         :ivar dive_statistics_all: the dive statistics dataframe merged over every TDR included in the list.
         :vartype dive_statistics_all: pandas.DataFrame
         :ivar df_all: the enhanced TDR dataframe merged over every TDR included in the list.

@@ -3,7 +3,7 @@
 # ================================================================================================ #
 import pandas as pd
 import numpy as np
-from cpforager.axy_collection import diagnostic, display, stdb
+from cpforager.axy_collection import diagnostic, display
 from cpforager.gps_collection.gps_collection import GPS_Collection
 from cpforager.tdr_collection.tdr_collection import TDR_Collection
 
@@ -31,11 +31,11 @@ class AXY_Collection:
         :ivar n_axy: the total number of AXY included in the list.
         :vartype n_axy: int
         :ivar n_trips: the number of trips summed over every AXY included in the list.
-        :vartype n_trips: str
+        :vartype n_trips: int
         :ivar trip_statistics_all: the trip statistics dataframe merged over every AXY included in the list.
         :vartype trip_statistics_all: pandas.DataFrame
         :ivar n_dives: the number of dives summed over every AXY included in the list.
-        :vartype n_dives: str
+        :vartype n_dives: int
         :ivar dive_statistics_all: the dive statistics dataframe merged over every AXY included in the list.
         :vartype dive_statistics_all: pandas.DataFrame
         :ivar df_all: the enhanced AXY dataframe merged over every AXY included in the list.
