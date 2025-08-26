@@ -60,7 +60,9 @@ conda env create --name seabird-movement-cpf --file environment.yml
 
 # Documentation
 
-Using [Sphinx](https://www.sphinx-doc.org/en/master/index.html), the entire documentation of **cpforager** package is automatically generated with the following bash command lines :
+The documentation of **cpforager** is automatically generated using [Sphinx](https://www.sphinx-doc.org/en/master/index.html) and can be found at [https://adrienbrunel.github.io/seabird-movement-cpf/](https://adrienbrunel.github.io/seabird-movement-cpf/).  
+
+<!-- Using [Sphinx](https://www.sphinx-doc.org/en/master/index.html), the entire documentation of **cpforager** package is automatically generated with the following bash command lines :
 
 ```bash
 cd sphinx-doc/
@@ -69,13 +71,13 @@ rm -rfv generated/
 make html
 ```
 
-The resulting html documentation is generated in the [/sphinx-doc/_build/html/](./sphinx-doc/_build/html/) folder. In order to browse the entire documentation, you just have to double-click on the [index.html](./sphinx-doc/_build/html/index.html) file.
+The resulting html documentation is generated in the [/sphinx-doc/_build/html/](./sphinx-doc/_build/html/) folder. In order to browse the entire documentation, you just have to double-click on the [index.html](./sphinx-doc/_build/html/index.html) file. -->
 
 <br>
 
 # User guide 
 
-The Python scripts in the [/tests/](./tests/) folder illustrate how the `GPS`, `TDR`, `AXY`, `GPS_TDR`, `GPS_Collection`, `TDR_Collection` and `AXY_Collection` classes can be used to fully benefit the users. Results of the scripts are also found in the [/tests/](./tests/) folder. For more details, you can browse the package documentation.
+The Python scripts in the [/tests/](./tests/) folder illustrate how the `GPS`, `TDR`, `AXY`, `GPS_TDR`, `GPS_Collection`, `TDR_Collection` and `AXY_Collection` classes can be used to fully benefit the users. Results of the scripts are also found in the [/tests/](./tests/) folder. For more details, you can browse the package [documentation](https://adrienbrunel.github.io/seabird-movement-cpf/).
 
 <br>
 
@@ -96,7 +98,7 @@ The Python scripts in the [/tests/](./tests/) folder illustrate how the `GPS`, `
 - [x] automatically compute n_rows and n_columns for a given number of plots to display.
 - [ ] hmmlearn for a 3-state estimation (foraging, traveling, resting).
 - [ ] create first Github release / version 1.0. 
-- [ ] deploy documentation as a static webpage.
+- [x] deploy documentation as a static webpage.
 - [ ] build Python package [Python package building](https://packaging.python.org/en/latest/tutorials/packaging-projects/).
 
 <br>
