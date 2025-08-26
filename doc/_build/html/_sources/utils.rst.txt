@@ -17,3 +17,5 @@ General functions that may be useful.
    utils.convert_utc_to_loc
    utils.convert_loc_to_utc
    utils.apply_functions_between_samples
+   utils.get_largest_factor
+   utils.nearsq_grid_layout

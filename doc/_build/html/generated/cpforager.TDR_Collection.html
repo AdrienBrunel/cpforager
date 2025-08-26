@@ -101,11 +101,11 @@
 <h1><span class="section-number">1.6. </span>cpforager.TDR_Collection<a class="headerlink" href="#cpforager-tdr-collection" title="Link to this heading"></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="cpforager.TDR_Collection">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cpforager.</span></span><span class="sig-name descname"><span class="pre">TDR_Collection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tdr_collection</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">list[cpforager.tdr.tdr.TDR]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cpforager.TDR_Collection" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cpforager.</span></span><span class="sig-name descname"><span class="pre">TDR_Collection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tdr_collection</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cpforager.TDR_Collection" title="Link to this definition"></a></dt>
 <dd><p>A class to represent a list of TDR data of a central-place foraging seabird.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="cpforager.TDR_Collection.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tdr_collection</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">list[cpforager.tdr.tdr.TDR]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cpforager.TDR_Collection.__init__" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tdr_collection</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cpforager.TDR_Collection.__init__" title="Link to this definition"></a></dt>
 <dd><p>Constructor of a TDR_Collection object.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -115,7 +115,7 @@
 <dd class="field-even"><ul class="simple">
 <li><p><strong>tdr_collection</strong> (<em>list</em><em>[</em><a class="reference internal" href="cpforager.TDR.html#cpforager.TDR" title="cpforager.TDR"><em>cpforager.TDR</em></a><em>]</em>) – the list of TDR.</p></li>
 <li><p><strong>n_tdr</strong> (<em>int</em>) – the total number of TDR included in the list.</p></li>
-<li><p><strong>n_dives</strong> (<em>str</em>) – the number of dives summed over every TDR included in the list.</p></li>
+<li><p><strong>n_dives</strong> (<em>int</em>) – the number of dives summed over every TDR included in the list.</p></li>
 <li><p><strong>dive_statistics_all</strong> (<em>pandas.DataFrame</em>) – the dive statistics dataframe merged over every TDR included in the list.</p></li>
 <li><p><strong>df_all</strong> (<em>pandas.DataFrame</em>) – the enhanced TDR dataframe merged over every TDR included in the list.</p></li>
 </ul>
@@ -126,8 +126,17 @@
 <p class="rubric">Methods</p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#cpforager.TDR_Collection.__init__" title="cpforager.TDR_Collection.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>([tdr_collection])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cpforager.TDR_Collection.__init__" title="cpforager.TDR_Collection.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(tdr_collection)</p></td>
 <td><p>Constructor of a TDR_Collection object.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">display_data_summary</span></code>([standalone])</p></td>
+<td><p>Print in terminal the TDR_Collection data summary.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">indiv_depth_all</span></code>(fig_dir, file_id, plot_params)</p></td>
+<td><p>Produce the individual depth plot of every TDR in collection.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_stats_summary</span></code>(fig_dir, file_id, plot_params)</p></td>
+<td><p>Produce the dive statistics summary of every TDR data.</p></td>
 </tr>
 </tbody>
 </table>

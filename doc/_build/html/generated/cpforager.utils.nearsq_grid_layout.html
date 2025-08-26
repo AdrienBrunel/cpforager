@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>5.4. cpforager.utils.convert_loc_to_utc &mdash; cpforager</title>
+  <title>5.7. cpforager.utils.nearsq_grid_layout &mdash; cpforager</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=8ac2ccb1" />
@@ -21,8 +21,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="5.5. cpforager.utils.apply_functions_between_samples" href="cpforager.utils.apply_functions_between_samples.html" />
-    <link rel="prev" title="5.3. cpforager.utils.convert_utc_to_loc" href="cpforager.utils.convert_utc_to_loc.html" /> 
+    <link rel="next" title="6. Miscellaneous" href="../misc.html" />
+    <link rel="prev" title="5.6. cpforager.utils.get_largest_factor" href="cpforager.utils.get_largest_factor.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -55,12 +55,13 @@
 <li class="toctree-l2"><a class="reference internal" href="cpforager.utils.ortho_distance.html">5.1. cpforager.utils.ortho_distance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cpforager.utils.spherical_heading.html">5.2. cpforager.utils.spherical_heading</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cpforager.utils.convert_utc_to_loc.html">5.3. cpforager.utils.convert_utc_to_loc</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">5.4. cpforager.utils.convert_loc_to_utc</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#cpforager.utils.convert_loc_to_utc"><code class="docutils literal notranslate"><span class="pre">convert_loc_to_utc()</span></code></a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="cpforager.utils.convert_loc_to_utc.html">5.4. cpforager.utils.convert_loc_to_utc</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cpforager.utils.apply_functions_between_samples.html">5.5. cpforager.utils.apply_functions_between_samples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cpforager.utils.get_largest_factor.html">5.6. cpforager.utils.get_largest_factor</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">5.7. cpforager.utils.nearsq_grid_layout</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cpforager.utils.nearsq_grid_layout"><code class="docutils literal notranslate"><span class="pre">nearsq_grid_layout()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../misc.html">6. Miscellaneous</a></li>
@@ -83,9 +84,9 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../utils.html"><span class="section-number">5. </span>Utils</a></li>
-      <li class="breadcrumb-item active"><span class="section-number">5.4. </span>cpforager.utils.convert_loc_to_utc</li>
+      <li class="breadcrumb-item active"><span class="section-number">5.7. </span>cpforager.utils.nearsq_grid_layout</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/generated/cpforager.utils.convert_loc_to_utc.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/generated/cpforager.utils.nearsq_grid_layout.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -93,26 +94,30 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="cpforager-utils-convert-loc-to-utc">
-<h1><span class="section-number">5.4. </span>cpforager.utils.convert_loc_to_utc<a class="headerlink" href="#cpforager-utils-convert-loc-to-utc" title="Link to this heading"></a></h1>
+  <section id="cpforager-utils-nearsq-grid-layout">
+<h1><span class="section-number">5.7. </span>cpforager.utils.nearsq_grid_layout<a class="headerlink" href="#cpforager-utils-nearsq-grid-layout" title="Link to this heading"></a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="cpforager.utils.convert_loc_to_utc">
-<span class="sig-prename descclassname"><span class="pre">cpforager.utils.</span></span><span class="sig-name descname"><span class="pre">convert_loc_to_utc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">local_timezone</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cpforager.utils.convert_loc_to_utc" title="Link to this definition"></a></dt>
-<dd><p>Convert <code class="docutils literal notranslate"><span class="pre">datetime</span></code> column from the local timezone to UTC.</p>
+<dt class="sig sig-object py" id="cpforager.utils.nearsq_grid_layout">
+<span class="sig-prename descclassname"><span class="pre">cpforager.utils.</span></span><span class="sig-name descname"><span class="pre">nearsq_grid_layout</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.6676666666666666</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cpforager.utils.nearsq_grid_layout" title="Link to this definition"></a></dt>
+<dd><p>Compute the near-square grid layout dimensions with a width to height ratio being smaller than a given tolerance.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>df</strong> (<em>pandas.DataFrame</em>) – dataframe with a <code class="docutils literal notranslate"><span class="pre">datetime</span></code> column at the local timezone.</p></li>
-<li><p><strong>local_timezone</strong> (<em>str</em>) – local timezone following the pytz nomenclature (see <code class="docutils literal notranslate"><span class="pre">pytz.all_timezones</span></code>).</p></li>
+<li><p><strong>n</strong> (<em>int</em>) – integer we want the near-square dimensions.</p></li>
+<li><p><strong>tol</strong> (<em>float</em>) – tolerance.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>the dataframe with a <code class="docutils literal notranslate"><span class="pre">datetime</span></code> column to UTC timezone.</p>
+<dd class="field-even"><p>the dimensions (a,b) such that n = a x b and a/b&lt;tol.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>pandas.DataFrame</p>
+<dd class="field-odd"><p>tuple(int, int)</p>
 </dd>
 </dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>n&gt;0 and tol&gt;1.</p>
+</div>
 </dd></dl>
 
 </section>
@@ -121,8 +126,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="cpforager.utils.convert_utc_to_loc.html" class="btn btn-neutral float-left" title="5.3. cpforager.utils.convert_utc_to_loc" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="cpforager.utils.apply_functions_between_samples.html" class="btn btn-neutral float-right" title="5.5. cpforager.utils.apply_functions_between_samples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="cpforager.utils.get_largest_factor.html" class="btn btn-neutral float-left" title="5.6. cpforager.utils.get_largest_factor" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../misc.html" class="btn btn-neutral float-right" title="6. Miscellaneous" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

@@ -14,6 +14,9 @@
    .. autosummary::
    
       ~TDR_Collection.__init__
+      ~TDR_Collection.display_data_summary
+      ~TDR_Collection.indiv_depth_all
+      ~TDR_Collection.plot_stats_summary
    
    
 
