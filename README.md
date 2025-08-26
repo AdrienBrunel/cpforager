@@ -83,7 +83,6 @@ The Python scripts in the [/tests/](./tests/) folder illustrate how the `GPS`, `
 - [ ] make classes' methods available in documentation.
 - [ ] uniformise types of arguments/attributes in function arguments and accordingly in documentation.
 - [ ] add a proper zero offset correction inside `TDR` class (according to a scientific consensus).
-- [ ] correction of heading to colony circular plot.
 - [x] compute depth as a negative number to plot the visual depth.
 - [x] improve `AXY_Collection` class.
 - [x] improve `TDR_Collection` class.
@@ -103,5 +102,6 @@ The Python scripts in the [/tests/](./tests/) folder illustrate how the `GPS`, `
 <br>
 
 # Infos
-* Python version used is 3.13.3
-* OS used is Ubuntu 20.04
+* Python version used is 3.13.3.
+* OS used is Ubuntu 20.04.
+* The graphic design of the logos was done by Lisa Brunel.
