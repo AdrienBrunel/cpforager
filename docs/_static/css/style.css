@@ -1,0 +1,23 @@
+/* set documentation width */
+.wy-nav-content {
+    max-width: 1000px !important;
+}
+
+/* set navigation panel color */
+.wy-side-nav-search, .wy-nav-top {
+    background: #e3e3e3;
+}
+
+/* set navigation panel text color */
+   .wy-side-nav-search a, 
+   .wy-nav-top a, 
+   .wy-side-nav-search span, 
+   .wy-nav-top span {
+       color: #000000;
+}
+
+/* set body background color */
+body {
+    /* background-color: #332f2f !important; */
+    background-color: #17191a !important;
+}

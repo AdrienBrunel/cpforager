@@ -1,0 +1,16 @@
+.. automodule:: cpforager
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :no-index:
+
+Parameters
+--------------------------
+
+Parameters controlling the data processing and visualisation of biologging data of a central-place foraging seabird.
+
+.. autosummary::
+   :toctree: generated
+
+   parameters.get_params
+   parameters.get_plot_params

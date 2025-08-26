@@ -1,0 +1,18 @@
+.. automodule:: cpforager
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :no-index:
+
+Miscellaneous
+--------------------------
+
+Miscellaneous functions that may simplify the coding.
+
+.. autosummary::
+   :toctree: generated
+
+   misc.derive_separator
+   misc.grep_pattern
+   misc.random_colors
+   misc.rgb_to_hex
