@@ -2,8 +2,7 @@
 # LIBRARIES
 # ======================================================= #
 import os
-import math
-from cpforager import diagnostic, misc
+from cpforager import diagnostic, misc, utils
 import matplotlib.pyplot as plt
 import cartopy.crs as ccrs
 import folium
@@ -84,7 +83,7 @@ def plot_stats_summary(self, fig_dir, file_id, plot_params, quantiles=[0.25, 0.5
 # ======================================================= #
 # GPS MAPS DIAG [GPS_COLLECTION METHOD]
 # ======================================================= #
-def maps_diagnostic(self, fig_dir, file_id, plot_params):
+def maps_diagnostic(self, fig_dir, file_id, plot_params, rand=False):
     
     """    
     Produce the maps with every GPS data.
@@ -97,6 +96,8 @@ def maps_diagnostic(self, fig_dir, file_id, plot_params):
     :type file_id: str
     :param plot_params: plot parameters dictionary. 
     :type plot_params: dict
+    :param rand: True if colors should be random. 
+    :type rand: bool
     :return: the full diagnostic figure.
     :rtype: matplotlib.pyplot.Figure 
     
@@ -110,6 +111,7 @@ def maps_diagnostic(self, fig_dir, file_id, plot_params):
     
     # get parameters
     dpi = plot_params.get("fig_dpi")
+    cols_1 = plot_params.get("cols_1")
     cols_2 = plot_params.get("cols_2")
     colony = params.get("colony")
         
@@ -119,16 +121,18 @@ def maps_diagnostic(self, fig_dir, file_id, plot_params):
     fig.subplots_adjust(hspace=0.3, wspace=0.25, bottom=0.06, top=0.95, left=0.05, right=0.95)
     gs = fig.add_gridspec(2, 2)
     
-    # set random colors
-    cols_rand = misc.random_colors(3)
+    # set discrete color palette
+    disc_color_palette = cols_1
+    if rand:
+        disc_color_palette = misc.random_colors(3)
     
     # trajectory with a trip color gradient
     ax = fig.add_subplot(gs[0,0], projection=ccrs.PlateCarree())
-    diagnostic.plot_map_wtrips(ax, df_all, params, plot_params, cols_rand, n_trips, colony["center"][0], colony["center"][1], 0)
+    diagnostic.plot_map_wtrips(ax, df_all, params, plot_params, disc_color_palette, n_trips, colony["center"][0], colony["center"][1], 0)
     
     # zoom trajectory with a trip color gradient
     ax = fig.add_subplot(gs[0,1], projection=ccrs.PlateCarree())
-    diagnostic.plot_map_wtrips(ax, df_all, params, plot_params, cols_rand, n_trips, colony["center"][0], colony["center"][1], 10)
+    diagnostic.plot_map_wtrips(ax, df_all, params, plot_params, disc_color_palette, n_trips, colony["center"][0], colony["center"][1], 10)
 
     # global trajectory with a step speed color gradient
     ax = fig.add_subplot(gs[1,0], projection=ccrs.PlateCarree())
@@ -178,8 +182,7 @@ def indiv_map_all(self, fig_dir, file_id, plot_params):
     cols_1 = plot_params.get("cols_1")
     
     # compute figure layout
-    n_columns = 4
-    n_rows = math.ceil(n_gps/n_columns)
+    n_columns, n_rows = utils.nearsq_grid_layout(n_gps) 
     
     # produce diagnostic
     fig = plt.figure(figsize=(n_columns*5, n_rows*5), dpi=dpi)
@@ -224,7 +227,7 @@ def indiv_map_all(self, fig_dir, file_id, plot_params):
 # ======================================================= #
 # GPS FOLIUM MAPS [GPS_COLLECTION METHOD]
 # ======================================================= #
-def folium_map(self, fig_dir, file_id):
+def folium_map(self, fig_dir, file_id, plot_params, rand=False):
     
     """    
     Produce the html map with every GPS data colored randomly.
@@ -235,6 +238,10 @@ def folium_map(self, fig_dir, file_id):
     :type fig_dir: str
     :param file_id: name of the saved figure.
     :type file_id: str
+    :param plot_params: plot parameters dictionary. 
+    :type plot_params: dict
+    :param rand: True if colors should be random. 
+    :type rand: bool
     :return: the folium map.
     :rtype: folium.Map
     
@@ -243,18 +250,25 @@ def folium_map(self, fig_dir, file_id):
     
     # get attributes
     gps_collection = self.gps_collection
+    n_gps = self.n_gps
     params_0 = self.gps_collection[0].params
     
     # get parameters
     colony_0 = params_0.get("colony")
+    cols_1 = plot_params.get("cols_1")
     
     # produce folium map
     fmap = folium.Map(location=[colony_0["center"][1], colony_0["center"][0]])
-    for gps in gps_collection:
+    for k in range(n_gps):
+        gps = gps_collection[k]
         colony = gps.params.get("colony")
         folium.Marker(location=[colony["center"][1], colony["center"][0]], popup="<i>Colony %s</i>" % (colony["name"])).add_to(fmap)
-        folium.PolyLine(tooltip="<i>Id %s</i>" % (gps.id), locations=gps.df[["latitude", "longitude"]].values.tolist(), 
-                        color=misc.rgb_to_hex(misc.random_colors()[0]), weight=2, opacity=0.7).add_to(fmap)   
+        if rand:
+            folium.PolyLine(tooltip="<i>Id %s</i>" % (gps.id), locations=gps.df[["latitude", "longitude"]].values.tolist(), 
+                            color=misc.rgb_to_hex(misc.random_colors()[0]), weight=2, opacity=0.7).add_to(fmap)   
+        else:
+            folium.PolyLine(tooltip="<i>Id %s</i>" % (gps.id), locations=gps.df[["latitude", "longitude"]].values.tolist(), 
+                            color=misc.rgb_to_hex(cols_1[k % len(cols_1)]), weight=2, opacity=0.7).add_to(fmap)   
     
     # save figure
     fig_path = os.path.join(fig_dir, "%s.html" % file_id)
