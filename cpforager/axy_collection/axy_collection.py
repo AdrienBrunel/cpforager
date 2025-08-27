@@ -53,8 +53,8 @@ class AXY_Collection:
 
         dtypes_3 = {"group":"str", "id":"str", "datetime":"object", "longitude":"float", "latitude":"float", "pressure":"float", "temperature":"float", "ax":"float", "ay":"float", "az":"float",
                     "step_time":"float", "step_length":"float", "step_speed":"float", "step_heading":"float","step_turning_angle":"float", 
-                    "step_heading_to_colony":"float", "is_night":"int", "is_suspicious":"int", "dist_to_nest":"float", "trip":"int",
-                    "depth":"float", "dive":"int",
+                    "step_heading_to_colony":"float", "is_night":"int", "is_suspicious":"Int64", "dist_to_nest":"float", "trip":"Int64",
+                    "depth":"float", "dive":"Int64",
                     "ax_f":"float", "ay_f":"float", "az_f":"float","odba":"float", "odba_f":"float"}
         df_all = pd.DataFrame(columns=dtypes_3.keys())
         df_all = df_all.astype(dtype=dtypes_3)
@@ -75,13 +75,13 @@ class AXY_Collection:
             group = np.concatenate((group, [axy.group for k in axy.df.loc[axy.df["trip"]>0, "trip"].unique()]))
             id = np.concatenate((id, [axy.id for k in axy.df.loc[axy.df["trip"]>0, "trip"].unique()]))
             trip_id = np.concatenate((trip_id, [f"{axy.group}_{axy.id}_T{k:04}" for k in axy.df.loc[axy.df["trip"]>0, "trip"].unique()]))
-            trip_statistics_all = pd.concat([trip_statistics_all, axy.trip_statistics], ignore_index=True)
+            trip_statistics_all = pd.concat([trip_statistics_all, axy.gps.trip_statistics], ignore_index=True)
             
             # build the dive statisics dataframe of the entire collection
             group = np.concatenate((group, [axy.group for k in axy.df.loc[axy.df["dive"]>0, "dive"].unique()]))
             id = np.concatenate((id, [axy.id for k in axy.df.loc[axy.df["dive"]>0, "dive"].unique()]))
             dive_id = np.concatenate((dive_id, [f"{axy.group}_{axy.id}_D{k:04}" for k in axy.df.loc[axy.df["dive"]>0, "dive"].unique()]))
-            dive_statistics_all = pd.concat([dive_statistics_all, axy.dive_statistics], ignore_index=True)
+            dive_statistics_all = pd.concat([dive_statistics_all, axy.tdr.dive_statistics], ignore_index=True)
 
             # build the full data dataframe of the entire collection
             df_tmp = pd.DataFrame(columns=df_all.columns)
@@ -127,7 +127,7 @@ class AXY_Collection:
 
     # [METHODS] string representation of the class
     def __repr__(self):
-        return "%s(%d AXY, %d trips)" % (type(self).__name__, self.n_axy, self.n_trips)
+        return "%s(%d AXY, %d trips, %d dives)" % (type(self).__name__, self.n_axy, self.n_trips, self.n_dives)
 
     # [METHODS] display the summary of the data
     display_data_summary = display.display_data_summary
