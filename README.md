@@ -89,6 +89,7 @@ The Python scripts in the [/tests/](./tests/) folder illustrate how the `GPS`, `
 - [ ] create first Github release / version 1.0. 
 - [x] deploy documentation as a static webpage.
 - [ ] build Python package [Python package building](https://packaging.python.org/en/latest/tutorials/packaging-projects/).
+- [ ] Draft for [Applications](https://besjournals.onlinelibrary.wiley.com/hub/journal/2041210X/features/applicationpapers) in *Methods in Ecology and Evolution*.
 
 <br>
 
