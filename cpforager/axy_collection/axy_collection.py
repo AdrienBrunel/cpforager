@@ -40,6 +40,9 @@ class AXY_Collection:
         :vartype dive_statistics_all: pandas.DataFrame
         :ivar df_all: the enhanced AXY dataframe merged over every AXY included in the list.
         :vartype df_all: pandas.DataFrame
+        
+        .. warning ::
+            AXY_Collection may crash due to concatenating heavy AXY data leads to memory overload.
         """
 
         # init dataframes
