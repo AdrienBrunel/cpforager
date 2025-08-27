@@ -65,7 +65,7 @@ def plot_stats_summary(self, fig_dir, file_id, plot_params, quantiles=[0.25, 0.5
 
 
 # ======================================================= #
-# TDR INDIV MAP ALL [TDR_COLLECTION METHOD]
+# TDR INDIV DEPTH ALL [TDR_COLLECTION METHOD]
 # ======================================================= #
 def indiv_depth_all(self, fig_dir, file_id, plot_params):
     

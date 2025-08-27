@@ -1,12 +1,6 @@
 # ======================================================= #
 # LIBRARIES
 # ======================================================= #
-import os
-import math
-from cpforager import diagnostic, misc
-import matplotlib.pyplot as plt
-import cartopy.crs as ccrs
-import folium
 
 
 # ======================================================= #
@@ -138,7 +132,7 @@ def indiv_map_all(self, fig_dir, file_id, plot_params):
 
 
 # ======================================================= #
-# TDR INDIV MAP ALL [AXY_COLLECTION METHOD]
+# AXY INDIV DEPTH ALL [AXY_COLLECTION METHOD]
 # ======================================================= #
 def indiv_depth_all(self, fig_dir, file_id, plot_params):
     
