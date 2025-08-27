@@ -915,9 +915,14 @@ def add_axy_data(df, params):
     df_tdr_tmp = df.loc[tdr_resolution, ["datetime", "pressure", "temperature"]].reset_index(drop=True)
     df_tdr_tmp = add_tdr_data(df_tdr_tmp, params)
     
+    # dtypes_2 = {"group":"str", "id":"str", "dive_id":"str", "duration":"float", "max_depth":"float"}
+    # dive_statistics_all = pd.DataFrame(columns=dtypes_2.keys())
+    # df_gps_tmp = df_gps_tmp.astype(dtype=dtypes_2)
+    
     # add gps data to the initial df
-    gps_columns = ["step_length", "step_speed", "step_turning_angle", "step_heading", "step_heading_to_colony", "dist_to_nest", "trip"]
+    gps_columns = ["step_length", "step_speed", "step_turning_angle", "step_heading", "step_heading_to_colony", "is_suspicious", "dist_to_nest", "trip"]
     df[gps_columns] = np.nan
+    # df["trip"] = pd.Series([pd.NA] * len(df), dtype='Int64')
     df.loc[gps_indices, gps_columns] = df_gps_tmp[gps_columns].values
     
     # add tdr data to the initial df
@@ -939,6 +944,7 @@ def add_axy_data(df, params):
                                     "dive_max":"dive", "dive_len_unique_pos":"n_dives",
                                     "pressure_max":"pressure", "depth_max":"depth", "temperature_mean":"temperature"})
     df_gps["trip"] = df_gps["trip"].astype(int)
+    # df_gps["is_suspicious"] = df_gps["is_suspicious"].astype(int)
         
     # # process tdr data
     # df_tdr = df.loc[tdr_resolution].reset_index(drop=True)
@@ -947,10 +953,16 @@ def add_axy_data(df, params):
     
     # process tdr data
     df_tdr = df_tdr_tmp     
+    # df_tdr["dive"] = df_tdr["dive"].astype(int)
 
     # rearrange full dataframe
     df = df[np.concatenate((["date", "time", "ax", "ay", "az", "longitude", "latitude", "pressure", "temperature",
                              "datetime", "step_time", "is_night", "ax_f", "ay_f", "az_f", "odba", "odba_f"], gps_columns, tdr_columns))]
+    
+    # # convert column type to integer (even if it contains NaN values)
+    # df.loc[:, "trip"] = df["trip"].astype("Int64")
+    # df.loc[:, "is_suspicious"] = df["is_suspicious"].astype("Int64")
+    # df.loc[:, "dive"] = df["dive"].astype("Int64")
         
     return(df, df_gps, df_tdr)
 
