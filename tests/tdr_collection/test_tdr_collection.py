@@ -20,8 +20,8 @@ test_dir = os.path.join(root_dir, "tests", "tdr_collection")
 # ======================================================= #
 
 # set metadata
-fieldworks = ["BRA_FDN_2017_04", "BRA_FDN_2022_04"]
-colonies = ["BRA_FDN_MEI", "BRA_FDN_MEI"]
+fieldworks = ["PER_PSC_2008_11", "BRA_FDN_2017_04", "BRA_FDN_2022_04"]
+colonies = ["PER_PSC_PSC", "BRA_FDN_MEI", "BRA_FDN_MEI"]
 
 # set parameters dictionaries
 plot_params = parameters.get_plot_params()
@@ -99,4 +99,4 @@ tdr_collection_all.display_data_summary()
 # test plot_stats_summary, folium_map, maps_diag methods
 _ = tdr_collection_all.plot_stats_summary(test_dir, "dive_statistics_all", plot_params)
 _ = tdr_collection_all.dive_statistics_all.to_csv("%s/dive_statistics_all.csv" % (test_dir), index=False, quoting=csv.QUOTE_NONNUMERIC)
-tdr_collection_all.indiv_depth_all(test_dir, "indiv_depth_all", plot_params)
+_ = tdr_collection_all.indiv_depth_all(test_dir, "indiv_depth_all", plot_params)
