@@ -40,6 +40,10 @@ AXY
 .. image:: _static/examples/BRA_FDN_MEI_2022-04-26_SDAC_01_U61556_F_GPS_AXY_RT10_UTC_map.png
    :align: center
 
+GPS_TDR
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. literalinclude::  _static/examples/demo_gps_tdr.py
+
 GPS_Collection
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. literalinclude::  _static/examples/demo_gps_collection.py
@@ -50,3 +54,15 @@ GPS_Collection
    :align: center
 .. image:: _static/examples/trip_statistics_PER_PSC_2012_11.png
    :align: center
+
+TDR_Collection
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. literalinclude::  _static/examples/demo_tdr_collection.py
+
+AXY_Collection
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. literalinclude::  _static/examples/demo_axy_collection.py
+
+GPS_TDR_Collection
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. literalinclude::  _static/examples/demo_gps_tdr_collection.py

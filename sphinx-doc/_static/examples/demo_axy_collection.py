@@ -25,7 +25,6 @@ colonies = ["PER_PSC_PSC", "PER_PSC_PSC", "BRA_FDN_MEI", "BRA_FDN_MEI", "BRA_SAN
 # get parameters dictionaries
 plot_params = parameters.get_plot_params()
 
-
 # ======================================================= #
 # BUILD GPS_COLLECTION OBJECT
 # ======================================================= #
