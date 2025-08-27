@@ -2,7 +2,7 @@ __pycache__/
 dev/
 .vscode/
 /*.code-workspace
-data/BRA_FDN_2022_04/BRA_FDN_MEI_2022-04-26_SDAC_01_U61556_F_GPS_AXY_RT10_UTC.csv
+data/BRA_FDN_2022_04/*_GPS_AXY_*
 data/BRA_FDN_2016_09/BRA_FDN_MEI_2016-09-18_SSUL_12_T32841_NA_TDR_AXY_8_LOC.csv
 sphinx-doc/generated
 sphinx-doc/_build
