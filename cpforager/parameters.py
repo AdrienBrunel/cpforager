@@ -125,17 +125,30 @@ def get_params(colony):
 
 
 # ================================================================================================ #
-# DICTIONARY OF DATAFRAME TYPES
+# DICTIONARY OF DATA TYPES FOR DATAFRAME
 # ================================================================================================ #
 def get_columns_dtypes(column_names):
     
+    """
+    Extract a dtype dictionary by dataframe column names.
+        
+    :param column_names: list of column names.
+    :type column_names: list
+    :return: a dictionary of dtypes by column names.
+    :rtype: dict 
+    
+    The dtypes must be compatible with a dataframe containing NaN, *i.e* `Int64` and `Float64` instead of `int64` and `float64`. The full dictionary among which to
+    extract the dictionary is hard-coded.
+    """
+    
+    
     # define the dictionaries of types by columns
     dtypes_columns_metadata = {"group":"str", "id":"str"}
-    dtypes_columns_basic = {"datetime":"object", "step_time":"float", "is_night":"int"}
-    dtypes_columns_gps = {"longitude":"float", "latitude":"float", "step_length":"float", "step_speed":"float", "step_heading":"float","step_turning_angle":"float", 
-                          "step_heading_to_colony":"float", "is_suspicious":"Int64", "dist_to_nest":"float", "trip":"Int64"}
-    dtypes_columns_tdr = {"pressure":"float", "temperature":"float", "depth":"float", "dive":"Int64"}
-    dtypes_columns_acc = {"ax":"float", "ay":"float", "az":"float", "ax_f":"float", "ay_f":"float", "az_f":"float","odba":"float", "odba_f":"float"}
+    dtypes_columns_basic = {"datetime":"object", "step_time":"Float64", "is_night":"int"}
+    dtypes_columns_gps = {"longitude":"Float64", "latitude":"Float64", "step_length":"Float64", "step_speed":"Float64", "step_heading":"Float64","step_turning_angle":"Float64", 
+                          "step_heading_to_colony":"Float64", "is_suspicious":"Int64", "dist_to_nest":"Float64", "trip":"Int64"}
+    dtypes_columns_tdr = {"pressure":"Float64", "temperature":"Float64", "depth":"Float64", "dive":"Int64"}
+    dtypes_columns_acc = {"ax":"Float64", "ay":"Float64", "az":"Float64", "ax_f":"Float64", "ay_f":"Float64", "az_f":"Float64","odba":"Float64", "odba_f":"Float64"}
     
     # append dictionaries
     dtypes_columns_dict = {}

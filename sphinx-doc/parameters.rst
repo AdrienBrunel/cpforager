@@ -13,4 +13,5 @@ Parameters controlling the data processing and visualisation of biologging data 
    :toctree: generated
 
    parameters.get_params
+   parameters.get_columns_dtypes
    parameters.get_plot_params

@@ -3,7 +3,7 @@
 # ================================================================================================ #
 import numpy as np
 import pandas as pd
-from cpforager import utils, constants, check
+from cpforager import utils, constants, check, parameters
 from suntime import Sun
 import pytz
     
@@ -915,20 +915,47 @@ def add_axy_data(df, params):
     df_tdr_tmp = df.loc[tdr_resolution, ["datetime", "pressure", "temperature"]].reset_index(drop=True)
     df_tdr_tmp = add_tdr_data(df_tdr_tmp, params)
     
-    # dtypes_2 = {"group":"str", "id":"str", "dive_id":"str", "duration":"float", "max_depth":"float"}
-    # dive_statistics_all = pd.DataFrame(columns=dtypes_2.keys())
-    # df_gps_tmp = df_gps_tmp.astype(dtype=dtypes_2)
-    
-    # add gps data to the initial df
+    # init dataframe full of NaNs and set data type according to dictionary
     gps_columns = ["step_length", "step_speed", "step_turning_angle", "step_heading", "step_heading_to_colony", "is_suspicious", "dist_to_nest", "trip"]
-    df[gps_columns] = np.nan
-    # df["trip"] = pd.Series([pd.NA] * len(df), dtype='Int64')
+    tdr_columns = ["depth", "dive"]
+    data_columns = gps_columns + tdr_columns
+    columns_dtypes_dict = parameters.get_columns_dtypes(data_columns)
+    for data_column in data_columns:
+        df[data_column] = pd.Series([pd.NA]*len(df), dtype=columns_dtypes_dict[data_column])
+        
+    # # init dataframe full of NaNs and set data type according to dictionary
+    # gps_columns = ["step_length", "step_speed", "step_turning_angle", "step_heading", "step_heading_to_colony", "is_suspicious", "dist_to_nest", "trip"]
+    # tdr_columns = ["depth", "dive"]
+    # data_columns = gps_columns + tdr_columns
+    # columns_dtypes_dict = parameters.get_columns_dtypes(data_columns)
+    # df_to_add = pd.DataFrame(index=range(len(df)), columns=data_columns).astype(columns_dtypes_dict)
+    # df_to_add[:] = pd.NA
+    # df = pd.concat([df, df_to_add], axis=1)
+    
+    # add gps data to the df at gps resolution
     df.loc[gps_indices, gps_columns] = df_gps_tmp[gps_columns].values
     
-    # add tdr data to the initial df
-    tdr_columns = ["depth", "dive"]
-    df[tdr_columns] = np.nan
+    # add tdr data to the df at tdr resolution
     df.loc[tdr_indices, tdr_columns] = df_tdr_tmp[tdr_columns].values
+    
+    # gps_columns = ["step_length", "step_speed", "step_turning_angle", "step_heading", "step_heading_to_colony", "is_suspicious", "dist_to_nest", "trip"]
+    # columns_dtypes_dict = parameters.get_columns_dtypes(gps_columns)
+    # # df[gps_columns] = np.nan
+    # # # init to NaN
+    # for gps_column in gps_columns:
+    #     df[gps_column] = pd.Series([pd.NA]*len(df), dtype=columns_dtypes_dict[gps_column])
+    # # for gps_column in gps_columns:
+    # #     df.loc[gps_indices, gps_column] = df_gps_tmp[gps_column].values
+    # #     df[gps_column] = df[gps_column].astype(columns_dtypes_dict[gps_column])
+    # df.loc[gps_indices, gps_columns] = df_gps_tmp[gps_columns].values
+    
+    # # add tdr data to the initial df
+    # tdr_columns = ["depth", "dive"]
+    # # df[tdr_columns] = np.nan
+    # columns_dtypes_dict = parameters.get_columns_dtypes(tdr_columns)
+    # for tdr_column in tdr_columns:
+    #     df[tdr_column] = pd.Series([pd.NA]*len(df), dtype=columns_dtypes_dict[tdr_column])
+    # df.loc[tdr_indices, tdr_columns] = df_tdr_tmp[tdr_columns].values
     
     # produce df_gps by processing (sum, mean, max) data between two gps measures
     cols_funcs = {"odba":"sum", "odba_f":"sum", "step_time":"sum",
@@ -944,25 +971,18 @@ def add_axy_data(df, params):
                                     "dive_max":"dive", "dive_len_unique_pos":"n_dives",
                                     "pressure_max":"pressure", "depth_max":"depth", "temperature_mean":"temperature"})
     df_gps["trip"] = df_gps["trip"].astype(int)
-    # df_gps["is_suspicious"] = df_gps["is_suspicious"].astype(int)
+    df_gps["is_suspicious"] = df_gps["is_suspicious"].astype(int)
         
     # # process tdr data
     # df_tdr = df.loc[tdr_resolution].reset_index(drop=True)
     # df_tdr = df_tdr.drop(["odba", "odba_f", "step_time", "dive", "pressure", "depth", "temperature"], axis=1)
     # df_tdr = df_tdr.rename(columns={"odba_sum":"odba", "odba_f_sum":"odba_f", "step_time_sum":"step_time"}) # longitude latitude ?
-    
-    # process tdr data
     df_tdr = df_tdr_tmp     
-    # df_tdr["dive"] = df_tdr["dive"].astype(int)
+    df_tdr["dive"] = df_tdr["dive"].astype(int)
 
     # rearrange full dataframe
     df = df[np.concatenate((["date", "time", "ax", "ay", "az", "longitude", "latitude", "pressure", "temperature",
                              "datetime", "step_time", "is_night", "ax_f", "ay_f", "az_f", "odba", "odba_f"], gps_columns, tdr_columns))]
-    
-    # # convert column type to integer (even if it contains NaN values)
-    # df.loc[:, "trip"] = df["trip"].astype("Int64")
-    # df.loc[:, "is_suspicious"] = df["is_suspicious"].astype("Int64")
-    # df.loc[:, "dive"] = df["dive"].astype("Int64")
         
     return(df, df_gps, df_tdr)
 
