@@ -144,11 +144,13 @@ def get_columns_dtypes(column_names):
     
     # define the dictionaries of types by columns
     dtypes_columns_metadata = {"group":"str", "id":"str"}
-    dtypes_columns_basic = {"datetime":"object", "step_time":"Float64", "is_night":"int"}
+    dtypes_columns_basic = {"datetime":"object", "step_time":"Float64", "is_night":"Int64"}
     dtypes_columns_gps = {"longitude":"Float64", "latitude":"Float64", "step_length":"Float64", "step_speed":"Float64", "step_heading":"Float64","step_turning_angle":"Float64", 
                           "step_heading_to_colony":"Float64", "is_suspicious":"Int64", "dist_to_nest":"Float64", "trip":"Int64"}
     dtypes_columns_tdr = {"pressure":"Float64", "temperature":"Float64", "depth":"Float64", "dive":"Int64"}
     dtypes_columns_acc = {"ax":"Float64", "ay":"Float64", "az":"Float64", "ax_f":"Float64", "ay_f":"Float64", "az_f":"Float64","odba":"Float64", "odba_f":"Float64"}
+    dtypes_trip_stats = {"trip_id":"str", "length":"Float64", "duration":"Float64", "max_hole":"Float64", "dmax":"Float64", "n_step":"Int64"}
+    dtypes_dive_stats = {"dive_id":"str", "duration":"Float64", "max_depth":"Float64"}
     
     # append dictionaries
     dtypes_columns_dict = {}
@@ -157,6 +159,8 @@ def get_columns_dtypes(column_names):
     dtypes_columns_dict.update(dtypes_columns_gps)
     dtypes_columns_dict.update(dtypes_columns_tdr)
     dtypes_columns_dict.update(dtypes_columns_acc)
+    dtypes_columns_dict.update(dtypes_trip_stats)
+    dtypes_columns_dict.update(dtypes_dive_stats)
     
     # extract dtypes by columns subdictionary
     dtypes_columns_subdict = {key:dtypes_columns_dict[key] for key in column_names}

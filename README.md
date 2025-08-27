@@ -81,6 +81,7 @@ The Python scripts in the [/tests/](./tests/) folder illustrate how the `GPS`, `
 - [ ] write `GPS_TDR` test script and demo. 
 - [ ] write `GPS_TDR_Collection` test script and demo. 
 - [ ] improve folium map of `GPS_Collection`.
+- [ ] use new dtypes dictionary for Collection classes
 - [ ] add a function `GPS_TDR = merge_gps_tdr(GPS, TDR)` that will merge TDR data within GPS data and produce the resulting dataframe.
 - [ ] add Butterworth filter for `AXY`.
 - [ ] add parameters in `parameters.py` to be able to choose between rolling average and Butterworth filter for `AXY`.
