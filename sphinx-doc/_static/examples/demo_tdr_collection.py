@@ -3,7 +3,7 @@
 # ======================================================= #
 import os
 import pandas as pd
-from cpforager import parameters, utils, misc, GPS, GPS_Collection
+from cpforager import parameters, utils, misc, TDR, TDR_Collection
 
 
 # ======================================================= #
@@ -11,7 +11,7 @@ from cpforager import parameters, utils, misc, GPS, GPS_Collection
 # ======================================================= #
 root_dir = os.getcwd()
 data_dir = os.path.join(root_dir, "data")
-test_dir = os.path.join(root_dir, "tests")
+test_dir = os.path.join(root_dir, "tests", "tdr_collection")
 
 
 # ======================================================= #
@@ -19,28 +19,29 @@ test_dir = os.path.join(root_dir, "tests")
 # ======================================================= #
 
 # set metadata
-fieldworks = ["PER_PSC_2012_11", "PER_PSC_2013_11", "BRA_FDN_2016_09", "BRA_FDN_2018_09", "BRA_SAN_2022_03"]
-colonies = ["PER_PSC_PSC", "PER_PSC_PSC", "BRA_FDN_MEI", "BRA_FDN_MEI", "BRA_SAN_FRA"]
+fieldworks = ["PER_PSC_2008_11", "BRA_FDN_2017_04", "BRA_FDN_2022_04"]
+colonies = ["PER_PSC_PSC", "BRA_FDN_MEI", "BRA_FDN_MEI"]
 
-# get parameters dictionaries
+# set parameters dictionaries
 plot_params = parameters.get_plot_params()
 
+
 # ======================================================= #
-# BUILD GPS_COLLECTION OBJECT
+# TEST TDR_COLLECTION CLASS
 # ======================================================= #
 
 # loop over fieldworks
-gps_collection = []
+tdr_collection = []
 for (fieldwork, colony) in zip(fieldworks, colonies):
 
-    # determine list of gps files
-    files = misc.grep_pattern(os.listdir(os.path.join(data_dir, fieldwork)), "_GPS_IGU")
+    # list of files to process
+    files = misc.grep_pattern(os.listdir(os.path.join(data_dir, fieldwork)), "_TDR_")
     n_files = len(files)
 
-    # get structure of parameters according to colony code
+    # get structure of parameters
     params = parameters.get_params(colony)
 
-    # loop over gps files
+    # loop over files in directory
     for k in range(n_files):
 
         # set file infos
@@ -57,11 +58,14 @@ for (fieldwork, colony) in zip(fieldworks, colonies):
         # if time is at UTC, convert it to local datetime
         if "_UTC" in file_name: df = utils.convert_utc_to_loc(df, params.get("local_tz"))
 
-        # build GPS object
-        gps = GPS(df=df, group=fieldwork, id=file_id, params=params)
+        # if sensor model is G5, convert dbar to hPa
+        if "_TDR_G5_" in file_name: df["pressure"] = 100*df["pressure"]
+         
+        # build TDR object
+        tdr = TDR(df=df, group=fieldwork, id=file_id, params=params)
 
-        # append gps to the overall gps list
-        gps_collection.append(gps)
+        # append tdr to the overall collection
+        tdr_collection.append(tdr)
 
-# build GPS_Collection object
-gps_collection = GPS_Collection(gps_collection)
+# build TDR_Collection object
+tdr_collection = TDR_Collection(tdr_collection)
