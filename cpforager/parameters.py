@@ -125,6 +125,33 @@ def get_params(colony):
 
 
 # ================================================================================================ #
+# DICTIONARY OF DATAFRAME TYPES
+# ================================================================================================ #
+def get_columns_dtypes(column_names):
+    
+    # define the dictionaries of types by columns
+    dtypes_columns_metadata = {"group":"str", "id":"str"}
+    dtypes_columns_basic = {"datetime":"object", "step_time":"float", "is_night":"int"}
+    dtypes_columns_gps = {"longitude":"float", "latitude":"float", "step_length":"float", "step_speed":"float", "step_heading":"float","step_turning_angle":"float", 
+                          "step_heading_to_colony":"float", "is_suspicious":"Int64", "dist_to_nest":"float", "trip":"Int64"}
+    dtypes_columns_tdr = {"pressure":"float", "temperature":"float", "depth":"float", "dive":"Int64"}
+    dtypes_columns_acc = {"ax":"float", "ay":"float", "az":"float", "ax_f":"float", "ay_f":"float", "az_f":"float","odba":"float", "odba_f":"float"}
+    
+    # append dictionaries
+    dtypes_columns_dict = {}
+    dtypes_columns_dict.update(dtypes_columns_metadata)
+    dtypes_columns_dict.update(dtypes_columns_basic)
+    dtypes_columns_dict.update(dtypes_columns_gps)
+    dtypes_columns_dict.update(dtypes_columns_tdr)
+    dtypes_columns_dict.update(dtypes_columns_acc)
+    
+    # extract dtypes by columns subdictionary
+    dtypes_columns_subdict = {key:dtypes_columns_dict[key] for key in column_names}
+    
+    return(dtypes_columns_subdict)
+
+
+# ================================================================================================ #
 # DICTIONARY OF PLOT PARAMETERS
 # ================================================================================================ #
 def get_plot_params():
