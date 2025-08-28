@@ -13,10 +13,10 @@ dependencies:
   - brotli-python=1.1.0=py313h46c70d0_2
   - bzip2=1.0.8=h4bc722e_7
   - c-ares=1.34.5=hb9d3cd8_0
-  - ca-certificates=2025.4.26=hbd8a1cb_0
+  - ca-certificates=2025.8.3=hbd8a1cb_0
   - cairo=1.18.4=h3394656_0
   - cartopy=0.24.0=py313ha87cce1_0
-  - certifi=2025.4.26=pyhd8ed1ab_0
+  - certifi=2025.8.3=pyhd8ed1ab_0
   - cffi=1.17.1=py313hfab6e84_0
   - charset-normalizer=3.4.2=pyhd8ed1ab_0
   - colorama=0.4.6=pyhd8ed1ab_1
@@ -113,7 +113,7 @@ dependencies:
   - numpy=2.2.5=py313h17eae1a_0
   - openjpeg=2.5.3=h5fbd93e_0
   - openldap=2.6.9=he970967_0
-  - openssl=3.5.0=h7b32b05_1
+  - openssl=3.5.2=h26f9b46_0
   - packaging=25.0=pyh29332c3_1
   - pandas=2.2.3=py313ha87cce1_3
   - pcre2=10.44=hc749103_2
@@ -139,6 +139,7 @@ dependencies:
   - readline=8.2=h8c095d6_2
   - requests=2.32.3=pyhd8ed1ab_1
   - roman-numerals-py=3.1.0=pyhd8ed1ab_0
+  - scipy=1.16.1=py313h3a520b0_0
   - shapely=2.1.0=py313h576e190_0
   - six=1.17.0=pyhd8ed1ab_0
   - snowballstemmer=2.2.0=pyhd8ed1ab_0
@@ -183,5 +184,19 @@ dependencies:
   - zstandard=0.23.0=py313h536fd9c_2
   - zstd=1.5.7=hb8e6e7a_2
   - pip:
+      - beautifulsoup4==4.13.4
+      - cssselect2==0.8.0
+      - html5lib==1.1
+      - pathlib==1.0.1
+      - pydyf==0.11.0
+      - pypdf==5.9.0
+      - pyphen==0.17.2
+      - simple-file-checksum==1.3.1
+      - soupsieve==2.7
+      - sphinx-pdf-generate==0.0.4
       - suntime==1.3.2
-prefix: /home/adrien/conda/envs/seabird-movement-cpf
+      - tinycss2==1.4.0
+      - typing-extensions==4.14.1
+      - weasyprint==60.2
+      - webencodings==0.5.1
+      - zopfli==0.2.3.post1
