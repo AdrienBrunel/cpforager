@@ -1,0 +1,6 @@
+﻿cpforager.parameters.get\_columns\_dtypes
+=========================================
+
+.. currentmodule:: cpforager.parameters
+
+.. autofunction:: get_columns_dtypes

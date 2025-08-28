@@ -57,7 +57,11 @@
 <li class="toctree-l2"><a class="reference internal" href="#gps">8.1. GPS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#tdr">8.2. TDR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#axy">8.3. AXY</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#gps-collection">8.4. GPS_Collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#gps-tdr">8.4. GPS_TDR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#gps-collection">8.5. GPS_Collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tdr-collection">8.6. TDR_Collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#axy-collection">8.7. AXY_Collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#gps-tdr-collection">8.8. GPS_TDR_Collection</a></li>
 </ul>
 </li>
 </ul>
@@ -250,8 +254,14 @@
 <img alt="_images/BRA_FDN_MEI_2022-04-26_SDAC_01_U61556_F_GPS_AXY_RT10_UTC_diag.png" class="align-center" src="_images/BRA_FDN_MEI_2022-04-26_SDAC_01_U61556_F_GPS_AXY_RT10_UTC_diag.png" />
 <img alt="_images/BRA_FDN_MEI_2022-04-26_SDAC_01_U61556_F_GPS_AXY_RT10_UTC_map.png" class="align-center" src="_images/BRA_FDN_MEI_2022-04-26_SDAC_01_U61556_F_GPS_AXY_RT10_UTC_map.png" />
 </section>
+<section id="gps-tdr">
+<h2><span class="section-number">8.4. </span>GPS_TDR<a class="headerlink" href="#gps-tdr" title="Link to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</section>
 <section id="gps-collection">
-<h2><span class="section-number">8.4. </span>GPS_Collection<a class="headerlink" href="#gps-collection" title="Link to this heading"></a></h2>
+<h2><span class="section-number">8.5. </span>GPS_Collection<a class="headerlink" href="#gps-collection" title="Link to this heading"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ======================================================= #</span>
 <span class="c1"># LIBRARIES</span>
 <span class="c1"># ======================================================= #</span>
@@ -278,6 +288,7 @@
 
 <span class="c1"># get parameters dictionaries</span>
 <span class="n">plot_params</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">get_plot_params</span><span class="p">()</span>
+
 
 <span class="c1"># ======================================================= #</span>
 <span class="c1"># BUILD GPS_COLLECTION OBJECT</span>
@@ -314,7 +325,7 @@
         <span class="c1"># build GPS object</span>
         <span class="n">gps</span> <span class="o">=</span> <span class="n">GPS</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="n">fieldwork</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">file_id</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
 
-        <span class="c1"># append gps to the overall gps list</span>
+        <span class="c1"># append gps to the overall collection</span>
         <span class="n">gps_collection</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">gps</span><span class="p">)</span>
 
 <span class="c1"># build GPS_Collection object</span>
@@ -323,6 +334,157 @@
 </div>
 <img alt="_images/maps_PER_PSC_2012_11.png" class="align-center" src="_images/maps_PER_PSC_2012_11.png" />
 <img alt="_images/trip_statistics_PER_PSC_2012_11.png" class="align-center" src="_images/trip_statistics_PER_PSC_2012_11.png" />
+</section>
+<section id="tdr-collection">
+<h2><span class="section-number">8.6. </span>TDR_Collection<a class="headerlink" href="#tdr-collection" title="Link to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ======================================================= #</span>
+<span class="c1"># LIBRARIES</span>
+<span class="c1"># ======================================================= #</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cpforager</span><span class="w"> </span><span class="kn">import</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">utils</span><span class="p">,</span> <span class="n">misc</span><span class="p">,</span> <span class="n">TDR</span><span class="p">,</span> <span class="n">TDR_Collection</span>
+
+
+<span class="c1"># ======================================================= #</span>
+<span class="c1"># DIRECTORIES</span>
+<span class="c1"># ======================================================= #</span>
+<span class="n">root_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+<span class="n">data_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">)</span>
+<span class="n">test_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;tests&quot;</span><span class="p">,</span> <span class="s2">&quot;tdr_collection&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># ======================================================= #</span>
+<span class="c1"># PARAMETERS</span>
+<span class="c1"># ======================================================= #</span>
+
+<span class="c1"># set metadata</span>
+<span class="n">fieldworks</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;PER_PSC_2008_11&quot;</span><span class="p">,</span> <span class="s2">&quot;BRA_FDN_2017_04&quot;</span><span class="p">,</span> <span class="s2">&quot;BRA_FDN_2022_04&quot;</span><span class="p">]</span>
+<span class="n">colonies</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;PER_PSC_PSC&quot;</span><span class="p">,</span> <span class="s2">&quot;BRA_FDN_MEI&quot;</span><span class="p">,</span> <span class="s2">&quot;BRA_FDN_MEI&quot;</span><span class="p">]</span>
+
+<span class="c1"># set parameters dictionaries</span>
+<span class="n">plot_params</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">get_plot_params</span><span class="p">()</span>
+
+
+<span class="c1"># ======================================================= #</span>
+<span class="c1"># TEST TDR_COLLECTION CLASS</span>
+<span class="c1"># ======================================================= #</span>
+
+<span class="c1"># loop over fieldworks</span>
+<span class="n">tdr_collection</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">fieldwork</span><span class="p">,</span> <span class="n">colony</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">fieldworks</span><span class="p">,</span> <span class="n">colonies</span><span class="p">):</span>
+
+    <span class="c1"># list of files to process</span>
+    <span class="n">files</span> <span class="o">=</span> <span class="n">misc</span><span class="o">.</span><span class="n">grep_pattern</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="n">fieldwork</span><span class="p">)),</span> <span class="s2">&quot;_TDR_&quot;</span><span class="p">)</span>
+    <span class="n">n_files</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">files</span><span class="p">)</span>
+
+    <span class="c1"># get structure of parameters</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">get_params</span><span class="p">(</span><span class="n">colony</span><span class="p">)</span>
+
+    <span class="c1"># loop over files in directory</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_files</span><span class="p">):</span>
+
+        <span class="c1"># set file infos</span>
+        <span class="n">file_name</span> <span class="o">=</span> <span class="n">files</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+        <span class="n">file_id</span> <span class="o">=</span> <span class="n">file_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="n">file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="n">fieldwork</span><span class="p">,</span> <span class="n">file_name</span><span class="p">)</span>
+
+        <span class="c1"># load raw data</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+
+        <span class="c1"># produce &quot;datetime&quot; column of type datetime64</span>
+        <span class="n">df</span><span class="p">[</span><span class="s2">&quot;datetime&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;mixed&quot;</span><span class="p">,</span> <span class="n">dayfirst</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+        <span class="c1"># if time is at UTC, convert it to local datetime</span>
+        <span class="k">if</span> <span class="s2">&quot;_UTC&quot;</span> <span class="ow">in</span> <span class="n">file_name</span><span class="p">:</span> <span class="n">df</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">convert_utc_to_loc</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;local_tz&quot;</span><span class="p">))</span>
+
+        <span class="c1"># if sensor model is G5, convert dbar to hPa</span>
+        <span class="k">if</span> <span class="s2">&quot;_TDR_G5_&quot;</span> <span class="ow">in</span> <span class="n">file_name</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;pressure&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span><span class="o">*</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;pressure&quot;</span><span class="p">]</span>
+         
+        <span class="c1"># build TDR object</span>
+        <span class="n">tdr</span> <span class="o">=</span> <span class="n">TDR</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="n">fieldwork</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">file_id</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+
+        <span class="c1"># append tdr to the overall collection</span>
+        <span class="n">tdr_collection</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tdr</span><span class="p">)</span>
+
+<span class="c1"># build TDR_Collection object</span>
+<span class="n">tdr_collection</span> <span class="o">=</span> <span class="n">TDR_Collection</span><span class="p">(</span><span class="n">tdr_collection</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="_images/indiv_depth_all.png" class="align-center" src="_images/indiv_depth_all.png" />
+</section>
+<section id="axy-collection">
+<h2><span class="section-number">8.7. </span>AXY_Collection<a class="headerlink" href="#axy-collection" title="Link to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ======================================================= #</span>
+<span class="c1"># LIBRARIES</span>
+<span class="c1"># ======================================================= #</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cpforager</span><span class="w"> </span><span class="kn">import</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">utils</span><span class="p">,</span> <span class="n">misc</span><span class="p">,</span> <span class="n">AXY</span><span class="p">,</span> <span class="n">AXY_Collection</span>
+
+
+<span class="c1"># ======================================================= #</span>
+<span class="c1"># DIRECTORIES</span>
+<span class="c1"># ======================================================= #</span>
+<span class="n">root_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+<span class="n">data_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">)</span>
+<span class="n">test_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;tests&quot;</span><span class="p">,</span> <span class="s2">&quot;axy_collection&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># ======================================================= #</span>
+<span class="c1"># PARAMETERS</span>
+<span class="c1"># ======================================================= #</span>
+
+<span class="c1"># set metadata</span>
+<span class="n">fieldwork</span> <span class="o">=</span> <span class="s2">&quot;BRA_FDN_2022_04&quot;</span>
+<span class="n">colony</span> <span class="o">=</span> <span class="s2">&quot;BRA_FDN_MEI&quot;</span>
+
+<span class="c1"># set parameters dictionaries</span>
+<span class="n">plot_params</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">get_plot_params</span><span class="p">()</span>
+<span class="n">params</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">get_params</span><span class="p">(</span><span class="n">colony</span><span class="p">)</span>
+
+
+<span class="c1"># ======================================================= #</span>
+<span class="c1"># TEST AXY_COLLECTION CLASS</span>
+<span class="c1"># ======================================================= #</span>
+
+<span class="c1"># list of files to process</span>
+<span class="n">files</span> <span class="o">=</span> <span class="n">misc</span><span class="o">.</span><span class="n">grep_pattern</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="n">fieldwork</span><span class="p">)),</span> <span class="s2">&quot;_GPS_AXY_&quot;</span><span class="p">)</span>
+<span class="n">n_files</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">files</span><span class="p">)</span>
+
+<span class="c1"># loop over files in directory</span>
+<span class="n">axy_collection</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_files</span><span class="p">):</span>
+
+    <span class="c1"># set file infos</span>
+    <span class="n">file_name</span> <span class="o">=</span> <span class="n">files</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+    <span class="n">file_id</span> <span class="o">=</span> <span class="n">file_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="n">file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="n">fieldwork</span><span class="p">,</span> <span class="n">file_name</span><span class="p">)</span>
+
+    <span class="c1"># load raw data</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+
+    <span class="c1"># produce &quot;datetime&quot; column of type datetime64</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;datetime&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;mixed&quot;</span><span class="p">,</span> <span class="n">dayfirst</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="c1"># if time is at UTC, convert it to local datetime</span>
+    <span class="k">if</span> <span class="s2">&quot;_UTC&quot;</span> <span class="ow">in</span> <span class="n">file_name</span><span class="p">:</span> <span class="n">df</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">convert_utc_to_loc</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;local_tz&quot;</span><span class="p">))</span>
+
+    <span class="c1"># build AXY object</span>
+    <span class="n">axy</span> <span class="o">=</span> <span class="n">AXY</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="n">fieldwork</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">file_id</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+
+    <span class="c1"># append axy to the overall collection</span>
+    <span class="n">axy_collection</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">axy</span><span class="p">)</span>
+
+<span class="c1"># build AXY_Collection object</span>
+<span class="n">axy_collection</span> <span class="o">=</span> <span class="n">AXY_Collection</span><span class="p">(</span><span class="n">axy_collection</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="gps-tdr-collection">
+<h2><span class="section-number">8.8. </span>GPS_TDR_Collection<a class="headerlink" href="#gps-tdr-collection" title="Link to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
 </section>
 </section>
 

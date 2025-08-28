@@ -1,0 +1,29 @@
+﻿cpforager.GPS\_TDR\_Collection
+==============================
+
+.. currentmodule:: cpforager
+
+.. autoclass:: GPS_TDR_Collection
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~GPS_TDR_Collection.__init__
+      ~GPS_TDR_Collection.display_data_summary
+      ~GPS_TDR_Collection.folium_map
+      ~GPS_TDR_Collection.indiv_depth_all
+      ~GPS_TDR_Collection.indiv_map_all
+      ~GPS_TDR_Collection.maps_diag
+      ~GPS_TDR_Collection.plot_dive_stats_summary
+      ~GPS_TDR_Collection.plot_trip_stats_summary
+   
+   
+
+   
+   
+   

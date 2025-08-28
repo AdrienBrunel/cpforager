@@ -21,7 +21,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="2. Parameters" href="../parameters.html" />
+    <link rel="next" title="1.8. cpforager.GPS_TDR_Collection" href="cpforager.GPS_TDR_Collection.html" />
     <link rel="prev" title="1.6. cpforager.TDR_Collection" href="cpforager.TDR_Collection.html" /> 
 </head>
 
@@ -61,6 +61,7 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="cpforager.GPS_TDR_Collection.html">1.8. cpforager.GPS_TDR_Collection</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../parameters.html">2. Parameters</a></li>
@@ -119,10 +120,13 @@
 <li><p><strong>trip_statistics_all</strong> (<em>pandas.DataFrame</em>) – the trip statistics dataframe merged over every AXY included in the list.</p></li>
 <li><p><strong>n_dives</strong> (<em>int</em>) – the number of dives summed over every AXY included in the list.</p></li>
 <li><p><strong>dive_statistics_all</strong> (<em>pandas.DataFrame</em>) – the dive statistics dataframe merged over every AXY included in the list.</p></li>
-<li><p><strong>df_all</strong> (<em>pandas.DataFrame</em>) – the enhanced AXY dataframe merged over every AXY included in the list.</p></li>
 </ul>
 </dd>
 </dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To avoid memory overload, we do not build an overall dataframe that would result from all AXY data concatenation.</p>
+</div>
 </dd></dl>
 
 <p class="rubric">Methods</p>
@@ -134,7 +138,7 @@
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">display_data_summary</span></code>([standalone])</p></td>
 <td><p>Print in terminal the AXY_Collection data summary.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">folium_map</span></code>(fig_dir, file_id)</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">folium_map</span></code>(fig_dir, file_id, plot_params)</p></td>
 <td><p>Produce the html map with every AXY data colored randomly.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">indiv_depth_all</span></code>(fig_dir, file_id, plot_params)</p></td>
@@ -163,7 +167,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="cpforager.TDR_Collection.html" class="btn btn-neutral float-left" title="1.6. cpforager.TDR_Collection" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../parameters.html" class="btn btn-neutral float-right" title="2. Parameters" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="cpforager.GPS_TDR_Collection.html" class="btn btn-neutral float-right" title="1.8. cpforager.GPS_TDR_Collection" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

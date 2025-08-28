@@ -18,3 +18,4 @@ All classes used to handle biologging data of a central-place foraging seabird. 
    GPS_Collection
    TDR_Collection
    AXY_Collection
+   GPS_TDR_Collection

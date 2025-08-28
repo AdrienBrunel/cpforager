@@ -25,6 +25,7 @@ colonies = ["PER_PSC_PSC", "PER_PSC_PSC", "BRA_FDN_MEI", "BRA_FDN_MEI", "BRA_SAN
 # get parameters dictionaries
 plot_params = parameters.get_plot_params()
 
+
 # ======================================================= #
 # BUILD GPS_COLLECTION OBJECT
 # ======================================================= #
@@ -60,7 +61,7 @@ for (fieldwork, colony) in zip(fieldworks, colonies):
         # build GPS object
         gps = GPS(df=df, group=fieldwork, id=file_id, params=params)
 
-        # append gps to the overall gps list
+        # append gps to the overall collection
         gps_collection.append(gps)
 
 # build GPS_Collection object
