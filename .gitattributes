@@ -2,5 +2,4 @@
 cpforager/** linguist-detectable
 data/** linguist-vendored
 docs/** linguist-vendored
-sphinx-doc/** linguist-vendored
 tests/** linguist-vendored
