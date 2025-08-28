@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="sphinx-doc/_static/images/logo_cpforager_text_color.png" alt="cpforager text logo with colors" width="600">
+  <img src="docs/_static/images/logo_cpforager_text_color.png" alt="cpforager text logo with colors" width="600">
 </h1><br>
 
 <div align="center">
@@ -36,7 +36,7 @@ Each class automatically enhances raw data but also computes key features specif
 <br>
 
 <div align="center">
-  <img src="sphinx-doc/_static/images/logo_cpforager_color.png" alt="cpforager logo with colors" width="200">
+  <img src="docs/_static/images/logo_cpforager_color.png" alt="cpforager logo with colors" width="200">
 </div>
 
 <br>
