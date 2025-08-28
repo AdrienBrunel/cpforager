@@ -60,7 +60,7 @@ for k in range(n_files):
     # append axy to the overall collections
     axy_collection.append(axy)
 
-# plot data summary
+# build AXY_Collection object
 axy_collection = AXY_Collection(axy_collection)
 
 # test built-in methods

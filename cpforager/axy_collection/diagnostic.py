@@ -95,7 +95,7 @@ def maps_diagnostic(self, fig_dir, file_id, plot_params):
     gps_collection = self.gps_collection
     
     # plot using GPS_Collection method
-    fig = gps_collection.maps_diagnostic(fig_dir, file_id, plot_params)
+    fig = gps_collection.maps_diag(fig_dir, file_id, plot_params)
     
     return(fig)
     
@@ -165,7 +165,7 @@ def indiv_depth_all(self, fig_dir, file_id, plot_params):
 # ======================================================= #
 # AXY FOLIUM MAPS [AXY_COLLECTION METHOD]
 # ======================================================= #
-def folium_map(self, fig_dir, file_id):
+def folium_map(self, fig_dir, file_id, plot_params):
     
     """    
     Produce the html map with every AXY data colored randomly.
@@ -176,6 +176,8 @@ def folium_map(self, fig_dir, file_id):
     :type fig_dir: str
     :param file_id: name of the saved figure.
     :type file_id: str
+    :param plot_params: plot parameters dictionary. 
+    :type plot_params: dict
     :return: the folium map.
     :rtype: folium.Map
     
@@ -186,6 +188,6 @@ def folium_map(self, fig_dir, file_id):
     gps_collection = self.gps_collection
    
     # plot using GPS_Collection method
-    fmap = gps_collection.folium_map(fig_dir, file_id)
+    fmap = gps_collection.folium_map(fig_dir, file_id, plot_params)
 
     return(fmap)
