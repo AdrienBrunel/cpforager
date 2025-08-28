@@ -131,10 +131,16 @@
 <dd class="field-odd"><p>pandas.DataFrame</p>
 </dd>
 </dl>
-<p>Fitlered accelerations are computed as the rolling average of the dynamical acceleration over a given time window.</p>
+<dl class="simple">
+<dt>Accelerations can be filtered using :</dt><dd><ul class="simple">
+<li><p>a rolling average of the dynamical acceleration over a given time window.</p></li>
+<li><p>a Butterworth high-pass filter.</p></li>
+</ul>
+</dd>
+</dl>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The required fields in the parameters dictionary are <code class="docutils literal notranslate"><span class="pre">acc_time_window</span></code>.</p>
+<p>The required fields in the parameters dictionary are <code class="docutils literal notranslate"><span class="pre">filter_type</span></code> and according to this value, either <code class="docutils literal notranslate"><span class="pre">acc_time_window</span></code> for rolling average or <code class="docutils literal notranslate"><span class="pre">cutoff_f</span></code> and <code class="docutils literal notranslate"><span class="pre">order</span></code> for high-pass filtering.</p>
 </div>
 </dd></dl>
 
