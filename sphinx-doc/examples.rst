@@ -59,6 +59,11 @@ TDR_Collection
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. literalinclude::  _static/examples/demo_tdr_collection.py
 
+.. only:: html
+
+.. image:: _static/examples/indiv_depth_all.png
+   :align: center
+
 AXY_Collection
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. literalinclude::  _static/examples/demo_axy_collection.py

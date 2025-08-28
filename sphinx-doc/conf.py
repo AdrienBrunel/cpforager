@@ -17,7 +17,8 @@ language = "en"
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 templates_path = ["_templates"]
 exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
-html_static_path = ["_static"]
+html_static_path = ["_static"] 
+max_line_length = 120
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output

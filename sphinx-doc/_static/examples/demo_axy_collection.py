@@ -3,7 +3,7 @@
 # ======================================================= #
 import os
 import pandas as pd
-from cpforager import parameters, utils, misc, GPS, GPS_Collection
+from cpforager import parameters, utils, misc, AXY, AXY_Collection
 
 
 # ======================================================= #
@@ -11,7 +11,7 @@ from cpforager import parameters, utils, misc, GPS, GPS_Collection
 # ======================================================= #
 root_dir = os.getcwd()
 data_dir = os.path.join(root_dir, "data")
-test_dir = os.path.join(root_dir, "tests")
+test_dir = os.path.join(root_dir, "tests", "axy_collection")
 
 
 # ======================================================= #
@@ -19,49 +19,45 @@ test_dir = os.path.join(root_dir, "tests")
 # ======================================================= #
 
 # set metadata
-fieldworks = ["PER_PSC_2012_11", "PER_PSC_2013_11", "BRA_FDN_2016_09", "BRA_FDN_2018_09", "BRA_SAN_2022_03"]
-colonies = ["PER_PSC_PSC", "PER_PSC_PSC", "BRA_FDN_MEI", "BRA_FDN_MEI", "BRA_SAN_FRA"]
+fieldwork = "BRA_FDN_2022_04"
+colony = "BRA_FDN_MEI"
 
-# get parameters dictionaries
+# set parameters dictionaries
 plot_params = parameters.get_plot_params()
+params = parameters.get_params(colony)
+
 
 # ======================================================= #
-# BUILD GPS_COLLECTION OBJECT
+# TEST AXY_COLLECTION CLASS
 # ======================================================= #
 
-# loop over fieldworks
-gps_collection = []
-for (fieldwork, colony) in zip(fieldworks, colonies):
+# list of files to process
+files = misc.grep_pattern(os.listdir(os.path.join(data_dir, fieldwork)), "_GPS_AXY_")
+n_files = len(files)
 
-    # determine list of gps files
-    files = misc.grep_pattern(os.listdir(os.path.join(data_dir, fieldwork)), "_GPS_IGU")
-    n_files = len(files)
+# loop over files in directory
+axy_collection = []
+for k in range(n_files):
 
-    # get structure of parameters according to colony code
-    params = parameters.get_params(colony)
+    # set file infos
+    file_name = files[k]
+    file_id = file_name.replace(".csv", "")
+    file_path = os.path.join(data_dir, fieldwork, file_name)
 
-    # loop over gps files
-    for k in range(n_files):
+    # load raw data
+    df = pd.read_csv(file_path, sep=",")
 
-        # set file infos
-        file_name = files[k]
-        file_id = file_name.replace(".csv", "")
-        file_path = os.path.join(data_dir, fieldwork, file_name)
+    # produce "datetime" column of type datetime64
+    df["datetime"] = pd.to_datetime(df["date"] + " " + df["time"], format="mixed", dayfirst=False)
 
-        # load raw data
-        df = pd.read_csv(file_path, sep=",")
+    # if time is at UTC, convert it to local datetime
+    if "_UTC" in file_name: df = utils.convert_utc_to_loc(df, params.get("local_tz"))
 
-        # produce "datetime" column of type datetime64
-        df["datetime"] = pd.to_datetime(df["date"] + " " + df["time"], format="mixed", dayfirst=False)
+    # build AXY object
+    axy = AXY(df=df, group=fieldwork, id=file_id, params=params)
 
-        # if time is at UTC, convert it to local datetime
-        if "_UTC" in file_name: df = utils.convert_utc_to_loc(df, params.get("local_tz"))
+    # append axy to the overall collection
+    axy_collection.append(axy)
 
-        # build GPS object
-        gps = GPS(df=df, group=fieldwork, id=file_id, params=params)
-
-        # append gps to the overall gps list
-        gps_collection.append(gps)
-
-# build GPS_Collection object
-gps_collection = GPS_Collection(gps_collection)
+# build AXY_Collection object
+axy_collection = AXY_Collection(axy_collection)
