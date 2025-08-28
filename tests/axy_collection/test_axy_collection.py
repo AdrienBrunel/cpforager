@@ -57,7 +57,7 @@ for k in range(n_files):
     # build AXY object
     axy = AXY(df=df, group=fieldwork, id=file_id, params=params)
 
-    # append axy to the overall collections
+    # append axy to the overall collection
     axy_collection.append(axy)
 
 # build AXY_Collection object

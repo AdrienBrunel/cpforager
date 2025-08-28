@@ -65,7 +65,7 @@ for (fieldwork, colony) in zip(fieldworks, colonies):
         # build GPS object
         gps = GPS(df=df, group=fieldwork, id=file_id, params=params)
 
-        # append gps to the overall collections
+        # append gps to the overall collection
         gps_collection.append(gps)
         gps_collection_all.append(gps)
 
