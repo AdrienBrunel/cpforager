@@ -18,15 +18,13 @@ class GPS_TDR:
     """
 
     # [CONSTRUCTOR] GPS_TDR
-    def __init__(self, df_gps, df_tdr, group, id, params):
+    def __init__(self, df, group, id, params):
         
         """
         Constructor of a GPS_TDR object.
         
-        :param df_gps: the dataframe containing ``datetime``, ``longitude`` and ``latitude`` columns. Type of ``datetime`` column must be datetime64.
-        :type df_gps: pandas.DataFrame
-        :param df_tdr: the dataframe containing ``datetime``, ``pressure`` and ``temperature`` columns. Type of ``datetime`` column must be datetime64.
-        :type df_tdr: pandas.DataFrame
+        :param df: the dataframe containing ``datetime``, ``longitude``, ``latitude``, ``pressure`` and ``temperature`` columns. Type of ``datetime`` column must be datetime64.
+        :type df: pandas.DataFrame
         :param group: the string representing the group to which the GPS data belongs (*e.g.* species, year, fieldwork, *etc*.) useful for statistics and filtering.
         :type group: str
         :param id: the string representing the unique identifier of the central-place foraging seabird.
@@ -62,14 +60,14 @@ class GPS_TDR:
         :vartype total_duration: float   
         """
         
+        # process data
+        df, df_gps, df_tdr = processing.add_gps_tdr_data(df, params)
+        
         # build GPS object
         gps = GPS(df_gps, group, id, params)
         
         # build TDR object
         tdr = TDR(df_tdr, group, id, params)
-        
-        # merge GPS and TDR data (or take finest resolution and interpolate ?)
-        df = pd.merge_ordered(df_gps, df_tdr, "datetime")
 
         # compute additional information
         basic_infos = processing.compute_basic_infos(df)
