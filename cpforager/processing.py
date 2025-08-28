@@ -6,6 +6,8 @@ import pandas as pd
 from cpforager import utils, constants, check, parameters
 from suntime import Sun
 import pytz
+from scipy.signal import butter, filtfilt
+
     
 
 # ================================================================================================ #
@@ -590,26 +592,50 @@ def add_filtered_acc(df, params):
     Fitlered accelerations are computed as the rolling average of the dynamical acceleration over a given time window. 
     
     .. note::
-        The required fields in the parameters dictionary are ``acc_time_window``. 
+        The required fields in the parameters dictionary are ``filter_type`` and either ``acc_time_window`` for rolling average filtering or ``cutoff_f`` for high_pass filtering". 
     """
     
-    # get parameters
-    time_window = params.get("acc_time_window")
-    
-    # determine window size in number of steps
+    filter_type = params.get("filter_type")
     resolution = df["step_time"].median()
-    window = int(time_window/resolution)
     
-    # compute filtered acceleration as the rolling average over a time window in seconds
-    df["ax_f"] = df["ax"] - df["ax"].rolling(window=window, center=True, min_periods=1).mean()
-    df["ay_f"] = df["ay"] - df["ay"].rolling(window=window, center=True, min_periods=1).mean()
-    df["az_f"] = df["az"] - df["az"].rolling(window=window, center=True, min_periods=1).mean()
-    
+    # rolling average filtering 
+    if filter_type == "rolling_avg" : 
+        # get parameters
+        time_window = params.get("acc_time_window")
+        
+        # determine window size in number of steps
+        window = int(time_window/resolution)
+        
+        # compute filtered acceleration as the rolling average over a time window in seconds
+        df["ax_f"] = df["ax"] - df["ax"].rolling(window=window, center=True, min_periods=1).mean()
+        df["ay_f"] = df["ay"] - df["ay"].rolling(window=window, center=True, min_periods=1).mean()
+        df["az_f"] = df["az"] - df["az"].rolling(window=window, center=True, min_periods=1).mean()
+        
+    # Butterworth high-pass filtering 
+    elif filter_type == "high_pass" :
+        # get parameters
+        cutoff = params.get("cutoff_f")
+        
+        # filter parameters 
+        fs = 1/resolution
+        nyquist = 0.5*fs
+        normal_cutoff = cutoff/nyquist
+        order = 4    
+        b, a = butter(order, normal_cutoff, btype='high', analog=False)
+
+        # compute filtered acceleration by applying the filter
+        df["ax_f"] = filtfilt(b, a, df["ax"].values)
+        df["ay_f"] = filtfilt(b, a, df["ay"].values)
+        df["az_f"] = filtfilt(b, a, df["az"].values)
+        
+    else:
+        raise NotImplementedError(f"Filter type '{filter_type}' is not implemented.")
+        
     # reformat colum
     df["ax_f"] = df["ax_f"].round(3)
     df["ay_f"] = df["ay_f"].round(3)
-    df["az_f"] = df["az_f"].round(3)
-
+    df["az_f"] = df["az_f"].round(3) 
+    
     return(df)
 
 
