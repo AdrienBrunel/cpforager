@@ -43,8 +43,11 @@ def get_params(colony):
         ``trip_min_steps``, "length in km below which a trip is valid", "GPS"
         ``diving_depth_threshold``, "depth threshold above which a seabird is considered to be diving", "TDR"
         ``dive_min_duration``, "minimum duration in seconds of a dive", "TDR"
-        ``acc_time_window``, "duration in seconds of the rolling window used for filtering dynamic acceleration", "AXY"
         ``odba_p_norm``, "p-norm used for the computation of overall dyanmical body acceleration", "AXY"
+        ``filter_type``, "choose type of filter for accelerations measures among (rolling average or high-pass) ", "AXY"
+        ``acc_time_window``, "duration in seconds of the rolling window used for filtering dynamic acceleration", "AXY"
+        ``cutoff_f``, "cutoff frequency in Hz for the Butterworth high-pass filter", "AXY"
+        ``order``, "order of the Butterworth high-pass filter", "AXY"
     """        
     
     # colony parameters 
@@ -110,13 +113,19 @@ def get_params(colony):
     params_dives = {"diving_depth_threshold" : -1.0, "dive_min_duration" : 2.0}
     
     # acceleration filtering parameters    
-    # filter_type "rolling_avg" or "high_pass" or raises NotImplementedError 
-    params_acc = {"filter_type" : "rolling_avg", 
-                  "acc_time_window" : 2.0, 
-                  "cutoff_f" : 0.8, 
-                  "odba_p_norm" : 1} 
-    # easier like that than with a if structure where filter type needs to be a get_params argument
+    params_acc = {"filter_type" : "rolling_avg",
+                  "odba_p_norm" : 1}
     
+    # if rolling average filtering
+    if params_acc["filter_type"] == "rolling_avg":
+        params_acc_f = {"acc_time_window" : 2.0}
+        
+    # if high-pass filtering
+    if params_acc["filter_type"] == "high_pass":
+        params_acc_f = {"cutoff_f" : 0.8,
+                        "order" : 4}
+    params_acc.update(params_acc_f)
+        
     # append dictionaries
     params = {}
     params.update(params_colony)
@@ -145,7 +154,6 @@ def get_columns_dtypes(column_names):
     The dtypes must be compatible with a dataframe containing NaN, *i.e* `Int64` and `Float64` instead of `int64` and `float64`. The full dictionary among which to
     extract the dictionary is hard-coded.
     """
-    
     
     # define the dictionaries of types by columns
     dtypes_columns_metadata = {"group":"str", "id":"str"}
