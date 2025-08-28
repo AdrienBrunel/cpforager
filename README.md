@@ -29,6 +29,7 @@ The main objectives of **cpforager** are :
 * `GPS_Collection` : for working with datasets composed of multiple GPS loggers.
 * `TDR_Collection` : for working with datasets composed of multiple TDR loggers.
 * `AXY_Collection` : for working with datasets composed of multiple AXY loggers.
+* `GPS_TDR_Collection` : for working with datasets composed of multiple GPS_TDR loggers.
 
 Each class automatically enhances raw data but also computes key features specific to each biologger (*e.g.* trip segmentation for GPS, dive segmentation for TDR, ODBA calculation for AXY). They are also accompanied with methods for data processing and visualisation.
 
@@ -42,9 +43,9 @@ Each class automatically enhances raw data but also computes key features specif
 
 # Installation
 
-1. Clone this repository on your local machine :
+1. Fork this repository and then clone it on your local machine :
 ```bash
-git clone https://github.com/AdrienBrunel/seabird-movement-cpf
+git clone https://github.com/AdrienBrunel/seabird-movement-cpf.git
 ```
 
 2. Create a conda environment using the [environment.yml](environment.yml) file :
@@ -66,7 +67,7 @@ The documentation of **cpforager** is automatically generated using [Sphinx](htt
 
 # User guide 
 
-The Python scripts in the [/tests/](./tests/) folder illustrate how the `GPS`, `TDR`, `AXY`, `GPS_TDR`, `GPS_Collection`, `TDR_Collection` and `AXY_Collection` classes can be used to fully benefit the users. Results of the scripts are also found in the [/tests/](./tests/) folder. For more details, you can browse the package [documentation](https://adrienbrunel.github.io/seabird-movement-cpf/).
+The Python scripts in the [/tests/](./tests/) folder illustrate how the `GPS`, `TDR`, `AXY`, `GPS_TDR`, `GPS_Collection`, `TDR_Collection`, `AXY_Collection` and `GPS_TDR_Collection` classes can be used to fully benefit the users. Results of the scripts are also found in the [/tests/](./tests/) folder. For more details, you can browse the package [documentation](https://adrienbrunel.github.io/seabird-movement-cpf/).
 
 <br>
 
@@ -80,13 +81,12 @@ The Python scripts in the [/tests/](./tests/) folder illustrate how the `GPS`, `
 - [ ] improve folium map of `GPS_Collection`.
 - [ ] use new dtypes dictionary for Collection classes.
 - [ ] add a function `GPS_TDR = merge_gps_tdr(GPS, TDR)` that will merge TDR data within GPS data and produce the resulting dataframe.
-- [ ] add Butterworth filter for `AXY`.
-- [ ] add parameters in `parameters.py` to be able to choose between rolling average and Butterworth filter for `AXY`.
-- [ ] hmmlearn for a 3-state estimation (foraging, traveling, resting).
+- [x] add Butterworth filter for `AXY`.
+- [x] add parameters in `parameters.py` to be able to choose between rolling average and Butterworth filter for `AXY`.
+- [ ] hmmlearn for a state estimation of seabird behaviour.
 - [ ] create first Github release / version 1.0. 
 - [ ] build Python package [Python package building](https://packaging.python.org/en/latest/tutorials/packaging-projects/).
 - [ ] draft for [Applications](https://besjournals.onlinelibrary.wiley.com/hub/journal/2041210X/features/applicationpapers) in *Methods in Ecology and Evolution*.
-- [ ] modif test test.
 
 <br>
 
