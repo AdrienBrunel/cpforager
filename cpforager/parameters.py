@@ -110,7 +110,12 @@ def get_params(colony):
     params_dives = {"diving_depth_threshold" : -1.0, "dive_min_duration" : 2.0}
     
     # acceleration filtering parameters    
-    params_acc = {"acc_time_window" : 2.0, "odba_p_norm" : 1}
+    # filter_type "rolling_avg" or "high_pass" or raises NotImplementedError 
+    params_acc = {"filter_type" : "rolling_avg", 
+                  "acc_time_window" : 2.0, 
+                  "cutoff_f" : 0.8, 
+                  "odba_p_norm" : 1} 
+    # easier like that than with a if structure where filter type needs to be a get_params argument
     
     # append dictionaries
     params = {}
