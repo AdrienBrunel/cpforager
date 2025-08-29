@@ -37,7 +37,6 @@ def full_diagnostic(self, fig_dir, file_id, plot_params):
     start_datetime = self.start_datetime
     end_datetime = self.end_datetime
     gps_resolution = self.gps.resolution
-    frequency = self.frequency
     total_duration = self.total_duration
     df_tdr = self.df_tdr
     df_gps = self.df_gps
@@ -71,7 +70,6 @@ def full_diagnostic(self, fig_dir, file_id, plot_params):
     infos.append("Number of TDR measures = %d" % n_df_tdr)
     infos.append("Start date = %s | End date = %s" % (start_datetime.strftime("%Y-%m-%d"), end_datetime.strftime("%Y-%m-%d")))
     infos.append("GPS time resolution = %.1f s" % gps_resolution)
-    infos.append("GPS_TDR frequency = %.1f Hz" % frequency)
     infos.append("Total duration = %.2f days" % total_duration)
     infos.append("Total length = %.1f km" % total_length)
     infos.append("Maximum distance to nest = %.1f km" % dmax)
@@ -173,15 +171,15 @@ def full_diagnostic(self, fig_dir, file_id, plot_params):
     diagnostic.plot_infos(infos, plot_params)
         
     # pressure
-    ax = fig.add_subplot(gs[5,0])
+    ax = fig.add_subplot(gs[4,0])
     diagnostic.plot_ts(ax, df_tdr, plot_params, "pressure", "%d Dives" % n_dives, "Pressure [hPa]", eph_cond=(df_tdr["dive"]>0))
         
     # depth
-    ax = fig.add_subplot(gs[5,1:3])
+    ax = fig.add_subplot(gs[4,1:3])
     diagnostic.plot_ts(ax, df_tdr, plot_params, "depth", "%d Dives" % n_dives, "Depth [m]", hline=diving_depth_threshold, eph_cond=(df_tdr["dive"]>0))
     
     # temperature
-    ax = fig.add_subplot(gs[5,3:5])
+    ax = fig.add_subplot(gs[4,3:5])
     diagnostic.plot_ts(ax, df_tdr, plot_params, "temperature", "Temperature", "Temperature [°C]", hline=mean_temperature)
     
     # save figure
@@ -249,15 +247,20 @@ def folium_map(self, fig_dir, file_id, plot_params):
         Producing the figure may take some time and the resulting html may be heavy.
     """
     
+    # get attributes
+    df_gps = self.df_gps
+    params = self.params
+    id = self.id
+    
     # define color palettes
     discrete_color_palettes = {"trip":plot_params.get("cols_1"), "n_dives":plot_params.get("cols_1")}
     continuous_color_palettes = {"step_speed":plot_params.get("cols_2"), "duration":plot_params.get("cols_2"), 
                                  "pressure":plot_params.get("cols_2")}
 
     # produce beautiful map
-    self.df_gps["duration"] = (self.df_gps["datetime"]-self.df_gps["datetime"].min()).dt.total_seconds()/3600
-    fmap = diagnostic.plot_folium_map_multiple_colorgrad(self.df_gps, self.params, self.id, self.group, discrete_color_palettes, continuous_color_palettes, 0.99)
-    del self.df_gps["duration"]
+    df_gps["duration"] = (df_gps["datetime"]-df_gps["datetime"].min()).dt.total_seconds()/3600
+    fmap = diagnostic.plot_folium_map_multiple_colorgrad(df_gps, params, id, discrete_color_palettes, continuous_color_palettes, 0.99)
+    del df_gps["duration"]
     
     # save figure
     fig_path = os.path.join(fig_dir, "%s.html" % file_id)
