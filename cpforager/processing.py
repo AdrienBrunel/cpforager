@@ -1019,6 +1019,75 @@ def add_axy_data(df, params):
 
 
 # ================================================================================================ #
+# GPS_TDR DATA
+# ================================================================================================ #
+def add_gps_tdr_data(df, params):
+    
+    """    
+    Enhance the dataframe with the additional gps_tdr data.
+    
+    :param df: dataframe with a ``datetime``, ``longitude``, ``latitude``, ``pressure`` and ``temperature`` columns.
+    :type df: pandas.DataFrame
+    :param params: parameters dictionary. 
+    :type params: dict
+    :return: the dataframe enhanced with the additional gps_tdr data.
+    :rtype: pandas.DataFrame
+    """
+    
+    # compute basic data
+    df = add_basic_data(df, params)
+        
+    # extract data at gps resolution and add processed gps data
+    gps_resolution = (df["longitude"].notna()) & (df["latitude"].notna())
+    gps_indices = df.loc[gps_resolution].index
+    df_gps_tmp = df.loc[gps_resolution, ["datetime", "longitude", "latitude"]].reset_index(drop=True)
+    df_gps_tmp = add_gps_data(df_gps_tmp, params, clean=False)
+    
+    # extract data at tdr resolution and add processed tdr data
+    tdr_resolution = (df["pressure"].notna()) & (df["temperature"].notna())
+    tdr_indices = df.loc[tdr_resolution].index
+    df_tdr = df.loc[tdr_resolution, ["datetime", "pressure", "temperature"]].reset_index(drop=True)
+    df_tdr = add_tdr_data(df_tdr, params)
+    
+    # init dataframe full of NaNs and set data type according to dictionary
+    gps_columns = ["step_length", "step_speed", "step_turning_angle", "step_heading", "step_heading_to_colony", "is_suspicious", "dist_to_nest", "trip"]
+    tdr_columns = ["depth", "dive"]
+    data_columns = gps_columns + tdr_columns
+    columns_dtypes_dict = parameters.get_columns_dtypes(data_columns)
+    for data_column in data_columns:
+        df[data_column] = pd.Series([pd.NA]*len(df), dtype=columns_dtypes_dict[data_column])
+            
+    # add gps data to the df at gps resolution
+    df.loc[gps_indices, gps_columns] = df_gps_tmp[gps_columns].values
+    
+    # add tdr data to the df at tdr resolution
+    df.loc[tdr_indices, tdr_columns] = df_tdr[tdr_columns].values
+        
+    # produce df_gps by processing (sum, mean, max) data between two gps measures
+    cols_funcs = {"step_time":"sum", "pressure":"max", "depth":"max", 
+                  "dive":"max", "temperature":"mean", "dive":"len_unique_pos"}
+    df = utils.apply_functions_between_samples(df, gps_resolution, cols_funcs, verbose=True)
+    
+    # process gps data
+    df_gps = df.loc[gps_resolution].reset_index(drop=True)
+    df_gps = df_gps.drop(["step_time", "dive", "pressure", "depth", "temperature"], axis=1)
+    df_gps = df_gps.rename(columns={"step_time_sum":"step_time", 
+                                    "dive_max":"dive", "dive_len_unique_pos":"n_dives",
+                                    "pressure_max":"pressure", "depth_max":"depth", "temperature_mean":"temperature"})
+    df_gps["trip"] = df_gps["trip"].astype(int)
+    df_gps["is_suspicious"] = df_gps["is_suspicious"].astype(int)
+        
+    # process tdr data
+    df_tdr["dive"] = df_tdr["dive"].astype(int)
+
+    # rearrange full dataframe
+    df = df[np.concatenate((["date", "time", "longitude", "latitude", "pressure", "temperature",
+                             "datetime", "step_time", "is_night"], gps_columns, tdr_columns))]
+        
+    return(df, df_gps, df_tdr)
+
+
+# ================================================================================================ #
 # BASIC INFOS
 # ================================================================================================ #
 def compute_basic_infos(df):
