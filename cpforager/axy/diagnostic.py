@@ -32,9 +32,6 @@ def full_diagnostic(self, fig_dir, file_id, plot_params, fast=False):
     
     .. warning::
         Calling this method may takes some if data is heavy.
-        
-    .. todo::
-        Add a boolean argument ``fast`` that plot only 10% of the heavy accelerometry data to allow fast plot generation.
     """
     
     # get attributes
