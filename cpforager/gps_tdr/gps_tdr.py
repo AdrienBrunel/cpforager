@@ -1,9 +1,8 @@
 # ======================================================= #
 # LIBRARIES
 # ======================================================= #
-import pandas as pd
 from cpforager import processing
-from cpforager.gps_tdr import display
+from cpforager.gps_tdr import display, diagnostic
 from cpforager.gps.gps import GPS
 from cpforager.tdr.tdr import TDR
 
@@ -105,7 +104,7 @@ class GPS_TDR:
     # [METHODS] display the summary of the data
     display_data_summary = display.display_data_summary
 
-    # # [METHODS] plot data
-    # full_diag = diagnostic.full_diagnostic
-    # maps_diag = diagnostic.maps_diagnostic
-    # folium_map = diagnostic.folium_map
+    # [METHODS] plot data
+    full_diag = diagnostic.full_diagnostic
+    maps_diag = diagnostic.maps_diagnostic
+    folium_map = diagnostic.folium_map
