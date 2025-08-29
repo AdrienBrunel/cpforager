@@ -28,7 +28,7 @@ params = parameters.get_params(colony)
 
 
 # ======================================================= #
-# TEST AXY_COLLECTION CLASS
+# BUILD AXY_COLLECTION OBJECT
 # ======================================================= #
 
 # list of files to process

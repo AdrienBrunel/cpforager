@@ -27,7 +27,7 @@ plot_params = parameters.get_plot_params()
 
 
 # ======================================================= #
-# TEST TDR_COLLECTION CLASS
+# BUILD TDR_COLLECTION OBJECT
 # ======================================================= #
 
 # loop over fieldworks

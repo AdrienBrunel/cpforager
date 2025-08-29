@@ -108,7 +108,7 @@
 <span class="c1"># ======================================================= #</span>
 <span class="n">root_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
 <span class="n">data_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">)</span>
-<span class="n">test_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;tests&quot;</span><span class="p">)</span>
+<span class="n">test_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;tests&quot;</span><span class="p">,</span> <span class="s2">&quot;gps&quot;</span><span class="p">)</span>
 
 
 <span class="c1"># ======================================================= #</span>
@@ -162,7 +162,7 @@
 <span class="c1"># ======================================================= #</span>
 <span class="n">root_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
 <span class="n">data_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">)</span>
-<span class="n">test_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;tests&quot;</span><span class="p">)</span>
+<span class="n">test_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;tests&quot;</span><span class="p">,</span> <span class="s2">&quot;tdr&quot;</span><span class="p">)</span>
 
 
 <span class="c1"># ======================================================= #</span>
@@ -215,7 +215,7 @@
 <span class="c1"># ======================================================= #</span>
 <span class="n">root_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
 <span class="n">data_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">)</span>
-<span class="n">test_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;tests&quot;</span><span class="p">)</span>
+<span class="n">test_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;tests&quot;</span><span class="p">,</span> <span class="s2">&quot;axy&quot;</span><span class="p">)</span>
 
 
 <span class="c1"># ======================================================= #</span>
@@ -256,7 +256,70 @@
 </section>
 <section id="gps-tdr">
 <h2><span class="section-number">8.4. </span>GPS_TDR<a class="headerlink" href="#gps-tdr" title="Link to this heading"></a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ======================================================= #</span>
+<span class="c1"># LIBRARIES</span>
+<span class="c1"># ======================================================= #</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cpforager</span><span class="w"> </span><span class="kn">import</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">utils</span><span class="p">,</span> <span class="n">GPS_TDR</span>
+
+
+<span class="c1"># ======================================================= #</span>
+<span class="c1"># DIRECTORIES</span>
+<span class="c1"># ======================================================= #</span>
+<span class="n">root_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+<span class="n">data_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">)</span>
+<span class="n">test_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;tests&quot;</span><span class="p">,</span> <span class="s2">&quot;gps_tdr&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># ======================================================= #</span>
+<span class="c1"># PARAMETERS</span>
+<span class="c1"># ======================================================= #</span>
+
+<span class="c1"># set metadata</span>
+<span class="n">fieldwork</span> <span class="o">=</span> <span class="s2">&quot;PER_PSC_2008_11&quot;</span>
+<span class="n">colony</span> <span class="o">=</span> <span class="s2">&quot;PER_PSC_PSC&quot;</span>
+<span class="n">gps_file_name</span> <span class="o">=</span> <span class="s2">&quot;PER_PSC_PSC_2008-11-25_LBOU_56_5056_M_GPS_EO_129_UTC.csv&quot;</span>
+<span class="n">tdr_file_name</span> <span class="o">=</span> <span class="s2">&quot;PER_PSC_PSC_2008-11-25_LBOU_56_5056_M_TDR_G5_3069_UTC.csv&quot;</span>
+<span class="n">file_id</span> <span class="o">=</span> <span class="s2">&quot;PER_PSC_PSC_2008-11-25_LBOU_56_5056_M_GPSxTDR&quot;</span>
+
+<span class="c1"># set parameters dictionaries</span>
+<span class="n">params</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">get_params</span><span class="p">(</span><span class="n">colony</span><span class="p">)</span>
+<span class="n">plot_params</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">get_plot_params</span><span class="p">()</span>
+
+
+<span class="c1"># ======================================================= #</span>
+<span class="c1"># BUILD GPS_TDR OBJECT</span>
+<span class="c1"># ======================================================= #</span>
+
+<span class="c1"># set file infos</span>
+<span class="n">gps_file_id</span> <span class="o">=</span> <span class="n">gps_file_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="n">gps_file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="n">fieldwork</span><span class="p">,</span> <span class="n">gps_file_name</span><span class="p">)</span>
+<span class="n">tdr_file_id</span> <span class="o">=</span> <span class="n">tdr_file_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="n">tdr_file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="n">fieldwork</span><span class="p">,</span> <span class="n">tdr_file_name</span><span class="p">)</span>
+
+<span class="c1"># load raw data</span>
+<span class="n">df_gps</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">gps_file_path</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+<span class="n">df_tdr</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">tdr_file_path</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+
+<span class="c1"># produce &quot;datetime&quot; column of type datetime64</span>
+<span class="n">df_gps</span><span class="p">[</span><span class="s2">&quot;datetime&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df_gps</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">df_gps</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;mixed&quot;</span><span class="p">,</span> <span class="n">dayfirst</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">df_tdr</span><span class="p">[</span><span class="s2">&quot;datetime&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df_tdr</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">df_tdr</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;mixed&quot;</span><span class="p">,</span> <span class="n">dayfirst</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># if sensor model is G5, convert dbar to hPa</span>
+<span class="k">if</span> <span class="s2">&quot;_TDR_G5_&quot;</span> <span class="ow">in</span> <span class="n">tdr_file_name</span><span class="p">:</span> <span class="n">df_tdr</span><span class="p">[</span><span class="s2">&quot;pressure&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span><span class="o">*</span><span class="n">df_tdr</span><span class="p">[</span><span class="s2">&quot;pressure&quot;</span><span class="p">]</span>
+
+<span class="c1"># if time is at UTC, convert it to local datetime</span>
+<span class="k">if</span> <span class="s2">&quot;_UTC&quot;</span> <span class="ow">in</span> <span class="n">gps_file_name</span><span class="p">:</span> <span class="n">df_gps</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">convert_utc_to_loc</span><span class="p">(</span><span class="n">df_gps</span><span class="p">,</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;local_tz&quot;</span><span class="p">))</span>
+<span class="k">if</span> <span class="s2">&quot;_UTC&quot;</span> <span class="ow">in</span> <span class="n">tdr_file_name</span><span class="p">:</span> <span class="n">df_tdr</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">convert_utc_to_loc</span><span class="p">(</span><span class="n">df_tdr</span><span class="p">,</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;local_tz&quot;</span><span class="p">))</span>
+
+<span class="c1"># merge TDR and GPS data on datetime colum</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge_ordered</span><span class="p">(</span><span class="n">df_gps</span><span class="p">,</span> <span class="n">df_tdr</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">&quot;datetime&quot;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;outer&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[[</span><span class="s2">&quot;date&quot;</span><span class="p">,</span> <span class="s2">&quot;time&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;date_y&quot;</span><span class="p">,</span> <span class="s2">&quot;time_y&quot;</span><span class="p">]]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;date&quot;</span><span class="p">,</span> <span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="s2">&quot;datetime&quot;</span><span class="p">,</span> <span class="s2">&quot;longitude&quot;</span><span class="p">,</span> <span class="s2">&quot;latitude&quot;</span><span class="p">,</span> <span class="s2">&quot;pressure&quot;</span><span class="p">,</span> <span class="s2">&quot;temperature&quot;</span><span class="p">]]</span>
+
+<span class="c1"># build GPS_TDR object (df must have &quot;datetime&quot;, &quot;longitude&quot;, &quot;latitude&quot;, &quot;pressure&quot; and &quot;temperature&quot; columns)</span>
+<span class="n">gps_tdr</span> <span class="o">=</span> <span class="n">GPS_TDR</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="n">fieldwork</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">file_id</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -275,7 +338,7 @@
 <span class="c1"># ======================================================= #</span>
 <span class="n">root_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
 <span class="n">data_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">)</span>
-<span class="n">test_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;tests&quot;</span><span class="p">)</span>
+<span class="n">test_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;tests&quot;</span><span class="p">,</span> <span class="s2">&quot;gps_collection&quot;</span><span class="p">)</span>
 
 
 <span class="c1"># ======================================================= #</span>
@@ -366,7 +429,7 @@
 
 
 <span class="c1"># ======================================================= #</span>
-<span class="c1"># TEST TDR_COLLECTION CLASS</span>
+<span class="c1"># BUILD TDR_COLLECTION OBJECT</span>
 <span class="c1"># ======================================================= #</span>
 
 <span class="c1"># loop over fieldworks</span>
@@ -444,7 +507,7 @@
 
 
 <span class="c1"># ======================================================= #</span>
-<span class="c1"># TEST AXY_COLLECTION CLASS</span>
+<span class="c1"># BUILD AXY_COLLECTION OBJECT</span>
 <span class="c1"># ======================================================= #</span>
 
 <span class="c1"># list of files to process</span>
@@ -482,7 +545,91 @@
 </section>
 <section id="gps-tdr-collection">
 <h2><span class="section-number">8.8. </span>GPS_TDR_Collection<a class="headerlink" href="#gps-tdr-collection" title="Link to this heading"></a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ======================================================= #</span>
+<span class="c1"># LIBRARIES</span>
+<span class="c1"># ======================================================= #</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cpforager</span><span class="w"> </span><span class="kn">import</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">utils</span><span class="p">,</span> <span class="n">misc</span><span class="p">,</span> <span class="n">GPS_TDR</span><span class="p">,</span> <span class="n">GPS_TDR_Collection</span>
+
+
+<span class="c1"># ======================================================= #</span>
+<span class="c1"># DIRECTORIES</span>
+<span class="c1"># ======================================================= #</span>
+<span class="n">root_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+<span class="n">data_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">)</span>
+<span class="n">test_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;tests&quot;</span><span class="p">,</span> <span class="s2">&quot;gps_tdr_collection&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># ======================================================= #</span>
+<span class="c1"># PARAMETERS</span>
+<span class="c1"># ======================================================= #</span>
+
+<span class="c1"># set metadata</span>
+<span class="n">fieldwork</span> <span class="o">=</span> <span class="s2">&quot;PER_PSC_2008_11&quot;</span>
+<span class="n">colony</span> <span class="o">=</span> <span class="s2">&quot;PER_PSC_PSC&quot;</span>
+
+<span class="c1"># list of bird ids (both in gps and tdr files)</span>
+<span class="n">bird_ids</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;_LBOU_55_&quot;</span><span class="p">,</span> <span class="s2">&quot;_LBOU_56_&quot;</span><span class="p">,</span> <span class="s2">&quot;_SVAR_06_&quot;</span><span class="p">,</span> <span class="s2">&quot;_SVAR_04_&quot;</span><span class="p">]</span>
+<span class="n">n_bird_ids</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">bird_ids</span><span class="p">)</span>
+
+
+<span class="c1"># set parameters dictionaries</span>
+<span class="n">params</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">get_params</span><span class="p">(</span><span class="n">colony</span><span class="p">)</span>
+<span class="n">plot_params</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">get_plot_params</span><span class="p">()</span>
+
+
+<span class="c1"># ======================================================= #</span>
+<span class="c1"># BUILD GPS_TDR_COLLECTION OBJECT</span>
+<span class="c1"># ======================================================= #</span>
+
+<span class="c1"># loop over bird ids</span>
+<span class="n">gps_tdr_collection</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_bird_ids</span><span class="p">):</span>
+    
+    <span class="c1"># get bird id</span>
+    <span class="n">bird_id</span> <span class="o">=</span> <span class="n">bird_ids</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+
+    <span class="c1"># get corresponding gps file name</span>
+    <span class="n">gps_file_name</span> <span class="o">=</span> <span class="n">misc</span><span class="o">.</span><span class="n">grep_pattern</span><span class="p">(</span><span class="n">misc</span><span class="o">.</span><span class="n">grep_pattern</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="n">fieldwork</span><span class="p">)),</span> <span class="s2">&quot;_GPS_&quot;</span><span class="p">),</span> <span class="n">bird_id</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    
+    <span class="c1"># get corresponding tdr file</span>
+    <span class="n">tdr_file_name</span> <span class="o">=</span> <span class="n">misc</span><span class="o">.</span><span class="n">grep_pattern</span><span class="p">(</span><span class="n">misc</span><span class="o">.</span><span class="n">grep_pattern</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="n">fieldwork</span><span class="p">)),</span> <span class="s2">&quot;_TDR_&quot;</span><span class="p">),</span> <span class="n">bird_id</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="c1"># set file infos</span>
+    <span class="n">gps_file_id</span> <span class="o">=</span> <span class="n">gps_file_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="n">gps_file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="n">fieldwork</span><span class="p">,</span> <span class="n">gps_file_name</span><span class="p">)</span>
+    <span class="n">tdr_file_id</span> <span class="o">=</span> <span class="n">tdr_file_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="n">tdr_file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="n">fieldwork</span><span class="p">,</span> <span class="n">tdr_file_name</span><span class="p">)</span>
+
+    <span class="c1"># load raw data</span>
+    <span class="n">df_gps</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">gps_file_path</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+    <span class="n">df_tdr</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">tdr_file_path</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+
+    <span class="c1"># produce &quot;datetime&quot; column of type datetime64</span>
+    <span class="n">df_gps</span><span class="p">[</span><span class="s2">&quot;datetime&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df_gps</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">df_gps</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;mixed&quot;</span><span class="p">,</span> <span class="n">dayfirst</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">df_tdr</span><span class="p">[</span><span class="s2">&quot;datetime&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df_tdr</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">df_tdr</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;mixed&quot;</span><span class="p">,</span> <span class="n">dayfirst</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="c1"># if sensor model is G5, convert dbar to hPa</span>
+    <span class="k">if</span> <span class="s2">&quot;_TDR_G5_&quot;</span> <span class="ow">in</span> <span class="n">tdr_file_name</span><span class="p">:</span> <span class="n">df_tdr</span><span class="p">[</span><span class="s2">&quot;pressure&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span><span class="o">*</span><span class="n">df_tdr</span><span class="p">[</span><span class="s2">&quot;pressure&quot;</span><span class="p">]</span>
+
+    <span class="c1"># if time is at UTC, convert it to local datetime</span>
+    <span class="k">if</span> <span class="s2">&quot;_UTC&quot;</span> <span class="ow">in</span> <span class="n">gps_file_name</span><span class="p">:</span> <span class="n">df_gps</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">convert_utc_to_loc</span><span class="p">(</span><span class="n">df_gps</span><span class="p">,</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;local_tz&quot;</span><span class="p">))</span>
+    <span class="k">if</span> <span class="s2">&quot;_UTC&quot;</span> <span class="ow">in</span> <span class="n">tdr_file_name</span><span class="p">:</span> <span class="n">df_tdr</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">convert_utc_to_loc</span><span class="p">(</span><span class="n">df_tdr</span><span class="p">,</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;local_tz&quot;</span><span class="p">))</span>
+
+    <span class="c1"># merge TDR and GPS data on datetime colum</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge_ordered</span><span class="p">(</span><span class="n">df_gps</span><span class="p">,</span> <span class="n">df_tdr</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">&quot;datetime&quot;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;outer&quot;</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;date&quot;</span><span class="p">,</span> <span class="s2">&quot;time&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;date_y&quot;</span><span class="p">,</span> <span class="s2">&quot;time_y&quot;</span><span class="p">]]</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;date&quot;</span><span class="p">,</span> <span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="s2">&quot;datetime&quot;</span><span class="p">,</span> <span class="s2">&quot;longitude&quot;</span><span class="p">,</span> <span class="s2">&quot;latitude&quot;</span><span class="p">,</span> <span class="s2">&quot;pressure&quot;</span><span class="p">,</span> <span class="s2">&quot;temperature&quot;</span><span class="p">]]</span>
+
+    <span class="c1"># build GPS_TDR object</span>
+    <span class="n">gps_tdr</span> <span class="o">=</span> <span class="n">GPS_TDR</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="n">fieldwork</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">bird_id</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+    
+    <span class="c1"># append gps_tdr to the overall collections</span>
+    <span class="n">gps_tdr_collection</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">gps_tdr</span><span class="p">)</span>
+
+<span class="c1"># build GPS_TDR_Collection object</span>
+<span class="n">gps_tdr_collection</span> <span class="o">=</span> <span class="n">GPS_TDR_Collection</span><span class="p">(</span><span class="n">gps_tdr_collection</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>

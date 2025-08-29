@@ -15,6 +15,9 @@
    
       ~GPS_TDR.__init__
       ~GPS_TDR.display_data_summary
+      ~GPS_TDR.folium_map
+      ~GPS_TDR.full_diag
+      ~GPS_TDR.maps_diag
    
    
 
