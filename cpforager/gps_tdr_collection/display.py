@@ -35,9 +35,9 @@ def display_data_summary(self, standalone=True):
     if standalone:
         print("# ============================== SUMMARY ============================== #")
         print("# ------------------------------ METADATA ----------------------------- #")
-        print("# + Nb of GPS_TDR   = %d" % self.n_gps_tdr)
-        print("# + Nb of trips = %d" % self.n_trips)
-        print("# + Groups      = %s" % groups_str)
+        print("# + Nb of GPS_TDR = %d" % self.n_gps_tdr)
+        print("# + Nb of trips   = %d" % self.n_trips)
+        print("# + Groups        = %s" % groups_str)
     gps_collection.display_data_summary(standalone=False)
     tdr_collection.display_data_summary(standalone=False)
     if standalone:

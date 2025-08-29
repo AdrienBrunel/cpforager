@@ -165,7 +165,7 @@ def indiv_depth_all(self, fig_dir, file_id, plot_params):
 # ======================================================= #
 # GPS_TDR FOLIUM MAPS [GPS_TDR_COLLECTION METHOD]
 # ======================================================= #
-def folium_map(self, fig_dir, file_id):
+def folium_map(self, fig_dir, file_id, plot_params, rand=False):
     
     """    
     Produce the html map with every GPS_TDR data colored randomly.
@@ -176,6 +176,10 @@ def folium_map(self, fig_dir, file_id):
     :type fig_dir: str
     :param file_id: name of the saved figure.
     :type file_id: str
+    :param plot_params: plot parameters dictionary. 
+    :type plot_params: dict
+    :param rand: True if colors should be random. 
+    :type rand: bool
     :return: the folium map.
     :rtype: folium.Map
     
@@ -186,6 +190,6 @@ def folium_map(self, fig_dir, file_id):
     gps_collection = self.gps_collection
    
     # plot using GPS_Collection method
-    fmap = gps_collection.folium_map(fig_dir, file_id)
+    fmap = gps_collection.folium_map(fig_dir, file_id, plot_params, rand)
 
     return(fmap)
