@@ -47,13 +47,17 @@ df_tdr = pd.read_csv(tdr_file_path, sep=",")
 df_gps["datetime"] = pd.to_datetime(df_gps["date"] + " " + df_gps["time"], format="mixed", dayfirst=False)
 df_tdr["datetime"] = pd.to_datetime(df_tdr["date"] + " " + df_tdr["time"], format="mixed", dayfirst=False)
 
+# if sensor model is G5, convert dbar to hPa
+if "_TDR_G5_" in tdr_file_name: df_tdr["pressure"] = 100*df_tdr["pressure"]
+
 # if time is at UTC, convert it to local datetime
 if "_UTC" in gps_file_name: df_gps = utils.convert_utc_to_loc(df_gps, params.get("local_tz"))
 if "_UTC" in tdr_file_name: df_tdr = utils.convert_utc_to_loc(df_tdr, params.get("local_tz"))
 
 # merge TDR and GPS data on datetime colum
 df = pd.merge_ordered(df_gps, df_tdr, on="datetime", how="outer")
-df = df[["datetime", "longitude", "latitude", "pressure", "temperature"]]
+df[["date", "time"]] = df[["date_y", "time_y"]]
+df = df[["date", "time", "datetime", "longitude", "latitude", "pressure", "temperature"]]
 
 # build GPS_TDR object
 file_id = "PER_PSC_PSC_2008-11-25_LBOU_56_5056_M_GPSxTDR"

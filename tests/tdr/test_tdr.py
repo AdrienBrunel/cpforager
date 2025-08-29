@@ -42,6 +42,9 @@ df = pd.read_csv(file_path, sep=",")
 # produce "datetime" column of type datetime64
 df["datetime"] = pd.to_datetime(df["date"] + " " + df["time"], format="mixed", dayfirst=False)
 
+# if sensor model is G5, convert dbar to hPa
+if "_TDR_G5_" in file_name: df["pressure"] = 100*df["pressure"]
+
 # if time is at UTC, convert it to local datetime
 if "_UTC" in file_name: df = utils.convert_utc_to_loc(df, params.get("local_tz"))
 
