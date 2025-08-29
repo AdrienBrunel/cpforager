@@ -294,15 +294,20 @@ def folium_map(self, fig_dir, file_id, plot_params):
         Producing the figure may take some time and the resulting html may be heavy.
     """
     
+    # get attributes
+    df_gps = self.df_gps
+    params = self.params
+    id = self.id
+    
     # define color palettes
     discrete_color_palettes = {"trip":plot_params.get("cols_1"), "n_dives":plot_params.get("cols_1")}
     continuous_color_palettes = {"step_speed":plot_params.get("cols_2"), "duration":plot_params.get("cols_2"), 
                                  "odba":plot_params.get("cols_2"), "pressure":plot_params.get("cols_2")}
 
     # produce beautiful map
-    self.df_gps["duration"] = (self.df_gps["datetime"]-self.df_gps["datetime"].min()).dt.total_seconds()/3600
-    fmap = diagnostic.plot_folium_map_multiple_colorgrad(self.df_gps, self.params, self.id, self.group, discrete_color_palettes, continuous_color_palettes, 0.99)
-    del self.df_gps["duration"]
+    df_gps["duration"] = (df_gps["datetime"]-df_gps["datetime"].min()).dt.total_seconds()/3600
+    fmap = diagnostic.plot_folium_map_multiple_colorgrad(df_gps, params, id, discrete_color_palettes, continuous_color_palettes, 0.99)
+    del df_gps["duration"]
     
     # save figure
     fig_path = os.path.join(fig_dir, "%s.html" % file_id)
