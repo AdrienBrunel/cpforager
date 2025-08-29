@@ -85,7 +85,7 @@ for (fieldwork, colony) in zip(fieldworks, colonies):
     # test plot_stats_summary, folium_map, maps_diag methods
     _ = tdr_collection.plot_stats_summary(test_dir, "dive_statistics_%s" % fieldwork, plot_params)
 
-# analysis of all data
+# build TDR_Collection object
 tdr_collection_all = TDR_Collection(tdr_collection_all)
 
 # test built-in methods
@@ -98,5 +98,5 @@ tdr_collection_all.display_data_summary()
 
 # test plot_stats_summary, folium_map, maps_diag methods
 _ = tdr_collection_all.plot_stats_summary(test_dir, "dive_statistics_all", plot_params)
-_ = tdr_collection_all.dive_statistics_all.to_csv("%s/dive_statistics_all.csv" % (test_dir), index=False, quoting=csv.QUOTE_NONNUMERIC)
+tdr_collection_all.dive_statistics_all.to_csv("%s/dive_statistics_all.csv" % (test_dir), index=False, quoting=csv.QUOTE_NONNUMERIC)
 _ = tdr_collection_all.indiv_depth_all(test_dir, "indiv_depth_all", plot_params)
