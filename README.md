@@ -75,15 +75,17 @@ The Python scripts in the [/tests/](./tests/) folder illustrate how the `GPS`, `
 - [ ] make classes' methods available in documentation.
 - [ ] uniformise types of arguments/attributes in function arguments and accordingly in documentation.
 - [ ] add a proper zero offset correction inside `TDR` class (according to the scientific consensus). See [scikit-diveMove](https://spluque.github.io/scikit-diveMove/modules/tdr.html#skdiveMove.TDR.read_netcdf).
-- [ ] complete and improve `GPS_TDR` class.
-- [ ] write `GPS_TDR` test script and demo. 
-- [ ] write `GPS_TDR_Collection` test script and demo. 
+- [x] complete and improve `GPS_TDR` class.
+- [x] write `GPS_TDR` test script and demo. 
+- [x] write `GPS_TDR_Collection` test script and demo. 
 - [ ] improve folium map of `GPS_Collection`.
+- [ ] uniformise comments in the code
+- [ ] avoid double warnings and prints to the console (especially in collections). 
+- [ ] add plot with emphasized dives for `GPS_TDR`.
 - [ ] use new dtypes dictionary for Collection classes.
-- [ ] add a function `GPS_TDR = merge_gps_tdr(GPS, TDR)` that will merge TDR data within GPS data and produce the resulting dataframe.
 - [x] add Butterworth filter for `AXY`.
 - [x] add parameters in `parameters.py` to be able to choose between rolling average and Butterworth filter for `AXY`.
-- [ ] hmmlearn for a state estimation of seabird behaviour.
+- [ ] hmmlearn for a state estimation of seabird's behaviour.
 - [ ] create first Github release / version 1.0. 
 - [ ] build Python package [Python package building](https://packaging.python.org/en/latest/tutorials/packaging-projects/).
 - [ ] draft for [Applications](https://besjournals.onlinelibrary.wiley.com/hub/journal/2041210X/features/applicationpapers) in *Methods in Ecology and Evolution*.
