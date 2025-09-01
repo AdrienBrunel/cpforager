@@ -162,8 +162,8 @@ def get_columns_dtypes(column_names):
                           "step_heading_to_colony":"Float64", "is_suspicious":"Int64", "dist_to_nest":"Float64", "trip":"Int64"}
     dtypes_columns_tdr = {"pressure":"Float64", "temperature":"Float64", "depth":"Float64", "dive":"Int64"}
     dtypes_columns_acc = {"ax":"Float64", "ay":"Float64", "az":"Float64", "ax_f":"Float64", "ay_f":"Float64", "az_f":"Float64","odba":"Float64", "odba_f":"Float64"}
-    dtypes_trip_stats = {"trip_id":"str", "length":"Float64", "duration":"Float64", "max_hole":"Float64", "dmax":"Float64", "n_step":"Int64"}
-    dtypes_dive_stats = {"dive_id":"str", "duration":"Float64", "max_depth":"Float64"}
+    dtypes_trip_stats = {"trip_id":"str", "length":"float", "duration":"float", "max_hole":"float", "dmax":"float", "n_step":"int"}
+    dtypes_dive_stats = {"dive_id":"str", "duration":"float", "max_depth":"float"}
     
     # append dictionaries
     dtypes_columns_dict = {}
