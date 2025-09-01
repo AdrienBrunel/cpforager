@@ -1,10 +1,10 @@
 # ======================================================= #
 # LIBRARIES
 # ======================================================= #
-from cpforager import processing
-from cpforager.gps_tdr import display, diagnostic
 from cpforager.gps.gps import GPS
 from cpforager.tdr.tdr import TDR
+from cpforager import processing
+from cpforager.gps_tdr import display, diagnostic, interpolation
 
 
 # ======================================================= #
@@ -98,8 +98,8 @@ class GPS_TDR:
     def __repr__(self):
         return "%s(group=%s, id=%s, trips=%d, dives=%d, n=%d, n_gps=%d, n_tdr=%d)" % (type(self).__name__, self.group, self.id, self.gps.n_trips, self.tdr.n_dives, self.n_df, self.gps.n_df, self.tdr.n_df)
 
-    # # [METHODS] interpolate data
-    # interpolate_lat_lon = interpolation.interpolate_lat_lon
+    # [METHODS] interpolate data
+    interpolate_lat_lon = interpolation.interpolate_lat_lon
 
     # [METHODS] display the summary of the data
     display_data_summary = display.display_data_summary
