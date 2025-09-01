@@ -74,14 +74,14 @@ The Python scripts in the [/tests/](./tests/) folder illustrate how the `GPS`, `
 # Future developments
 - [ ] make classes' methods available in documentation.
 - [ ] uniformise types of arguments/attributes in function arguments and accordingly in documentation.
-- [ ] add a proper zero offset correction inside `TDR` class (according to the scientific consensus). See [scikit-diveMove](https://spluque.github.io/scikit-diveMove/modules/tdr.html#skdiveMove.TDR.read_netcdf).
 - [ ] add images in documentation below demo scripts.
+- [ ] add a proper zero offset correction inside `TDR` class (according to the scientific consensus). See [scikit-diveMove](https://spluque.github.io/scikit-diveMove/modules/tdr.html#skdiveMove.TDR.read_netcdf).
 - [ ] improve folium map of `GPS_Collection`.
-- [ ] fix "[trip_color gradient]" in color gradient by animals in collections.
+- [x] add plot with emphasized dives for `GPS_TDR` and `AXY`.
+- [x] fix trip color gradient in collections when color palette is set (all trip_id = 1 in same color).
 - [ ] avoid double warnings and prints to the console (especially in collections). 
-- [ ] add plot with emphasized dives for `GPS_TDR`.
-- [ ] interpolation for `GPS_TDR` and others.
-- [ ] use new dtypes dictionary for Collection classes.
+- [x] interpolation for `GPS_TDR` and others.
+- [x] use new dtypes dictionary for Collection classes.
 - [ ] hmmlearn for a state estimation of seabird's behaviour.
 - [ ] create first Github release / version 1.0. 
 - [ ] build Python package [Python package building](https://packaging.python.org/en/latest/tutorials/packaging-projects/).
