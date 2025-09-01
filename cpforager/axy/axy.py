@@ -1,11 +1,10 @@
 # ======================================================= #
 # LIBRARIES
 # ======================================================= #
-import pandas as pd
 from cpforager.gps.gps import GPS
 from cpforager.tdr.tdr import TDR
 from cpforager import processing
-from cpforager.axy import diagnostic, display, interpolation
+from cpforager.axy import display, diagnostic, interpolation
 
 
 # ======================================================= #
