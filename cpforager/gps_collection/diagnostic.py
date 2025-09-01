@@ -121,15 +121,22 @@ def maps_diagnostic(self, fig_dir, file_id, plot_params, rand=False):
     # set discrete color palette
     disc_color_palette = cols_1
     if rand:
-        disc_color_palette = misc.random_colors(3)
+        disc_color_palette = misc.random_colors(n_trips)
+    
+    # renumber trips in df_all for a better trip visualisation 
+    df_all_rnb_trips = df_all[["longitude", "latitude", "trip"]].copy(deep=True)
+    nonzero_mask = (df_all_rnb_trips["trip"] != 0)
+    is_trip_start = nonzero_mask & (~nonzero_mask.shift(1, fill_value=False))
+    df_all_rnb_trips["trip"] = is_trip_start.cumsum()
+    df_all_rnb_trips.loc[~nonzero_mask, "trip"] = 0       
     
     # trajectory with a trip color gradient
     ax = fig.add_subplot(gs[0,0], projection=ccrs.PlateCarree())
-    diagnostic.plot_map_wtrips(ax, df_all, params, plot_params, disc_color_palette, n_trips, colony["center"][0], colony["center"][1], "Trajectory [trip color gradient]", 0)
+    diagnostic.plot_map_wtrips(ax, df_all_rnb_trips, params, plot_params, disc_color_palette, n_trips, colony["center"][0], colony["center"][1], "Trajectory [trip color gradient]", 0)
     
     # zoom trajectory with a trip color gradient
     ax = fig.add_subplot(gs[0,1], projection=ccrs.PlateCarree())
-    diagnostic.plot_map_wtrips(ax, df_all, params, plot_params, disc_color_palette, n_trips, colony["center"][0], colony["center"][1], "Trajectory [trip color gradient]", 10)
+    diagnostic.plot_map_wtrips(ax, df_all_rnb_trips, params, plot_params, disc_color_palette, n_trips, colony["center"][0], colony["center"][1], "Trajectory [trip color gradient]", 10)
 
     # global trajectory with a step speed color gradient
     ax = fig.add_subplot(gs[1,0], projection=ccrs.PlateCarree())

@@ -72,7 +72,7 @@ def plot_dive_stats_summary(self, fig_dir, file_id, plot_params, quantiles=[0.25
 # ======================================================= #
 # GPS_TDR MAPS DIAG [GPS_TDR_COLLECTION METHOD]
 # ======================================================= #
-def maps_diagnostic(self, fig_dir, file_id, plot_params):
+def maps_diagnostic(self, fig_dir, file_id, plot_params, rand=False):
     
     """    
     Produce the maps with every GPS_TDR data.
@@ -85,6 +85,8 @@ def maps_diagnostic(self, fig_dir, file_id, plot_params):
     :type file_id: str
     :param plot_params: plot parameters dictionary. 
     :type plot_params: dict
+    :param rand: True if colors should be random. 
+    :type rand: bool
     :return: the full diagnostic figure.
     :rtype: matplotlib.pyplot.Figure 
     
@@ -95,7 +97,7 @@ def maps_diagnostic(self, fig_dir, file_id, plot_params):
     gps_collection = self.gps_collection
     
     # plot using GPS_Collection method
-    fig = gps_collection.maps_diagnostic(fig_dir, file_id, plot_params)
+    fig = gps_collection.maps_diagnostic(fig_dir, file_id, plot_params, rand)
     
     return(fig)
     
