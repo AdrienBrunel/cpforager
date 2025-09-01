@@ -21,9 +21,10 @@ test_dir = os.path.join(root_dir, "tests", "gps_tdr")
 # set metadata
 fieldwork = "PER_PSC_2008_11"
 colony = "PER_PSC_PSC"
-gps_file_name = "PER_PSC_PSC_2008-11-25_LBOU_56_5056_M_GPS_EO_129_UTC.csv"
-tdr_file_name = "PER_PSC_PSC_2008-11-25_LBOU_56_5056_M_TDR_G5_3069_UTC.csv"
-file_id = "PER_PSC_PSC_2008-11-25_LBOU_56_5056_M_GPSxTDR"
+gps_file_name = "PER_PSC_PSC_2008-11-25_SVAR_06_5006_F_GPS_GIP_36_UTC.csv"
+tdr_file_name = "PER_PSC_PSC_2008-11-25_SVAR_06_5006_F_TDR_G5_3075_UTC.csv"
+file_id = "PER_PSC_PSC_2008-11-25_SVAR_06_5006_F_GPSxTDR"
+
 
 # set parameters dictionaries
 params = parameters.get_params(colony)

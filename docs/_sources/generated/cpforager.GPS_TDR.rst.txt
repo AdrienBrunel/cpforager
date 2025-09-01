@@ -17,6 +17,7 @@
       ~GPS_TDR.display_data_summary
       ~GPS_TDR.folium_map
       ~GPS_TDR.full_diag
+      ~GPS_TDR.interpolate_lat_lon
       ~GPS_TDR.maps_diag
    
    

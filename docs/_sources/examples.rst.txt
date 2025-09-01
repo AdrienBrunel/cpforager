@@ -37,12 +37,17 @@ AXY
 
 .. image:: _static/examples/BRA_FDN_MEI_2022-04-26_SDAC_01_U61556_F_GPS_AXY_RT10_UTC_diag.png
    :align: center
-.. image:: _static/examples/BRA_FDN_MEI_2022-04-26_SDAC_01_U61556_F_GPS_AXY_RT10_UTC_map.png
-   :align: center
 
 GPS_TDR
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. literalinclude::  _static/examples/demo_gps_tdr.py
+
+.. only:: html
+
+.. image:: _static/examples/PER_PSC_PSC_2008-11-25_SVAR_06_5006_F_GPSxTDR_diag.png
+   :align: center
+.. image:: _static/examples/PER_PSC_PSC_2008-11-25_SVAR_06_5006_F_GPSxTDR_map.png
+   :align: center
 
 GPS_Collection
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -54,6 +59,8 @@ GPS_Collection
    :align: center
 .. image:: _static/examples/trip_statistics_PER_PSC_2012_11.png
    :align: center
+.. image:: _static/examples/indiv_map_all.png
+   :align: center
 
 TDR_Collection
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -62,6 +69,8 @@ TDR_Collection
 .. only:: html
 
 .. image:: _static/examples/indiv_depth_all.png
+   :align: center
+.. image:: _static/examples/dive_statistics_PER_PSC_2008_11.png
    :align: center
 
 AXY_Collection
