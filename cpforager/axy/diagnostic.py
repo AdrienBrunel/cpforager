@@ -112,11 +112,11 @@ def full_diagnostic(self, fig_dir, file_id, plot_params, fast=False):
 
     # trajectory with a trip color gradient
     ax = fig.add_subplot(gs[0,0], projection=ccrs.PlateCarree())
-    diagnostic.plot_map_wtrips(ax, df_gps, params, plot_params, cols_1, n_trips, nest_lon, nest_lat, 0, trip_length, trip_duration)
+    diagnostic.plot_map_wtrips(ax, df_gps, params, plot_params, cols_1, n_trips, nest_lon, nest_lat, "Trajectory [trip color gradient]", 0, trip_length, trip_duration)
     
     # zoom trajectory with a trip color gradient
     ax = fig.add_subplot(gs[0,1], projection=ccrs.PlateCarree())
-    diagnostic.plot_map_wtrips(ax, df_gps, params, plot_params, cols_1, n_trips, nest_lon, nest_lat, 10, trip_length, trip_duration)
+    diagnostic.plot_map_wtrips(ax, df_gps, params, plot_params, cols_1, n_trips, nest_lon, nest_lat, "Trajectory [trip color gradient]", 10, trip_length, trip_duration)
     
     # global trajectory with a step speed color gradient
     ax = fig.add_subplot(gs[0,2], projection=ccrs.PlateCarree())
@@ -130,7 +130,7 @@ def full_diagnostic(self, fig_dir, file_id, plot_params, fast=False):
     
     # trajectory with dives emphasized
     ax = fig.add_subplot(gs[0,4], projection=ccrs.PlateCarree())
-    diagnostic.plot_map_weph(ax, df_gps, params, plot_params, nest_lon, nest_lat, 0, (df_gps["n_dives"]>0))
+    diagnostic.plot_map_weph(ax, df_gps, params, plot_params, nest_lon, nest_lat, "Trajectory [dives emphasized]", 0, (df_gps["n_dives"]>0))
         
     # step time timeserie
     ax = fig.add_subplot(gs[1,0])

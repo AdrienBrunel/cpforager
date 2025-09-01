@@ -429,7 +429,7 @@ def plot_colony(ax, params):
 # ================================================================================================ #
 # PLOT MAPS WITH TRIP COLORS
 # ================================================================================================ #  
-def plot_map_wtrips(ax, df, params, plot_params, color_palette, n_trips, nest_lon, nest_lat, zoom, trip_length=None, trip_duration=None):
+def plot_map_wtrips(ax, df, params, plot_params, color_palette, n_trips, nest_lon, nest_lat, title, zoom, trip_length=None, trip_duration=None):
         
     """    
     Plot map of the trajectory colored by trips. 
@@ -450,6 +450,8 @@ def plot_map_wtrips(ax, df, params, plot_params, color_palette, n_trips, nest_lo
     :type nest_lon: float
     :param nest_lat: nest latitude.
     :type nest_lat: float
+    :param title: plot title.
+    :type title: str
     :param zoom: zooming factor around nest. 
     :type zoom: float
     :param trip_length: trip lengths for the legend. 
@@ -476,7 +478,7 @@ def plot_map_wtrips(ax, df, params, plot_params, color_palette, n_trips, nest_lo
             else:
                 plt.scatter(df.loc[df["trip"] == trip_id, "longitude"], df.loc[df["trip"] == trip_id, "latitude"], s=plot_params["pnt_size"], color=color_palette[i % n_cols])   
     plot_colony(ax, params)
-    plt.title("Trajectory [trip color gradient]", fontsize=plot_params["main_fs"])
+    plt.title(title, fontsize=plot_params["main_fs"])
     ax.set_xlabel("Longitude [°]", fontsize=plot_params["labs_fs"])
     ax.set_ylabel("Latitude [°]", fontsize=plot_params["labs_fs"])
     ax.gridlines(linestyle=plot_params["grid_lty"], linewidth=plot_params["grid_lwd"], color=plot_params["grid_col"],
@@ -501,7 +503,7 @@ def plot_map_wtrips(ax, df, params, plot_params, color_palette, n_trips, nest_lo
 # ================================================================================================ #
 # PLOT MAPS WITH EMPHASIZED POINTS
 # ================================================================================================ #  
-def plot_map_weph(ax, df, params, plot_params, nest_lon, nest_lat, zoom, eph_cond):
+def plot_map_weph(ax, df, params, plot_params, nest_lon, nest_lat, title, zoom, eph_cond):
         
     """    
     Plot map of the trajectory with points emphasized according to a condition. 
@@ -518,6 +520,8 @@ def plot_map_weph(ax, df, params, plot_params, nest_lon, nest_lat, zoom, eph_con
     :type nest_lon: float
     :param nest_lat: nest latitude.
     :type nest_lat: float
+    :param title: plot title.
+    :type title: str
     :param zoom: zooming factor around nest. 
     :type zoom: float
     :param eph_cond: condition to emphasize points.
@@ -535,7 +539,7 @@ def plot_map_weph(ax, df, params, plot_params, nest_lon, nest_lat, zoom, eph_con
     if not(eph_cond is None):
         plt.scatter(df.loc[eph_cond, "longitude"], df.loc[eph_cond, "latitude"], s=plot_params["eph_size"], color="red")
     plot_colony(ax, params)
-    plt.title("Trajectory [points emphasized]", fontsize=plot_params["main_fs"])
+    plt.title(title, fontsize=plot_params["main_fs"])
     ax.set_xlabel("Longitude [°]", fontsize=plot_params["labs_fs"])
     ax.set_ylabel("Latitude [°]", fontsize=plot_params["labs_fs"])
     ax.gridlines(linestyle=plot_params["grid_lty"], linewidth=plot_params["grid_lwd"], color=plot_params["grid_col"],

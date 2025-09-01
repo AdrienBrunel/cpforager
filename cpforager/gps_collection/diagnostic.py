@@ -41,33 +41,30 @@ def plot_stats_summary(self, fig_dir, file_id, plot_params, quantiles=[0.25, 0.5
     fig = plt.figure(figsize=(20, 10), dpi=dpi)
     fig.subplots_adjust(hspace=0.45, wspace=0.25, bottom=0.06, top=0.95, left=0.05, right=0.95)
     gs = fig.add_gridspec(3, 4)
-
+    
+    # add subplots
     fig.add_subplot(gs[0,0])
     diagnostic.plot_hist(trip_statistics_all, plot_params, "length", "Trip length", "Length [km]")
     fig.add_subplot(gs[1,0])
     diagnostic.plot_box(trip_statistics_all, plot_params, "length", "Trip length", "Length [km]")
-    # diagnostic.plot_violin(trip_statistics_all, plot_params, "length", "Trip length", "Length [km]", quantiles)
     fig.add_subplot(gs[2,0])
     diagnostic.plot_cumulative_distribution(trip_statistics_all, plot_params, "length", "Trip length", "Distance [km]", quantiles)
     fig.add_subplot(gs[0,1])
     diagnostic.plot_hist(trip_statistics_all, plot_params, "duration", "Trip duration", "Time [h]")
     fig.add_subplot(gs[1,1])
     diagnostic.plot_box(trip_statistics_all, plot_params, "duration", "Trip duration", "Time [h]")
-    # diagnostic.plot_violin(trip_statistics_all, plot_params, "duration", "Trip duration", "Time [h]", quantiles)
     fig.add_subplot(gs[2,1])
     diagnostic.plot_cumulative_distribution(trip_statistics_all, plot_params, "duration", "Trip duration", "Time [h]", quantiles)
     fig.add_subplot(gs[0,2])
     diagnostic.plot_hist(trip_statistics_all, plot_params, "n_step", "Trip number of step", "Steps")
     fig.add_subplot(gs[1,2])
     diagnostic.plot_box(trip_statistics_all, plot_params, "n_step", "Trip number of step", "Steps")
-    # diagnostic.plot_violin(trip_statistics_all, plot_params, "n_step", "Trip number of step", "Steps", quantiles)
     fig.add_subplot(gs[2,2])
     diagnostic.plot_cumulative_distribution(trip_statistics_all, plot_params, "n_step", "Trip number of step", "Steps", quantiles)
     fig.add_subplot(gs[0,3])
     diagnostic.plot_hist(trip_statistics_all, plot_params, "dmax", "Distance max to nest", "Distance [km]")
     fig.add_subplot(gs[1,3])
     diagnostic.plot_box(trip_statistics_all, plot_params, "dmax", "Distance max to nest", "Distance [km]")
-    # diagnostic.plot_violin(trip_statistics_all, plot_params, "dmax", "Distance max to nest", "Distance [km]", quantiles)
     fig.add_subplot(gs[2,3])
     diagnostic.plot_cumulative_distribution(trip_statistics_all, plot_params, "dmax", "Distance max to nest", "Distance [km]", quantiles)
     
@@ -128,11 +125,11 @@ def maps_diagnostic(self, fig_dir, file_id, plot_params, rand=False):
     
     # trajectory with a trip color gradient
     ax = fig.add_subplot(gs[0,0], projection=ccrs.PlateCarree())
-    diagnostic.plot_map_wtrips(ax, df_all, params, plot_params, disc_color_palette, n_trips, colony["center"][0], colony["center"][1], 0)
+    diagnostic.plot_map_wtrips(ax, df_all, params, plot_params, disc_color_palette, n_trips, colony["center"][0], colony["center"][1], "Trajectory [trip color gradient]", 0)
     
     # zoom trajectory with a trip color gradient
     ax = fig.add_subplot(gs[0,1], projection=ccrs.PlateCarree())
-    diagnostic.plot_map_wtrips(ax, df_all, params, plot_params, disc_color_palette, n_trips, colony["center"][0], colony["center"][1], 10)
+    diagnostic.plot_map_wtrips(ax, df_all, params, plot_params, disc_color_palette, n_trips, colony["center"][0], colony["center"][1], "Trajectory [trip color gradient]", 10)
 
     # global trajectory with a step speed color gradient
     ax = fig.add_subplot(gs[1,0], projection=ccrs.PlateCarree())
@@ -208,7 +205,7 @@ def indiv_map_all(self, fig_dir, file_id, plot_params):
             
             # add individual gps map colored by trip
             ax = fig.add_subplot(gs[int(k/n_columns), k % n_columns], projection=ccrs.PlateCarree())
-            diagnostic.plot_map_wtrips(ax, gps.df, gps.params, plot_params, cols_1, n_trips, nest_lon, nest_lat, 0, trip_length, trip_duration)
+            diagnostic.plot_map_wtrips(ax, gps.df, gps.params, plot_params, cols_1, n_trips, nest_lon, nest_lat, "Trajectory [trip color gradient]", 0, trip_length, trip_duration)
         
         # empty plot if no gps in collection    
         else:        
