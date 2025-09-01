@@ -213,11 +213,60 @@ def maps_diagnostic(self, fig_dir, file_id, plot_params):
     The figure is saved at the png format.
     """
         
+    # get parameters
+    cols_1 = plot_params.get("cols_1")
+    cols_2 = plot_params.get("cols_2")
+    cols_3 = plot_params.get("cols_3")
+    
     # get attributes
     gps = self.gps
+    df_gps = self.df_gps
+    params = self.params
     
-    # plot using GPS method
-    fig = gps.maps_diag(fig_dir, file_id, plot_params)
+    # get infos
+    n_trips = gps.n_trips
+    [nest_lon, nest_lat] = gps.nest_position
+    trip_statistics = gps.trip_statistics
+    trip_duration = trip_statistics["duration"]
+    trip_length = trip_statistics["length"]
+    
+    # produce diagnostic
+    fig = plt.figure(figsize=(15, 10), dpi=plot_params.get("fig_dpi"))
+    fig.tight_layout()
+    fig.subplots_adjust(hspace=0.3, wspace=0.25, bottom=0.06, top=0.95, left=0.05, right=0.95)
+    gs = fig.add_gridspec(2, 3)
+    
+    # trajectory with a colony color gradient
+    ax = fig.add_subplot(gs[0,0], projection=ccrs.PlateCarree())
+    diagnostic.plot_map_wtrips(ax, df_gps, params, plot_params, cols_1, n_trips, nest_lon, nest_lat, "Trajectory [trip color gradient]", 0, trip_length, trip_duration)
+    
+    # zoom trajectory with a trip color gradient
+    ax = fig.add_subplot(gs[0,1], projection=ccrs.PlateCarree())
+    diagnostic.plot_map_wtrips(ax, df_gps, params, plot_params, cols_1, n_trips, nest_lon, nest_lat, "Trajectory [trip color gradient]", 10)
+
+    # trajectory with dives emphasized
+    ax = fig.add_subplot(gs[0,2], projection=ccrs.PlateCarree())
+    diagnostic.plot_map_weph(ax, df_gps, params, plot_params, nest_lon, nest_lat, "Trajectory [dives emphasized]", 0, (df_gps["n_dives"]>0))
+    
+    # global trajectory with a step speed color gradient
+    ax = fig.add_subplot(gs[1,0], projection=ccrs.PlateCarree())
+    diagnostic.plot_map_colorgrad(ax, df_gps, params, plot_params, "step_speed", cols_2, nest_lon, nest_lat, "Trajectory [speed color gradient]", 0.95, 0)
+    
+    # global trajectory with a time color gradient
+    ax = fig.add_subplot(gs[1,1], projection=ccrs.PlateCarree())
+    df_gps["duration"] = (df_gps["datetime"]-df_gps["datetime"].min()).dt.total_seconds()/3600
+    diagnostic.plot_map_colorgrad(ax, df_gps, params, plot_params, "duration", cols_3, nest_lon, nest_lat, "Trajectory [duration color gradient]", 1.0, 0)
+    del df_gps["duration"]
+
+    # global trajectory with a depth color gradient
+    ax = fig.add_subplot(gs[1,2], projection=ccrs.PlateCarree())
+    diagnostic.plot_map_colorgrad(ax, df_gps, params, plot_params, "depth", cols_3, nest_lon, nest_lat, "Trajectory [depth color gradient]", 1.0, 0)
+    
+    # save figure
+    fig_path = os.path.join(fig_dir, "%s.png" % file_id)
+    plt.savefig(fig_path, format="png", bbox_inches="tight")
+    fig.clear()
+    plt.close(fig)
     
     return(fig)
 
