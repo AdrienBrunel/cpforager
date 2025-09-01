@@ -5,7 +5,6 @@ import pandas as pd
 import numpy as np
 from cpforager import parameters
 from cpforager.gps_collection import diagnostic, display, stdb
-from cpforager.gps.gps import GPS
 
 
 # ================================================================================================ #
@@ -37,28 +36,16 @@ class GPS_Collection:
         :ivar df_all: the enhanced GPS dataframe merged over every GPS included in the list.
         :vartype df_all: pandas.DataFrame
         """
-
+        
         # init dataframes
-        dtypes_1 = {"group":"str", "id":"str", "trip_id":"str", "length":"float", "duration":"float", "max_hole":"float", "dmax":"float", "n_step":"int"}
-        trip_statistics_all = pd.DataFrame(columns=dtypes_1.keys())
-        trip_statistics_all = trip_statistics_all.astype(dtype=dtypes_1)
+        column_names_1 = ["group", "id", "trip_id", "length", "duration", "max_hole", "dmax", "n_step"]
+        dtypes_1 = parameters.get_columns_dtypes(column_names_1)
+        trip_statistics_all = pd.DataFrame(columns=column_names_1).astype(dtype=dtypes_1)
         
-        dtypes_2 = {"group":"str", "id":"str", "datetime":"object", "longitude":"float", "latitude":"float",
-                    "step_time":"float", "step_length":"float", "step_speed":"float", "step_heading":"float",
-                    "step_turning_angle":"float", "step_heading_to_colony":"float", "is_night":"int", "is_suspicious":"int", 
-                    "dist_to_nest":"float", "trip":"int"}
-        df_all = pd.DataFrame(columns=dtypes_2.keys())
-        df_all = df_all.astype(dtype=dtypes_2)
-        
-        # # init dataframes
-        # column_names_1 = ["group", "id", "trip_id", "length", "duration", "max_hole", "dmax", "n_step"]
-        # dtypes_1 = parameters.get_columns_dtypes(column_names_1)
-        # trip_statistics_all = pd.DataFrame(columns=column_names_1).astype(dtype=dtypes_1)
-        
-        # column_names_2 = ["group", "id", "datetime", "longitude", "latitude", "step_time", "step_length", "step_speed", "step_heading",
-        #                   "step_turning_angle", "step_heading_to_colony", "is_night", "is_suspicious", "dist_to_nest", "trip"]
-        # dtypes_2 = parameters.get_columns_dtypes(column_names_2)
-        # df_all = pd.DataFrame(columns=column_names_2).astype(dtype=dtypes_2)
+        column_names_2 = ["group", "id", "datetime", "longitude", "latitude", "step_time", "step_length", "step_speed", "step_heading",
+                          "step_turning_angle", "step_heading_to_colony", "is_night", "is_suspicious", "dist_to_nest", "trip"]
+        dtypes_2 = parameters.get_columns_dtypes(column_names_2)
+        df_all = pd.DataFrame(columns=column_names_2).astype(dtype=dtypes_2)
 
         # compute statistics
         group = []

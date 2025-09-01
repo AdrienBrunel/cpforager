@@ -3,6 +3,7 @@
 # ================================================================================================ #
 import pandas as pd
 import numpy as np
+from cpforager import parameters
 from cpforager.tdr_collection import diagnostic, display
 
 
@@ -35,16 +36,15 @@ class TDR_Collection:
         :ivar df_all: the enhanced TDR dataframe merged over every TDR included in the list.
         :vartype df_all: pandas.DataFrame
         """
-
+        
         # init dataframes
-        dtypes_1 = {"group":"str", "id":"str", "dive_id":"str", "duration":"float", "max_depth":"float"}
-        dive_statistics_all = pd.DataFrame(columns=dtypes_1.keys())
-        dive_statistics_all = dive_statistics_all.astype(dtype=dtypes_1)
-
-        dtypes_2 = {"group":"str", "id":"str", "datetime":"object", "pressure":"float", "temperature":"float",
-                    "step_time":"float", "depth":"float", "is_night":"int", "dive":"int"}
-        df_all = pd.DataFrame(columns=dtypes_2.keys())
-        df_all = df_all.astype(dtype=dtypes_2)
+        column_names_1 = ["group", "id", "dive_id", "duration", "max_depth"]
+        dtypes_1 = parameters.get_columns_dtypes(column_names_1)
+        dive_statistics_all = pd.DataFrame(columns=column_names_1).astype(dtype=dtypes_1)
+        
+        column_names_2 = ["group", "id", "datetime", "pressure", "temperature", "step_time", "depth", "is_night", "dive"]
+        dtypes_2 = parameters.get_columns_dtypes(column_names_2)
+        df_all = pd.DataFrame(columns=column_names_2).astype(dtype=dtypes_2)
 
         # compute statistics
         group = []
