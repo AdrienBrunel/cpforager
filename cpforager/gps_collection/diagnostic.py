@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 import cartopy.crs as ccrs
 import folium
 
+
 # ======================================================= #
 # STATS SUMMARY [GPS_COLLECTION METHOD]
 # ======================================================= #
@@ -234,7 +235,7 @@ def indiv_map_all(self, fig_dir, file_id, plot_params):
 def folium_map(self, fig_dir, file_id, plot_params, rand=False):
     
     """    
-    Produce the html map with every GPS data colored randomly.
+    Produce the html map with every GPS data colored by seabird id.
     
     :param self: a GPS_Collection object
     :type self: cpforager.GPS_Collection
