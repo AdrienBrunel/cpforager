@@ -44,7 +44,7 @@ Each class automatically enhances raw data but also computes key features specif
 <br>
 
 # Installation
-Binary installers for the latest released version are available at the [Python Package Index (PyPI)](https://pypi.org/project/cpforager/).
+The latest released version is available at the [Python Package Index (PyPI)](https://pypi.org/project/cpforager/).
 
 ```bash
 pip install cpforager
