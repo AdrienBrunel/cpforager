@@ -4,11 +4,11 @@ build-backend = "hatchling.build"
 
 [project]
 name = "cpforager"
-version = "1.0.0"
+version = "1.0.1"
 authors = [{name="Adrien Brunel", email="adrien.brunel.pro@protonmail.com" }]
 maintainers = [{name="Adrien Brunel", email="adrien.brunel.pro@protonmail.com" }]
 description = "Python package to handle data gathered from biologgers (GPS, TDR, AXY) attached to central-place foraging seabirds. The idea is to make movement ecology data a bit easier to process."
-readme = "README.md"
+readme = "PyPI_README.md"
 requires-python = ">=3.13"
 classifiers = [
     "Programming Language :: Python :: 3",
@@ -19,5 +19,5 @@ license-files = ["LICENSE"]
 
 [project.urls]
 Homepage = "https://github.com/AdrienBrunel/seabird-movement-cpf"
-Documentation = "https://github.com/AdrienBrunel/seabird-movement-cpf/doc/_build/html/"
+Documentation = "https://adrienbrunel.github.io/seabird-movement-cpf/"
 Issues = "https://github.com/AdrienBrunel/seabird-movement-cpf/issues"
