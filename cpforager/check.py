@@ -90,7 +90,7 @@ def check_datetime_duplicates(df, verbose=True):
 def check_datetime_range(df, verbose=True):
     
     """
-    Check if the dataframe ``datetime`` column cover a realistic range, *i.e.* bigger than 12 hours and smaller than 30 days. 
+    Check if the dataframe ``datetime`` column cover a realistic range. 
     
     :param df: the dataframe with a ``datetime`` column.
     :type df: pandas.DataFrame
@@ -98,15 +98,17 @@ def check_datetime_range(df, verbose=True):
     :type verbose: bool
     :return: True if the dataframe ``datetime`` column cover a realistic range. 
     :rtype: bool
+    
+    Datetime range is considered realistic if it is bigger than 8 hours and smaller than 30 days.
     """
     
     # init boolean
     check = True
     
     # trigger warning if datetime range is bigger than 12 hours and smaller than 7 days
-    if (((df["datetime"].max()-df["datetime"].min()).total_seconds()/(3600*24) < 0.5) | ((df["datetime"].max()-df["datetime"].min()).total_seconds()/(3600*24) > 30)):
+    if (((df["datetime"].max()-df["datetime"].min()).total_seconds()/(3600*24) < 8/24) | ((df["datetime"].max()-df["datetime"].min()).total_seconds()/(3600*24) > 30)):
         check = False
-        if verbose: print("WARNING : the recording covers a time range of %.2f days which seems suspicious" % ((df["datetime"].max()-df["datetime"].min()).total_seconds()/(3600*24)))
+        if verbose: print("WARNING : the recording covers a time range of %.2f days which may be suspicious" % ((df["datetime"].max()-df["datetime"].min()).total_seconds()/(3600*24)))
         
     return(check)
 
@@ -176,7 +178,7 @@ def check_longitude_latitude(df, verbose=True):
 def check_trip_existence(df, verbose=True):
     
     """
-    Check if dataframe has at least one trip. 
+    Check if dataframe contains at least one trip. 
     
     :param df: the dataframe with a ``trip`` column.
     :type df: pandas.DataFrame

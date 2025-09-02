@@ -237,7 +237,7 @@ def apply_functions_between_samples(df, resolution, columns_functions, verbose=F
 # https://stackoverflow.com/questions/32017327/calculate-the-optimal-grid-layout-dimensions-for-a-given-amount-of-plots-in-r
 def get_largest_factor(n):
     """
-    Compute the largest factor. 
+    Compute the largest factor of an integer. 
     
     :param n: integer we want the largest factor.
     :type n: int
@@ -256,7 +256,7 @@ def get_largest_factor(n):
 def nearsq_grid_layout(n, tol=5/3+0.001):
     
     """
-    Compute the near-square grid layout dimensions with a width to height ratio being smaller than a given tolerance.
+    Compute the near-square grid layout dimensions with a width-to-height ratio being smaller than a given tolerance.
     
     :param n: integer we want the near-square dimensions.
     :type n: int

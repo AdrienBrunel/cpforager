@@ -59,6 +59,9 @@ class TDR:
         :vartype mean_temperature: float
         :ivar dive_statistics: the dataframe containing the dive statistics where one row corresponds to one dive.
         :vartype dive_statistics: pandas.DataFrame        
+        
+        .. warning:: 
+            Due to the wide variety of TDR data, zero-offset correction of pressure is expected in the input dataframe.
         """
         
         # process data
