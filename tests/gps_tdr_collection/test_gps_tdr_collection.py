@@ -93,11 +93,12 @@ print(gps_tdr_collection[2])
 # test display_data_summary method
 gps_tdr_collection.display_data_summary()
 
-# test full_diag, maps_diag, folium_map, folium_map_colorgrad methods
-_ = gps_tdr_collection.plot_dive_stats_summary(test_dir, "dive_statistics_all", plot_params)
-gps_tdr_collection.dive_statistics_all.to_csv("%s/dive_statistics_all.csv" % (test_dir), index=False, quoting=csv.QUOTE_NONNUMERIC)
-_ = gps_tdr_collection.indiv_depth_all(test_dir, "indiv_depth_all", plot_params)
-_ = gps_tdr_collection.plot_trip_stats_summary(test_dir, "trip_statistics_all", plot_params)
-_ = gps_tdr_collection.folium_map(test_dir, "fmaps_all", plot_params, rand=True)
-_ = gps_tdr_collection.indiv_map_all(test_dir, "indiv_map_all", plot_params)
-gps_tdr_collection.trip_statistics_all.to_csv("%s/trip_statistics_all.csv" % (test_dir), index=False, quoting=csv.QUOTE_NONNUMERIC)
+# test plot_dive_stats_summary, indiv_depth_all, plot_trip_stats_summary, maps_diag, indiv_map_all, folium_map methods
+_ = gps_tdr_collection.plot_dive_stats_summary(test_dir, "dive_statistics_%s" % fieldwork, plot_params)
+gps_tdr_collection.dive_statistics_all.to_csv("%s/dive_statistics_%s.csv" % (test_dir, fieldwork), index=False, quoting=csv.QUOTE_NONNUMERIC)
+_ = gps_tdr_collection.indiv_depth_all(test_dir, "indiv_depth_%s" % fieldwork, plot_params)
+_ = gps_tdr_collection.plot_trip_stats_summary(test_dir, "trip_statistics_%s" % fieldwork, plot_params)
+_ = gps_tdr_collection.maps_diag(test_dir, "maps_diag_%s" % fieldwork, plot_params, rand=True)
+_ = gps_tdr_collection.indiv_map_all(test_dir, "indiv_map_%s" % fieldwork, plot_params)
+_ = gps_tdr_collection.folium_map(test_dir, "fmaps_%s" % fieldwork, plot_params)
+gps_tdr_collection.trip_statistics_all.to_csv("%s/trip_statistics_%s.csv" % (test_dir, fieldwork), index=False, quoting=csv.QUOTE_NONNUMERIC)
