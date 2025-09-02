@@ -7,7 +7,7 @@
 Checks
 --------------------------
 
-Functions used to check if datetime is ok.
+Functions used to verify the data validity.
 
 .. autosummary::
    :toctree: generated

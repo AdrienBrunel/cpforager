@@ -7,7 +7,7 @@
 Miscellaneous
 --------------------------
 
-Miscellaneous functions that may simplify the coding.
+Miscellaneous functions that simplify the code.
 
 .. autosummary::
    :toctree: generated

@@ -15,6 +15,12 @@ All classes used to handle biologging data of a central-place foraging seabird. 
    TDR
    AXY
    GPS_TDR
+
+All classes used to handle datasets composed of multiple loggers.
+
+.. autosummary::
+   :toctree: generated
+
    GPS_Collection
    TDR_Collection
    AXY_Collection

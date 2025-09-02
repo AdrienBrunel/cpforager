@@ -15,7 +15,7 @@
     <link rel="shortcut icon" href="_static/logo_cpforager_color.png"/>
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=8dde47fa"></script>
+      <script src="_static/documentation_options.js?v=29a6c3e3"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -98,7 +98,7 @@
              
   <section id="checks">
 <h1><span class="section-number">7. </span>Checks<a class="headerlink" href="#checks" title="Link to this heading"></a></h1>
-<p>Functions used to check if datetime is ok.</p>
+<p>Functions used to verify the data validity.</p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/cpforager.check.check_datetime_type.html#cpforager.check.check_datetime_type" title="cpforager.check.check_datetime_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">check.check_datetime_type</span></code></a>(df[, verbose])</p></td>
@@ -111,7 +111,7 @@
 <td><p>Check if the dataframe <code class="docutils literal notranslate"><span class="pre">datetime</span></code> column does not have duplicates.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/cpforager.check.check_datetime_range.html#cpforager.check.check_datetime_range" title="cpforager.check.check_datetime_range"><code class="xref py py-obj docutils literal notranslate"><span class="pre">check.check_datetime_range</span></code></a>(df[, verbose])</p></td>
-<td><p>Check if the dataframe <code class="docutils literal notranslate"><span class="pre">datetime</span></code> column cover a realistic range, <em>i.e.</em> bigger than 12 hours and smaller than 30 days.</p></td>
+<td><p>Check if the dataframe <code class="docutils literal notranslate"><span class="pre">datetime</span></code> column cover a realistic range.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/cpforager.check.check_datetime.html#cpforager.check.check_datetime" title="cpforager.check.check_datetime"><code class="xref py py-obj docutils literal notranslate"><span class="pre">check.check_datetime</span></code></a>(df[, verbose])</p></td>
 <td><p>Check if the dataframe <code class="docutils literal notranslate"><span class="pre">datetime</span></code> column is ok overall.</p></td>
@@ -120,7 +120,7 @@
 <td><p>Check if <code class="docutils literal notranslate"><span class="pre">longitude</span></code> and <code class="docutils literal notranslate"><span class="pre">latitude</span></code> columns do not only contain NaN values.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/cpforager.check.check_trip_existence.html#cpforager.check.check_trip_existence" title="cpforager.check.check_trip_existence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">check.check_trip_existence</span></code></a>(df[, verbose])</p></td>
-<td><p>Check if dataframe has at least one trip.</p></td>
+<td><p>Check if dataframe contains at least one trip.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/cpforager.check.check_trip_interruption.html#cpforager.check.check_trip_interruption" title="cpforager.check.check_trip_interruption"><code class="xref py py-obj docutils literal notranslate"><span class="pre">check.check_trip_interruption</span></code></a>(df[, verbose])</p></td>
 <td><p>Check if trip recording is interrupted.</p></td>

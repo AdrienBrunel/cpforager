@@ -15,7 +15,7 @@
     <link rel="shortcut icon" href="_static/logo_cpforager_color.png"/>
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=8dde47fa"></script>
+      <script src="_static/documentation_options.js?v=29a6c3e3"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -100,13 +100,19 @@
 <p><strong>cpforager</strong> package supports various biologging sensor types commonly used in movement ecology and provides the following core classes:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><strong>GPS</strong> : for handling position recordings.</p></li>
-<li><p><strong>TDR</strong> : for handling pressure recordings.</p></li>
-<li><p><strong>AXY</strong> : for handling tri-axial acceleration recordings at high resolution combined with lower resolution position and pressure recordings.</p></li>
-<li><p><strong>GPS_TDR</strong> : for handling position and pressure recordings.</p></li>
-<li><p><strong>GPS_Collection</strong> : for working with datasets composed of multiple GPS loggers.</p></li>
-<li><p><strong>TDR_Collection</strong> : for working with datasets composed of multiple TDR loggers.</p></li>
-<li><p><strong>AXY_Collection</strong> : for working with datasets composed of multiple AXY loggers.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GPS</span></code> : for handling position recordings.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TDR</span></code> : for handling pressure recordings.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AXY</span></code> : for handling tri-axial acceleration recordings at high resolution combined with lower resolution position and pressure recordings.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GPS_TDR</span></code> : for handling position and pressure recordings.</p></li>
+</ul>
+</div></blockquote>
+<p><strong>cpforager</strong> also allows to deal with a list of sensors using the following classes:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">GPS_Collection</span></code> : for working with datasets composed of multiple GPS loggers.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TDR_Collection</span></code> : for working with datasets composed of multiple TDR loggers.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AXY_Collection</span></code> : for working with datasets composed of multiple AXY loggers.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GPS_TDR_Collection</span></code> : for working with datasets composed of multiple GPS_TDR loggers.</p></li>
 </ul>
 </div></blockquote>
 <p>Each class automatically enhances raw data but also computes key features specific to each biologger (<em>e.g.</em> trip segmentation for GPS, dive segmentation for TDR, ODBA calculation for AXY). They are also accompanied with methods for data processing and visualisation.</p>
