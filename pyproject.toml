@@ -21,3 +21,8 @@ license-files = ["LICENSE"]
 Homepage = "https://github.com/AdrienBrunel/seabird-movement-cpf"
 Documentation = "https://adrienbrunel.github.io/seabird-movement-cpf/"
 Issues = "https://github.com/AdrienBrunel/seabird-movement-cpf/issues"
+
+# python3 -m pip install --upgrade build
+# python3 -m build
+# python3 -m pip install --upgrade twine
+# python3 -m twine upload --repository pypi dist/*
