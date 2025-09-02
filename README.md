@@ -44,20 +44,11 @@ Each class automatically enhances raw data but also computes key features specif
 <br>
 
 # Installation
+Binary installers for the latest released version are available at the [Python Package Index (PyPI)](https://pypi.org/project/cpforager/).
 
-1. Fork this repository and then clone it on your local machine :
 ```bash
-git clone https://github.com/AdrienBrunel/seabird-movement-cpf.git
+pip install cpforager
 ```
-
-2. Create a conda environment using the [environment.yml](environment.yml) file :
-```bash
-conda env create --name seabird-movement-cpf --file environment.yml
-```
-
-3. Open any Python script in [/tests/](./tests/) folder and start running line by line to check that everything is working.
-
-4. Load your raw data in the [data/](./data/) folder, create your own script and enjoy !
 
 <br>
 
@@ -78,9 +69,9 @@ The Python scripts in the [/tests/](./tests/) folder illustrate how the `GPS`, `
 - [ ] uniformise types of arguments/attributes in function arguments and accordingly in documentation.
 - [ ] add a proper zero offset correction inside `TDR` class (according to the scientific consensus). See [scikit-diveMove](https://spluque.github.io/scikit-diveMove/modules/tdr.html#skdiveMove.TDR.read_netcdf).
 - [ ] `hmmlearn` for adding an estimation method of seabird's behaviour (foraging, searching, resting, traveling, *etc*.).
-- [ ] create first Github release / version 1.0. 
-- [ ] build Python package [Python package building](https://packaging.python.org/en/latest/tutorials/packaging-projects/).
+- [ ] create first Github release.
 - [ ] draft for [Applications](https://besjournals.onlinelibrary.wiley.com/hub/journal/2041210X/features/applicationpapers) in *Methods in Ecology and Evolution*.
+- [ ] publish package to the conda-forge channel.
 
 <br>
 
