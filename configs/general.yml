@@ -1,0 +1,17 @@
+# cleaning parameters
+max_possible_speed: 150.0
+
+# trip segmentation parameters
+dist_threshold: 2.0
+speed_threshold: 5.0
+nesting_speed: 1.0
+nest_position: None
+trip_min_duration: 1200.0
+trip_max_duration: 1209600.0
+trip_min_length: 10.0
+trip_max_length: 10000.0
+trip_min_steps: 10
+
+# dive segmentation parameters
+diving_depth_threshold: -1.0
+dive_min_duration: 2.0

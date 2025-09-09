@@ -1,0 +1,3 @@
+odba_p_norm : 1
+filter_type: rolling_avg
+acc_time_window: 2.0

@@ -1,0 +1,9 @@
+# colony parameters
+colony:
+  name: PER_PSC_PSC
+  center: [-77.26315, -11.77425]
+  box_longitude: [-77.2686, -77.2577]
+  box_latitude: [-11.7790, -11.7695]
+  
+# local timezone
+local_tz : America/Lima
