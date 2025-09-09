@@ -99,23 +99,23 @@ def full_diagnostic(self, fig_dir, file_id, plot_params):
     
     # step time timeserie
     ax = fig.add_subplot(gs[1,0])
-    diagnostic.plot_ts(ax, df, plot_params, "step_time", "Step time", "Time [s]")
+    diagnostic.plot_ts(ax, df, params, plot_params, "step_time", "Step time", "Time [s]")
     
     # step length timeserie
     ax = fig.add_subplot(gs[1,1])
-    diagnostic.plot_ts(ax, df, plot_params, "step_length", "Step length", "Length [km]")
+    diagnostic.plot_ts(ax, df, params, plot_params, "step_length", "Step length", "Length [km]")
 
     # step speed timeserie
     ax = fig.add_subplot(gs[1,2])
-    diagnostic.plot_ts(ax, df, plot_params, "step_speed", "Step speed", "Speed [km/h]")
+    diagnostic.plot_ts(ax, df, params, plot_params, "step_speed", "Step speed", "Speed [km/h]")
     
     # step turning angle timeserie
     ax = fig.add_subplot(gs[1,3])
-    diagnostic.plot_ts(ax, df, plot_params, "step_turning_angle", "Step turning angle", "Angle [°]")
+    diagnostic.plot_ts(ax, df, params, plot_params, "step_turning_angle", "Step turning angle", "Angle [°]")
     
     # step heading angle timeserie
     ax = fig.add_subplot(gs[1,4])
-    diagnostic.plot_ts(ax, df, plot_params, "step_heading_to_colony", "Step heading to colony", "Angle [°]")
+    diagnostic.plot_ts(ax, df, params, plot_params, "step_heading_to_colony", "Step heading to colony", "Angle [°]")
     
     # step time histogram
     ax = fig.add_subplot(gs[2,0])
@@ -144,7 +144,7 @@ def full_diagnostic(self, fig_dir, file_id, plot_params):
     
     # distance to nest by trip
     ax = fig.add_subplot(gs[3,0:5])
-    diagnostic.plot_ts_wtrips(ax, df, plot_params, n_trips, "dist_to_nest", "Distance to nest", "Distance [km]")
+    diagnostic.plot_ts_wtrips(ax, df, params, plot_params, n_trips, "dist_to_nest", "Distance to nest", "Distance [km]")
     
     # save figure
     fig_path = os.path.join(fig_dir, "%s.png" % file_id)

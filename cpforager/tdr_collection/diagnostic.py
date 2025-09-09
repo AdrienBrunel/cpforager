@@ -117,7 +117,7 @@ def indiv_depth_all(self, fig_dir, file_id, plot_params):
             
             # add individual tdr map colored by dive
             ax = fig.add_subplot(gs[int(k/n_columns), k % n_columns])    
-            diagnostic.plot_ts(ax, tdr.df, plot_params, "pressure", "%d Dives" % n_dives, "Pressure [hPa]", eph_cond=(tdr.df["dive"]>0))
+            diagnostic.plot_ts(ax, tdr.df, tdr.params, plot_params, "pressure", "%d Dives" % n_dives, "Pressure [hPa]", eph_cond=(tdr.df["dive"]>0))
         
         # empty plot if no tdr in collection    
         else:        

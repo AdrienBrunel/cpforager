@@ -134,23 +134,23 @@ def full_diagnostic(self, fig_dir, file_id, plot_params, fast=False):
         
     # step time timeserie
     ax = fig.add_subplot(gs[1,0])
-    diagnostic.plot_ts(ax, df_gps, plot_params, "step_time", "GPS step time", "Time [s]")
+    diagnostic.plot_ts(ax, df_gps, params, plot_params, "step_time", "GPS step time", "Time [s]")
     
     # step length timeserie
     ax = fig.add_subplot(gs[1,1])
-    diagnostic.plot_ts(ax, df_gps, plot_params, "step_length", "Step length", "Length [km]")
+    diagnostic.plot_ts(ax, df_gps, params, plot_params, "step_length", "Step length", "Length [km]")
 
     # step speed timeserie
     ax = fig.add_subplot(gs[1,2])
-    diagnostic.plot_ts(ax, df_gps, plot_params, "step_speed", "Step speed", "Speed [km/h]")
+    diagnostic.plot_ts(ax, df_gps, params, plot_params, "step_speed", "Step speed", "Speed [km/h]")
     
     # step turning angle timeserie
     ax = fig.add_subplot(gs[1,3])
-    diagnostic.plot_ts(ax, df_gps, plot_params, "step_turning_angle", "Step turning angle", "Angle [°]")
+    diagnostic.plot_ts(ax, df_gps, params, plot_params, "step_turning_angle", "Step turning angle", "Angle [°]")
     
     # step heading angle timeserie
     ax = fig.add_subplot(gs[1,4])
-    diagnostic.plot_ts(ax, df_gps, plot_params, "step_heading_to_colony", "Step heading to colony", "Angle [°]")
+    diagnostic.plot_ts(ax, df_gps, params, plot_params, "step_heading_to_colony", "Step heading to colony", "Angle [°]")
     
     # step time histogram
     ax = fig.add_subplot(gs[2,0])
@@ -179,7 +179,7 @@ def full_diagnostic(self, fig_dir, file_id, plot_params, fast=False):
     
     # distance to nest by trip
     ax = fig.add_subplot(gs[3,0:4])
-    diagnostic.plot_ts_wtrips(ax, df_gps, plot_params, n_trips, "dist_to_nest", "Distance to nest", "Distance [km]")
+    diagnostic.plot_ts_wtrips(ax, df_gps, params, plot_params, n_trips, "dist_to_nest", "Distance to nest", "Distance [km]")
 
     # plot infos
     ax = fig.add_subplot(gs[3,4])
@@ -188,46 +188,46 @@ def full_diagnostic(self, fig_dir, file_id, plot_params, fast=False):
     # ax timeserie        
     ax = fig.add_subplot(gs[4,0])
     if fast: 
-        diagnostic.plot_ts_twinx(ax, df_small, plot_params, "ax", "Acceleration x-axis", "Ax [g]")
+        diagnostic.plot_ts_twinx(ax, df_small, params, plot_params, "ax", "Acceleration x-axis", "Ax [g]")
     else:
-        diagnostic.plot_ts_twinx(ax, df, plot_params, "ax", "Acceleration x-axis", "Ax [g]")
+        diagnostic.plot_ts_twinx(ax, df, params, plot_params, "ax", "Acceleration x-axis", "Ax [g]")
     
     # ay timeserie
     ax = fig.add_subplot(gs[4,1])
     if fast: 
-        diagnostic.plot_ts_twinx(ax, df_small, plot_params, "ay", "Acceleration y-axis", "Ay [g]")
+        diagnostic.plot_ts_twinx(ax, df_small, params, plot_params, "ay", "Acceleration y-axis", "Ay [g]")
     else:
-        diagnostic.plot_ts_twinx(ax, df, plot_params, "ay", "Acceleration y-axis", "Ay [g]")
+        diagnostic.plot_ts_twinx(ax, df, params, plot_params, "ay", "Acceleration y-axis", "Ay [g]")
     
     # az timeserie
     ax = fig.add_subplot(gs[4,2])
     if fast: 
-        diagnostic.plot_ts_twinx(ax, df_small, plot_params, "az", "Acceleration z-axis", "Az [g]")
+        diagnostic.plot_ts_twinx(ax, df_small, params, plot_params, "az", "Acceleration z-axis", "Az [g]")
     else:
-        diagnostic.plot_ts_twinx(ax, df, plot_params, "az", "Acceleration z-axis", "Az [g]")
+        diagnostic.plot_ts_twinx(ax, df, params, plot_params, "az", "Acceleration z-axis", "Az [g]")
      
     # odba timeserie
     ax = fig.add_subplot(gs[4,3])
     if fast: 
-        diagnostic.plot_ts_twinx(ax, df_small, plot_params, "odba", "Overall Dynamic Body Acceleration", "ODBA [g]")
+        diagnostic.plot_ts_twinx(ax, df_small, params, plot_params, "odba", "Overall Dynamic Body Acceleration", "ODBA [g]")
     else:
-        diagnostic.plot_ts_twinx(ax, df, plot_params, "odba", "Overall Dynamic Body Acceleration", "ODBA [g]")
+        diagnostic.plot_ts_twinx(ax, df, params, plot_params, "odba", "Overall Dynamic Body Acceleration", "ODBA [g]")
         
     # odba timeserie zoom (50% to 50.1% dataframe length)
     ax = fig.add_subplot(gs[4,4])
-    diagnostic.plot_ts_twinx(ax, df.iloc[int(0.5*n_df):int((0.5+0.001)*n_df)].reset_index(drop=True), plot_params, "odba", "Overall Dynamic Body Acceleration [Zoom]", "ODBA [g]", scatter=False)
+    diagnostic.plot_ts_twinx(ax, df.iloc[int(0.5*n_df):int((0.5+0.001)*n_df)].reset_index(drop=True), params, plot_params, "odba", "Overall Dynamic Body Acceleration [Zoom]", "ODBA [g]", scatter=False)
     
     # pressure
     ax = fig.add_subplot(gs[5,0])
-    diagnostic.plot_ts(ax, df_tdr, plot_params, "pressure", "%d Dives" % n_dives, "Pressure [hPa]", eph_cond=(df_tdr["dive"]>0))
+    diagnostic.plot_ts(ax, df_tdr, params, plot_params, "pressure", "%d Dives" % n_dives, "Pressure [hPa]", eph_cond=(df_tdr["dive"]>0))
         
     # depth
     ax = fig.add_subplot(gs[5,1:3])
-    diagnostic.plot_ts(ax, df_tdr, plot_params, "depth", "%d Dives" % n_dives, "Depth [m]", hline=diving_depth_threshold, eph_cond=(df_tdr["dive"]>0))
+    diagnostic.plot_ts(ax, df_tdr, params, plot_params, "depth", "%d Dives" % n_dives, "Depth [m]", hline=diving_depth_threshold, eph_cond=(df_tdr["dive"]>0))
     
     # temperature
     ax = fig.add_subplot(gs[5,3:5])
-    diagnostic.plot_ts(ax, df_tdr, plot_params, "temperature", "Temperature", "Temperature [°C]", hline=mean_temperature)
+    diagnostic.plot_ts(ax, df_tdr, params, plot_params, "temperature", "Temperature", "Temperature [°C]", hline=mean_temperature)
     
     # save figure
     fig_path = os.path.join(fig_dir, "%s.png" % file_id)

@@ -2,7 +2,8 @@
 # LIBRARIES
 # ================================================================================================ #
 import numpy as np
-from cpforager import misc
+import pandas as pd
+from cpforager import misc, processing
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 import matplotlib.colors as mcols
@@ -31,8 +32,14 @@ def get_datetime_locator_formatter(df, custom_locator=None, custom_formatter=Non
     :rtype: (matplotlib.dates.DayLocator, matplotlib.dates.DateFormatter)
     """
     
+    # compute time range
+    duration_days = (df["datetime"].max() - df["datetime"].min()).total_seconds()/86400
+    
     # set datetime locator/formatter to auto values
-    if ((df["datetime"].max() - df["datetime"].min()).total_seconds() > 14*86400):
+    if (duration_days <= 2):
+        datetime_formatter = mdates.DateFormatter("%H:%M")
+        datetime_locator = mdates.HourLocator(interval=6)
+    elif ((duration_days > 2) & (duration_days <= 14)):
         datetime_formatter = mdates.DateFormatter("%d/%m")
         datetime_locator = mdates.DayLocator(interval=7)
     else:
@@ -49,36 +56,59 @@ def get_datetime_locator_formatter(df, custom_locator=None, custom_formatter=Non
 # ================================================================================================ #
 # PLOT NIGHT
 # ================================================================================================ #
-def plot_night(df, plot_params):
+def plot_night(df, params, plot_params):
         
     """
     Plot an empty timeserie with the night represented by grey rectangles. 
     
     :param df: dataframe with ``datetime`` and ``is_night`` columns.
     :type df: pandas.DataFrame
+    :param params: parameters dictionary. 
+    :type params: dict
     :param plot_params: plot parameters dictionary. 
     :type plot_params: dict
     """
     
+    # initialise an independent datetime array for visualisation
+    df_night = pd.DataFrame([])
+    
+    # build a datetime column at 1 minute frequency
+    df_night["datetime"] = pd.date_range(start=df["datetime"].iloc[0], end=df["datetime"].iloc[-1], freq=pd.Timedelta(minutes=1), periods=None)
+    df_night = processing.add_is_night(df_night, params)
+    
     # compute index when night starts and ends
-    n_df = len(df)
-    idx_start_night = np.where(df["is_night"].diff() == 1)[0]
-    idx_end_night = np.where(df["is_night"].diff() == -1)[0]
-    if df.loc[0,"is_night"] == 1:
+    n_df_night = len(df_night)
+    idx_start_night = np.where(df_night["is_night"].diff() == 1)[0]
+    idx_end_night = np.where(df_night["is_night"].diff() == -1)[0]
+    if df_night.loc[0,"is_night"] == 1:
         idx_start_night = np.append(0, idx_start_night)
-    if df.loc[n_df-1,"is_night"] == 1:
-        idx_end_night = np.append(idx_end_night, n_df-1)
+    if df_night.loc[n_df_night-1,"is_night"] == 1:
+        idx_end_night = np.append(idx_end_night, n_df_night-1)
     n_days = len(idx_start_night)
     
     # plot night as rectangle
     for k in range(n_days):
-        plt.axvspan(df.loc[idx_start_night[k],"datetime"], df.loc[idx_end_night[k],"datetime"], color="grey", alpha=plot_params["night_transp"])
+        plt.axvspan(df_night.loc[idx_start_night[k],"datetime"], df_night.loc[idx_end_night[k],"datetime"], color="grey", alpha=plot_params["night_transp"])
+    
+    # # compute index when night starts and ends
+    # n_df = len(df)
+    # idx_start_night = np.where(df["is_night"].diff() == 1)[0]
+    # idx_end_night = np.where(df["is_night"].diff() == -1)[0]
+    # if df.loc[0,"is_night"] == 1:
+    #     idx_start_night = np.append(0, idx_start_night)
+    # if df.loc[n_df-1,"is_night"] == 1:
+    #     idx_end_night = np.append(idx_end_night, n_df-1)
+    # n_days = len(idx_start_night)
+    
+    # # plot night as rectangle
+    # for k in range(n_days):
+    #     plt.axvspan(df.loc[idx_start_night[k],"datetime"], df.loc[idx_end_night[k],"datetime"], color="grey", alpha=plot_params["night_transp"])
         
         
 # ================================================================================================ #
 # PLOT TIMESERIES
 # ================================================================================================ #        
-def plot_ts(ax, df, plot_params, var, title, var_lab, custom_locator=None, custom_formatter=None, scatter=True, hline=None, eph_cond=None):
+def plot_ts(ax, df, params, plot_params, var, title, var_lab, custom_locator=None, custom_formatter=None, scatter=True, hline=None, eph_cond=None):
         
     """
     Plot timeserie of the dataframe column designated by the value of var.
@@ -87,6 +117,8 @@ def plot_ts(ax, df, plot_params, var, title, var_lab, custom_locator=None, custo
     :type ax: matplotlib.Axes 
     :param df: dataframe with a ``datetime`` column and the column designated by the value of var.
     :type df: pandas.DataFrame
+    :param params: parameters dictionary. 
+    :type params: dict
     :param plot_params: plot parameters dictionary. 
     :type plot_params: dict
     :param var: name of the column in df.
@@ -109,7 +141,7 @@ def plot_ts(ax, df, plot_params, var, title, var_lab, custom_locator=None, custo
     
     # plot timeserie of var in dataframe
     datetime_locator, datetime_formatter = get_datetime_locator_formatter(df, custom_locator, custom_formatter)
-    plot_night(df, plot_params)
+    plot_night(df, params, plot_params)
     if scatter:
         plt.scatter(df["datetime"], df[var], s=plot_params["pnt_size"], marker=plot_params["pnt_type"])
     else:
@@ -129,7 +161,7 @@ def plot_ts(ax, df, plot_params, var, title, var_lab, custom_locator=None, custo
 # ================================================================================================ #
 # PLOT TIMESERIES WITH TRIP COLORS
 # ================================================================================================ # 
-def plot_ts_wtrips(ax, df, plot_params, n_trips, var, title, var_lab, custom_locator=None, custom_formatter=None):
+def plot_ts_wtrips(ax, df, params, plot_params, n_trips, var, title, var_lab, custom_locator=None, custom_formatter=None):
         
     """    
     Plot timeserie of the dataframe column designated by the value of var colored by trips.
@@ -138,6 +170,8 @@ def plot_ts_wtrips(ax, df, plot_params, n_trips, var, title, var_lab, custom_loc
     :type ax: matplotlib.Axes 
     :param df: dataframe with a ``datetime`` column and the column designated by the value of var.
     :type df: pandas.DataFrame
+    :param params: parameters dictionary. 
+    :type params: dict
     :param plot_params: plot parameters dictionary. 
     :type plot_params: dict
     :param n_trips: number of trips.
@@ -157,7 +191,7 @@ def plot_ts_wtrips(ax, df, plot_params, n_trips, var, title, var_lab, custom_loc
     # plot timeserie of var in dataframe with trip colors
     n_cols = len(plot_params["cols_1"])
     datetime_locator, datetime_formatter = get_datetime_locator_formatter(df, custom_locator, custom_formatter)
-    plot_night(df, plot_params)
+    plot_night(df, params, plot_params)
     plt.scatter(df["datetime"], df[var], s=plot_params["pnt_size"], marker=plot_params["pnt_type"], color="black")
     if n_trips >= 1:
         for i in range(n_trips):
@@ -174,7 +208,7 @@ def plot_ts_wtrips(ax, df, plot_params, n_trips, var, title, var_lab, custom_loc
 # ================================================================================================ #
 # PLOT RAW AND FILTERED VAR
 # ================================================================================================ # 
-def plot_ts_twinx(ax, df, plot_params, var, title, var_lab, custom_locator=None, custom_formatter=None, scatter=True):
+def plot_ts_twinx(ax, df, params, plot_params, var, title, var_lab, custom_locator=None, custom_formatter=None, scatter=True):
         
     """    
     Plot timeserie of dataframe column designated by the value of var and var_f with two distinct axes. 
@@ -183,6 +217,8 @@ def plot_ts_twinx(ax, df, plot_params, var, title, var_lab, custom_locator=None,
     :type ax: matplotlib.Axes 
     :param df: dataframe with a ``datetime`` column and the column designated by the value of var.
     :type df: pandas.DataFrame
+    :param params: parameters dictionary. 
+    :type params: dict
     :param plot_params: plot parameters dictionary. 
     :type plot_params: dict
     :param var: name of the column in df.
@@ -203,7 +239,7 @@ def plot_ts_twinx(ax, df, plot_params, var, title, var_lab, custom_locator=None,
     
     # plot timeserie of var and var_f in dataframe with two axes
     datetime_locator, datetime_formatter = get_datetime_locator_formatter(df, custom_locator, custom_formatter)
-    plot_night(df, plot_params)
+    plot_night(df, params, plot_params)
     if scatter:
         plt.scatter(df["datetime"], df[var], s=plot_params["pnt_size"], marker=plot_params["pnt_type"], edgecolor="None")
         ax_twinx = ax.twinx()
