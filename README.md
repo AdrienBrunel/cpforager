@@ -6,10 +6,16 @@
   <a href="https://github.com/AdrienBrunel/seabird-movement-cpf/stargazers"><img alt="github stars" src="https://img.shields.io/github/stars/AdrienBrunel/seabird-movement-cpf"></a>
   <a href="https://github.com/AdrienBrunel/seabird-movement-cpf/forks"><img alt="github forks" src="https://img.shields.io/github/forks/AdrienBrunel/seabird-movement-cpf"></a>
   <a href="https://github.com/AdrienBrunel/seabird-movement-cpf/blob/master/LICENSE"><img alt="license" src="https://img.shields.io/badge/license-AGPLv3-blue"></a>
+  <a href="https://www.python.org/downloads/"><img alt="python 3.11+" src="https://img.shields.io/badge/Python-3.11+-blue.svg"></a>
+  <a href="https://badge.fury.io/py/cpforager"><img alt="pypi version" src="https://badge.fury.io/py/cpforager.svg"></a>
+  <a href="https://pypi.org/project/cpforager/"><img alt="pypi downloads" src="https://img.shields.io/pypi/dm/cpforager.svg"></a>
+  <a href="https://github.com/AdrienBrunel/seabird-movement-cpf/issues"><img alt="issues" src="https://img.shields.io/github/issues/AdrienBrunel/seabird-movement-cpf"></a>
+  <a href="https://github.com/AdrienBrunel/seabird-movement-cpf/pulls"><img alt="pull request" src="https://img.shields.io/github/issues-pr/AdrienBrunel/seabird-movement-cpf"></a>
+  <a href="https://github.com/AdrienBrunel/seabird-movement-cpf/commits/main"><img alt="last commit" src="https://img.shields.io/github/last-commit/AdrienBrunel/seabird-movement-cpf"></a>
 </div><br>
 
 
-[![Python 3.11+](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/downloads/)
+<!-- [![Python 3.11+](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![License: AGPLv3](https://img.shields.io/badge/license-AGPLv3-blue)](https://github.com/AdrienBrunel/seabird-movement-cpf/blob/master/LICENSE)
 [![PyPI version](https://badge.fury.io/py/cpforager.svg)](https://badge.fury.io/py/cpforager)
 [![PyPI downloads](https://img.shields.io/pypi/dm/cpforager.svg)](https://pypi.org/project/cpforager/)
@@ -17,9 +23,7 @@
 [![GitHub forks](https://img.shields.io/github/forks/AdrienBrunel/seabird-movement-cpf)](https://github.com/AdrienBrunel/seabird-movement-cpf/forks)
 [![GitHub issues](https://img.shields.io/github/issues/AdrienBrunel/seabird-movement-cpf)](https://github.com/AdrienBrunel/seabird-movement-cpf/issues)
 [![GitHub pull requests](https://img.shields.io/github/issues-pr/AdrienBrunel/seabird-movement-cpf)](https://github.com/AdrienBrunel/seabird-movement-cpf/pulls)
-[![GitHub last commit](https://img.shields.io/github/last-commit/AdrienBrunel/seabird-movement-cpf)](https://github.com/AdrienBrunel/seabird-movement-cpf/commits/main)
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/AdrienBrunel/seabird-movement-cpf)](https://github.com/AdrienBrunel/seabird-movement-cpf/releases)
-[![wakatime](https://wakatime.com/badge/user/6b4b61d2-7698-48db-9196-f67e42f0658d/project/3e305dba-c3e1-4bac-a6d3-0f18b37e4d97.svg)](https://wakatime.com/badge/user/6b4b61d2-7698-48db-9196-f67e42f0658d/project/3e305dba-c3e1-4bac-a6d3-0f18b37e4d97)
+[![GitHub last commit](https://img.shields.io/github/last-commit/AdrienBrunel/seabird-movement-cpf)](https://github.com/AdrienBrunel/seabird-movement-cpf/commits/main) -->
 
 
 <br>
