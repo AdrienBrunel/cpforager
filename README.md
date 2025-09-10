@@ -8,6 +8,20 @@
   <a href="https://github.com/AdrienBrunel/seabird-movement-cpf/blob/master/LICENSE"><img alt="license" src="https://img.shields.io/badge/license-AGPLv3-blue"></a>
 </div><br>
 
+
+[![Python 3.11+](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![License: AGPLv3](https://img.shields.io/badge/license-AGPLv3-blue)](https://github.com/AdrienBrunel/seabird-movement-cpf/blob/master/LICENSE)
+[![PyPI version](https://badge.fury.io/py/cpforager.svg)](https://badge.fury.io/py/cpforager)
+[![PyPI downloads](https://img.shields.io/pypi/dm/cpforager.svg)](https://pypi.org/project/cpforager/)
+[![GitHub stars](https://img.shields.io/github/stars/AdrienBrunel/seabird-movement-cpf)](https://github.com/AdrienBrunel/seabird-movement-cpf/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/AdrienBrunel/seabird-movement-cpf)](https://github.com/AdrienBrunel/seabird-movement-cpf/forks)
+[![GitHub issues](https://img.shields.io/github/issues/AdrienBrunel/seabird-movement-cpf)](https://github.com/AdrienBrunel/seabird-movement-cpf/issues)
+[![GitHub pull requests](https://img.shields.io/github/issues-pr/AdrienBrunel/seabird-movement-cpf)](https://github.com/AdrienBrunel/seabird-movement-cpf/pulls)
+[![GitHub last commit](https://img.shields.io/github/last-commit/AdrienBrunel/seabird-movement-cpf)](https://github.com/AdrienBrunel/seabird-movement-cpf/commits/main)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/AdrienBrunel/seabird-movement-cpf)](https://github.com/AdrienBrunel/seabird-movement-cpf/releases)
+[![wakatime](https://wakatime.com/badge/user/6b4b61d2-7698-48db-9196-f67e42f0658d/project/3e305dba-c3e1-4bac-a6d3-0f18b37e4d97.svg)](https://wakatime.com/badge/user/6b4b61d2-7698-48db-9196-f67e42f0658d/project/3e305dba-c3e1-4bac-a6d3-0f18b37e4d97)
+
+
 <br>
 
 Are you a scientist involved in movement ecology working with biologging data collected from central-place foraging seabirds? **cpforager** is a Python package designed to help you manipulate, process, analyse and visualise the biologging datasets with ease.
@@ -69,7 +83,7 @@ The Python scripts in the [/tests/](./tests/) folder illustrate how the `GPS`, `
 - [ ] uniformise types of arguments/attributes in function arguments and accordingly in documentation.
 - [ ] add a proper zero offset correction inside `TDR` class (according to the scientific consensus). See [scikit-diveMove](https://spluque.github.io/scikit-diveMove/modules/tdr.html#skdiveMove.TDR.read_netcdf).
 - [ ] `hmmlearn` for adding an estimation method of seabird's behaviour (foraging, searching, resting, traveling, *etc*.).
-- [ ] manage parameters with a dedicated file that will be parsed in `parameters.get_params(param_file_name)` to make the package user-friendly.  
+- [x] manage parameters with a dedicated file that will be parsed in `parameters.get_params(param_file_name)` to make the package user-friendly.  
 - [x] add independent night vector in `plot_night` to fix visualisation bugs.
 - [ ] check nest estimation when position never reach colony.
 - [ ] draft for [Applications](https://besjournals.onlinelibrary.wiley.com/hub/journal/2041210X/features/applicationpapers) in *Methods in Ecology and Evolution*.
