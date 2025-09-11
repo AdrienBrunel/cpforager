@@ -46,13 +46,14 @@ Each class automatically enhances raw data but also computes key features specif
    :caption: Documentation
    :numbered:
 
+   userguide.rst
    classes.rst
    parameters.rst
    processing.rst
    diagnostic.rst
    utils.rst
    misc.rst
-   check.rst
+   checks.rst
    examples.rst
    
 |

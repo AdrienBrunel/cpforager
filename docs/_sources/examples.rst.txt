@@ -1,3 +1,5 @@
+.. _sec-examples:
+
 .. automodule:: cpforager
    :members:
    :undoc-members:

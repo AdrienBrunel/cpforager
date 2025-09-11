@@ -1,0 +1,177 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1. User guide &mdash; cpforager</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/css/style.css?v=8ac2ccb1" />
+
+  
+    <link rel="shortcut icon" href="_static/logo_cpforager_color.png"/>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=29a6c3e3"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="2. Classes" href="classes.html" />
+    <link rel="prev" title="Overview" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/logo_cpforager_text_color.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">1. User guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classes.html">2. Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parameters.html">3. Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="processing.html">4. Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagnostic.html">5. Plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">6. Utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="misc.html">7. Miscellaneous</a></li>
+<li class="toctree-l1"><a class="reference internal" href="checks.html">8. Checks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">9. Examples</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">cpforager</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active"><span class="section-number">1. </span>User guide</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/userguide.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="user-guide">
+<h1><span class="section-number">1. </span>User guide<a class="headerlink" href="#user-guide" title="Link to this heading"></a></h1>
+<p>Users of the <strong>cpforager</strong> Python package only have to define a parameters dictionary that will be used for the data processing.</p>
+<p>To do so, users must write a <em>.yml</em> configuration file containing both the name and the value of every required parameters.
+An example of a <em>.yml</em> configuration file can be found below :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># colony parameters</span>
+<span class="n">colony</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="n">BRA_FDN_MEI</span>
+    <span class="n">center</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">32.39280</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.81980</span><span class="p">]</span>
+    <span class="n">box_longitude</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">32.3958</span><span class="p">,</span> <span class="o">-</span><span class="mf">32.3898</span><span class="p">]</span>
+    <span class="n">box_latitude</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">3.8226</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.8170</span><span class="p">]</span>
+
+<span class="c1"># local timezone</span>
+<span class="n">local_tz</span> <span class="p">:</span> <span class="n">America</span><span class="o">/</span><span class="n">Noronha</span>
+
+<span class="c1"># cleaning parameters</span>
+<span class="n">max_possible_speed</span><span class="p">:</span> <span class="mf">150.0</span>
+
+<span class="c1"># trip segmentation parameters</span>
+<span class="n">dist_threshold</span><span class="p">:</span> <span class="mf">2.0</span>
+<span class="n">speed_threshold</span><span class="p">:</span> <span class="mf">5.0</span>
+<span class="n">nesting_speed</span><span class="p">:</span> <span class="mf">1.0</span>
+<span class="n">trip_min_duration</span><span class="p">:</span> <span class="mf">1200.0</span>
+<span class="n">trip_max_duration</span><span class="p">:</span> <span class="mf">1209600.0</span>
+<span class="n">trip_min_length</span><span class="p">:</span> <span class="mf">10.0</span>
+<span class="n">trip_max_length</span><span class="p">:</span> <span class="mf">10000.0</span>
+<span class="n">trip_min_steps</span><span class="p">:</span> <span class="mi">10</span>
+
+<span class="c1"># dive segmentation parameters</span>
+<span class="n">diving_depth_threshold</span><span class="p">:</span> <span class="o">-</span><span class="mf">1.0</span>
+<span class="n">dive_min_duration</span><span class="p">:</span> <span class="mf">2.0</span>
+
+<span class="c1"># accelerometer parameters</span>
+<span class="n">odba_p_norm</span> <span class="p">:</span> <span class="mi">1</span>
+<span class="n">filter_type</span><span class="p">:</span> <span class="n">rolling_avg</span>
+<span class="n">acc_time_window</span><span class="p">:</span> <span class="mf">2.0</span>
+</pre></div>
+</div>
+<p>Details about each parameter can be found in <a class="reference internal" href="generated/cpforager.parameters.get_params.html#cpforager.parameters.get_params" title="cpforager.parameters.get_params"><code class="xref py py-func docutils literal notranslate"><span class="pre">cpforager.parameters.get_params()</span></code></a>.
+Then, users can build the parameters dictionary using the <a class="reference internal" href="generated/cpforager.parameters.get_params.html#cpforager.parameters.get_params" title="cpforager.parameters.get_params"><code class="xref py py-func docutils literal notranslate"><span class="pre">cpforager.parameters.get_params()</span></code></a> function and the path toward the <em>.yml</em> configuration file :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">cpforager</span><span class="w"> </span><span class="kn">import</span> <span class="n">parameters</span>
+<span class="n">params</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">get_params</span><span class="p">([</span><span class="n">config_all</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>This parameters dictionary is a required argument to the <a class="reference internal" href="generated/cpforager.GPS.html#cpforager.GPS" title="cpforager.GPS"><code class="xref py py-func docutils literal notranslate"><span class="pre">cpforager.GPS()</span></code></a>, <a class="reference internal" href="generated/cpforager.TDR.html#cpforager.TDR" title="cpforager.TDR"><code class="xref py py-func docutils literal notranslate"><span class="pre">cpforager.TDR()</span></code></a>, <a class="reference internal" href="generated/cpforager.AXY.html#cpforager.AXY" title="cpforager.AXY"><code class="xref py py-func docutils literal notranslate"><span class="pre">cpforager.AXY()</span></code></a> and <a class="reference internal" href="generated/cpforager.GPS_TDR.html#cpforager.GPS_TDR" title="cpforager.GPS_TDR"><code class="xref py py-func docutils literal notranslate"><span class="pre">cpforager.GPS_TDR()</span></code></a> constructors implemented in <strong>cpforager</strong>.</p>
+<p>In case users want to use the <strong>cpforager</strong> package in a more systematic way with diverse datasets, my recommandation is to have one configuration file for each colony and one for each species (that have distinct trip and diving behaviours).
+These <em>.yml</em> files are then used to build the parameters dictionary :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">cpforager</span><span class="w"> </span><span class="kn">import</span> <span class="n">parameters</span>
+<span class="n">params</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">get_params</span><span class="p">([</span><span class="n">config_colony</span><span class="p">,</span> <span class="n">config_species</span><span class="p">,</span> <span class="n">config_general</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Regarding the customisation of plots produced by <strong>cpforager</strong>, users should modify the plot parameters dictionary as follows :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">cpforager</span><span class="w"> </span><span class="kn">import</span> <span class="n">parameters</span>
+<span class="n">plot_params</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">get_plot_params</span><span class="p">()</span>
+<span class="n">plot_params</span><span class="p">[</span><span class="s2">&quot;fig_dpi&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">300</span>
+</pre></div>
+</div>
+<p>Details about each parameter can be found in <a class="reference internal" href="generated/cpforager.parameters.get_plot_params.html#cpforager.parameters.get_plot_params" title="cpforager.parameters.get_plot_params"><code class="xref py py-func docutils literal notranslate"><span class="pre">cpforager.parameters.get_plot_params()</span></code></a>.
+For more practical details, see <a class="reference internal" href="examples.html#sec-examples"><span class="std std-ref">Examples</span></a> section.</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="classes.html" class="btn btn-neutral float-right" title="2. Classes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Adrien Brunel.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

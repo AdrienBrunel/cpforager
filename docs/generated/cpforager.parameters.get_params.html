@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>2.1. cpforager.parameters.get_params &mdash; cpforager</title>
+  <title>3.1. cpforager.parameters.get_params &mdash; cpforager</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=8ac2ccb1" />
@@ -21,8 +21,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="2.2. cpforager.parameters.get_columns_dtypes" href="cpforager.parameters.get_columns_dtypes.html" />
-    <link rel="prev" title="2. Parameters" href="../parameters.html" /> 
+    <link rel="next" title="3.2. cpforager.parameters.get_plot_params" href="cpforager.parameters.get_plot_params.html" />
+    <link rel="prev" title="3. Parameters" href="../parameters.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -47,22 +47,23 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../classes.html">1. Classes</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../parameters.html">2. Parameters</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">2.1. cpforager.parameters.get_params</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="../userguide.html">1. User guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../classes.html">2. Classes</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../parameters.html">3. Parameters</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3.1. cpforager.parameters.get_params</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#cpforager.parameters.get_params"><code class="docutils literal notranslate"><span class="pre">get_params()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="cpforager.parameters.get_columns_dtypes.html">2.2. cpforager.parameters.get_columns_dtypes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cpforager.parameters.get_plot_params.html">2.3. cpforager.parameters.get_plot_params</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpforager.parameters.get_plot_params.html">3.2. cpforager.parameters.get_plot_params</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpforager.parameters.get_columns_dtypes.html">3.3. cpforager.parameters.get_columns_dtypes</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../processing.html">3. Processing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../diagnostic.html">4. Plots</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../utils.html">5. Utils</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../misc.html">6. Miscellaneous</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../check.html">7. Checks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../examples.html">8. Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../processing.html">4. Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../diagnostic.html">5. Plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils.html">6. Utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc.html">7. Miscellaneous</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../checks.html">8. Checks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples.html">9. Examples</a></li>
 </ul>
 
         </div>
@@ -79,8 +80,8 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../parameters.html"><span class="section-number">2. </span>Parameters</a></li>
-      <li class="breadcrumb-item active"><span class="section-number">2.1. </span>cpforager.parameters.get_params</li>
+          <li class="breadcrumb-item"><a href="../parameters.html"><span class="section-number">3. </span>Parameters</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">3.1. </span>cpforager.parameters.get_params</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/generated/cpforager.parameters.get_params.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -91,14 +92,14 @@
            <div itemprop="articleBody">
              
   <section id="cpforager-parameters-get-params">
-<h1><span class="section-number">2.1. </span>cpforager.parameters.get_params<a class="headerlink" href="#cpforager-parameters-get-params" title="Link to this heading"></a></h1>
+<h1><span class="section-number">3.1. </span>cpforager.parameters.get_params<a class="headerlink" href="#cpforager-parameters-get-params" title="Link to this heading"></a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="cpforager.parameters.get_params">
-<span class="sig-prename descclassname"><span class="pre">cpforager.parameters.</span></span><span class="sig-name descname"><span class="pre">get_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">colony</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cpforager.parameters.get_params" title="Link to this definition"></a></dt>
-<dd><p>Create a parameters dictionary.</p>
+<span class="sig-prename descclassname"><span class="pre">cpforager.parameters.</span></span><span class="sig-name descname"><span class="pre">get_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config_file_paths</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cpforager.parameters.get_params" title="Link to this definition"></a></dt>
+<dd><p>Create a parameters dictionary loaded from a list of <em>.yml</em> paths.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>colony</strong> (<em>str</em>) – codified name of the considered colony</p>
+<dd class="field-odd"><p><strong>config_file_paths</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – a list of <em>.yml</em> paths</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>a dictionary of parameters</p>
@@ -107,11 +108,19 @@
 <dd class="field-odd"><p>dict</p>
 </dd>
 </dl>
-<p>The parameters dictionary is required to construct GPS, TDR and AXY classes. The user-defined colony code allows to define a 
+<p>The parameters dictionary is required to construct <code class="docutils literal notranslate"><span class="pre">GPS</span></code>, <code class="docutils literal notranslate"><span class="pre">TDR</span></code> and <code class="docutils literal notranslate"><span class="pre">AXY</span></code> classes. The user-defined colony code allows to define a 
 dictionary of parameters according to a specific dataset. Find below the exhaustive table of parameters within the dictionary.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>Users should modify the parameters values according to their dataset and/or add if block with the colony code of their choice.</p>
+<p>Users only have to write the <em>.yml</em> files with parameter values consistent with their dataset and their need.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Even if all your parameters are written in a unique <em>.yml</em> file, you must express it as a single-element list <em>e.g.</em> <code class="docutils literal notranslate"><span class="pre">params</span> <span class="pre">=</span> <span class="pre">get_params([&quot;my_unique_config_path.yml&quot;])</span></code>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The website at <a class="reference external" href="https://mapscaping.com/bounding-box-calculator/">https://mapscaping.com/bounding-box-calculator/</a> is a user-friendly tool that can help define the colony bounding box.</p>
 </div>
 <table class="docutils align-default">
 <thead>
@@ -122,80 +131,96 @@ dictionary of parameters according to a specific dataset. Find below the exhaust
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">colony</span></code></p></td>
-<td><p>name, longitude/latitude center and bounding box inside which the searbird’s nest is to be found</p></td>
-<td><p>GPS</p></td>
+<td><p>dictionary with infos about the searbird’s colony</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">GPS</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">colony[&quot;name&quot;]</span></code></p></td>
+<td><p>name of the searbird’s colony</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">GPS</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">colony[&quot;center&quot;]</span></code></p></td>
+<td><p>longitude/latitude center of the searbird’s colony</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">GPS</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">colony[&quot;box_longitude&quot;]</span></code></p></td>
+<td><p>longitude bounding box inside which the searbird’s nest is to be found</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">GPS</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">colony[&quot;box_latitude&quot;]</span></code></p></td>
+<td><p>latitude bounding box inside which the searbird’s nest is to be found</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">GPS</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">local_tz</span></code></p></td>
 <td><p>local timezone of the seabird’s nest</p></td>
-<td><p>GPS, TDR, AXY</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">GPS</span></code>, <code class="docutils literal notranslate"><span class="pre">AXY</span></code>, <code class="docutils literal notranslate"><span class="pre">TDR</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">max_possible_speed</span></code></p></td>
-<td><p>speed threshold in km/h above which a longitude/latitude measure can be considered as an error and will be deleted</p></td>
-<td><p>GPS</p></td>
+<td><p>speed threshold in km/h above which a longitude/latitude measure can be considered an error</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">GPS</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">dist_threshold</span></code></p></td>
 <td><p>distance from the nest threshold in km above which the seabird is considered in a foraging trip</p></td>
-<td><p>GPS</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">GPS</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">speed_threshold</span></code></p></td>
 <td><p>speed threshold in km/h above which the seabird is still considered in a foraging trip despite being below the distance threshold</p></td>
-<td><p>GPS</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">GPS</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">nesting_speed</span></code></p></td>
 <td><p>local timezone of the seabird’s nest</p></td>
-<td><p>GPS</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">GPS</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">nest_position</span></code></p></td>
-<td><p>longitude and latitude of the seabird’s nest if known</p></td>
-<td><p>GPS</p></td>
+<td><p>longitude and latitude of the seabird’s nest if known beforehand</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">GPS</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trip_min_duration</span></code></p></td>
 <td><p>duration in seconds above which a trip is valid</p></td>
-<td><p>GPS</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">GPS</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trip_max_duration</span></code></p></td>
 <td><p>duration in seconds below which a trip is valid</p></td>
-<td><p>GPS</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">GPS</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trip_min_length</span></code></p></td>
 <td><p>length in km above which a trip is valid</p></td>
-<td><p>GPS</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">GPS</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trip_max_length</span></code></p></td>
 <td><p>length in km below which a trip is valid</p></td>
-<td><p>GPS</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">GPS</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trip_min_steps</span></code></p></td>
 <td><p>length in km below which a trip is valid</p></td>
-<td><p>GPS</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">GPS</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">diving_depth_threshold</span></code></p></td>
 <td><p>depth threshold above which a seabird is considered to be diving</p></td>
-<td><p>TDR</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TDR</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">dive_min_duration</span></code></p></td>
 <td><p>minimum duration in seconds of a dive</p></td>
-<td><p>TDR</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TDR</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">odba_p_norm</span></code></p></td>
 <td><p>p-norm used for the computation of overall dyanmical body acceleration</p></td>
-<td><p>AXY</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">AXY</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">filter_type</span></code></p></td>
-<td><p>choose type of filter for accelerations measures among (rolling average or high-pass)</p></td>
-<td><p>AXY</p></td>
+<td><p>choose type of filter for accelerations measures (<code class="docutils literal notranslate"><span class="pre">rolling_avg</span></code> or <code class="docutils literal notranslate"><span class="pre">high_pass</span></code>)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">AXY</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">acc_time_window</span></code></p></td>
 <td><p>duration in seconds of the rolling window used for filtering dynamic acceleration</p></td>
-<td><p>AXY</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">AXY</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cutoff_f</span></code></p></td>
 <td><p>cutoff frequency in Hz for the Butterworth high-pass filter</p></td>
-<td><p>AXY</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">AXY</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">order</span></code></p></td>
 <td><p>order of the Butterworth high-pass filter</p></td>
-<td><p>AXY</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">AXY</span></code></p></td>
 </tr>
 </tbody>
 </table>
@@ -207,8 +232,8 @@ dictionary of parameters according to a specific dataset. Find below the exhaust
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../parameters.html" class="btn btn-neutral float-left" title="2. Parameters" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="cpforager.parameters.get_columns_dtypes.html" class="btn btn-neutral float-right" title="2.2. cpforager.parameters.get_columns_dtypes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../parameters.html" class="btn btn-neutral float-left" title="3. Parameters" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="cpforager.parameters.get_plot_params.html" class="btn btn-neutral float-right" title="3.2. cpforager.parameters.get_plot_params" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

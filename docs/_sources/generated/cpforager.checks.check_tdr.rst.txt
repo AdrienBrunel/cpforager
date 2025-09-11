@@ -1,0 +1,6 @@
+﻿cpforager.checks.check\_tdr
+===========================
+
+.. currentmodule:: cpforager.checks
+
+.. autofunction:: check_tdr

@@ -9,9 +9,10 @@ from cpforager import parameters, utils, GPS
 # ======================================================= #
 # DIRECTORIES
 # ======================================================= #
-root_dir = os.getcwd()
-data_dir = os.path.join(root_dir, "data")
-test_dir = os.path.join(root_dir, "tests", "gps")
+root_dir   = os.getcwd()
+data_dir   = os.path.join(root_dir, "data")
+config_dir = os.path.join(root_dir, "configs")
+test_dir   = os.path.join(root_dir, "tests", "gps")
 
 
 # ======================================================= #
@@ -25,9 +26,13 @@ file_name = "BRA_FDN_MEI_2016-09-15_SSUL_01_T32840_NA_GPS_IGU120_BR023_LOC.csv"
 file_id   = file_name.replace(".csv", "")
 file_path = os.path.join(data_dir, fieldwork, file_name)
 
-# get parameters dictionaries
+# set list of configuration paths
+config_colony_path  = os.path.join(config_dir, "colony_%s.yml" % (colony))
+config_general_path = os.path.join(config_dir, "general.yml")
+
+# set parameters dictionaries
+params      = parameters.get_params([config_colony_path, config_general_path])
 plot_params = parameters.get_plot_params()
-params      = parameters.get_params(colony)
 
 
 # ======================================================= #

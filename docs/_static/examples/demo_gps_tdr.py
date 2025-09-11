@@ -9,9 +9,10 @@ from cpforager import parameters, utils, GPS_TDR
 # ======================================================= #
 # DIRECTORIES
 # ======================================================= #
-root_dir = os.getcwd()
-data_dir = os.path.join(root_dir, "data")
-test_dir = os.path.join(root_dir, "tests", "gps_tdr")
+root_dir   = os.getcwd()
+data_dir   = os.path.join(root_dir, "data")
+config_dir = os.path.join(root_dir, "configs")
+test_dir   = os.path.join(root_dir, "tests", "gps_tdr")
 
 
 # ======================================================= #
@@ -19,15 +20,19 @@ test_dir = os.path.join(root_dir, "tests", "gps_tdr")
 # ======================================================= #
 
 # set metadata
-fieldwork = "PER_PSC_2008_11"
-colony = "PER_PSC_PSC"
+fieldwork     = "PER_PSC_2008_11"
+colony        = "PER_PSC_PSC"
 gps_file_name = "PER_PSC_PSC_2008-11-25_SVAR_06_5006_F_GPS_GIP_36_UTC.csv"
 tdr_file_name = "PER_PSC_PSC_2008-11-25_SVAR_06_5006_F_TDR_G5_3075_UTC.csv"
-file_id = "PER_PSC_PSC_2008-11-25_SVAR_06_5006_F_GPSxTDR"
+file_id       = "PER_PSC_PSC_2008-11-25_SVAR_06_5006_F_GPSxTDR"
 
+# set configuration paths
+config_colony_path = os.path.join(config_dir, "colony_%s.yml" % (colony))
+config_trips_path  = os.path.join(config_dir, "trips.yml")
+config_dives_path  = os.path.join(config_dir, "dives_SULA.yml")
 
 # set parameters dictionaries
-params = parameters.get_params(colony)
+params      = parameters.get_params([config_colony_path, config_trips_path, config_dives_path])
 plot_params = parameters.get_plot_params()
 
 

@@ -9,9 +9,10 @@ from cpforager import parameters, utils, misc, GPS_TDR, GPS_TDR_Collection
 # ======================================================= #
 # DIRECTORIES
 # ======================================================= #
-root_dir = os.getcwd()
-data_dir = os.path.join(root_dir, "data")
-test_dir = os.path.join(root_dir, "tests", "gps_tdr_collection")
+root_dir   = os.getcwd()
+data_dir   = os.path.join(root_dir, "data")
+config_dir = os.path.join(root_dir, "configs")
+test_dir   = os.path.join(root_dir, "tests", "gps_tdr_collection")
 
 
 # ======================================================= #
@@ -20,15 +21,17 @@ test_dir = os.path.join(root_dir, "tests", "gps_tdr_collection")
 
 # set metadata
 fieldwork = "PER_PSC_2008_11"
-colony = "PER_PSC_PSC"
+colony    = "PER_PSC_PSC"
 
 # list of bird ids (both in gps and tdr files)
-bird_ids = ["_LBOU_55_", "_LBOU_56_", "_SVAR_06_", "_SVAR_04_"]
+bird_ids   = ["_LBOU_55_", "_LBOU_56_", "_SVAR_06_", "_SVAR_04_"]
 n_bird_ids = len(bird_ids)
 
+# set configuration paths
+config_colony_path = os.path.join(config_dir, "colony_%s.yml" % (colony))
+config_trips_path  = os.path.join(config_dir, "trips.yml")
 
-# set parameters dictionaries
-params = parameters.get_params(colony)
+# set plot parameters dictionary
 plot_params = parameters.get_plot_params()
 
 
@@ -54,6 +57,15 @@ for k in range(n_bird_ids):
     gps_file_path = os.path.join(data_dir, fieldwork, gps_file_name)
     tdr_file_id = tdr_file_name.replace(".csv", "")
     tdr_file_path = os.path.join(data_dir, fieldwork, tdr_file_name)
+    
+    # set configuration paths
+    if "_LBOU_" in tdr_file_name: 
+        config_dives_path = os.path.join(config_dir, "dives_LEUC.yml")
+    else:
+        config_dives_path = os.path.join(config_dir, "dives_SULA.yml")
+        
+    # set parameters dictionaries
+    params = parameters.get_params([config_colony_path, config_trips_path, config_dives_path])
 
     # load raw data
     df_gps = pd.read_csv(gps_file_path, sep=",")

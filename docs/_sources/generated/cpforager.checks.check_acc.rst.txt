@@ -1,0 +1,6 @@
+﻿cpforager.checks.check\_acc
+===========================
+
+.. currentmodule:: cpforager.checks
+
+.. autofunction:: check_acc

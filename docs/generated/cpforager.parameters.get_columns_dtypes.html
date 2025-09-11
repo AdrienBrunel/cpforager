@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>2.2. cpforager.parameters.get_columns_dtypes &mdash; cpforager</title>
+  <title>3.3. cpforager.parameters.get_columns_dtypes &mdash; cpforager</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=8ac2ccb1" />
@@ -21,8 +21,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="2.3. cpforager.parameters.get_plot_params" href="cpforager.parameters.get_plot_params.html" />
-    <link rel="prev" title="2.1. cpforager.parameters.get_params" href="cpforager.parameters.get_params.html" /> 
+    <link rel="next" title="4. Processing" href="../processing.html" />
+    <link rel="prev" title="3.2. cpforager.parameters.get_plot_params" href="cpforager.parameters.get_plot_params.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -47,22 +47,23 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../classes.html">1. Classes</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../parameters.html">2. Parameters</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="cpforager.parameters.get_params.html">2.1. cpforager.parameters.get_params</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">2.2. cpforager.parameters.get_columns_dtypes</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="../userguide.html">1. User guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../classes.html">2. Classes</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../parameters.html">3. Parameters</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cpforager.parameters.get_params.html">3.1. cpforager.parameters.get_params</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpforager.parameters.get_plot_params.html">3.2. cpforager.parameters.get_plot_params</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3.3. cpforager.parameters.get_columns_dtypes</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#cpforager.parameters.get_columns_dtypes"><code class="docutils literal notranslate"><span class="pre">get_columns_dtypes()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="cpforager.parameters.get_plot_params.html">2.3. cpforager.parameters.get_plot_params</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../processing.html">3. Processing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../diagnostic.html">4. Plots</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../utils.html">5. Utils</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../misc.html">6. Miscellaneous</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../check.html">7. Checks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../examples.html">8. Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../processing.html">4. Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../diagnostic.html">5. Plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils.html">6. Utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc.html">7. Miscellaneous</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../checks.html">8. Checks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples.html">9. Examples</a></li>
 </ul>
 
         </div>
@@ -79,8 +80,8 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../parameters.html"><span class="section-number">2. </span>Parameters</a></li>
-      <li class="breadcrumb-item active"><span class="section-number">2.2. </span>cpforager.parameters.get_columns_dtypes</li>
+          <li class="breadcrumb-item"><a href="../parameters.html"><span class="section-number">3. </span>Parameters</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">3.3. </span>cpforager.parameters.get_columns_dtypes</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/generated/cpforager.parameters.get_columns_dtypes.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -91,7 +92,7 @@
            <div itemprop="articleBody">
              
   <section id="cpforager-parameters-get-columns-dtypes">
-<h1><span class="section-number">2.2. </span>cpforager.parameters.get_columns_dtypes<a class="headerlink" href="#cpforager-parameters-get-columns-dtypes" title="Link to this heading"></a></h1>
+<h1><span class="section-number">3.3. </span>cpforager.parameters.get_columns_dtypes<a class="headerlink" href="#cpforager-parameters-get-columns-dtypes" title="Link to this heading"></a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="cpforager.parameters.get_columns_dtypes">
 <span class="sig-prename descclassname"><span class="pre">cpforager.parameters.</span></span><span class="sig-name descname"><span class="pre">get_columns_dtypes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column_names</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cpforager.parameters.get_columns_dtypes" title="Link to this definition"></a></dt>
@@ -107,8 +108,8 @@
 <dd class="field-odd"><p>dict</p>
 </dd>
 </dl>
-<p>The dtypes must be compatible with a dataframe containing NaN, <em>i.e</em> <cite>Int64</cite> and <cite>Float64</cite> instead of <cite>int64</cite> and <cite>float64</cite>. The full dictionary among which to
-extract the dictionary is hard-coded.</p>
+<p>The dtypes must be compatible with a dataframe containing NaN values, <em>i.e</em> <code class="docutils literal notranslate"><span class="pre">Int64</span></code> and <code class="docutils literal notranslate"><span class="pre">Float64</span></code> instead of <code class="docutils literal notranslate"><span class="pre">int64</span></code> and <code class="docutils literal notranslate"><span class="pre">float64</span></code>. 
+The full dictionary among which to extract the dictionary is hard-coded.</p>
 </dd></dl>
 
 </section>
@@ -117,8 +118,8 @@ extract the dictionary is hard-coded.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="cpforager.parameters.get_params.html" class="btn btn-neutral float-left" title="2.1. cpforager.parameters.get_params" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="cpforager.parameters.get_plot_params.html" class="btn btn-neutral float-right" title="2.3. cpforager.parameters.get_plot_params" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="cpforager.parameters.get_plot_params.html" class="btn btn-neutral float-left" title="3.2. cpforager.parameters.get_plot_params" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../processing.html" class="btn btn-neutral float-right" title="4. Processing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

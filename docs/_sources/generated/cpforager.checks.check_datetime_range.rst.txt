@@ -1,0 +1,6 @@
+﻿cpforager.checks.check\_datetime\_range
+=======================================
+
+.. currentmodule:: cpforager.checks
+
+.. autofunction:: check_datetime_range

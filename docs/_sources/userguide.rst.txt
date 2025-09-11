@@ -1,0 +1,74 @@
+User guide
+--------------------------
+
+Users of the **cpforager** Python package only have to define a parameters dictionary that will be used for the data processing.
+
+To do so, users must write a *.yml* configuration file containing both the name and the value of every required parameters. 
+An example of a *.yml* configuration file can be found below :
+
+.. code-block:: python
+
+    # colony parameters
+    colony:
+        name: BRA_FDN_MEI
+        center: [-32.39280, -3.81980]
+        box_longitude: [-32.3958, -32.3898]
+        box_latitude: [-3.8226, -3.8170]
+    
+    # local timezone
+    local_tz : America/Noronha
+
+    # cleaning parameters
+    max_possible_speed: 150.0
+
+    # trip segmentation parameters
+    dist_threshold: 2.0
+    speed_threshold: 5.0
+    nesting_speed: 1.0
+    trip_min_duration: 1200.0
+    trip_max_duration: 1209600.0
+    trip_min_length: 10.0
+    trip_max_length: 10000.0
+    trip_min_steps: 10
+
+    # dive segmentation parameters
+    diving_depth_threshold: -1.0
+    dive_min_duration: 2.0
+
+    # accelerometer parameters
+    odba_p_norm : 1
+    filter_type: rolling_avg
+    acc_time_window: 2.0
+
+
+Details about each parameter can be found in :func:`cpforager.parameters.get_params`.
+Then, users can build the parameters dictionary using the :func:`cpforager.parameters.get_params` function and the path toward the *.yml* configuration file : 
+
+.. code-block:: python
+
+    from cpforager import parameters
+    params = parameters.get_params([config_all])
+
+
+This parameters dictionary is a required argument to the :func:`cpforager.GPS`, :func:`cpforager.TDR`, :func:`cpforager.AXY` and :func:`cpforager.GPS_TDR` constructors implemented in **cpforager**. 
+
+In case users want to use the **cpforager** package in a more systematic way with diverse datasets, my recommandation is to have one configuration file for each colony and one for each species (that have distinct trip and diving behaviours).
+These *.yml* files are then used to build the parameters dictionary :
+
+.. code-block:: python
+
+    from cpforager import parameters
+    params = parameters.get_params([config_colony, config_species, config_general])
+
+
+Regarding the customisation of plots produced by **cpforager**, users should modify the plot parameters dictionary as follows : 
+
+.. code-block:: python
+
+    from cpforager import parameters
+    plot_params = parameters.get_plot_params()
+    plot_params["fig_dpi"] = 300
+
+
+Details about each parameter can be found in :func:`cpforager.parameters.get_plot_params`.
+For more practical details, see :ref:`sec-examples` section. 

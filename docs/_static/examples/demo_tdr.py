@@ -9,9 +9,10 @@ from cpforager import parameters, utils, TDR
 # ======================================================= #
 # DIRECTORIES
 # ======================================================= #
-root_dir = os.getcwd()
-data_dir = os.path.join(root_dir, "data")
-test_dir = os.path.join(root_dir, "tests", "tdr")
+root_dir   = os.getcwd()
+data_dir   = os.path.join(root_dir, "data")
+config_dir = os.path.join(root_dir, "configs")
+test_dir   = os.path.join(root_dir, "tests", "tdr")
 
 
 # ======================================================= #
@@ -25,9 +26,13 @@ file_name = "BRA_FDN_MEI_2022-04-26_SDAC_01_U61556_F_TDR_G5_RT10_UTC.csv"
 file_id   = file_name.replace(".csv", "")
 file_path = os.path.join(data_dir, fieldwork, file_name)
 
-# get parameters dictionaries
+# set configuration paths
+config_colony_path = os.path.join(config_dir, "colony_%s.yml" % (colony))
+config_dives_path  = os.path.join(config_dir, "dives_SULA.yml")
+
+# set parameters dictionaries
+params      = parameters.get_params([config_colony_path, config_dives_path])
 plot_params = parameters.get_plot_params()
-params      = parameters.get_params(colony)
 
 
 # ======================================================= #

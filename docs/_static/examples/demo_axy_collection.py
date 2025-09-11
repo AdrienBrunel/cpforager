@@ -9,9 +9,10 @@ from cpforager import parameters, utils, misc, AXY, AXY_Collection
 # ======================================================= #
 # DIRECTORIES
 # ======================================================= #
-root_dir = os.getcwd()
-data_dir = os.path.join(root_dir, "data")
-test_dir = os.path.join(root_dir, "tests", "axy_collection")
+root_dir   = os.getcwd()
+data_dir   = os.path.join(root_dir, "data")
+config_dir = os.path.join(root_dir, "configs")
+test_dir   = os.path.join(root_dir, "tests", "axy_collection")
 
 
 # ======================================================= #
@@ -20,11 +21,17 @@ test_dir = os.path.join(root_dir, "tests", "axy_collection")
 
 # set metadata
 fieldwork = "BRA_FDN_2022_04"
-colony = "BRA_FDN_MEI"
+colony    = "BRA_FDN_MEI"
+
+# set configuration paths
+config_colony_path   = os.path.join(config_dir, "colony_%s.yml" % (colony))
+config_trips_path    = os.path.join(config_dir, "trips.yml")
+config_dives_path    = os.path.join(config_dir, "dives_SULA.yml")
+config_accelero_path = os.path.join(config_dir, "accelero_rollavg.yml")
 
 # set parameters dictionaries
+params      = parameters.get_params([config_colony_path, config_trips_path, config_dives_path, config_accelero_path])
 plot_params = parameters.get_plot_params()
-params = parameters.get_params(colony)
 
 
 # ======================================================= #

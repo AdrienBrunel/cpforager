@@ -1,0 +1,27 @@
+.. automodule:: cpforager
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :no-index:
+
+Checks
+--------------------------
+
+Functions used to verify the data validity.
+
+.. autosummary::
+   :toctree: generated
+
+   checks.check_datetime_type
+   checks.check_datetime_order
+   checks.check_datetime_duplicates
+   checks.check_datetime_range
+   checks.check_datetime
+   checks.check_longitude_latitude
+   checks.check_trip_existence
+   checks.check_trip_interruption
+   checks.check_gps
+   checks.check_pressure_temperature
+   checks.check_tdr
+   checks.check_accelerations
+   checks.check_acc

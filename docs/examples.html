@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>8. Examples &mdash; cpforager</title>
+  <title>9. Examples &mdash; cpforager</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/css/style.css?v=8ac2ccb1" />
@@ -21,7 +21,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="7.13. cpforager.check.check_acc" href="generated/cpforager.check.check_acc.html" /> 
+    <link rel="prev" title="8.13. cpforager.checks.check_acc" href="generated/cpforager.checks.check_acc.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -46,22 +46,23 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="classes.html">1. Classes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="parameters.html">2. Parameters</a></li>
-<li class="toctree-l1"><a class="reference internal" href="processing.html">3. Processing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="diagnostic.html">4. Plots</a></li>
-<li class="toctree-l1"><a class="reference internal" href="utils.html">5. Utils</a></li>
-<li class="toctree-l1"><a class="reference internal" href="misc.html">6. Miscellaneous</a></li>
-<li class="toctree-l1"><a class="reference internal" href="check.html">7. Checks</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">8. Examples</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#gps">8.1. GPS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#tdr">8.2. TDR</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#axy">8.3. AXY</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#gps-tdr">8.4. GPS_TDR</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#gps-collection">8.5. GPS_Collection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#tdr-collection">8.6. TDR_Collection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#axy-collection">8.7. AXY_Collection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#gps-tdr-collection">8.8. GPS_TDR_Collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userguide.html">1. User guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classes.html">2. Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parameters.html">3. Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="processing.html">4. Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagnostic.html">5. Plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">6. Utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="misc.html">7. Miscellaneous</a></li>
+<li class="toctree-l1"><a class="reference internal" href="checks.html">8. Checks</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">9. Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#gps">9.1. GPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tdr">9.2. TDR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#axy">9.3. AXY</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#gps-tdr">9.4. GPS_TDR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#gps-collection">9.5. GPS_Collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tdr-collection">9.6. TDR_Collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#axy-collection">9.7. AXY_Collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#gps-tdr-collection">9.8. GPS_TDR_Collection</a></li>
 </ul>
 </li>
 </ul>
@@ -80,7 +81,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active"><span class="section-number">8. </span>Examples</li>
+      <li class="breadcrumb-item active"><span class="section-number">9. </span>Examples</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/examples.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -91,10 +92,10 @@
            <div itemprop="articleBody">
              
   <section id="examples">
-<h1><span class="section-number">8. </span>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h1>
+<span id="sec-examples"></span><h1><span class="section-number">9. </span>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h1>
 <p>Examples showing how to simply benefit from <strong>cpforager</strong> package with your biologging data.</p>
 <section id="gps">
-<h2><span class="section-number">8.1. </span>GPS<a class="headerlink" href="#gps" title="Link to this heading"></a></h2>
+<h2><span class="section-number">9.1. </span>GPS<a class="headerlink" href="#gps" title="Link to this heading"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ======================================================= #</span>
 <span class="c1"># LIBRARIES</span>
 <span class="c1"># ======================================================= #</span>
@@ -106,9 +107,10 @@
 <span class="c1"># ======================================================= #</span>
 <span class="c1"># DIRECTORIES</span>
 <span class="c1"># ======================================================= #</span>
-<span class="n">root_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
-<span class="n">data_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">)</span>
-<span class="n">test_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;tests&quot;</span><span class="p">,</span> <span class="s2">&quot;gps&quot;</span><span class="p">)</span>
+<span class="n">root_dir</span>   <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+<span class="n">data_dir</span>   <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">)</span>
+<span class="n">config_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;configs&quot;</span><span class="p">)</span>
+<span class="n">test_dir</span>   <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;tests&quot;</span><span class="p">,</span> <span class="s2">&quot;gps&quot;</span><span class="p">)</span>
 
 
 <span class="c1"># ======================================================= #</span>
@@ -122,9 +124,13 @@
 <span class="n">file_id</span>   <span class="o">=</span> <span class="n">file_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
 <span class="n">file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="n">fieldwork</span><span class="p">,</span> <span class="n">file_name</span><span class="p">)</span>
 
-<span class="c1"># get parameters dictionaries</span>
+<span class="c1"># set list of configuration paths</span>
+<span class="n">config_colony_path</span>  <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">config_dir</span><span class="p">,</span> <span class="s2">&quot;colony_</span><span class="si">%s</span><span class="s2">.yml&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">colony</span><span class="p">))</span>
+<span class="n">config_general_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">config_dir</span><span class="p">,</span> <span class="s2">&quot;general.yml&quot;</span><span class="p">)</span>
+
+<span class="c1"># set parameters dictionaries</span>
+<span class="n">params</span>      <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">get_params</span><span class="p">([</span><span class="n">config_colony_path</span><span class="p">,</span> <span class="n">config_general_path</span><span class="p">])</span>
 <span class="n">plot_params</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">get_plot_params</span><span class="p">()</span>
-<span class="n">params</span>      <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">get_params</span><span class="p">(</span><span class="n">colony</span><span class="p">)</span>
 
 
 <span class="c1"># ======================================================= #</span>
@@ -148,7 +154,7 @@
 <img alt="_images/BRA_FDN_MEI_2016-09-15_SSUL_01_T32840_NA_GPS_IGU120_BR023_LOC_map.png" class="align-center" src="_images/BRA_FDN_MEI_2016-09-15_SSUL_01_T32840_NA_GPS_IGU120_BR023_LOC_map.png" />
 </section>
 <section id="tdr">
-<h2><span class="section-number">8.2. </span>TDR<a class="headerlink" href="#tdr" title="Link to this heading"></a></h2>
+<h2><span class="section-number">9.2. </span>TDR<a class="headerlink" href="#tdr" title="Link to this heading"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ======================================================= #</span>
 <span class="c1"># LIBRARIES</span>
 <span class="c1"># ======================================================= #</span>
@@ -160,9 +166,10 @@
 <span class="c1"># ======================================================= #</span>
 <span class="c1"># DIRECTORIES</span>
 <span class="c1"># ======================================================= #</span>
-<span class="n">root_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
-<span class="n">data_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">)</span>
-<span class="n">test_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;tests&quot;</span><span class="p">,</span> <span class="s2">&quot;tdr&quot;</span><span class="p">)</span>
+<span class="n">root_dir</span>   <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+<span class="n">data_dir</span>   <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">)</span>
+<span class="n">config_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;configs&quot;</span><span class="p">)</span>
+<span class="n">test_dir</span>   <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;tests&quot;</span><span class="p">,</span> <span class="s2">&quot;tdr&quot;</span><span class="p">)</span>
 
 
 <span class="c1"># ======================================================= #</span>
@@ -176,9 +183,13 @@
 <span class="n">file_id</span>   <span class="o">=</span> <span class="n">file_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
 <span class="n">file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="n">fieldwork</span><span class="p">,</span> <span class="n">file_name</span><span class="p">)</span>
 
-<span class="c1"># get parameters dictionaries</span>
+<span class="c1"># set configuration paths</span>
+<span class="n">config_colony_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">config_dir</span><span class="p">,</span> <span class="s2">&quot;colony_</span><span class="si">%s</span><span class="s2">.yml&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">colony</span><span class="p">))</span>
+<span class="n">config_dives_path</span>  <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">config_dir</span><span class="p">,</span> <span class="s2">&quot;dives_SULA.yml&quot;</span><span class="p">)</span>
+
+<span class="c1"># set parameters dictionaries</span>
+<span class="n">params</span>      <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">get_params</span><span class="p">([</span><span class="n">config_colony_path</span><span class="p">,</span> <span class="n">config_dives_path</span><span class="p">])</span>
 <span class="n">plot_params</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">get_plot_params</span><span class="p">()</span>
-<span class="n">params</span>      <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">get_params</span><span class="p">(</span><span class="n">colony</span><span class="p">)</span>
 
 
 <span class="c1"># ======================================================= #</span>
@@ -201,7 +212,7 @@
 <img alt="_images/BRA_FDN_MEI_2022-04-26_SDAC_01_U61556_F_TDR_G5_RT10_UTC_diag.png" class="align-center" src="_images/BRA_FDN_MEI_2022-04-26_SDAC_01_U61556_F_TDR_G5_RT10_UTC_diag.png" />
 </section>
 <section id="axy">
-<h2><span class="section-number">8.3. </span>AXY<a class="headerlink" href="#axy" title="Link to this heading"></a></h2>
+<h2><span class="section-number">9.3. </span>AXY<a class="headerlink" href="#axy" title="Link to this heading"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ======================================================= #</span>
 <span class="c1"># LIBRARIES</span>
 <span class="c1"># ======================================================= #</span>
@@ -213,9 +224,10 @@
 <span class="c1"># ======================================================= #</span>
 <span class="c1"># DIRECTORIES</span>
 <span class="c1"># ======================================================= #</span>
-<span class="n">root_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
-<span class="n">data_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">)</span>
-<span class="n">test_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;tests&quot;</span><span class="p">,</span> <span class="s2">&quot;axy&quot;</span><span class="p">)</span>
+<span class="n">root_dir</span>   <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+<span class="n">data_dir</span>   <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">)</span>
+<span class="n">config_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;configs&quot;</span><span class="p">)</span>
+<span class="n">test_dir</span>   <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;tests&quot;</span><span class="p">,</span> <span class="s2">&quot;axy&quot;</span><span class="p">)</span>
 
 
 <span class="c1"># ======================================================= #</span>
@@ -229,9 +241,15 @@
 <span class="n">file_id</span>   <span class="o">=</span> <span class="n">file_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
 <span class="n">file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="n">fieldwork</span><span class="p">,</span> <span class="n">file_name</span><span class="p">)</span>
 
-<span class="c1"># get parameters dictionaries</span>
+<span class="c1"># set configuration paths</span>
+<span class="n">config_colony_path</span>   <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">config_dir</span><span class="p">,</span> <span class="s2">&quot;colony_</span><span class="si">%s</span><span class="s2">.yml&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">colony</span><span class="p">))</span>
+<span class="n">config_trips_path</span>    <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">config_dir</span><span class="p">,</span> <span class="s2">&quot;trips.yml&quot;</span><span class="p">)</span>
+<span class="n">config_dives_path</span>    <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">config_dir</span><span class="p">,</span> <span class="s2">&quot;dives_SULA.yml&quot;</span><span class="p">)</span>
+<span class="n">config_accelero_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">config_dir</span><span class="p">,</span> <span class="s2">&quot;accelero_rollavg.yml&quot;</span><span class="p">)</span>
+
+<span class="c1"># set parameters dictionaries</span>
+<span class="n">params</span>      <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">get_params</span><span class="p">([</span><span class="n">config_colony_path</span><span class="p">,</span> <span class="n">config_trips_path</span><span class="p">,</span> <span class="n">config_dives_path</span><span class="p">,</span> <span class="n">config_accelero_path</span><span class="p">])</span>
 <span class="n">plot_params</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">get_plot_params</span><span class="p">()</span>
-<span class="n">params</span>      <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">get_params</span><span class="p">(</span><span class="n">colony</span><span class="p">)</span>
 
 
 <span class="c1"># ======================================================= #</span>
@@ -254,7 +272,7 @@
 <img alt="_images/BRA_FDN_MEI_2022-04-26_SDAC_01_U61556_F_GPS_AXY_RT10_UTC_diag.png" class="align-center" src="_images/BRA_FDN_MEI_2022-04-26_SDAC_01_U61556_F_GPS_AXY_RT10_UTC_diag.png" />
 </section>
 <section id="gps-tdr">
-<h2><span class="section-number">8.4. </span>GPS_TDR<a class="headerlink" href="#gps-tdr" title="Link to this heading"></a></h2>
+<h2><span class="section-number">9.4. </span>GPS_TDR<a class="headerlink" href="#gps-tdr" title="Link to this heading"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ======================================================= #</span>
 <span class="c1"># LIBRARIES</span>
 <span class="c1"># ======================================================= #</span>
@@ -266,9 +284,10 @@
 <span class="c1"># ======================================================= #</span>
 <span class="c1"># DIRECTORIES</span>
 <span class="c1"># ======================================================= #</span>
-<span class="n">root_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
-<span class="n">data_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">)</span>
-<span class="n">test_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;tests&quot;</span><span class="p">,</span> <span class="s2">&quot;gps_tdr&quot;</span><span class="p">)</span>
+<span class="n">root_dir</span>   <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+<span class="n">data_dir</span>   <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">)</span>
+<span class="n">config_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;configs&quot;</span><span class="p">)</span>
+<span class="n">test_dir</span>   <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;tests&quot;</span><span class="p">,</span> <span class="s2">&quot;gps_tdr&quot;</span><span class="p">)</span>
 
 
 <span class="c1"># ======================================================= #</span>
@@ -276,15 +295,19 @@
 <span class="c1"># ======================================================= #</span>
 
 <span class="c1"># set metadata</span>
-<span class="n">fieldwork</span> <span class="o">=</span> <span class="s2">&quot;PER_PSC_2008_11&quot;</span>
-<span class="n">colony</span> <span class="o">=</span> <span class="s2">&quot;PER_PSC_PSC&quot;</span>
+<span class="n">fieldwork</span>     <span class="o">=</span> <span class="s2">&quot;PER_PSC_2008_11&quot;</span>
+<span class="n">colony</span>        <span class="o">=</span> <span class="s2">&quot;PER_PSC_PSC&quot;</span>
 <span class="n">gps_file_name</span> <span class="o">=</span> <span class="s2">&quot;PER_PSC_PSC_2008-11-25_SVAR_06_5006_F_GPS_GIP_36_UTC.csv&quot;</span>
 <span class="n">tdr_file_name</span> <span class="o">=</span> <span class="s2">&quot;PER_PSC_PSC_2008-11-25_SVAR_06_5006_F_TDR_G5_3075_UTC.csv&quot;</span>
-<span class="n">file_id</span> <span class="o">=</span> <span class="s2">&quot;PER_PSC_PSC_2008-11-25_SVAR_06_5006_F_GPSxTDR&quot;</span>
+<span class="n">file_id</span>       <span class="o">=</span> <span class="s2">&quot;PER_PSC_PSC_2008-11-25_SVAR_06_5006_F_GPSxTDR&quot;</span>
 
+<span class="c1"># set configuration paths</span>
+<span class="n">config_colony_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">config_dir</span><span class="p">,</span> <span class="s2">&quot;colony_</span><span class="si">%s</span><span class="s2">.yml&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">colony</span><span class="p">))</span>
+<span class="n">config_trips_path</span>  <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">config_dir</span><span class="p">,</span> <span class="s2">&quot;trips.yml&quot;</span><span class="p">)</span>
+<span class="n">config_dives_path</span>  <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">config_dir</span><span class="p">,</span> <span class="s2">&quot;dives_SULA.yml&quot;</span><span class="p">)</span>
 
 <span class="c1"># set parameters dictionaries</span>
-<span class="n">params</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">get_params</span><span class="p">(</span><span class="n">colony</span><span class="p">)</span>
+<span class="n">params</span>      <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">get_params</span><span class="p">([</span><span class="n">config_colony_path</span><span class="p">,</span> <span class="n">config_trips_path</span><span class="p">,</span> <span class="n">config_dives_path</span><span class="p">])</span>
 <span class="n">plot_params</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">get_plot_params</span><span class="p">()</span>
 
 
@@ -326,7 +349,7 @@
 <img alt="_images/PER_PSC_PSC_2008-11-25_SVAR_06_5006_F_GPSxTDR_map.png" class="align-center" src="_images/PER_PSC_PSC_2008-11-25_SVAR_06_5006_F_GPSxTDR_map.png" />
 </section>
 <section id="gps-collection">
-<h2><span class="section-number">8.5. </span>GPS_Collection<a class="headerlink" href="#gps-collection" title="Link to this heading"></a></h2>
+<h2><span class="section-number">9.5. </span>GPS_Collection<a class="headerlink" href="#gps-collection" title="Link to this heading"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ======================================================= #</span>
 <span class="c1"># LIBRARIES</span>
 <span class="c1"># ======================================================= #</span>
@@ -338,9 +361,10 @@
 <span class="c1"># ======================================================= #</span>
 <span class="c1"># DIRECTORIES</span>
 <span class="c1"># ======================================================= #</span>
-<span class="n">root_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
-<span class="n">data_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">)</span>
-<span class="n">test_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;tests&quot;</span><span class="p">,</span> <span class="s2">&quot;gps_collection&quot;</span><span class="p">)</span>
+<span class="n">root_dir</span>   <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+<span class="n">data_dir</span>   <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">)</span>
+<span class="n">config_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;configs&quot;</span><span class="p">)</span>
+<span class="n">test_dir</span>   <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;tests&quot;</span><span class="p">,</span> <span class="s2">&quot;gps_collection&quot;</span><span class="p">)</span>
 
 
 <span class="c1"># ======================================================= #</span>
@@ -349,7 +373,10 @@
 
 <span class="c1"># set metadata</span>
 <span class="n">fieldworks</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;PER_PSC_2012_11&quot;</span><span class="p">,</span> <span class="s2">&quot;PER_PSC_2013_11&quot;</span><span class="p">,</span> <span class="s2">&quot;BRA_FDN_2016_09&quot;</span><span class="p">,</span> <span class="s2">&quot;BRA_FDN_2018_09&quot;</span><span class="p">,</span> <span class="s2">&quot;BRA_SAN_2022_03&quot;</span><span class="p">]</span>
-<span class="n">colonies</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;PER_PSC_PSC&quot;</span><span class="p">,</span> <span class="s2">&quot;PER_PSC_PSC&quot;</span><span class="p">,</span> <span class="s2">&quot;BRA_FDN_MEI&quot;</span><span class="p">,</span> <span class="s2">&quot;BRA_FDN_MEI&quot;</span><span class="p">,</span> <span class="s2">&quot;BRA_SAN_FRA&quot;</span><span class="p">]</span>
+<span class="n">colonies</span>   <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;PER_PSC_PSC&quot;</span><span class="p">,</span> <span class="s2">&quot;PER_PSC_PSC&quot;</span><span class="p">,</span> <span class="s2">&quot;BRA_FDN_MEI&quot;</span><span class="p">,</span> <span class="s2">&quot;BRA_FDN_MEI&quot;</span><span class="p">,</span> <span class="s2">&quot;BRA_SAN_FRA&quot;</span><span class="p">]</span>
+
+<span class="c1"># set configuration paths</span>
+<span class="n">config_trips_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">config_dir</span><span class="p">,</span> <span class="s2">&quot;trips.yml&quot;</span><span class="p">)</span>
 
 <span class="c1"># get parameters dictionaries</span>
 <span class="n">plot_params</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">get_plot_params</span><span class="p">()</span>
@@ -366,9 +393,12 @@
     <span class="c1"># determine list of gps files</span>
     <span class="n">files</span> <span class="o">=</span> <span class="n">misc</span><span class="o">.</span><span class="n">grep_pattern</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="n">fieldwork</span><span class="p">)),</span> <span class="s2">&quot;_GPS_IGU&quot;</span><span class="p">)</span>
     <span class="n">n_files</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">files</span><span class="p">)</span>
-
-    <span class="c1"># get structure of parameters according to colony code</span>
-    <span class="n">params</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">get_params</span><span class="p">(</span><span class="n">colony</span><span class="p">)</span>
+    
+    <span class="c1"># set configuration paths according to colony code</span>
+    <span class="n">config_colony_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">config_dir</span><span class="p">,</span> <span class="s2">&quot;colony_</span><span class="si">%s</span><span class="s2">.yml&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">colony</span><span class="p">))</span>
+    
+    <span class="c1"># set parameters dictionaries</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">get_params</span><span class="p">([</span><span class="n">config_colony_path</span><span class="p">,</span> <span class="n">config_trips_path</span><span class="p">])</span>
 
     <span class="c1"># loop over gps files</span>
     <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_files</span><span class="p">):</span>
@@ -402,7 +432,7 @@
 <img alt="_images/indiv_map_all.png" class="align-center" src="_images/indiv_map_all.png" />
 </section>
 <section id="tdr-collection">
-<h2><span class="section-number">8.6. </span>TDR_Collection<a class="headerlink" href="#tdr-collection" title="Link to this heading"></a></h2>
+<h2><span class="section-number">9.6. </span>TDR_Collection<a class="headerlink" href="#tdr-collection" title="Link to this heading"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ======================================================= #</span>
 <span class="c1"># LIBRARIES</span>
 <span class="c1"># ======================================================= #</span>
@@ -414,9 +444,10 @@
 <span class="c1"># ======================================================= #</span>
 <span class="c1"># DIRECTORIES</span>
 <span class="c1"># ======================================================= #</span>
-<span class="n">root_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
-<span class="n">data_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">)</span>
-<span class="n">test_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;tests&quot;</span><span class="p">,</span> <span class="s2">&quot;tdr_collection&quot;</span><span class="p">)</span>
+<span class="n">root_dir</span>   <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+<span class="n">data_dir</span>   <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">)</span>
+<span class="n">config_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;configs&quot;</span><span class="p">)</span>
+<span class="n">test_dir</span>   <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;tests&quot;</span><span class="p">,</span> <span class="s2">&quot;tdr_collection&quot;</span><span class="p">)</span>
 
 
 <span class="c1"># ======================================================= #</span>
@@ -425,9 +456,9 @@
 
 <span class="c1"># set metadata</span>
 <span class="n">fieldworks</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;PER_PSC_2008_11&quot;</span><span class="p">,</span> <span class="s2">&quot;BRA_FDN_2017_04&quot;</span><span class="p">,</span> <span class="s2">&quot;BRA_FDN_2022_04&quot;</span><span class="p">]</span>
-<span class="n">colonies</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;PER_PSC_PSC&quot;</span><span class="p">,</span> <span class="s2">&quot;BRA_FDN_MEI&quot;</span><span class="p">,</span> <span class="s2">&quot;BRA_FDN_MEI&quot;</span><span class="p">]</span>
+<span class="n">colonies</span>   <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;PER_PSC_PSC&quot;</span><span class="p">,</span> <span class="s2">&quot;BRA_FDN_MEI&quot;</span><span class="p">,</span> <span class="s2">&quot;BRA_FDN_MEI&quot;</span><span class="p">]</span>
 
-<span class="c1"># set parameters dictionaries</span>
+<span class="c1"># set plot parameters dictionary</span>
 <span class="n">plot_params</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">get_plot_params</span><span class="p">()</span>
 
 
@@ -443,8 +474,15 @@
     <span class="n">files</span> <span class="o">=</span> <span class="n">misc</span><span class="o">.</span><span class="n">grep_pattern</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="n">fieldwork</span><span class="p">)),</span> <span class="s2">&quot;_TDR_&quot;</span><span class="p">)</span>
     <span class="n">n_files</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">files</span><span class="p">)</span>
 
-    <span class="c1"># get structure of parameters</span>
-    <span class="n">params</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">get_params</span><span class="p">(</span><span class="n">colony</span><span class="p">)</span>
+    <span class="c1"># set configuration paths</span>
+    <span class="n">config_colony_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">config_dir</span><span class="p">,</span> <span class="s2">&quot;colony_</span><span class="si">%s</span><span class="s2">.yml&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">colony</span><span class="p">))</span>
+    <span class="k">if</span> <span class="s2">&quot;_LBOU_&quot;</span> <span class="ow">in</span> <span class="n">file_name</span><span class="p">:</span> 
+        <span class="n">config_dives_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">config_dir</span><span class="p">,</span> <span class="s2">&quot;dives_LEUC.yml&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">config_dives_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">config_dir</span><span class="p">,</span> <span class="s2">&quot;dives_SULA.yml&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># set parameters dictionary</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">get_params</span><span class="p">([</span><span class="n">config_colony_path</span><span class="p">,</span> <span class="n">config_dives_path</span><span class="p">])</span>
 
     <span class="c1"># loop over files in directory</span>
     <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_files</span><span class="p">):</span>
@@ -480,7 +518,7 @@
 <img alt="_images/dive_statistics_PER_PSC_2008_11.png" class="align-center" src="_images/dive_statistics_PER_PSC_2008_11.png" />
 </section>
 <section id="axy-collection">
-<h2><span class="section-number">8.7. </span>AXY_Collection<a class="headerlink" href="#axy-collection" title="Link to this heading"></a></h2>
+<h2><span class="section-number">9.7. </span>AXY_Collection<a class="headerlink" href="#axy-collection" title="Link to this heading"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ======================================================= #</span>
 <span class="c1"># LIBRARIES</span>
 <span class="c1"># ======================================================= #</span>
@@ -492,9 +530,10 @@
 <span class="c1"># ======================================================= #</span>
 <span class="c1"># DIRECTORIES</span>
 <span class="c1"># ======================================================= #</span>
-<span class="n">root_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
-<span class="n">data_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">)</span>
-<span class="n">test_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;tests&quot;</span><span class="p">,</span> <span class="s2">&quot;axy_collection&quot;</span><span class="p">)</span>
+<span class="n">root_dir</span>   <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+<span class="n">data_dir</span>   <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">)</span>
+<span class="n">config_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;configs&quot;</span><span class="p">)</span>
+<span class="n">test_dir</span>   <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;tests&quot;</span><span class="p">,</span> <span class="s2">&quot;axy_collection&quot;</span><span class="p">)</span>
 
 
 <span class="c1"># ======================================================= #</span>
@@ -503,11 +542,17 @@
 
 <span class="c1"># set metadata</span>
 <span class="n">fieldwork</span> <span class="o">=</span> <span class="s2">&quot;BRA_FDN_2022_04&quot;</span>
-<span class="n">colony</span> <span class="o">=</span> <span class="s2">&quot;BRA_FDN_MEI&quot;</span>
+<span class="n">colony</span>    <span class="o">=</span> <span class="s2">&quot;BRA_FDN_MEI&quot;</span>
+
+<span class="c1"># set configuration paths</span>
+<span class="n">config_colony_path</span>   <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">config_dir</span><span class="p">,</span> <span class="s2">&quot;colony_</span><span class="si">%s</span><span class="s2">.yml&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">colony</span><span class="p">))</span>
+<span class="n">config_trips_path</span>    <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">config_dir</span><span class="p">,</span> <span class="s2">&quot;trips.yml&quot;</span><span class="p">)</span>
+<span class="n">config_dives_path</span>    <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">config_dir</span><span class="p">,</span> <span class="s2">&quot;dives_SULA.yml&quot;</span><span class="p">)</span>
+<span class="n">config_accelero_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">config_dir</span><span class="p">,</span> <span class="s2">&quot;accelero_rollavg.yml&quot;</span><span class="p">)</span>
 
 <span class="c1"># set parameters dictionaries</span>
+<span class="n">params</span>      <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">get_params</span><span class="p">([</span><span class="n">config_colony_path</span><span class="p">,</span> <span class="n">config_trips_path</span><span class="p">,</span> <span class="n">config_dives_path</span><span class="p">,</span> <span class="n">config_accelero_path</span><span class="p">])</span>
 <span class="n">plot_params</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">get_plot_params</span><span class="p">()</span>
-<span class="n">params</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">get_params</span><span class="p">(</span><span class="n">colony</span><span class="p">)</span>
 
 
 <span class="c1"># ======================================================= #</span>
@@ -548,7 +593,7 @@
 </div>
 </section>
 <section id="gps-tdr-collection">
-<h2><span class="section-number">8.8. </span>GPS_TDR_Collection<a class="headerlink" href="#gps-tdr-collection" title="Link to this heading"></a></h2>
+<h2><span class="section-number">9.8. </span>GPS_TDR_Collection<a class="headerlink" href="#gps-tdr-collection" title="Link to this heading"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ======================================================= #</span>
 <span class="c1"># LIBRARIES</span>
 <span class="c1"># ======================================================= #</span>
@@ -560,9 +605,10 @@
 <span class="c1"># ======================================================= #</span>
 <span class="c1"># DIRECTORIES</span>
 <span class="c1"># ======================================================= #</span>
-<span class="n">root_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
-<span class="n">data_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">)</span>
-<span class="n">test_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;tests&quot;</span><span class="p">,</span> <span class="s2">&quot;gps_tdr_collection&quot;</span><span class="p">)</span>
+<span class="n">root_dir</span>   <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+<span class="n">data_dir</span>   <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">)</span>
+<span class="n">config_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;configs&quot;</span><span class="p">)</span>
+<span class="n">test_dir</span>   <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;tests&quot;</span><span class="p">,</span> <span class="s2">&quot;gps_tdr_collection&quot;</span><span class="p">)</span>
 
 
 <span class="c1"># ======================================================= #</span>
@@ -571,15 +617,17 @@
 
 <span class="c1"># set metadata</span>
 <span class="n">fieldwork</span> <span class="o">=</span> <span class="s2">&quot;PER_PSC_2008_11&quot;</span>
-<span class="n">colony</span> <span class="o">=</span> <span class="s2">&quot;PER_PSC_PSC&quot;</span>
+<span class="n">colony</span>    <span class="o">=</span> <span class="s2">&quot;PER_PSC_PSC&quot;</span>
 
 <span class="c1"># list of bird ids (both in gps and tdr files)</span>
-<span class="n">bird_ids</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;_LBOU_55_&quot;</span><span class="p">,</span> <span class="s2">&quot;_LBOU_56_&quot;</span><span class="p">,</span> <span class="s2">&quot;_SVAR_06_&quot;</span><span class="p">,</span> <span class="s2">&quot;_SVAR_04_&quot;</span><span class="p">]</span>
+<span class="n">bird_ids</span>   <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;_LBOU_55_&quot;</span><span class="p">,</span> <span class="s2">&quot;_LBOU_56_&quot;</span><span class="p">,</span> <span class="s2">&quot;_SVAR_06_&quot;</span><span class="p">,</span> <span class="s2">&quot;_SVAR_04_&quot;</span><span class="p">]</span>
 <span class="n">n_bird_ids</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">bird_ids</span><span class="p">)</span>
 
+<span class="c1"># set configuration paths</span>
+<span class="n">config_colony_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">config_dir</span><span class="p">,</span> <span class="s2">&quot;colony_</span><span class="si">%s</span><span class="s2">.yml&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">colony</span><span class="p">))</span>
+<span class="n">config_trips_path</span>  <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">config_dir</span><span class="p">,</span> <span class="s2">&quot;trips.yml&quot;</span><span class="p">)</span>
 
-<span class="c1"># set parameters dictionaries</span>
-<span class="n">params</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">get_params</span><span class="p">(</span><span class="n">colony</span><span class="p">)</span>
+<span class="c1"># set plot parameters dictionary</span>
 <span class="n">plot_params</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">get_plot_params</span><span class="p">()</span>
 
 
@@ -605,6 +653,15 @@
     <span class="n">gps_file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="n">fieldwork</span><span class="p">,</span> <span class="n">gps_file_name</span><span class="p">)</span>
     <span class="n">tdr_file_id</span> <span class="o">=</span> <span class="n">tdr_file_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
     <span class="n">tdr_file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="n">fieldwork</span><span class="p">,</span> <span class="n">tdr_file_name</span><span class="p">)</span>
+    
+    <span class="c1"># set configuration paths</span>
+    <span class="k">if</span> <span class="s2">&quot;_LBOU_&quot;</span> <span class="ow">in</span> <span class="n">tdr_file_name</span><span class="p">:</span> 
+        <span class="n">config_dives_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">config_dir</span><span class="p">,</span> <span class="s2">&quot;dives_LEUC.yml&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">config_dives_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">config_dir</span><span class="p">,</span> <span class="s2">&quot;dives_SULA.yml&quot;</span><span class="p">)</span>
+        
+    <span class="c1"># set parameters dictionaries</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">get_params</span><span class="p">([</span><span class="n">config_colony_path</span><span class="p">,</span> <span class="n">config_trips_path</span><span class="p">,</span> <span class="n">config_dives_path</span><span class="p">])</span>
 
     <span class="c1"># load raw data</span>
     <span class="n">df_gps</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">gps_file_path</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
@@ -643,7 +700,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="generated/cpforager.check.check_acc.html" class="btn btn-neutral float-left" title="7.13. cpforager.check.check_acc" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="generated/cpforager.checks.check_acc.html" class="btn btn-neutral float-left" title="8.13. cpforager.checks.check_acc" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
