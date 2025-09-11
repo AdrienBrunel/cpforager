@@ -30,23 +30,23 @@ def get_params(config_file_paths):
         Even if all your parameters are written in a unique *.yml* file, you must express it as a single-element list *e.g.* ``params = get_params(["my_unique_config_path.yml"])``.
         
     .. note::
-        The website at https://mapscaping.com/bounding-box-calculator/ makes it easier to define the colony bounding box.
+        The website at https://mapscaping.com/bounding-box-calculator/ is a user-friendly tool that can help define the colony bounding box.
         
     .. csv-table::  
         :header: "name", "description", "required"
         :widths: auto
 
-        ``colony``, "name, longitude/latitude center and bounding box inside which the searbird's nest is to be found", "``GPS``"
-        ``colony[name]``, "name of the searbird's colony", "``GPS``"
-        ``colony[center]``, "longitude/latitude center of the searbird's colony", "``GPS``"
-        ``colony[box_longitude]``, "longitude bounding box inside which the searbird's nest is to be found", "``GPS``"
-        ``colony[box_latitude]``, "latitude bounding box inside which the searbird's nest is to be found", "``GPS``"
-        ``local_tz``, "local timezone of the seabird's nest", "``GPS``, ``TDR``, ``AXY``"
+        ``colony``, "dictionary with infos about the searbird's colony", "``GPS``"
+        ``colony["name"]``, "name of the searbird's colony", "``GPS``"
+        ``colony["center"]``, "longitude/latitude center of the searbird's colony", "``GPS``"
+        ``colony["box_longitude"]``, "longitude bounding box inside which the searbird's nest is to be found", "``GPS``"
+        ``colony["box_latitude"]``, "latitude bounding box inside which the searbird's nest is to be found", "``GPS``"
+        ``local_tz``, "local timezone of the seabird's nest", "``GPS``, ``AXY``, ``TDR``"
         ``max_possible_speed``, "speed threshold in km/h above which a longitude/latitude measure can be considered an error", "``GPS``"
         ``dist_threshold``, "distance from the nest threshold in km above which the seabird is considered in a foraging trip", "``GPS``"
         ``speed_threshold``, "speed threshold in km/h above which the seabird is still considered in a foraging trip despite being below the distance threshold", "``GPS``"
         ``nesting_speed``, "local timezone of the seabird's nest", "``GPS``"
-        ``nest_position``, "longitude and latitude of the seabird's nest if known", "``GPS``"
+        ``nest_position``, "longitude and latitude of the seabird's nest if known beforehand", "``GPS``"
         ``trip_min_duration``, "duration in seconds above which a trip is valid", "``GPS``"
         ``trip_max_duration``, "duration in seconds below which a trip is valid", "``GPS``"
         ``trip_min_length``, "length in km above which a trip is valid", "``GPS``"
@@ -58,7 +58,7 @@ def get_params(config_file_paths):
         ``filter_type``, "choose type of filter for accelerations measures (``rolling_avg`` or ``high_pass``)", "``AXY``"
         ``acc_time_window``, "duration in seconds of the rolling window used for filtering dynamic acceleration", "``AXY``"
         ``cutoff_f``, "cutoff frequency in Hz for the Butterworth high-pass filter", "``AXY``"
-        ``order``, "order of the Butterworth high-pass filter", "``AXY``" 
+        ``order``, "order of the Butterworth high-pass filter", "``AXY``"
     """
     
     # init parameters dictionary
@@ -70,49 +70,6 @@ def get_params(config_file_paths):
             params.update(yaml.safe_load(f))
     
     return(params)
-
-
-# ================================================================================================ #
-# DICTIONARY OF DATA TYPES FOR DATAFRAME
-# ================================================================================================ #
-def get_columns_dtypes(column_names):
-    
-    """
-    Extract a dtype dictionary by dataframe column names.
-        
-    :param column_names: list of column names.
-    :type column_names: list
-    :return: a dictionary of dtypes by column names.
-    :rtype: dict 
-    
-    The dtypes must be compatible with a dataframe containing NaN values, *i.e* ``Int64`` and ``Float64`` instead of ``int64`` and ``float64``. 
-    The full dictionary among which to extract the dictionary is hard-coded.
-    """
-    
-    # define the dictionaries of types by columns
-    dtypes_columns_metadata = {"group":"str", "id":"str"}
-    dtypes_columns_basic = {"datetime":"object", "step_time":"Float64", "is_night":"Int64"}
-    dtypes_columns_gps = {"longitude":"Float64", "latitude":"Float64", "step_length":"Float64", "step_speed":"Float64", "step_heading":"Float64","step_turning_angle":"Float64", 
-                          "step_heading_to_colony":"Float64", "is_suspicious":"Int64", "dist_to_nest":"Float64", "trip":"Int64"}
-    dtypes_columns_tdr = {"pressure":"Float64", "temperature":"Float64", "depth":"Float64", "dive":"Int64"}
-    dtypes_columns_acc = {"ax":"Float64", "ay":"Float64", "az":"Float64", "ax_f":"Float64", "ay_f":"Float64", "az_f":"Float64","odba":"Float64", "odba_f":"Float64"}
-    dtypes_trip_stats = {"trip_id":"str", "length":"float", "duration":"float", "max_hole":"float", "dmax":"float", "n_step":"int"}
-    dtypes_dive_stats = {"dive_id":"str", "duration":"float", "max_depth":"float"}
-    
-    # append dictionaries
-    dtypes_columns_dict = {}
-    dtypes_columns_dict.update(dtypes_columns_metadata)
-    dtypes_columns_dict.update(dtypes_columns_basic)
-    dtypes_columns_dict.update(dtypes_columns_gps)
-    dtypes_columns_dict.update(dtypes_columns_tdr)
-    dtypes_columns_dict.update(dtypes_columns_acc)
-    dtypes_columns_dict.update(dtypes_trip_stats)
-    dtypes_columns_dict.update(dtypes_dive_stats)
-    
-    # extract dtypes by columns subdictionary
-    dtypes_columns_subdict = {key:dtypes_columns_dict[key] for key in column_names}
-    
-    return(dtypes_columns_subdict)
 
 
 # ================================================================================================ #
@@ -137,22 +94,22 @@ def get_plot_params():
         ``cols_1``, "discrete contrasted color palette for trips", "``GPS``, ``AXY``"
         ``cols_2``, "continuous color palette for speed gradient", "``GPS``, ``AXY``"
         ``cols_3``, "continuous color palette for time gradient", "``GPS``, ``AXY``"
-        ``main_fs``, "fontsize of the plot title", "``GPS``, ``TDR``, ``AXY``"
-        ``labs_fs``, "fontsize of the plot labels", "``GPS``, ``TDR``, ``AXY``"
-        ``axis_fs``, "fontsize of the plot axes", "``GPS``, ``TDR``, ``AXY``"
-        ``text_fs``, "fontsize of the plot texts", "``GPS``, ``TDR``, ``AXY``"
-        ``pnt_size``, "size of the scatter plot points", "``GPS``, ``TDR``, ``AXY``"
-        ``eph_size``, "size of the scatter plot emphasized points", "``GPS``, ``TDR``, ``AXY``"
-        ``mrk_size``, "size of vplot markers", "``GPS``, ``TDR``, ``AXY``"
-        ``pnt_type``, "type of the scatter plot points", "``GPS``, ``TDR``, ``AXY``"
-        ``grid_lwd``, "linewidth of the plot background grid", "``GPS``, ``TDR``, ``AXY``"
-        ``grid_col``, "line color of the plot background grid", "``GPS``, ``TDR``, ``AXY``"
-        ``grid_lty``, "line type of the plot background grid", "``GPS``, ``TDR``, ``AXY``"
-        ``night_transp``, "transparency applied to night grey box in timeserie plot", "``GPS``, ``TDR``, ``AXY``"
+        ``main_fs``, "fontsize of the plot title", "``GPS``, ``AXY``, ``TDR``"
+        ``labs_fs``, "fontsize of the plot labels", "``GPS``, ``AXY``, ``TDR``"
+        ``axis_fs``, "fontsize of the plot axes", "``GPS``, ``AXY``, ``TDR``"
+        ``text_fs``, "fontsize of the plot texts", "``GPS``, ``AXY``, ``TDR``"
+        ``pnt_size``, "size of the scatter plot points", "``GPS``, ``AXY``, ``TDR``"
+        ``eph_size``, "size of the scatter plot emphasized points", "``GPS``, ``AXY``, ``TDR``"
+        ``mrk_size``, "size of vplot markers", "``GPS``, ``AXY``, ``TDR``"
+        ``pnt_type``, "type of the scatter plot points", "``GPS``, ``AXY``, ``TDR``"
+        ``grid_lwd``, "linewidth of the plot background grid", "``GPS``, ``AXY``, ``TDR``"
+        ``grid_col``, "line color of the plot background grid", "``GPS``, ``AXY``, ``TDR``"
+        ``grid_lty``, "line type of the plot background grid", "``GPS``, ``AXY``, ``TDR``"
+        ``night_transp``, "transparency applied to night grey box in timeserie plot", "``GPS``, ``AXY``, ``TDR``"
         ``cb_shrink``, "colorbar shrink factor", "``GPS``, ``AXY``"
         ``cb_pad``, "colorbar padding factor", "``GPS``, ``AXY``"
         ``cb_aspect``, "colorbar size", "``GPS``, ``AXY``"
-        ``fig_dpi``, "dots per inch of a saved figure", "``GPS``, ``TDR``, ``AXY``"
+        ``fig_dpi``, "dots per inch of a saved figure", "``GPS``, ``AXY``, ``TDR``"
         ``lon_fmt``, "longitude formatter", "``GPS``, ``AXY``"
         ``lat_fmt``, "latitude formatter", "``GPS``, ``AXY``"
     """
@@ -206,3 +163,46 @@ def get_plot_params():
     params.update(formatters)
     
     return(params)
+
+
+# ================================================================================================ #
+# DICTIONARY OF DATA TYPES FOR DATAFRAME
+# ================================================================================================ #
+def get_columns_dtypes(column_names):
+    
+    """
+    Extract a dtype dictionary by dataframe column names.
+        
+    :param column_names: list of column names.
+    :type column_names: list
+    :return: a dictionary of dtypes by column names.
+    :rtype: dict 
+    
+    The dtypes must be compatible with a dataframe containing NaN values, *i.e* ``Int64`` and ``Float64`` instead of ``int64`` and ``float64``. 
+    The full dictionary among which to extract the dictionary is hard-coded.
+    """
+    
+    # define the dictionaries of types by columns
+    dtypes_columns_metadata = {"group":"str", "id":"str"}
+    dtypes_columns_basic = {"datetime":"object", "step_time":"Float64", "is_night":"Int64"}
+    dtypes_columns_gps = {"longitude":"Float64", "latitude":"Float64", "step_length":"Float64", "step_speed":"Float64", "step_heading":"Float64","step_turning_angle":"Float64", 
+                          "step_heading_to_colony":"Float64", "is_suspicious":"Int64", "dist_to_nest":"Float64", "trip":"Int64"}
+    dtypes_columns_tdr = {"pressure":"Float64", "temperature":"Float64", "depth":"Float64", "dive":"Int64"}
+    dtypes_columns_acc = {"ax":"Float64", "ay":"Float64", "az":"Float64", "ax_f":"Float64", "ay_f":"Float64", "az_f":"Float64","odba":"Float64", "odba_f":"Float64"}
+    dtypes_trip_stats = {"trip_id":"str", "length":"float", "duration":"float", "max_hole":"float", "dmax":"float", "n_step":"int"}
+    dtypes_dive_stats = {"dive_id":"str", "duration":"float", "max_depth":"float"}
+    
+    # append dictionaries
+    dtypes_columns_dict = {}
+    dtypes_columns_dict.update(dtypes_columns_metadata)
+    dtypes_columns_dict.update(dtypes_columns_basic)
+    dtypes_columns_dict.update(dtypes_columns_gps)
+    dtypes_columns_dict.update(dtypes_columns_tdr)
+    dtypes_columns_dict.update(dtypes_columns_acc)
+    dtypes_columns_dict.update(dtypes_trip_stats)
+    dtypes_columns_dict.update(dtypes_dive_stats)
+    
+    # extract dtypes by columns subdictionary
+    dtypes_columns_subdict = {key:dtypes_columns_dict[key] for key in column_names}
+    
+    return(dtypes_columns_subdict)
