@@ -10,7 +10,7 @@ import matplotlib.colors as mcols
 from matplotlib.patches import Rectangle
 import cartopy.feature as cfeature
 import folium
-from folium.plugins import GroupedLayerControl
+from folium.plugins import GroupedLayerControl, BeautifyIcon
 import branca.colormap as cm
 
 
@@ -41,10 +41,10 @@ def get_datetime_locator_formatter(df, custom_locator=None, custom_formatter=Non
         datetime_locator = mdates.HourLocator(interval=6)
     elif ((duration_days > 2) & (duration_days <= 14)):
         datetime_formatter = mdates.DateFormatter("%d/%m")
-        datetime_locator = mdates.DayLocator(interval=7)
+        datetime_locator = mdates.DayLocator(interval=1)
     else:
         datetime_formatter = mdates.DateFormatter("%d/%m")
-        datetime_locator = mdates.DayLocator(interval=1)
+        datetime_locator = mdates.DayLocator(interval=7)
     
     # set datetime locator/formatter to custom values        
     if not(custom_locator is None): datetime_locator = custom_locator
@@ -669,7 +669,7 @@ def plot_map_colorgrad(ax, df, params, plot_params, var, color_palette, nest_lon
 # ================================================================================================ #
 # PLOT MAP FOLIUM TRAJECTORY
 # ================================================================================================ # 
-def plot_folium_traj(df, params, traj_id):
+def plot_folium_traj(df, params, traj_id, nest_position):
         
     """    
     Plot folium map of the trajectory. 
@@ -680,6 +680,8 @@ def plot_folium_traj(df, params, traj_id):
     :type params: dict
     :param traj_id: trajectory id.
     :type traj_id: str
+    :param nest_position: nest position.
+    :type nest_position: list([float, float])
     :return: the folium map.
     :rtype: folium.Map
 
@@ -690,6 +692,12 @@ def plot_folium_traj(df, params, traj_id):
     # get parameters
     colony = params.get("colony")
         
+    # set nest icon appearance
+    nest_icon = BeautifyIcon(icon="star",
+                             inner_icon_style="color:yellow;font-size:10px;",
+                             background_color="transparent",
+                             border_color="transparent")
+
     # init folium map centered around colony
     fmap = folium.Map(location=[colony["center"][1], colony["center"][0]], overlay=True, control=False, show=True)
     
@@ -697,6 +705,9 @@ def plot_folium_traj(df, params, traj_id):
     folium.Marker(location=[colony["center"][1], colony["center"][0]], popup="<i>Colony %s</i>" % (colony["name"])).add_to(fmap)
     folium.PolyLine(tooltip="<i>Id %s</i>" % (traj_id), locations=df[["latitude", "longitude"]].values.tolist(), 
                     color="black", weight=1, opacity=0.9).add_to(fmap)
+    folium.Rectangle(bounds=[[colony["box_latitude"][0], colony["box_longitude"][0]], [colony["box_latitude"][1], colony["box_longitude"][1]]],
+                     color="red", fill=False, weight=2).add_to(fmap)
+    folium.Marker([nest_position[1], nest_position[0]], tooltip="nest", icon=nest_icon).add_to(fmap)
     
     return(fmap)
 
@@ -824,7 +835,7 @@ def plot_folium_traj_cont_colorgrad(fmap, df, color_palettes, q_th):
 # ================================================================================================ #
 # PLOT MAP MULTIPLE COLORGRAD FOLIUM
 # ================================================================================================ # 
-def plot_folium_map_multiple_colorgrad(df, params, traj_id, cpals_disc, cpals_cont, q_th):
+def plot_folium_map_multiple_colorgrad(df, params, traj_id, nest_position, cpals_disc, cpals_cont, q_th):
         
     """    
     Plot folium map of the trajectory with a color gradient along the column designated by the value of var. 
@@ -835,6 +846,8 @@ def plot_folium_map_multiple_colorgrad(df, params, traj_id, cpals_disc, cpals_co
     :type params: dict
     :param traj_id: trajectory id.
     :type traj_id: str
+    :param nest_position: nest position.
+    :type nest_position: list([float, float])
     :param cpals_disc: dictionary of variables and associated discrete color palettes.
     :type cpals_disc: array([float, float, float])
     :param cpals_cont: dictionary of variables and associated continuous color palettes.
@@ -846,7 +859,7 @@ def plot_folium_map_multiple_colorgrad(df, params, traj_id, cpals_disc, cpals_co
     """
 
     # plot base trajectory
-    fmap = plot_folium_traj(df, params, traj_id)  
+    fmap = plot_folium_traj(df, params, traj_id, nest_position)  
     
     # plot discrete color gradients
     fmap, fgs_disc = plot_folium_traj_disc_colorgrad(fmap, df, cpals_disc) 

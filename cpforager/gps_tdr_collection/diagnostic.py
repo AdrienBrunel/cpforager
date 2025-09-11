@@ -97,7 +97,7 @@ def maps_diagnostic(self, fig_dir, file_id, plot_params, rand=False):
     gps_collection = self.gps_collection
     
     # plot using GPS_Collection method
-    fig = gps_collection.maps_diagnostic(fig_dir, file_id, plot_params, rand)
+    fig = gps_collection.maps_diag(fig_dir, file_id, plot_params, rand)
     
     return(fig)
     

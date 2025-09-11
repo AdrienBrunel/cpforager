@@ -300,6 +300,7 @@ def folium_map(self, fig_dir, file_id, plot_params):
     df_gps = self.df_gps
     params = self.params
     id = self.id
+    nest_position = self.gps.nest_position
     
     # define color palettes
     discrete_color_palettes = {"trip":plot_params.get("cols_1"), "n_dives":plot_params.get("cols_1")}
@@ -308,7 +309,7 @@ def folium_map(self, fig_dir, file_id, plot_params):
 
     # produce beautiful map
     df_gps["duration"] = (df_gps["datetime"]-df_gps["datetime"].min()).dt.total_seconds()/3600
-    fmap = diagnostic.plot_folium_map_multiple_colorgrad(df_gps, params, id, discrete_color_palettes, continuous_color_palettes, 0.99)
+    fmap = diagnostic.plot_folium_map_multiple_colorgrad(df_gps, params, id, nest_position, discrete_color_palettes, continuous_color_palettes, 0.99)
     del df_gps["duration"]
     
     # save figure

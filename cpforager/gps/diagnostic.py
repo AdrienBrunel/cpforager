@@ -255,6 +255,7 @@ def folium_map(self, fig_dir, file_id, plot_params):
     df = self.df
     params = self.params
     id = self.id
+    nest_position = self.nest_position
     
     # get parameters
     cols_1 = plot_params.get("cols_1")
@@ -266,7 +267,7 @@ def folium_map(self, fig_dir, file_id, plot_params):
 
     # produce beautiful map
     df["duration"] = (df["datetime"]-df["datetime"].min()).dt.total_seconds()/3600
-    fmap = diagnostic.plot_folium_map_multiple_colorgrad(df, params, id, discrete_color_palettes, continuous_color_palettes, 0.99)
+    fmap = diagnostic.plot_folium_map_multiple_colorgrad(df, params, id, nest_position, discrete_color_palettes, continuous_color_palettes, 0.99)
     del df["duration"]
     
     # save figure
