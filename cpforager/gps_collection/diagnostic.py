@@ -25,7 +25,7 @@ def plot_stats_summary(self, fig_dir, file_id, plot_params, quantiles=[0.25, 0.5
     :param plot_params: plot parameters dictionary. 
     :type plot_params: dict
     :param quantiles: quantiles to emphasize. 
-    :type quantiles: array(float)
+    :type quantiles: list[float]
     :return: the full diagnostic figure.
     :rtype: matplotlib.pyplot.Figure 
     

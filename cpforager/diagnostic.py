@@ -276,8 +276,8 @@ def plot_cumulative_distribution(df, plot_params, var, title, var_lab, v_qs=[0.2
     :type title: str
     :param var_lab: x-axis label.
     :type var_lab: str
-    :param v_qs: array of quantiles to emphasize.
-    :type v_qs: array(float)
+    :param v_qs: list of quantiles to emphasize.
+    :type v_qs: list[float]
     
     Useful to plot cumulative distribution of trip and dive statistics. 
     """
@@ -351,8 +351,8 @@ def plot_violin(df, plot_params, var, title, var_lab, quantiles=[0.25, 0.50, 0.7
     :type title: str
     :param var_lab: x-axis label.
     :type var_lab: str
-    :param quantiles: array of quantiles to emphasize.
-    :type quantiles: array(float)
+    :param quantiles: list of quantiles to emphasize.
+    :type quantiles: list[float]
     """
        
     # violinplot of var
@@ -382,7 +382,7 @@ def plot_hist(df, plot_params, var, title, var_lab, bins=None, color=None, alpha
     :param var_lab: x-axis label.
     :type var_lab: str
     :param bins: histograms bins.
-    :type bins: array(float)
+    :type bins: list[float]
     :param color: color.
     :type color: [float, float, float]
     :param alpha: transparency.
@@ -479,7 +479,7 @@ def plot_map_wtrips(ax, df, params, plot_params, color_palette, n_trips, nest_lo
     :param plot_params: plot parameters dictionary. 
     :type plot_params: dict
     :param color_palette: discrete color palette for the trip coloring along trajectory.
-    :type color_palette: array([float, float, float])
+    :type color_palette: list[list[float]]
     :param n_trips: number of trips.
     :type n_trips: int
     :param nest_lon: nest longitude.
@@ -491,9 +491,9 @@ def plot_map_wtrips(ax, df, params, plot_params, color_palette, n_trips, nest_lo
     :param zoom: zooming factor around nest. 
     :type zoom: float
     :param trip_length: trip lengths for the legend. 
-    :type trip_length: array(str)
+    :type trip_length: list[str]
     :param trip_duration: trip durations for the legend. 
-    :type trip_duration: array(str)
+    :type trip_duration: list[str]
 
     .. note::
         The required fields in the parameters dictionary are ``colony``.
@@ -614,7 +614,7 @@ def plot_map_colorgrad(ax, df, params, plot_params, var, color_palette, nest_lon
     :param var: name of the column in df.
     :type var: str
     :param color_palette: continuous color palette.
-    :type color_palette: array([float, float, float])
+    :type color_palette: list[list[float]]
     :param nest_lon: nest longitude.
     :type nest_lon: float
     :param nest_lat: nest latitude.
@@ -725,7 +725,7 @@ def plot_folium_traj_disc_colorgrad(fmap, df, color_palettes):
     :param df: dataframe with ``longitude``, ``latitude``. 
     :type df: pandas.DataFrame
     :param color_palettes: dictionary of variables and associated discrete color palettes.
-    :type color_palettes: array([float, float, float])
+    :type color_palettes: list[list[float]]
     :return: the folium map and the feature groups.
     :rtype: (folium.Map, list[folium.FeatureGroupe])
         
@@ -788,7 +788,7 @@ def plot_folium_traj_cont_colorgrad(fmap, df, color_palettes, q_th):
     :param df: dataframe with ``longitude``, ``latitude``. 
     :type df: pandas.DataFrame
     :param color_palettes: dictionary of variables and associated continuous color palettes.
-    :type color_palettes: array([float, float, float])
+    :type color_palettes: list[list[float]]
     :param q_th: quantile max threshold for coloring. 
     :type q_th: float
     :return: the folium map and the feature groups.
@@ -849,9 +849,9 @@ def plot_folium_map_multiple_colorgrad(df, params, traj_id, nest_position, cpals
     :param nest_position: nest position.
     :type nest_position: list([float, float])
     :param cpals_disc: dictionary of variables and associated discrete color palettes.
-    :type cpals_disc: array([float, float, float])
+    :type cpals_disc: list[list[float]]
     :param cpals_cont: dictionary of variables and associated continuous color palettes.
-    :type cpals_cont: array([float, float, float])
+    :type cpals_cont: list[list[float]]
     :param q_th: quantile max threshold for continuous coloring. 
     :type q_th: float
     :return: the folium map.

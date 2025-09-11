@@ -20,7 +20,7 @@ def plot_trip_stats_summary(self, fig_dir, file_id, plot_params, quantiles=[0.25
     :param plot_params: plot parameters dictionary. 
     :type plot_params: dict
     :param quantiles: quantiles to emphasize. 
-    :type quantiles: array(float)
+    :type quantiles: list[float]
     :return: the full diagnostic figure.
     :rtype: matplotlib.pyplot.Figure 
     
@@ -53,7 +53,7 @@ def plot_dive_stats_summary(self, fig_dir, file_id, plot_params, quantiles=[0.25
     :param plot_params: plot parameters dictionary. 
     :type plot_params: dict
     :param quantiles: quantiles to emphasize. 
-    :type quantiles: array(float)
+    :type quantiles: list[float]
     :return: the full diagnostic figure.
     :rtype: matplotlib.pyplot.Figure 
     

@@ -50,14 +50,14 @@ def derive_separator(file_path):
 def grep_pattern(strings, pattern):
     
     """
-    Extract array of strings that contain the pattern. 
+    Extract list of strings that contain the pattern. 
         
-    :param strings: array of strings.
-    :type strings: array(str)
+    :param strings: list of strings.
+    :type strings: list[str]
     :param pattern: pattern to be found in strings.
     :type pattern: str
-    :return: the array of strings that contain the pattern.
-    :rtype: array(str) 
+    :return: the list of strings that contain the pattern.
+    :rtype: list[str]
     
     Function useful to sort file names based on a pattern.
     """
@@ -73,14 +73,14 @@ def grep_pattern(strings, pattern):
 def random_colors(n_cols=1):
     
     """
-    Produce an array of random colors.
+    Produce a list of random colors.
         
     :param n_cols: number of random colors desired.
     :type n_cols: int
-    :return: the array of n_cols random colors.
-    :rtype: array(array(float)) 
+    :return: the list of n_cols random colors.
+    :rtype: list[list[float]] 
     
-    The array is composed of n_cols random colors defined by 3 RGB numbers between 0 and 1. The size of the array is (n_cols,3).  
+    The list is composed of n_cols random colors defined by 3 RGB numbers between 0 and 1. The size of the list is (n_cols,3).  
     """
     
     rand_colors = np.random.uniform(0,1,(n_cols,3))
@@ -96,8 +96,8 @@ def rgb_to_hex(rgb_col):
     """    
     Convert RGB color to hexadecimal code.
     
-    :param rgb_col: RGB color array
-    :type rgb_col: array(float)
+    :param rgb_col: RGB color list
+    :type rgb_col: list[float]
     :return: the hexadecimal code of the RGB color
     :rtype: str
     """

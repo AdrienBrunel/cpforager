@@ -15,9 +15,9 @@ def get_params(config_file_paths):
     """
     Create a parameters dictionary loaded from a list of *.yml* paths.
     
-    :param config_file_paths: a list of *.yml* paths
+    :param config_file_paths: a list of the *.yml* configuration file paths.
     :type config_file_paths: list[str]
-    :return: a dictionary of parameters
+    :return: a dictionary of parameters.
     :rtype: dict
     
     The parameters dictionary is required to construct ``GPS``, ``TDR`` and ``AXY`` classes. The user-defined colony code allows to define a 
@@ -81,7 +81,7 @@ def get_plot_params():
     Create a plot parameters dictionary.
         
     :param: None
-    :return: a dictionary of plot parameters
+    :return: a dictionary of plot parameters.
     :rtype: dict 
     
     The dictionary of plot parameters required to produce the diagnostic of ``GPS``, ``TDR`` and ``AXY`` classes. Find below the 
