@@ -12,6 +12,7 @@ from cpforager import parameters, utils, GPS
 # ======================================================= #
 root_dir = os.getcwd()
 data_dir = os.path.join(root_dir, "data")
+config_dir = os.path.join(root_dir, "configs")
 test_dir = os.path.join(root_dir, "tests", "gps")
 
 
@@ -24,8 +25,12 @@ fieldwork = "BRA_FDN_2016_09"
 colony = "BRA_FDN_MEI"
 file_name = "BRA_FDN_MEI_2016-09-15_SSUL_01_T32840_NA_GPS_IGU120_BR023_LOC.csv"
 
+# set configuration paths
+config_colony_path = os.path.join(config_dir, "colony_%s.yml" % (colony))
+config_trips_path = os.path.join(config_dir, "trips.yml")
+
 # set parameters dictionaries
-params = parameters.get_params(colony)
+params = parameters.get_params([config_colony_path, config_trips_path])
 plot_params = parameters.get_plot_params()
 
 
@@ -93,7 +98,7 @@ trip_ids = gps.trip_statistics["id"].values
 gps_by_trip = []
 for trip_id in trip_ids:
     df_trip = gps.df.loc[gps.df["trip"]==trip_id].reset_index(drop=True)
-    gps_trip = GPS(df_trip, gps.group, "%s_%s" % (gps.id, trip_id), gps.params)
+    gps_trip = GPS(df_trip, gps.group, "%s_T%s" % (gps.id, trip_id), gps.params)
     print(gps_trip)
     gps_by_trip.append(gps_trip)
-    gps_trip.df.drop(["datetime", "step_heading"], axis=1).to_csv("%s/%s" % (test_dir, gps_trip.id), index=False, quoting=csv.QUOTE_NONNUMERIC)
+    gps_trip.df.drop(["datetime", "step_heading"], axis=1).to_csv("%s/%s.csv" % (test_dir, gps_trip.id), index=False, quoting=csv.QUOTE_NONNUMERIC)

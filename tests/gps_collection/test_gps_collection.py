@@ -13,6 +13,7 @@ from cpforager.gps_collection import stdb
 # ======================================================= #
 root_dir = os.getcwd()
 data_dir = os.path.join(root_dir, "data")
+config_dir = os.path.join(root_dir, "configs")
 test_dir = os.path.join(root_dir, "tests", "gps_collection")
 
 
@@ -24,7 +25,10 @@ test_dir = os.path.join(root_dir, "tests", "gps_collection")
 fieldworks = ["PER_PSC_2012_11", "PER_PSC_2013_11", "BRA_FDN_2016_09", "BRA_FDN_2018_09", "BRA_SAN_2022_03"]
 colonies = ["PER_PSC_PSC", "PER_PSC_PSC", "BRA_FDN_MEI", "BRA_FDN_MEI", "BRA_SAN_FRA"]
 
-# set parameters dictionaries
+# set configuration paths
+config_trips_path = os.path.join(config_dir, "trips.yml")
+
+# set plot parameters dictionary
 plot_params = parameters.get_plot_params()
 
 
@@ -40,9 +44,11 @@ for (fieldwork, colony) in zip(fieldworks, colonies):
     files = misc.grep_pattern(os.listdir(os.path.join(data_dir, fieldwork)), "_GPS_")
     n_files = len(files)
 
-    # get structure of parameters
-    params = parameters.get_params(colony)
-    plot_params = parameters.get_plot_params()
+    # set configuration paths according to colony code
+    config_colony_path = os.path.join(config_dir, "colony_%s.yml" % (colony))
+    
+    # set parameters dictionaries
+    params = parameters.get_params([config_colony_path, config_trips_path])
 
     # loop over files in directory
     gps_collection = []
@@ -111,6 +117,10 @@ gps_collection_all.trip_statistics_all.to_csv("%s/trip_statistics_all.csv" % (te
 fieldwork = "BRA_FDN_2016_09"
 colony = "BRA_FDN_MEI"
 
+# set configuration paths
+config_colony_path = os.path.join(config_dir, "colony_%s.yml" % (colony))
+config_trips_path = os.path.join(config_dir, "trips.yml")
+
 # load metadata
 metadata_file_path = os.path.join(data_dir, fieldwork, "metadata_%s.csv" % (fieldwork))
 metadata = pd.read_csv(metadata_file_path, sep=",")
@@ -119,8 +129,8 @@ metadata = pd.read_csv(metadata_file_path, sep=",")
 files = misc.grep_pattern(os.listdir(os.path.join(data_dir, fieldwork)), "_GPS_IGU")
 n_files = len(files)
 
-# get structure of parameters
-params = parameters.get_params(colony)
+# set parameters dictionaries
+params = parameters.get_params([config_colony_path, config_trips_path])
 plot_params = parameters.get_plot_params()
 
 # loop over files in directory

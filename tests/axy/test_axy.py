@@ -12,6 +12,7 @@ from cpforager import parameters, utils, AXY
 # ======================================================= #
 root_dir = os.getcwd()
 data_dir = os.path.join(root_dir, "data")
+config_dir = os.path.join(root_dir, "configs")
 test_dir = os.path.join(root_dir, "tests", "axy")
 
 
@@ -24,8 +25,14 @@ fieldwork = "BRA_FDN_2022_04"
 colony = "BRA_FDN_MEI"
 file_name = "BRA_FDN_MEI_2022-04-26_SDAC_01_U61556_F_GPS_AXY_RT10_UTC.csv"
 
+# set configuration paths
+config_colony_path = os.path.join(config_dir, "colony_%s.yml" % (colony))
+config_trips_path = os.path.join(config_dir, "trips.yml")
+config_dives_path = os.path.join(config_dir, "dives_SULA.yml")
+config_accelero_path = os.path.join(config_dir, "accelero_rollavg.yml")
+
 # set parameters dictionaries
-params = parameters.get_params(colony)
+params = parameters.get_params([config_colony_path, config_trips_path, config_dives_path, config_accelero_path])
 plot_params = parameters.get_plot_params()
 
 

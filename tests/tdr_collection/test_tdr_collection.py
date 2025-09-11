@@ -12,6 +12,7 @@ from cpforager import parameters, utils, misc, TDR, TDR_Collection
 # ======================================================= #
 root_dir = os.getcwd()
 data_dir = os.path.join(root_dir, "data")
+config_dir = os.path.join(root_dir, "configs")
 test_dir = os.path.join(root_dir, "tests", "tdr_collection")
 
 
@@ -23,7 +24,7 @@ test_dir = os.path.join(root_dir, "tests", "tdr_collection")
 fieldworks = ["PER_PSC_2008_11", "BRA_FDN_2017_04", "BRA_FDN_2022_04"]
 colonies = ["PER_PSC_PSC", "BRA_FDN_MEI", "BRA_FDN_MEI"]
 
-# set parameters dictionaries
+# set plot parameters dictionary
 plot_params = parameters.get_plot_params()
 
 
@@ -38,11 +39,7 @@ for (fieldwork, colony) in zip(fieldworks, colonies):
     # list of files to process
     files = misc.grep_pattern(os.listdir(os.path.join(data_dir, fieldwork)), "_TDR_")
     n_files = len(files)
-
-    # get structure of parameters
-    params = parameters.get_params(colony)
-    plot_params = parameters.get_plot_params()
-
+    
     # loop over files in directory
     tdr_collection = []
     for k in range(n_files):
@@ -51,7 +48,17 @@ for (fieldwork, colony) in zip(fieldworks, colonies):
         file_name = files[k]
         file_id = file_name.replace(".csv", "")
         file_path = os.path.join(data_dir, fieldwork, file_name)
-
+        
+        # set configuration paths
+        config_colony_path = os.path.join(config_dir, "colony_%s.yml" % (colony))
+        if "_LBOU_" in file_name: 
+            config_dives_path = os.path.join(config_dir, "dives_LEUC.yml")
+        else:
+            config_dives_path = os.path.join(config_dir, "dives_SULA.yml")
+        
+        # set parameters dictionary
+        params = parameters.get_params([config_colony_path, config_dives_path])
+        
         # load raw data
         df = pd.read_csv(file_path, sep=",")
 

@@ -1,0 +1,785 @@
+Running test_axy.py ...
+0/12344 - 0.0%
+617/12344 - 5.0%
+1234/12344 - 10.0%
+1851/12344 - 15.0%
+2468/12344 - 20.0%
+3085/12344 - 25.0%
+3702/12344 - 30.0%
+4319/12344 - 35.0%
+4936/12344 - 40.0%
+5553/12344 - 45.0%
+6170/12344 - 50.0%
+6787/12344 - 55.0%
+7404/12344 - 60.0%
+8021/12344 - 65.0%
+8638/12344 - 70.0%
+9255/12344 - 75.0%
+9872/12344 - 80.0%
+10489/12344 - 85.0%
+11106/12344 - 90.0%
+11723/12344 - 95.0%
+12340/12344 - 100.0%
+AXY(group=BRA_FDN_2022_04, id=BRA_FDN_MEI_2022-04-26_SDAC_01_U61556_F_GPS_AXY_RT10_UTC, trips=3, dives=19, n=12584000, n_gps=12344, n_tdr=183837)
+12584000
+date                               2022-04-26
+time                             14:31:04.000
+ax                                        0.0
+ay                                        0.0
+az                                        0.0
+longitude                                 NaN
+latitude                                  NaN
+pressure                                  NaN
+temperature                               NaN
+datetime                  2022-04-26 12:31:04
+step_time                                 1.0
+is_night                                    0
+ax_f                                      0.0
+ay_f                                      0.0
+az_f                                      0.0
+odba                                      0.0
+odba_f                                    0.0
+step_length                              <NA>
+step_speed                               <NA>
+step_turning_angle                       <NA>
+step_heading                             <NA>
+step_heading_to_colony                   <NA>
+is_suspicious                            <NA>
+dist_to_nest                             <NA>
+trip                                     <NA>
+depth                                    <NA>
+dive                                     <NA>
+Name: 1312, dtype: object
+date                               2022-04-27
+time                             13:32:21.000
+longitude                           -32.39165
+latitude                             -3.81841
+ax                                     -0.375
+ay                                     -0.375
+az                                      0.938
+datetime                  2022-04-27 11:32:21
+is_night                                    0
+ax_f                                      0.0
+ay_f                                   -0.153
+az_f                                    0.096
+step_length                             0.002
+step_speed                               0.36
+step_turning_angle                       44.9
+step_heading                              0.0
+step_heading_to_colony                   39.5
+is_suspicious                               0
+dist_to_nest                            0.002
+trip                                        0
+odba                                 1468.357
+odba_f                                216.369
+step_time                                20.0
+pressure                              1047.51
+depth                                   -0.12
+n_dives                                   0.0
+temperature                             39.06
+Name: 1312, dtype: object
+# ============================== SUMMARY ============================== #
+# ------------------------------ METADATA ----------------------------- #
+# + Group = BRA_FDN_2022_04
+# + Id    = BRA_FDN_MEI_2022-04-26_SDAC_01_U61556_F_GPS_AXY_RT10_UTC
+# ------------------------------ GPS DATA --------------------------------- #
+# + Nb of measures       = 12344
+# + Date range           = 2022-04-27 04:09:50 | 2022-04-30 01:44:20
+# + Nb of trips          = 3
+# + Time resolution      = 20.0 s
+# + Total duration       = 2.90 days
+# + Total length         = 512.6 km
+# + Max distance to nest = 50.6 km
+# ------------------------------ TRIPS -------------------------------- #
+# + Longest trip         = 6.2 h
+# + Median trip duration = 5.6 h
+# + Largest trip         = 141.3 km
+# + Median trip length   = 135.4 km
+# + First position (-32.39166, -3.81840) is 0.003km away from the estimated nest position (-32.39166, -3.81843)
+# ------------------------------ TDR DATA ----------------------------- #
+# + Nb of measures   = 183837
+# + Number of dives  = 19
+# + Median pressure  = 1033.7 hPa
+# + Median depth     = 0.00 m
+# + Max depth        = 0.64 m
+# + Mean temperature = 29.4 °C
+# ------------------------------ DIVES -------------------------------- #
+# + Longest dive          = 7.0 s
+# + Median dive duration  = 3.0 s
+# + Median dive max depth = -0.12 m
+# ------------------------------ ACC DATA ----------------------------- #
+# + Nb of measures            = 12584000
+# + Date range                = 2022-04-26 12:09:12 | 2022-04-30 01:44:39
+# + Frequency                 = 50.0 Hz
+# + Median (ax, ay, az)       = (0.000, -0.188, 0.938)
+# + Median (ax_f, ay_f, az_f) = (0.000, 0.000, 0.009)
+# + Median odba               = 1.314
+# + Median odba_f             = 0.158
+# ===================================================================== #
+Full diagnostic [fast=False] : 6.5 minutes
+Full diagnostic [fast=True] : 0.7 minutes
+0/25048 - 0.0%
+1252/25048 - 5.0%
+2504/25048 - 10.0%
+3756/25048 - 15.0%
+5008/25048 - 20.0%
+6260/25048 - 25.0%
+7512/25048 - 30.0%
+8764/25048 - 35.0%
+10016/25048 - 40.0%
+11268/25048 - 45.0%
+12520/25048 - 50.0%
+13772/25048 - 55.0%
+15024/25048 - 60.0%
+16276/25048 - 65.0%
+17528/25048 - 70.0%
+18780/25048 - 75.0%
+20032/25048 - 80.0%
+21284/25048 - 85.0%
+22536/25048 - 90.0%
+23788/25048 - 95.0%
+25040/25048 - 100.0%
+df     : 12584000/12584000 = 100.00%
+df_gps : 25048/12344 = 202.92%
+Elapsed time : 1179 seconds
+
+Running test_axy_collection.py ...
+0/11553 - 0.0%
+577/11553 - 5.0%
+1154/11553 - 10.0%
+1731/11553 - 15.0%
+2308/11553 - 20.0%
+2885/11553 - 25.0%
+3462/11553 - 30.0%
+4039/11553 - 35.0%
+4616/11553 - 40.0%
+5193/11553 - 44.9%
+5770/11553 - 49.9%
+6347/11553 - 54.9%
+6924/11553 - 59.9%
+7501/11553 - 64.9%
+8078/11553 - 69.9%
+8655/11553 - 74.9%
+9232/11553 - 79.9%
+9809/11553 - 84.9%
+10386/11553 - 89.9%
+10963/11553 - 94.9%
+11540/11553 - 99.9%
+0/11115 - 0.0%
+555/11115 - 5.0%
+1110/11115 - 10.0%
+1665/11115 - 15.0%
+2220/11115 - 20.0%
+2775/11115 - 25.0%
+3330/11115 - 30.0%
+3885/11115 - 35.0%
+4440/11115 - 39.9%
+4995/11115 - 44.9%
+5550/11115 - 49.9%
+6105/11115 - 54.9%
+6660/11115 - 59.9%
+7215/11115 - 64.9%
+7770/11115 - 69.9%
+8325/11115 - 74.9%
+8880/11115 - 79.9%
+9435/11115 - 84.9%
+9990/11115 - 89.9%
+10545/11115 - 94.9%
+11100/11115 - 99.9%
+0/11099 - 0.0%
+554/11099 - 5.0%
+1108/11099 - 10.0%
+1662/11099 - 15.0%
+2216/11099 - 20.0%
+2770/11099 - 25.0%
+3324/11099 - 29.9%
+3878/11099 - 34.9%
+4432/11099 - 39.9%
+4986/11099 - 44.9%
+5540/11099 - 49.9%
+6094/11099 - 54.9%
+6648/11099 - 59.9%
+7202/11099 - 64.9%
+7756/11099 - 69.9%
+8310/11099 - 74.9%
+8864/11099 - 79.9%
+9418/11099 - 84.9%
+9972/11099 - 89.8%
+10526/11099 - 94.8%
+11080/11099 - 99.8%
+0/12344 - 0.0%
+617/12344 - 5.0%
+1234/12344 - 10.0%
+1851/12344 - 15.0%
+2468/12344 - 20.0%
+3085/12344 - 25.0%
+3702/12344 - 30.0%
+4319/12344 - 35.0%
+4936/12344 - 40.0%
+5553/12344 - 45.0%
+6170/12344 - 50.0%
+6787/12344 - 55.0%
+7404/12344 - 60.0%
+8021/12344 - 65.0%
+8638/12344 - 70.0%
+9255/12344 - 75.0%
+9872/12344 - 80.0%
+10489/12344 - 85.0%
+11106/12344 - 90.0%
+11723/12344 - 95.0%
+12340/12344 - 100.0%
+ # =========  [Group BRA_FDN_2022_04] - [Id BRA_FDN_MEI_2022-04-26_SDAC_02_U61557_F_GPS_AXY_AB05_UTC] ========= #
+ # =========  [Group BRA_FDN_2022_04] - [Id BRA_FDN_MEI_2022-04-26_SDAC_05_U61560_M_GPS_AXY_AB35_UTC] ========= #
+ # =========  [Group BRA_FDN_2022_04] - [Id BRA_FDN_MEI_2022-04-26_SDAC_13_U61566_F_GPS_AXY_RT8_UTC] ========= #
+ # =========  [Group BRA_FDN_2022_04] - [Id BRA_FDN_MEI_2022-04-26_SDAC_01_U61556_F_GPS_AXY_RT10_UTC] ========= #
+ # =========  [Group BRA_FDN_2022_04] - [Id BRA_FDN_MEI_2022-04-26_SDAC_02_U61557_F_GPS_AXY_AB05_UTC] ========= #
+ # =========  [Group BRA_FDN_2022_04] - [Id BRA_FDN_MEI_2022-04-26_SDAC_05_U61560_M_GPS_AXY_AB35_UTC] ========= #
+ # =========  [Group BRA_FDN_2022_04] - [Id BRA_FDN_MEI_2022-04-26_SDAC_13_U61566_F_GPS_AXY_RT8_UTC] ========= #
+ # =========  [Group BRA_FDN_2022_04] - [Id BRA_FDN_MEI_2022-04-26_SDAC_01_U61556_F_GPS_AXY_RT10_UTC] ========= #
+AXY_Collection(4 AXY, 13 trips, 118 dives)
+4
+AXY(group=BRA_FDN_2022_04, id=BRA_FDN_MEI_2022-04-26_SDAC_13_U61566_F_GPS_AXY_RT8_UTC, trips=3, dives=32, n=11423300, n_gps=11099, n_tdr=227315)
+# ============================== SUMMARY ============================== #
+# ------------------------------ METADATA ----------------------------- #
+# + Nb of AXY   = 4
+# + Nb of trips = 13
+# + Groups      = | BRA_FDN_2022_04 [4 AXY] | 
+# ------------------------------ GPS COLLECTION DATA ------------------ #
+# + Trip length   : mean=99.6km | std=29.4km
+# + Trip length   : min=35.5km | q25=83.0km | q50=102.0km | q75=111.9km | max=141.3km
+# + Trip duration : mean=3.9h | std=1.5h
+# + Trip duration : min=0.9h | q25=3.1h | q50=4.0h | q75=5.2h | max=6.2h
+# + Trip dist max : mean=34.7km | std=11.0km
+# + Trip dist max : min=14.6km | q25=31.2km | q50=34.3km | q75=45.3km | max=50.6km
+# + Trip nb steps : mean=671.5 | std=257.3
+# + Trip nb steps : min=152 | q25=538 | q50=683 | q75=772 | max=1103
+# ------------------------------ TDR COLLECTION DATA ------------------ #
+# + Dive duration  : mean=3.7s | std=0.9s
+# + Dive duration  : min=3.0s | q25=3.0s | q50=3.0s | q75=4.0s | max=7.0s
+# + Dive max depth : mean=-0.3m | std=0.3m
+# + Dive max depth : min=-0.9m | q25=-0.5m | q50=-0.1m | q75=-0.0m | max=0.4m
+# ===================================================================== #
+Elapsed time : 427 seconds
+
+Running test_gps.py ...
+GPS(group=BRA_FDN_2016_09, id=BRA_FDN_MEI_2016-09-15_SSUL_01_T32840_NA_GPS_IGU120_BR023_LOC, trips=2, n=12320)
+12320
+date                               2016-09-16
+time                                 06:28:50
+longitude                          -32.393124
+latitude                            -3.819255
+datetime                  2016-09-16 06:28:50
+step_time                                16.0
+is_night                                    0
+step_length                               0.0
+step_speed                                0.0
+step_heading                              0.0
+step_turning_angle                        0.0
+step_heading_to_colony                  329.3
+is_suspicious                               0
+dist_to_nest                            0.022
+trip                                        0
+Name: 1312, dtype: object
+# ============================== SUMMARY ============================== #
+# ------------------------------ METADATA ----------------------------- #
+# + Group = BRA_FDN_2016_09
+# + Id    = BRA_FDN_MEI_2016-09-15_SSUL_01_T32840_NA_GPS_IGU120_BR023_LOC
+# ------------------------------ GPS DATA --------------------------------- #
+# + Nb of measures       = 12320
+# + Date range           = 2016-09-16 01:00:33 | 2016-09-18 04:40:45
+# + Nb of trips          = 2
+# + Time resolution      = 15.0 s
+# + Total duration       = 2.15 days
+# + Total length         = 475.4 km
+# + Max distance to nest = 76.3 km
+# ------------------------------ TRIPS -------------------------------- #
+# + Longest trip         = 12.9 h
+# + Median trip duration = 10.5 h
+# + Largest trip         = 284.6 km
+# + Median trip length   = 232.5 km
+# + First position (-32.39361, -3.82514) is 0.672km away from the estimated nest position (-32.39326, -3.81911)
+# ===================================================================== #
+37203/12320 = 301.97%
+WARNING : last trip recording seems interrupted.
+GPS(group=BRA_FDN_2016_09, id=BRA_FDN_MEI_2016-09-15_SSUL_01_T32840_NA_GPS_IGU120_BR023_LOC_T1, trips=1, n=3092)
+WARNING : last trip recording seems interrupted.
+GPS(group=BRA_FDN_2016_09, id=BRA_FDN_MEI_2016-09-15_SSUL_01_T32840_NA_GPS_IGU120_BR023_LOC_T2, trips=1, n=1940)
+Elapsed time : 49 seconds
+
+Running test_gps_collection.py ...
+WARNING : last trip recording seems interrupted.
+ # =========  [Group PER_PSC_2012_11] - [Id PER_PSC_PSC_2012-11-15_SVAR_05_NA_F_GPS_IGU_P01_UTC] ========= #
+ # =========  [Group PER_PSC_2012_11] - [Id PER_PSC_PSC_2012-11-15_SVAR_04_NA_F_GPS_GIP_G10_UTC] ========= #
+ # =========  [Group PER_PSC_2012_11] - [Id PER_PSC_PSC_2012-11-15_SVAR_03_NA_M_GPS_GIP_G14_UTC] ========= #
+ # =========  [Group PER_PSC_2012_11] - [Id PER_PSC_PSC_2012-11-14_LBOU_01_NA_NA_GPS_IGU_P17_UTC] ========= #
+GPS_Collection(4 GPS, 10 trips)
+4
+GPS(group=PER_PSC_2012_11, id=PER_PSC_PSC_2012-11-15_SVAR_03_NA_M_GPS_GIP_G14_UTC, trips=2, n=117997)
+# ============================== SUMMARY ============================== #
+# ------------------------------ METADATA ----------------------------- #
+# + Nb of GPS   = 4
+# + Nb of trips = 10
+# + Groups      = | PER_PSC_2012_11 [4 GPS] | 
+# ------------------------------ GPS COLLECTION DATA ------------------ #
+# + Trip length   : mean=67.3km | std=37.7km
+# + Trip length   : min=26.1km | q25=36.0km | q50=58.0km | q75=92.5km | max=134.6km
+# + Trip duration : mean=2.0h | std=1.3h
+# + Trip duration : min=0.8h | q25=1.3h | q50=1.6h | q75=2.2h | max=5.3h
+# + Trip dist max : mean=21.1km | std=10.5km
+# + Trip dist max : min=9.2km | q25=11.8km | q50=19.3km | q75=29.7km | max=38.1km
+# + Trip nb steps : mean=5121.2 | std=3081.2
+# + Trip nb steps : min=1830 | q25=3549 | q50=4321 | q75=5555 | max=12817
+# ===================================================================== #
+WARNING : last trip recording seems interrupted.
+ # =========  [Group PER_PSC_2013_11] - [Id PER_PSC_PSC_2013-11-13_LBOU_02_NA_NA_GPS_IGU_P41_LOC] ========= #
+ # =========  [Group PER_PSC_2013_11] - [Id PER_PSC_PSC_2013-11-14_SVAR_06_P000001_F_GPS_IGU_P43_LOC] ========= #
+ # =========  [Group PER_PSC_2013_11] - [Id PER_PSC_PSC_2013-11-13_LBOU_01_NA_NA_GPS_IGU_P46_LOC] ========= #
+ # =========  [Group PER_PSC_2013_11] - [Id PER_PSC_PSC_2013-11-14_SVAR_07_P000002_M_GPS_IGU_P22_LOC] ========= #
+GPS_Collection(4 GPS, 10 trips)
+4
+GPS(group=PER_PSC_2013_11, id=PER_PSC_PSC_2013-11-13_LBOU_01_NA_NA_GPS_IGU_P46_LOC, trips=2, n=88957)
+# ============================== SUMMARY ============================== #
+# ------------------------------ METADATA ----------------------------- #
+# + Nb of GPS   = 4
+# + Nb of trips = 10
+# + Groups      = | PER_PSC_2013_11 [4 GPS] | 
+# ------------------------------ GPS COLLECTION DATA ------------------ #
+# + Trip length   : mean=60.6km | std=17.8km
+# + Trip length   : min=45.8km | q25=49.6km | q50=52.2km | q75=71.1km | max=91.3km
+# + Trip duration : mean=1.6h | std=0.4h
+# + Trip duration : min=0.9h | q25=1.2h | q50=1.6h | q75=1.9h | max=2.2h
+# + Trip dist max : mean=25.0km | std=6.9km
+# + Trip dist max : min=16.5km | q25=19.4km | q50=23.5km | q75=30.6km | max=37.0km
+# + Trip nb steps : mean=4805.2 | std=1542.3
+# + Trip nb steps : min=3257 | q25=3818 | q50=4019 | q75=5426 | max=7496
+# ===================================================================== #
+ # =========  [Group BRA_FDN_2016_09] - [Id BRA_FDN_MEI_2016-09-15_SSUL_02_NA_NA_GPS_IGU120_BR011_LOC] ========= #
+ # =========  [Group BRA_FDN_2016_09] - [Id BRA_FDN_MEI_2016-09-15_SSUL_03_T32837_NA_GPS_IGU120_BR010_LOC] ========= #
+ # =========  [Group BRA_FDN_2016_09] - [Id BRA_FDN_MEI_2016-09-15_SSUL_04_T32839_NA_GPS_IGU120_BR012_LOC] ========= #
+ # =========  [Group BRA_FDN_2016_09] - [Id BRA_FDN_MEI_2016-09-15_SSUL_01_T32840_NA_GPS_IGU120_BR023_LOC] ========= #
+GPS_Collection(4 GPS, 6 trips)
+4
+GPS(group=BRA_FDN_2016_09, id=BRA_FDN_MEI_2016-09-15_SSUL_04_T32839_NA_GPS_IGU120_BR012_LOC, trips=2, n=12203)
+# ============================== SUMMARY ============================== #
+# ------------------------------ METADATA ----------------------------- #
+# + Nb of GPS   = 4
+# + Nb of trips = 6
+# + Groups      = | BRA_FDN_2016_09 [4 GPS] | 
+# ------------------------------ GPS COLLECTION DATA ------------------ #
+# + Trip length   : mean=246.7km | std=68.3km
+# + Trip length   : min=144.4km | q25=201.4km | q50=274.6km | q75=288.4km | max=316.4km
+# + Trip duration : mean=11.5h | std=3.6h
+# + Trip duration : min=5.9h | q25=9.3h | q50=13.0h | q75=13.9h | max=14.8h
+# + Trip dist max : mean=84.6km | std=19.3km
+# + Trip dist max : min=55.4km | q25=75.7km | q50=83.9km | q75=98.4km | max=108.1km
+# + Trip nb steps : mean=2731.3 | std=870.3
+# + Trip nb steps : min=1379 | q25=2213 | q50=3062 | q75=3315 | max=3554
+# ===================================================================== #
+WARNING : last trip recording seems interrupted.
+ # =========  [Group BRA_FDN_2018_09] - [Id BRA_FDN_MEI_2018-09-18_SSUL_01_NA_NA_GPS_IGU120_BR033_LOC] ========= #
+ # =========  [Group BRA_FDN_2018_09] - [Id BRA_FDN_MEI_2018-09-18_SSUL_03_NA_NA_GPS_IGU120_BR014_LOC] ========= #
+ # =========  [Group BRA_FDN_2018_09] - [Id BRA_FDN_MEI_2018-09-21_SSUL_14_NA_NA_GPS_IGU120_BR022_LOC] ========= #
+ # =========  [Group BRA_FDN_2018_09] - [Id BRA_FDN_MEI_2018-09-18_SSUL_02_NA_NA_GPS_IGU120_BR011_LOC] ========= #
+GPS_Collection(4 GPS, 6 trips)
+4
+GPS(group=BRA_FDN_2018_09, id=BRA_FDN_MEI_2018-09-21_SSUL_14_NA_NA_GPS_IGU120_BR022_LOC, trips=2, n=6949)
+# ============================== SUMMARY ============================== #
+# ------------------------------ METADATA ----------------------------- #
+# + Nb of GPS   = 4
+# + Nb of trips = 6
+# + Groups      = | BRA_FDN_2018_09 [4 GPS] | 
+# ------------------------------ GPS COLLECTION DATA ------------------ #
+# + Trip length   : mean=295.3km | std=110.6km
+# + Trip length   : min=172.7km | q25=221.7km | q50=268.8km | q75=359.0km | max=466.8km
+# + Trip duration : mean=16.1h | std=8.2h
+# + Trip duration : min=10.3h | q25=12.5h | q50=13.2h | q75=14.4h | max=32.5h
+# + Trip dist max : mean=122.0km | std=69.0km
+# + Trip dist max : min=60.3km | q25=71.7km | q50=102.5km | q75=149.3km | max=240.6km
+# + Trip nb steps : mean=2105.8 | std=1155.8
+# + Trip nb steps : min=1243 | q25=1616 | q50=1701 | q75=1915 | max=4415
+# ===================================================================== #
+ # =========  [Group BRA_SAN_2022_03] - [Id BRA_SAN_FRA_2022-03-30_SLEU_01_NA_F_GPS_IGU120_3_LOC] ========= #
+ # =========  [Group BRA_SAN_2022_03] - [Id BRA_SAN_FRA_2022-03-30_SLEU_03_NA_F_GPS_IGU120_8_LOC] ========= #
+ # =========  [Group BRA_SAN_2022_03] - [Id BRA_SAN_FRA_2022-03-30_SLEU_04_NA_F_GPS_IGU120_12_LOC] ========= #
+ # =========  [Group BRA_SAN_2022_03] - [Id BRA_SAN_FRA_2022-03-30_SLEU_02_NA_F_GPS_IGU120_5_LOC] ========= #
+GPS_Collection(4 GPS, 11 trips)
+4
+GPS(group=BRA_SAN_2022_03, id=BRA_SAN_FRA_2022-03-30_SLEU_04_NA_F_GPS_IGU120_12_LOC, trips=3, n=12368)
+# ============================== SUMMARY ============================== #
+# ------------------------------ METADATA ----------------------------- #
+# + Nb of GPS   = 4
+# + Nb of trips = 11
+# + Groups      = | BRA_SAN_2022_03 [4 GPS] | 
+# ------------------------------ GPS COLLECTION DATA ------------------ #
+# + Trip length   : mean=89.1km | std=52.5km
+# + Trip length   : min=40.8km | q25=52.2km | q50=64.3km | q75=115.3km | max=186.5km
+# + Trip duration : mean=3.5h | std=1.8h
+# + Trip duration : min=1.5h | q25=2.3h | q50=3.0h | q75=4.6h | max=7.5h
+# + Trip dist max : mean=25.0km | std=11.9km
+# + Trip dist max : min=13.8km | q25=16.0km | q50=19.7km | q75=33.2km | max=48.9km
+# + Trip nb steps : mean=727.4 | std=464.9
+# + Trip nb steps : min=272 | q25=329 | q50=589 | q75=1034 | max=1630
+# ===================================================================== #
+ # =========  [Group PER_PSC_2012_11] - [Id PER_PSC_PSC_2012-11-15_SVAR_05_NA_F_GPS_IGU_P01_UTC] ========= #
+ # =========  [Group PER_PSC_2012_11] - [Id PER_PSC_PSC_2012-11-15_SVAR_04_NA_F_GPS_GIP_G10_UTC] ========= #
+ # =========  [Group PER_PSC_2012_11] - [Id PER_PSC_PSC_2012-11-15_SVAR_03_NA_M_GPS_GIP_G14_UTC] ========= #
+ # =========  [Group PER_PSC_2012_11] - [Id PER_PSC_PSC_2012-11-14_LBOU_01_NA_NA_GPS_IGU_P17_UTC] ========= #
+ # =========  [Group PER_PSC_2013_11] - [Id PER_PSC_PSC_2013-11-13_LBOU_02_NA_NA_GPS_IGU_P41_LOC] ========= #
+ # =========  [Group PER_PSC_2013_11] - [Id PER_PSC_PSC_2013-11-14_SVAR_06_P000001_F_GPS_IGU_P43_LOC] ========= #
+ # =========  [Group PER_PSC_2013_11] - [Id PER_PSC_PSC_2013-11-13_LBOU_01_NA_NA_GPS_IGU_P46_LOC] ========= #
+ # =========  [Group PER_PSC_2013_11] - [Id PER_PSC_PSC_2013-11-14_SVAR_07_P000002_M_GPS_IGU_P22_LOC] ========= #
+ # =========  [Group BRA_FDN_2016_09] - [Id BRA_FDN_MEI_2016-09-15_SSUL_02_NA_NA_GPS_IGU120_BR011_LOC] ========= #
+ # =========  [Group BRA_FDN_2016_09] - [Id BRA_FDN_MEI_2016-09-15_SSUL_03_T32837_NA_GPS_IGU120_BR010_LOC] ========= #
+ # =========  [Group BRA_FDN_2016_09] - [Id BRA_FDN_MEI_2016-09-15_SSUL_04_T32839_NA_GPS_IGU120_BR012_LOC] ========= #
+ # =========  [Group BRA_FDN_2016_09] - [Id BRA_FDN_MEI_2016-09-15_SSUL_01_T32840_NA_GPS_IGU120_BR023_LOC] ========= #
+ # =========  [Group BRA_FDN_2018_09] - [Id BRA_FDN_MEI_2018-09-18_SSUL_01_NA_NA_GPS_IGU120_BR033_LOC] ========= #
+ # =========  [Group BRA_FDN_2018_09] - [Id BRA_FDN_MEI_2018-09-18_SSUL_03_NA_NA_GPS_IGU120_BR014_LOC] ========= #
+ # =========  [Group BRA_FDN_2018_09] - [Id BRA_FDN_MEI_2018-09-21_SSUL_14_NA_NA_GPS_IGU120_BR022_LOC] ========= #
+ # =========  [Group BRA_FDN_2018_09] - [Id BRA_FDN_MEI_2018-09-18_SSUL_02_NA_NA_GPS_IGU120_BR011_LOC] ========= #
+ # =========  [Group BRA_SAN_2022_03] - [Id BRA_SAN_FRA_2022-03-30_SLEU_01_NA_F_GPS_IGU120_3_LOC] ========= #
+ # =========  [Group BRA_SAN_2022_03] - [Id BRA_SAN_FRA_2022-03-30_SLEU_03_NA_F_GPS_IGU120_8_LOC] ========= #
+ # =========  [Group BRA_SAN_2022_03] - [Id BRA_SAN_FRA_2022-03-30_SLEU_04_NA_F_GPS_IGU120_12_LOC] ========= #
+ # =========  [Group BRA_SAN_2022_03] - [Id BRA_SAN_FRA_2022-03-30_SLEU_02_NA_F_GPS_IGU120_5_LOC] ========= #
+GPS_Collection(20 GPS, 43 trips)
+20
+GPS(group=PER_PSC_2013_11, id=PER_PSC_PSC_2013-11-14_SVAR_06_P000001_F_GPS_IGU_P43_LOC, trips=3, n=84130)
+# ============================== SUMMARY ============================== #
+# ------------------------------ METADATA ----------------------------- #
+# + Nb of GPS   = 20
+# + Nb of trips = 43
+# + Groups      = | BRA_FDN_2016_09 [4 GPS] | BRA_FDN_2018_09 [4 GPS] | BRA_SAN_2022_03 [4 GPS] | PER_PSC_2012_11 [4 GPS] | PER_PSC_2013_11 [4 GPS] | 
+# ------------------------------ GPS COLLECTION DATA ------------------ #
+# + Trip length   : mean=128.2km | std=106.8km
+# + Trip length   : min=26.1km | q25=51.5km | q50=77.2km | q75=178.2km | max=466.8km
+# + Trip duration : mean=5.6h | std=6.3h
+# + Trip duration : min=0.8h | q25=1.6h | q50=2.4h | q75=7.8h | max=32.5h
+# + Trip dist max : mean=46.0km | std=45.7km
+# + Trip dist max : min=9.2km | q25=18.3km | q50=30.8km | q75=57.8km | max=240.6km
+# + Trip nb steps : mean=3169.5 | std=2477.9
+# + Trip nb steps : min=272 | q25=1337 | q50=3092 | q75=4019 | max=12817
+# ===================================================================== #
+ # =========  [Group BRA_FDN_2016_09] - [Id BRA_FDN_MEI_2016-09-15_SSUL_02_NA_NA_GPS_IGU120_BR011_LOC] ========= #
+ # =========  [Group BRA_FDN_2016_09] - [Id BRA_FDN_MEI_2016-09-15_SSUL_03_T32837_NA_GPS_IGU120_BR010_LOC] ========= #
+ # =========  [Group BRA_FDN_2016_09] - [Id BRA_FDN_MEI_2016-09-15_SSUL_04_T32839_NA_GPS_IGU120_BR012_LOC] ========= #
+ # =========  [Group BRA_FDN_2016_09] - [Id BRA_FDN_MEI_2016-09-15_SSUL_01_T32840_NA_GPS_IGU120_BR023_LOC] ========= #
+ # =========  [Group BRA_FDN_2016_09] - [Id BRA_FDN_MEI_2016-09-15_SSUL_02_NA_NA_GPS_IGU120_BR011_LOC] ========= #
+ # =========  [Group BRA_FDN_2016_09] - [Id BRA_FDN_MEI_2016-09-15_SSUL_03_T32837_NA_GPS_IGU120_BR010_LOC] ========= #
+ # =========  [Group BRA_FDN_2016_09] - [Id BRA_FDN_MEI_2016-09-15_SSUL_04_T32839_NA_GPS_IGU120_BR012_LOC] ========= #
+ # =========  [Group BRA_FDN_2016_09] - [Id BRA_FDN_MEI_2016-09-15_SSUL_01_T32840_NA_GPS_IGU120_BR023_LOC] ========= #
+# ============================== SUMMARY ============================== #
+# ------------------------------ METADATA ----------------------------- #
+# + Nb of GPS   = 4
+# + Nb of trips = 6
+# + Groups      = | BRA_FDN_2016_09 [4 GPS] | 
+# ------------------------------ GPS COLLECTION DATA ------------------ #
+# + Trip length   : mean=246.7km | std=68.3km
+# + Trip length   : min=144.4km | q25=201.4km | q50=274.6km | q75=288.4km | max=316.4km
+# + Trip duration : mean=11.5h | std=3.6h
+# + Trip duration : min=5.9h | q25=9.3h | q50=13.0h | q75=13.9h | max=14.8h
+# + Trip dist max : mean=84.6km | std=19.3km
+# + Trip dist max : min=55.4km | q25=75.7km | q50=83.9km | q75=98.4km | max=108.1km
+# + Trip nb steps : mean=2731.3 | std=870.3
+# + Trip nb steps : min=1379 | q25=2213 | q50=3062 | q75=3315 | max=3554
+# ===================================================================== #
+Elapsed time : 48 seconds
+
+Running test_tdr.py ...
+TDR(group=BRA_FDN_2022_04, id=BRA_FDN_MEI_2022-04-26_SDAC_01_U61556_F_TDR_AXY_RT10_UTC, dives=19, n=183837)
+183837
+date                    2022-04-27
+time                      06:31:03
+pressure                   1035.64
+temperature                   26.9
+datetime       2022-04-27 04:31:03
+step_time                      1.0
+is_night                         1
+depth                        -0.02
+dive                             0
+Name: 1312, dtype: object
+# ============================== SUMMARY ============================== #
+# ------------------------------ METADATA ----------------------------- #
+# + Group = BRA_FDN_2022_04
+# + Id    = BRA_FDN_MEI_2022-04-26_SDAC_01_U61556_F_TDR_AXY_RT10_UTC
+# ------------------------------ TDR DATA ----------------------------- #
+# + Nb of measures   = 183837
+# + Number of dives  = 19
+# + Median pressure  = 1033.7 hPa
+# + Median depth     = 0.00 m
+# + Max depth        = 0.64 m
+# + Mean temperature = 29.4 °C
+# ------------------------------ DIVES -------------------------------- #
+# + Longest dive          = 7.0 s
+# + Median dive duration  = 3.0 s
+# + Median dive max depth = -0.12 m
+# ===================================================================== #
+Elapsed time : 3 seconds
+
+Running test_tdr_collection.py ...
+ # =========  [Group PER_PSC_2008_11] - [Id PER_PSC_PSC_2008-11-25_LBOU_56_5056_M_TDR_G5_3069_UTC] ========= #
+ # =========  [Group PER_PSC_2008_11] - [Id PER_PSC_PSC_2008-11-25_LBOU_55_5055_(M)_TDR_NA_839_UTC] ========= #
+ # =========  [Group PER_PSC_2008_11] - [Id PER_PSC_PSC_2008-11-25_SVAR_04_5004_F_TDR_G5_3073_UTC] ========= #
+ # =========  [Group PER_PSC_2008_11] - [Id PER_PSC_PSC_2008-11-25_SVAR_06_5006_F_TDR_G5_3075_UTC] ========= #
+TDR_Collection(4 TDR, 229 dives)
+4
+TDR(group=PER_PSC_2008_11, id=PER_PSC_PSC_2008-11-25_LBOU_56_5056_M_TDR_G5_3069_UTC, dives=118, n=171587)
+# ============================== SUMMARY ============================== #
+# ------------------------------ METADATA ----------------------------- #
+# + Nb of TDR   = 4
+# + Nb of dives = 229
+# + Groups      = | PER_PSC_2008_11 [4 TDR] | 
+# ------------------------------ TDR COLLECTION DATA ------------------ #
+# + Dive duration  : mean=17.8s | std=13.5s
+# + Dive duration  : min=2.3s | q25=4.0s | q50=21.0s | q75=28.3s | max=57.0s
+# + Dive max depth : mean=-1.7m | std=1.3m
+# + Dive max depth : min=-3.0m | q25=-2.9m | q50=-2.7m | q75=-0.3m | max=0.8m
+# ===================================================================== #
+ # =========  [Group BRA_FDN_2017_04] - [Id BRA_FDN_MEI_2017-04-23_SDAC_06_NA_M_TDR_G5_A09509_LOC] ========= #
+ # =========  [Group BRA_FDN_2017_04] - [Id BRA_FDN_MEI_2017-04-23_SDAC_05_U63067_M_TDR_G5_A08192_LOC] ========= #
+TDR_Collection(2 TDR, 102 dives)
+2
+TDR(group=BRA_FDN_2017_04, id=BRA_FDN_MEI_2017-04-23_SDAC_06_NA_M_TDR_G5_A09509_LOC, dives=90, n=434500)
+# ============================== SUMMARY ============================== #
+# ------------------------------ METADATA ----------------------------- #
+# + Nb of TDR   = 2
+# + Nb of dives = 102
+# + Groups      = | BRA_FDN_2017_04 [2 TDR] | 
+# ------------------------------ TDR COLLECTION DATA ------------------ #
+# + Dive duration  : mean=20.0s | std=120.7s
+# + Dive duration  : min=2.1s | q25=2.7s | q50=3.2s | q75=4.9s | max=1192.0s
+# + Dive max depth : mean=-0.5m | std=0.5m
+# + Dive max depth : min=-1.0m | q25=-1.0m | q50=-0.8m | q75=-0.1m | max=1.1m
+# ===================================================================== #
+ # =========  [Group BRA_FDN_2022_04] - [Id BRA_FDN_MEI_2022-04-26_SDAC_01_U61556_F_TDR_AXY_RT10_UTC] ========= #
+TDR_Collection(1 TDR, 19 dives)
+1
+TDR(group=BRA_FDN_2022_04, id=BRA_FDN_MEI_2022-04-26_SDAC_01_U61556_F_TDR_AXY_RT10_UTC, dives=19, n=183837)
+# ============================== SUMMARY ============================== #
+# ------------------------------ METADATA ----------------------------- #
+# + Nb of TDR   = 1
+# + Nb of dives = 19
+# + Groups      = | BRA_FDN_2022_04 [1 TDR] | 
+# ------------------------------ TDR COLLECTION DATA ------------------ #
+# + Dive duration  : mean=3.6s | std=1.1s
+# + Dive duration  : min=3.0s | q25=3.0s | q50=3.0s | q75=4.0s | max=7.0s
+# + Dive max depth : mean=-0.2m | std=0.4m
+# + Dive max depth : min=-0.8m | q25=-0.5m | q50=-0.1m | q75=0.0m | max=0.4m
+# ===================================================================== #
+ # =========  [Group PER_PSC_2008_11] - [Id PER_PSC_PSC_2008-11-25_LBOU_56_5056_M_TDR_G5_3069_UTC] ========= #
+ # =========  [Group PER_PSC_2008_11] - [Id PER_PSC_PSC_2008-11-25_LBOU_55_5055_(M)_TDR_NA_839_UTC] ========= #
+ # =========  [Group PER_PSC_2008_11] - [Id PER_PSC_PSC_2008-11-25_SVAR_04_5004_F_TDR_G5_3073_UTC] ========= #
+ # =========  [Group PER_PSC_2008_11] - [Id PER_PSC_PSC_2008-11-25_SVAR_06_5006_F_TDR_G5_3075_UTC] ========= #
+ # =========  [Group BRA_FDN_2017_04] - [Id BRA_FDN_MEI_2017-04-23_SDAC_06_NA_M_TDR_G5_A09509_LOC] ========= #
+ # =========  [Group BRA_FDN_2017_04] - [Id BRA_FDN_MEI_2017-04-23_SDAC_05_U63067_M_TDR_G5_A08192_LOC] ========= #
+ # =========  [Group BRA_FDN_2022_04] - [Id BRA_FDN_MEI_2022-04-26_SDAC_01_U61556_F_TDR_AXY_RT10_UTC] ========= #
+TDR_Collection(7 TDR, 350 dives)
+7
+TDR(group=BRA_FDN_2017_04, id=BRA_FDN_MEI_2017-04-23_SDAC_05_U63067_M_TDR_G5_A08192_LOC, dives=12, n=217998)
+# ============================== SUMMARY ============================== #
+# ------------------------------ METADATA ----------------------------- #
+# + Nb of TDR   = 7
+# + Nb of dives = 350
+# + Groups      = | BRA_FDN_2017_04 [2 TDR] | BRA_FDN_2022_04 [1 TDR] | PER_PSC_2008_11 [4 TDR] | 
+# ------------------------------ TDR COLLECTION DATA ------------------ #
+# + Dive duration  : mean=17.7s | std=65.9s
+# + Dive duration  : min=2.1s | q25=3.0s | q50=5.0s | q75=25.8s | max=1192.0s
+# + Dive max depth : mean=-1.3m | std=1.2m
+# + Dive max depth : min=-3.0m | q25=-2.9m | q50=-0.9m | q75=-0.2m | max=1.1m
+# ===================================================================== #
+Elapsed time : 15 seconds
+
+Running test_gps_tdr.py ...
+0/41073 - 0.0%
+2053/41073 - 5.0%
+4106/41073 - 10.0%
+6159/41073 - 15.0%
+8212/41073 - 20.0%
+10265/41073 - 25.0%
+12318/41073 - 30.0%
+14371/41073 - 35.0%
+16424/41073 - 40.0%
+18477/41073 - 45.0%
+20530/41073 - 50.0%
+22583/41073 - 55.0%
+24636/41073 - 60.0%
+26689/41073 - 65.0%
+28742/41073 - 70.0%
+30795/41073 - 75.0%
+32848/41073 - 80.0%
+34901/41073 - 85.0%
+36954/41073 - 90.0%
+39007/41073 - 95.0%
+41060/41073 - 100.0%
+GPS_TDR(group=PER_PSC_2008_11, id=PER_PSC_PSC_2008-11-25_SVAR_06_5006_F_GPSxTDR, trips=2, dives=101, n=222022, n_gps=41064, n_tdr=222022)
+222022
+date                               2008-11-25
+time                                 06:21:52
+longitude                                 NaN
+latitude                                  NaN
+pressure                                -47.0
+temperature                            18.641
+datetime                  2008-11-25 01:21:52
+step_time                                 1.0
+is_night                                    1
+step_length                              <NA>
+step_speed                               <NA>
+step_turning_angle                       <NA>
+step_heading                             <NA>
+step_heading_to_colony                   <NA>
+is_suspicious                            <NA>
+dist_to_nest                             <NA>
+trip                                     <NA>
+depth                                    0.12
+dive                                        0
+Name: 1312, dtype: object
+# ============================== SUMMARY ============================== #
+# ------------------------------ METADATA ----------------------------- #
+# + Group = PER_PSC_2008_11
+# + Id    = PER_PSC_PSC_2008-11-25_SVAR_06_5006_F_GPSxTDR
+# ------------------------------ GPS DATA --------------------------------- #
+# + Nb of measures       = 41064
+# + Date range           = 2008-11-25 07:26:23 | 2008-11-25 18:59:59
+# + Nb of trips          = 2
+# + Time resolution      = 1.0 s
+# + Total duration       = 0.48 days
+# + Total length         = 178.8 km
+# + Max distance to nest = 32.0 km
+# ------------------------------ TRIPS -------------------------------- #
+# + Longest trip         = 2.0 h
+# + Median trip duration = 1.6 h
+# + Largest trip         = 102.9 km
+# + Median trip length   = 78.3 km
+# + First position (-77.26513, -11.77641) is 0.131km away from the estimated nest position (-77.26503, -11.77523)
+# ------------------------------ TDR DATA ----------------------------- #
+# + Nb of measures   = 222022
+# + Number of dives  = 101
+# + Median pressure  = -35.0 hPa
+# + Median depth     = 0.00 m
+# + Max depth        = 2.77 m
+# + Mean temperature = 25.9 °C
+# ------------------------------ DIVES -------------------------------- #
+# + Longest dive          = 57.0 s
+# + Median dive duration  = 4.0 s
+# + Median dive max depth = -0.34 m
+# ===================================================================== #
+Elapsed time : 245 seconds
+
+Running test_gps_tdr_collection.py ...
+0/36534 - 0.0%
+1826/36534 - 5.0%
+3652/36534 - 10.0%
+5478/36534 - 15.0%
+7304/36534 - 20.0%
+9130/36534 - 25.0%
+10956/36534 - 30.0%
+12782/36534 - 35.0%
+14608/36534 - 40.0%
+16434/36534 - 45.0%
+18260/36534 - 50.0%
+20086/36534 - 55.0%
+21912/36534 - 60.0%
+23738/36534 - 65.0%
+25564/36534 - 70.0%
+27390/36534 - 75.0%
+29216/36534 - 80.0%
+31042/36534 - 85.0%
+32868/36534 - 90.0%
+34694/36534 - 95.0%
+36520/36534 - 100.0%
+WARNING : last trip recording seems interrupted.
+0/2157 - 0.0%
+107/2157 - 5.0%
+214/2157 - 9.9%
+321/2157 - 14.9%
+428/2157 - 19.8%
+535/2157 - 24.8%
+642/2157 - 29.8%
+749/2157 - 34.7%
+856/2157 - 39.7%
+963/2157 - 44.6%
+1070/2157 - 49.6%
+1177/2157 - 54.6%
+1284/2157 - 59.5%
+1391/2157 - 64.5%
+1498/2157 - 69.4%
+1605/2157 - 74.4%
+1712/2157 - 79.4%
+1819/2157 - 84.3%
+1926/2157 - 89.3%
+2033/2157 - 94.3%
+2140/2157 - 99.2%
+WARNING : last trip recording seems interrupted.
+0/41073 - 0.0%
+2053/41073 - 5.0%
+4106/41073 - 10.0%
+6159/41073 - 15.0%
+8212/41073 - 20.0%
+10265/41073 - 25.0%
+12318/41073 - 30.0%
+14371/41073 - 35.0%
+16424/41073 - 40.0%
+18477/41073 - 45.0%
+20530/41073 - 50.0%
+22583/41073 - 55.0%
+24636/41073 - 60.0%
+26689/41073 - 65.0%
+28742/41073 - 70.0%
+30795/41073 - 75.0%
+32848/41073 - 80.0%
+34901/41073 - 85.0%
+36954/41073 - 90.0%
+39007/41073 - 95.0%
+41060/41073 - 100.0%
+0/41547 - 0.0%
+2077/41547 - 5.0%
+4154/41547 - 10.0%
+6231/41547 - 15.0%
+8308/41547 - 20.0%
+10385/41547 - 25.0%
+12462/41547 - 30.0%
+14539/41547 - 35.0%
+16616/41547 - 40.0%
+18693/41547 - 45.0%
+20770/41547 - 50.0%
+22847/41547 - 55.0%
+24924/41547 - 60.0%
+27001/41547 - 65.0%
+29078/41547 - 70.0%
+31155/41547 - 75.0%
+33232/41547 - 80.0%
+35309/41547 - 85.0%
+37386/41547 - 90.0%
+39463/41547 - 95.0%
+41540/41547 - 100.0%
+ # =========  [Group PER_PSC_2008_11] - [Id _LBOU_55_] ========= #
+ # =========  [Group PER_PSC_2008_11] - [Id _LBOU_56_] ========= #
+ # =========  [Group PER_PSC_2008_11] - [Id _SVAR_06_] ========= #
+ # =========  [Group PER_PSC_2008_11] - [Id _SVAR_04_] ========= #
+ # =========  [Group PER_PSC_2008_11] - [Id _LBOU_55_] ========= #
+ # =========  [Group PER_PSC_2008_11] - [Id _LBOU_56_] ========= #
+ # =========  [Group PER_PSC_2008_11] - [Id _SVAR_06_] ========= #
+ # =========  [Group PER_PSC_2008_11] - [Id _SVAR_04_] ========= #
+GPS_TDR_Collection(4 GPS_TDR, 9 trips, 229 dives)
+4
+GPS_TDR(group=PER_PSC_2008_11, id=_SVAR_06_, trips=2, dives=101, n=222022, n_gps=41064, n_tdr=222022)
+# ============================== SUMMARY ============================== #
+# ------------------------------ METADATA ----------------------------- #
+# + Nb of GPS_TDR = 4
+# + Nb of trips   = 9
+# + Groups        = | PER_PSC_2008_11 [4 GPS_TDR] | 
+# ------------------------------ GPS COLLECTION DATA ------------------ #
+# + Trip length   : mean=62.1km | std=33.7km
+# + Trip length   : min=26.5km | q25=34.6km | q50=53.7km | q75=87.8km | max=111.2km
+# + Trip duration : mean=1.9h | std=1.0h
+# + Trip duration : min=1.1h | q25=1.2h | q50=1.8h | q75=2.0h | max=4.3h
+# + Trip dist max : mean=24.2km | std=10.4km
+# + Trip dist max : min=12.2km | q25=14.4km | q50=21.1km | q75=33.8km | max=37.7km
+# + Trip nb steps : mean=5075.4 | std=4639.8
+# + Trip nb steps : min=74 | q25=96 | q50=5065 | q75=7244 | max=13909
+# ------------------------------ TDR COLLECTION DATA ------------------ #
+# + Dive duration  : mean=17.8s | std=13.5s
+# + Dive duration  : min=2.3s | q25=4.0s | q50=21.0s | q75=28.3s | max=57.0s
+# + Dive max depth : mean=-1.7m | std=1.3m
+# + Dive max depth : min=-3.0m | q25=-2.9m | q50=-2.7m | q75=-0.3m | max=0.8m
+# ===================================================================== #
+Elapsed time : 310 seconds
+
