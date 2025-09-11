@@ -116,7 +116,7 @@ Name: 1312, dtype: object
 # + Median odba               = 1.314
 # + Median odba_f             = 0.158
 # ===================================================================== #
-Full diagnostic [fast=False] : 6.5 minutes
+Full diagnostic [fast=False] : 6.8 minutes
 Full diagnostic [fast=True] : 0.7 minutes
 0/25048 - 0.0%
 1252/25048 - 5.0%
@@ -141,7 +141,7 @@ Full diagnostic [fast=True] : 0.7 minutes
 25040/25048 - 100.0%
 df     : 12584000/12584000 = 100.00%
 df_gps : 25048/12344 = 202.92%
-Elapsed time : 1179 seconds
+Elapsed time : 1209 seconds
 
 Running test_axy_collection.py ...
 0/11553 - 0.0%
@@ -259,7 +259,7 @@ AXY(group=BRA_FDN_2022_04, id=BRA_FDN_MEI_2022-04-26_SDAC_13_U61566_F_GPS_AXY_RT
 # + Dive max depth : mean=-0.3m | std=0.3m
 # + Dive max depth : min=-0.9m | q25=-0.5m | q50=-0.1m | q75=-0.0m | max=0.4m
 # ===================================================================== #
-Elapsed time : 427 seconds
+Elapsed time : 449 seconds
 
 Running test_gps.py ...
 GPS(group=BRA_FDN_2016_09, id=BRA_FDN_MEI_2016-09-15_SSUL_01_T32840_NA_GPS_IGU120_BR023_LOC, trips=2, n=12320)
@@ -304,7 +304,7 @@ WARNING : last trip recording seems interrupted.
 GPS(group=BRA_FDN_2016_09, id=BRA_FDN_MEI_2016-09-15_SSUL_01_T32840_NA_GPS_IGU120_BR023_LOC_T1, trips=1, n=3092)
 WARNING : last trip recording seems interrupted.
 GPS(group=BRA_FDN_2016_09, id=BRA_FDN_MEI_2016-09-15_SSUL_01_T32840_NA_GPS_IGU120_BR023_LOC_T2, trips=1, n=1940)
-Elapsed time : 49 seconds
+Elapsed time : 52 seconds
 
 Running test_gps_collection.py ...
 WARNING : last trip recording seems interrupted.
@@ -481,7 +481,7 @@ GPS(group=PER_PSC_2013_11, id=PER_PSC_PSC_2013-11-14_SVAR_06_P000001_F_GPS_IGU_P
 # + Trip nb steps : mean=2731.3 | std=870.3
 # + Trip nb steps : min=1379 | q25=2213 | q50=3062 | q75=3315 | max=3554
 # ===================================================================== #
-Elapsed time : 48 seconds
+Elapsed time : 49 seconds
 
 Running test_tdr.py ...
 TDR(group=BRA_FDN_2022_04, id=BRA_FDN_MEI_2022-04-26_SDAC_01_U61556_F_TDR_AXY_RT10_UTC, dives=19, n=183837)
@@ -512,7 +512,7 @@ Name: 1312, dtype: object
 # + Median dive duration  = 3.0 s
 # + Median dive max depth = -0.12 m
 # ===================================================================== #
-Elapsed time : 3 seconds
+Elapsed time : 4 seconds
 
 Running test_tdr_collection.py ...
  # =========  [Group PER_PSC_2008_11] - [Id PER_PSC_PSC_2008-11-25_LBOU_56_5056_M_TDR_G5_3069_UTC] ========= #
@@ -585,7 +585,7 @@ TDR(group=BRA_FDN_2017_04, id=BRA_FDN_MEI_2017-04-23_SDAC_05_U63067_M_TDR_G5_A08
 # + Dive max depth : mean=-1.3m | std=1.2m
 # + Dive max depth : min=-3.0m | q25=-2.9m | q50=-0.9m | q75=-0.2m | max=1.1m
 # ===================================================================== #
-Elapsed time : 15 seconds
+Elapsed time : 14 seconds
 
 Running test_gps_tdr.py ...
 0/41073 - 0.0%
@@ -661,7 +661,7 @@ Name: 1312, dtype: object
 # + Median dive duration  = 4.0 s
 # + Median dive max depth = -0.34 m
 # ===================================================================== #
-Elapsed time : 245 seconds
+Elapsed time : 254 seconds
 
 Running test_gps_tdr_collection.py ...
 0/36534 - 0.0%
@@ -781,5 +781,5 @@ GPS_TDR(group=PER_PSC_2008_11, id=_SVAR_06_, trips=2, dives=101, n=222022, n_gps
 # + Dive max depth : mean=-1.7m | std=1.3m
 # + Dive max depth : min=-3.0m | q25=-2.9m | q50=-2.7m | q75=-0.3m | max=0.8m
 # ===================================================================== #
-Elapsed time : 310 seconds
+Elapsed time : 319 seconds
 
