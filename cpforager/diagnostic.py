@@ -847,7 +847,7 @@ def plot_folium_map_multiple_colorgrad(df, params, traj_id, nest_position, cpals
     :param traj_id: trajectory id.
     :type traj_id: str
     :param nest_position: nest position.
-    :type nest_position: list([float, float])
+    :type nest_position: list[float]
     :param cpals_disc: dictionary of variables and associated discrete color palettes.
     :type cpals_disc: list[list[float]]
     :param cpals_cont: dictionary of variables and associated continuous color palettes.
