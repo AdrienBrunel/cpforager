@@ -64,7 +64,9 @@ pip install cpforager
 
 # Documentation
 
-The documentation of **cpforager** is automatically generated using [Sphinx](https://www.sphinx-doc.org/en/master/index.html) and can be found [here](https://adrienbrunel.github.io/seabird-movement-cpf/).  
+The documentation of **cpforager** is automatically generated using [Sphinx](https://www.sphinx-doc.org/en/master/index.html) and can be found [here](https://adrienbrunel.github.io/seabird-movement-cpf/). 
+
+If the GitHub-deployed documentation is failing, you can still access the documentation locally by opening the [/docs/index.html](./docs/index.html) with your favourite browser.
 
 <br>
 
