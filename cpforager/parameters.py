@@ -174,7 +174,7 @@ def get_columns_dtypes(column_names):
     Extract a dtype dictionary by dataframe column names.
         
     :param column_names: list of column names.
-    :type column_names: list
+    :type column_names: list[str]
     :return: a dictionary of dtypes by column names.
     :rtype: dict 
     
