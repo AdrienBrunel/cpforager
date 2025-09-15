@@ -1,31 +1,31 @@
-name: deploy prebuilt documentation
+name: Deploy prebuilt documentation
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'docs/**'
-      - '.github/workflows/deploy-docs.yml'
-  workflow_dispatch:
-    
+    push:
+        branches: [main]
+        paths:
+            - 'docs/**'
+            - '.github/workflows/deploy-docs.yml'
+    workflow_dispatch:
+
 permissions:
-  pages: write
-  id-token: write
-  contents: read
+    pages: write
+    id-token: write
+    contents: read
 
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
+    deploy:
+        runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
+        steps:
+            - name: Checkout repo
+              uses: actions/checkout@v4
 
-      - name: Upload prebuilt HTML docs
-        uses: actions/upload-pages-artifact@v2
-        with:
-          path: docs/
+            - name: Upload prebuilt HTML docs
+              uses: actions/upload-pages-artifact@v3
+              with:
+                  path: docs/
 
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v3
+            - name: Deploy to GitHub Pages
+              id: deployment
+              uses: actions/deploy-pages@v3
