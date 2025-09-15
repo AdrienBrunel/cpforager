@@ -1,4 +1,4 @@
-name: Deploy prebuilt documentation
+name: deploy prebuilt documentation
 
 on:
   push:
