@@ -37,10 +37,10 @@ license = "AGPL-3.0"
 license-files = ["LICENSE"]
 
 [project.urls]
-Homepage = "https://github.com/AdrienBrunel/seabird-movement-cpf"
-Repository = "https://github.com/AdrienBrunel/seabird-movement-cpf"
-Documentation = "https://adrienbrunel.github.io/seabird-movement-cpf/"
-Issues = "https://github.com/AdrienBrunel/seabird-movement-cpf/issues"
+Homepage = "https://github.com/AdrienBrunel/cpforager"
+Repository = "https://github.com/AdrienBrunel/cpforager"
+Documentation = "https://adrienbrunel.github.io/cpforager/"
+Issues = "https://github.com/AdrienBrunel/cpforager/issues"
 
 # python3 -m pip install --upgrade build
 # python3 -m build

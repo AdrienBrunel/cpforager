@@ -3,14 +3,14 @@
 </h1><br>
 
 <div align="center">
-  <a href="https://github.com/AdrienBrunel/seabird-movement-cpf/stargazers"><img alt="github stars" src="https://img.shields.io/github/stars/AdrienBrunel/seabird-movement-cpf"></a>
-  <a href="https://github.com/AdrienBrunel/seabird-movement-cpf/forks"><img alt="github forks" src="https://img.shields.io/github/forks/AdrienBrunel/seabird-movement-cpf"></a>
-  <a href="https://github.com/AdrienBrunel/seabird-movement-cpf/issues"><img alt="github issues" src="https://img.shields.io/github/issues/AdrienBrunel/seabird-movement-cpf"></a>
-  <a href="https://github.com/AdrienBrunel/seabird-movement-cpf/pulls"><img alt="github pull request" src="https://img.shields.io/github/issues-pr/AdrienBrunel/seabird-movement-cpf"></a>
-  <a href="https://github.com/AdrienBrunel/seabird-movement-cpf/commits/main"><img alt="github last commit" src="https://img.shields.io/github/last-commit/AdrienBrunel/seabird-movement-cpf"></a>
+  <a href="https://github.com/AdrienBrunel/cpforager/stargazers"><img alt="github stars" src="https://img.shields.io/github/stars/AdrienBrunel/cpforager"></a>
+  <a href="https://github.com/AdrienBrunel/cpforager/forks"><img alt="github forks" src="https://img.shields.io/github/forks/AdrienBrunel/cpforager"></a>
+  <a href="https://github.com/AdrienBrunel/cpforager/issues"><img alt="github issues" src="https://img.shields.io/github/issues/AdrienBrunel/cpforager"></a>
+  <a href="https://github.com/AdrienBrunel/cpforager/pulls"><img alt="github pull request" src="https://img.shields.io/github/issues-pr/AdrienBrunel/cpforager"></a>
+  <a href="https://github.com/AdrienBrunel/cpforager/commits/main"><img alt="github last commit" src="https://img.shields.io/github/last-commit/AdrienBrunel/cpforager"></a>
 </div>
 <div align="center">
-  <a href="https://github.com/AdrienBrunel/seabird-movement-cpf/blob/master/LICENSE"><img alt="license" src="https://img.shields.io/badge/license-AGPLv3-blue"></a>
+  <a href="https://github.com/AdrienBrunel/cpforager/blob/master/LICENSE"><img alt="license" src="https://img.shields.io/badge/license-AGPLv3-blue"></a>
   <a href="https://www.python.org/downloads/"><img alt="python 3.11+" src="https://img.shields.io/badge/Python-3.11+-blue.svg"></a>
 </div>
 <div align="center">
@@ -64,7 +64,7 @@ pip install cpforager
 
 # Documentation
 
-The documentation of **cpforager** is automatically generated using [Sphinx](https://www.sphinx-doc.org/en/master/index.html) and can be found [here](https://adrienbrunel.github.io/seabird-movement-cpf/). 
+The documentation of **cpforager** is automatically generated using [Sphinx](https://www.sphinx-doc.org/en/master/index.html) and can be found [here](https://adrienbrunel.github.io/cpforager/). 
 
 If the GitHub-deployed documentation is failing, you can still access the documentation locally by opening the [/docs/index.html](./docs/index.html) with your favourite browser.
 
@@ -72,7 +72,7 @@ If the GitHub-deployed documentation is failing, you can still access the docume
 
 # User guide 
 
-A detailed user guide can be found in the dedicated section in the [documentation](https://adrienbrunel.github.io/seabird-movement-cpf/).
+A detailed user guide can be found in the dedicated section in the [documentation](https://adrienbrunel.github.io/cpforager/).
 
 Also, the Python scripts in the [/tests/](./tests/) folder illustrate how the `GPS`, `TDR`, `AXY`, `GPS_TDR`, `GPS_Collection`, `TDR_Collection`, `AXY_Collection` and `GPS_TDR_Collection` classes can be used to fully and simply benefit the users. Results of the scripts are also found in the [/tests/](./tests/) folder.
 

@@ -1,16 +1,16 @@
 <h1 align="center">
-  <img src="https://github.com/AdrienBrunel/seabird-movement-cpf/raw/master/docs/_static/images/logo_cpforager_text_color.png" alt="cpforager text logo with colors" width="600">
+  <img src="https://github.com/AdrienBrunel/cpforager/raw/master/docs/_static/images/logo_cpforager_text_color.png" alt="cpforager text logo with colors" width="600">
 </h1><br>
 
 <div align="center">
-  <a href="https://github.com/AdrienBrunel/seabird-movement-cpf/stargazers"><img alt="github stars" src="https://img.shields.io/github/stars/AdrienBrunel/seabird-movement-cpf"></a>
-  <a href="https://github.com/AdrienBrunel/seabird-movement-cpf/forks"><img alt="github forks" src="https://img.shields.io/github/forks/AdrienBrunel/seabird-movement-cpf"></a>
-  <a href="https://github.com/AdrienBrunel/seabird-movement-cpf/issues"><img alt="github issues" src="https://img.shields.io/github/issues/AdrienBrunel/seabird-movement-cpf"></a>
-  <a href="https://github.com/AdrienBrunel/seabird-movement-cpf/pulls"><img alt="github pull request" src="https://img.shields.io/github/issues-pr/AdrienBrunel/seabird-movement-cpf"></a>
-  <a href="https://github.com/AdrienBrunel/seabird-movement-cpf/commits/main"><img alt="github last commit" src="https://img.shields.io/github/last-commit/AdrienBrunel/seabird-movement-cpf"></a>
+  <a href="https://github.com/AdrienBrunel/cpforager/stargazers"><img alt="github stars" src="https://img.shields.io/github/stars/AdrienBrunel/cpforager"></a>
+  <a href="https://github.com/AdrienBrunel/cpforager/forks"><img alt="github forks" src="https://img.shields.io/github/forks/AdrienBrunel/cpforager"></a>
+  <a href="https://github.com/AdrienBrunel/cpforager/issues"><img alt="github issues" src="https://img.shields.io/github/issues/AdrienBrunel/cpforager"></a>
+  <a href="https://github.com/AdrienBrunel/cpforager/pulls"><img alt="github pull request" src="https://img.shields.io/github/issues-pr/AdrienBrunel/cpforager"></a>
+  <a href="https://github.com/AdrienBrunel/cpforager/commits/main"><img alt="github last commit" src="https://img.shields.io/github/last-commit/AdrienBrunel/cpforager"></a>
 </div>
 <div align="center">
-  <a href="https://github.com/AdrienBrunel/seabird-movement-cpf/blob/master/LICENSE"><img alt="license" src="https://img.shields.io/badge/license-AGPLv3-blue"></a>
+  <a href="https://github.com/AdrienBrunel/cpforager/blob/master/LICENSE"><img alt="license" src="https://img.shields.io/badge/license-AGPLv3-blue"></a>
   <a href="https://www.python.org/downloads/"><img alt="python 3.11+" src="https://img.shields.io/badge/Python-3.11+-blue.svg"></a>
 </div>
 <div align="center">
@@ -48,7 +48,7 @@ Each class automatically enhances raw data but also computes key features specif
 <br>
 
 <div align="center">
-  <img src="https://github.com/AdrienBrunel/seabird-movement-cpf/raw/master/docs/_static/images/logo_cpforager_color.png" alt="cpforager logo with colors" width="200">
+  <img src="https://github.com/AdrienBrunel/cpforager/raw/master/docs/_static/images/logo_cpforager_color.png" alt="cpforager logo with colors" width="200">
 </div>
 
 <br>
