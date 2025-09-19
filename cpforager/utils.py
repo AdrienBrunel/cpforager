@@ -199,7 +199,7 @@ def apply_functions_between_samples(df, resolution, columns_functions, verbose=F
         for k in range(n_subsamples):
             
             # display progress
-            if(verbose & (k % int(n_subsamples/20) == 0)): print("%d/%d - %.1f%%" % (k, n_subsamples, 100*k/n_subsamples))
+            if((verbose) and ((n_subsamples//20 == 0) or (k % (n_subsamples//20) == 0))): print("%d/%d - %.1f%%" % (k, n_subsamples, 100*k/n_subsamples))
             
             # find points between samples
             if k == 0:
