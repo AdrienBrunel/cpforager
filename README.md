@@ -80,7 +80,6 @@ Also, the Python scripts in the [/tests/](./tests/) folder illustrate how the `G
 
 # Future developments
 - [ ] make classes' methods available in documentation.
-- [ ] uniformise types of arguments/attributes in function arguments and accordingly in documentation.
 - [ ] add a proper zero offset correction inside `TDR` class (according to the scientific consensus). See [scikit-diveMove](https://spluque.github.io/scikit-diveMove/modules/tdr.html#skdiveMove.TDR.read_netcdf).
 - [ ] `hmmlearn` for adding an estimation method of seabird's behaviour (foraging, searching, resting, traveling, *etc*.).
 - [ ] draft for [Applications](https://besjournals.onlinelibrary.wiley.com/hub/journal/2041210X/features/applicationpapers) in *Methods in Ecology and Evolution*.
