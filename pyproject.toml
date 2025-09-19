@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "cpforager"
-version = "1.1.2"
+version = "1.1.3"
 authors = [{name="Adrien Brunel", email="adrien.brunel.pro@protonmail.com" }]
 maintainers = [{name="Adrien Brunel", email="adrien.brunel.pro@protonmail.com" }]
 description = "Python package to handle data gathered from biologgers (GPS, TDR, AXY) attached to central-place foraging seabirds. The idea is to make movement ecology data a bit easier to process."
@@ -41,6 +41,10 @@ Homepage = "https://github.com/AdrienBrunel/cpforager"
 Repository = "https://github.com/AdrienBrunel/cpforager"
 Documentation = "https://adrienbrunel.github.io/cpforager/"
 Issues = "https://github.com/AdrienBrunel/cpforager/issues"
+
+# git tag
+# git tag -a vx.x.x -m "version x.x.x : minor bug fixes"
+# git push --tags
 
 # python3 -m pip install --upgrade build
 # python3 -m build
