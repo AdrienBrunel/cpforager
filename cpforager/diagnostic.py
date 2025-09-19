@@ -531,7 +531,7 @@ def plot_map_wtrips(ax, df, params, plot_params, color_palette, n_trips, nest_lo
         plt.xlim([colony_clon - zoom*colony_dlon, colony_clon + zoom*colony_dlon])
         plt.ylim([colony_clat - zoom*colony_dlat, colony_clat + zoom*colony_dlat])
     else:
-        if((trip_length is not None) and (trip_duration is not None)):
+        if(((trip_length is not None) and (trip_duration is not None)) or (n_trips>=1)):
             plt.legend(loc="best", fontsize=plot_params["text_fs"], markerscale=5)
         plt.axis("equal")
 
