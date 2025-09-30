@@ -61,5 +61,5 @@ print(tdr[1312])
 # test display_data_summary method
 tdr.display_data_summary()
 
-# test full_diag, maps_diag, folium_map, folium_map_colorgrad methods
+# test full_diag
 _ = tdr.full_diag(test_dir, "%s_diag" % file_id, plot_params)
