@@ -1,3 +1,5 @@
 # dive segmentation parameters
 diving_depth_threshold: -1.0
 dive_min_duration: 2.0
+zoc_time_windows: [5.0, 3600.0]
+zoc_quantiles: [0.5, 0.02]

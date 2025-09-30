@@ -52,6 +52,8 @@ def get_params(config_file_paths):
         ``trip_min_length``, "length in km above which a trip is valid", "``GPS``"
         ``trip_max_length``, "length in km below which a trip is valid", "``GPS``"
         ``trip_min_steps``, "length in km below which a trip is valid", "``GPS``"
+        ``zoc_time_windows``, "widths of successive rolling time windows used for zero-offset correction", "``TDR``"
+        ``zoc_quantiles``, "quantiles to keep during the successive rolling time windows used for zero-offset correction", "``TDR``"
         ``diving_depth_threshold``, "depth threshold above which a seabird is considered to be diving", "``TDR``"
         ``dive_min_duration``, "minimum duration in seconds of a dive", "``TDR``"
         ``odba_p_norm``, "p-norm used for the computation of overall dyanmical body acceleration", "``AXY``"
