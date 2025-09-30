@@ -3,7 +3,7 @@
 # ======================================================= #
 import os
 import math
-from cpforager import diagnostic
+from cpforager import diagnostic, utils
 import matplotlib.pyplot as plt
 
 
@@ -94,8 +94,7 @@ def indiv_depth_all(self, fig_dir, file_id, plot_params):
     dpi = plot_params.get("fig_dpi")
     
     # compute figure layout
-    n_columns = 4
-    n_rows = math.ceil(n_tdr/n_columns)
+    n_columns, n_rows = utils.nearsq_grid_layout(n_tdr) 
     
     # produce diagnostic
     fig = plt.figure(figsize=(n_columns*5, n_rows*5), dpi=dpi)
@@ -117,9 +116,9 @@ def indiv_depth_all(self, fig_dir, file_id, plot_params):
             
             # add individual tdr map colored by dive
             ax = fig.add_subplot(gs[int(k/n_columns), k % n_columns])    
-            diagnostic.plot_ts(ax, tdr.df, tdr.params, plot_params, "pressure", "%d Dives" % n_dives, "Pressure [hPa]", eph_cond=(tdr.df["dive"]>0))
+            diagnostic.plot_ts(ax, tdr.df, tdr.params, plot_params, "depth", "%d dives" % n_dives, "Depth [m]", eph_cond=(tdr.df["dive"]>0))
         
-        # empty plot if no tdr in collection    
+        # empty plot if no more tdr in collection    
         else:        
             ax = fig.add_subplot(gs[int(k/n_columns), k % n_columns])
             ax.axis("off")
