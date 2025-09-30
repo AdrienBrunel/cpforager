@@ -215,7 +215,7 @@ def indiv_map_all(self, fig_dir, file_id, plot_params):
             ax = fig.add_subplot(gs[int(k/n_columns), k % n_columns], projection=ccrs.PlateCarree())
             diagnostic.plot_map_wtrips(ax, gps.df, gps.params, plot_params, cols_1, n_trips, nest_lon, nest_lat, "Trajectory [trip color gradient]", 0, trip_length, trip_duration)
         
-        # empty plot if no gps in collection    
+        # empty plot if no more gps in collection    
         else:        
             ax = fig.add_subplot(gs[int(k/n_columns), k % n_columns], projection=ccrs.PlateCarree())
             ax.axis("off")
