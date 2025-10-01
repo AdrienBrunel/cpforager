@@ -116,11 +116,14 @@
 <h1><span class="section-number">4.11. </span>cpforager.processing.add_depth<a class="headerlink" href="#cpforager-processing-add-depth" title="Link to this heading"></a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="cpforager.processing.add_depth">
-<span class="sig-prename descclassname"><span class="pre">cpforager.processing.</span></span><span class="sig-name descname"><span class="pre">add_depth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cpforager.processing.add_depth" title="Link to this definition"></a></dt>
-<dd><p>Add to the dataframe an additional <code class="docutils literal notranslate"><span class="pre">depth</span></code> column that gives the estimated underwater depth in negative meters.</p>
+<span class="sig-prename descclassname"><span class="pre">cpforager.processing.</span></span><span class="sig-name descname"><span class="pre">add_depth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cpforager.processing.add_depth" title="Link to this definition"></a></dt>
+<dd><p>Add to the dataframe an additional <code class="docutils literal notranslate"><span class="pre">depth</span></code> column that gives the estimated underwater depth in negative.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>df</strong> (<em>pandas.DataFrame</em>) – dataframe with a <code class="docutils literal notranslate"><span class="pre">pressure</span></code> column in hPa.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pandas.DataFrame</em>) – dataframe with a <code class="docutils literal notranslate"><span class="pre">pressure</span></code> column in hPa.</p></li>
+<li><p><strong>params</strong> (<em>dict</em>) – parameters dictionary.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>the dataframe with an additional <code class="docutils literal notranslate"><span class="pre">depth</span></code> column that gives the estimated underwater depth in negative meters.</p>
@@ -129,6 +132,10 @@
 <dd class="field-odd"><p>pandas.DataFrame</p>
 </dd>
 </dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The required fields in the parameters dictionary are <code class="docutils literal notranslate"><span class="pre">zoc_time_windows</span></code> and <code class="docutils literal notranslate"><span class="pre">zoc_quantiles</span></code>.</p>
+</div>
 </dd></dl>
 
 </section>

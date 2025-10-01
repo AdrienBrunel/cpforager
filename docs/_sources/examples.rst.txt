@@ -28,7 +28,7 @@ TDR
 
 .. only:: html
 
-.. image:: _static/examples/BRA_FDN_MEI_2022-04-26_SDAC_01_U61556_F_TDR_G5_RT10_UTC_diag.png
+.. image:: _static/examples/BRA_FDN_MEI_2022-04-26_SDAC_01_U61556_F_TDR_AXY_RT10_UTC_diag.png
    :align: center
 
 AXY

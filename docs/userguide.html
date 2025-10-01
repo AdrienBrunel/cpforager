@@ -114,6 +114,10 @@ An example of a <em>.yml</em> configuration file can be found below :</p>
 <span class="n">diving_depth_threshold</span><span class="p">:</span> <span class="o">-</span><span class="mf">1.0</span>
 <span class="n">dive_min_duration</span><span class="p">:</span> <span class="mf">2.0</span>
 
+<span class="c1"># zero-offset correction</span>
+<span class="n">zoc_time_windows</span><span class="p">:</span> <span class="p">[</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">3600.0</span><span class="p">]</span>
+<span class="n">zoc_quantiles</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">]</span>
+
 <span class="c1"># accelerometer parameters</span>
 <span class="n">odba_p_norm</span> <span class="p">:</span> <span class="mi">1</span>
 <span class="n">filter_type</span><span class="p">:</span> <span class="n">rolling_avg</span>
