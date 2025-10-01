@@ -63,10 +63,10 @@ class GPS_TDR:
         df, df_gps, df_tdr = processing.add_gps_tdr_data(df, params)
         
         # build GPS object
-        gps = GPS(df_gps, group, id, params)
+        gps = GPS(df_gps.copy(deep=True), group, id, params)
         
         # build TDR object
-        tdr = TDR(df_tdr, group, id, params)
+        tdr = TDR(df_tdr.copy(deep=True), group, id, params)
 
         # compute additional information
         basic_infos = processing.compute_basic_infos(df)
