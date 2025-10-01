@@ -932,7 +932,7 @@ def add_axy_data(df, params):
     
     # init dataframe full of NaNs and set data type according to dictionary
     gps_columns = ["step_length", "step_speed", "step_turning_angle", "step_heading", "step_heading_to_colony", "is_suspicious", "dist_to_nest", "trip"]
-    tdr_columns = ["depth", "dive"]
+    tdr_columns = ["depth", "dive", "zoc"]
     data_columns = gps_columns + tdr_columns
     columns_dtypes_dict = parameters.get_columns_dtypes(data_columns)
     for data_column in data_columns:
@@ -1004,7 +1004,7 @@ def add_gps_tdr_data(df, params):
     
     # init dataframe full of NaNs and set data type according to dictionary
     gps_columns = ["step_length", "step_speed", "step_turning_angle", "step_heading", "step_heading_to_colony", "is_suspicious", "dist_to_nest", "trip"]
-    tdr_columns = ["depth", "dive"]
+    tdr_columns = ["depth", "dive", "zoc"]
     data_columns = gps_columns + tdr_columns
     columns_dtypes_dict = parameters.get_columns_dtypes(data_columns)
     for data_column in data_columns:
@@ -1134,7 +1134,7 @@ def compute_tdr_infos(df):
     n_dives = df["dive"].max()
     median_pressure = df["pressure"].median()
     median_depth = df["depth"].median()
-    max_depth = df["depth"].max()
+    max_depth = df["depth"].abs().max()
     mean_temperature = df["temperature"].mean()
     dive_statistics = pd.DataFrame(columns=["id", "duration", "max_depth"])
     for k in range(n_dives):
