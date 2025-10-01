@@ -72,7 +72,7 @@ def full_diagnostic(self, fig_dir, file_id, plot_params):
 
     # pressure
     ax = fig.add_subplot(gs[0,0])
-    diagnostic.plot_ts(ax, df, params, plot_params, "pressure", "%d Dives" % n_dives, "Pressure [hPa]", eph_cond=(df["dive"]>0))
+    diagnostic.plot_ts(ax, df, params, plot_params, "pressure", "%d dives" % n_dives, "Pressure [hPa]", eph_cond=(df["dive"]>0))
     
     # step time timeserie
     ax = fig.add_subplot(gs[0,1])
@@ -84,7 +84,7 @@ def full_diagnostic(self, fig_dir, file_id, plot_params):
     
     # depth
     ax = fig.add_subplot(gs[1,0])
-    diagnostic.plot_ts(ax, df, params, plot_params, "depth", "%d Dives" % n_dives, "Depth [m]", hline=diving_depth_threshold, eph_cond=(df["dive"]>0))
+    diagnostic.plot_ts(ax, df, params, plot_params, "depth", "%d dives" % n_dives, "Depth [m]", hline=diving_depth_threshold, eph_cond=(df["dive"]>0))
     
     # temperature
     ax = fig.add_subplot(gs[1,1])
