@@ -189,7 +189,7 @@ def get_columns_dtypes(column_names):
     dtypes_columns_basic = {"datetime":"object", "step_time":"Float64", "is_night":"Int64"}
     dtypes_columns_gps = {"longitude":"Float64", "latitude":"Float64", "step_length":"Float64", "step_speed":"Float64", "step_heading":"Float64","step_turning_angle":"Float64", 
                           "step_heading_to_colony":"Float64", "is_suspicious":"Int64", "dist_to_nest":"Float64", "trip":"Int64"}
-    dtypes_columns_tdr = {"pressure":"Float64", "temperature":"Float64", "depth":"Float64", "dive":"Int64"}
+    dtypes_columns_tdr = {"pressure":"Float64", "temperature":"Float64", "depth":"Float64", "dive":"Int64", "zoc":"Float64"}
     dtypes_columns_acc = {"ax":"Float64", "ay":"Float64", "az":"Float64", "ax_f":"Float64", "ay_f":"Float64", "az_f":"Float64","odba":"Float64", "odba_f":"Float64"}
     dtypes_trip_stats = {"trip_id":"str", "length":"float", "duration":"float", "max_hole":"float", "dmax":"float", "n_step":"int"}
     dtypes_dive_stats = {"dive_id":"str", "duration":"float", "max_depth":"float"}
