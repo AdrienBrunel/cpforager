@@ -1143,7 +1143,7 @@ def compute_tdr_infos(df):
         n_df_dive = len(df_dive)
         dive_statistics.loc[k, "id"] = dive_id
         dive_statistics.loc[k, "duration"] = (df_dive.loc[n_df_dive-1, "datetime"] - df_dive.loc[0, "datetime"]).total_seconds()
-        dive_statistics.loc[k, "max_depth"] = df_dive["depth"].max()
+        dive_statistics.loc[k, "max_depth"] = df_dive["depth"].abs().max()
             
     # store tdr infos
     infos = {"n_dives" : n_dives,
