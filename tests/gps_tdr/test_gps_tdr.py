@@ -77,7 +77,7 @@ print(gps_tdr[1312])
 # test display_data_summary method
 gps_tdr.display_data_summary()
 
-# test full_diag, maps_diag, folium_map, folium_map_colorgrad methods
+# test full_diag, maps_diag, folium_map
 _ = gps_tdr.full_diag(test_dir, "%s_diag" % file_id, plot_params)
 _ = gps_tdr.maps_diag(test_dir, "%s_map" % file_id, plot_params)
 _ = gps_tdr.folium_map(test_dir, "%s_fmap" % file_id, plot_params)

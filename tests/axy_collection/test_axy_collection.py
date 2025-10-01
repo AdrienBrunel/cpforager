@@ -78,7 +78,7 @@ print(axy_collection[2])
 # test display_data_summary method
 axy_collection.display_data_summary()
 
-# test plot_stats_summary, folium_map, maps_diag methods
+# test plot_stats_summary, indiv_all, folium_map, maps_diag methods
 _ = axy_collection.plot_trip_stats_summary(test_dir, "trip_statistics_%s" % fieldwork, plot_params)
 _ = axy_collection.plot_dive_stats_summary(test_dir, "dive_statistics_%s" % fieldwork, plot_params)
 _ = axy_collection.indiv_map_all(test_dir, "indiv_map_all_%s" % fieldwork, plot_params)
