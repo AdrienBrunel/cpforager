@@ -23,6 +23,11 @@ run_test() {
 
 # cd to project root in order to make os.getwd() work properly
 cd $SCRIPT_DIR/..
+echo $SCRIPT_DIR
+
+# add project root to PYTHONPATH
+export PYTHONPATH=$(pwd)
+echo $PYTHONPATH
 
 # run all tests
 echo "# ======================================================= #"
