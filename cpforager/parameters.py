@@ -45,7 +45,7 @@ def get_params(config_file_paths):
         ``max_possible_speed``, "speed threshold in km/h above which a longitude/latitude measure can be considered an error", "``GPS``"
         ``dist_threshold``, "distance from the nest threshold in km above which the seabird is considered in a foraging trip", "``GPS``"
         ``speed_threshold``, "speed threshold in km/h above which the seabird is still considered in a foraging trip despite being below the distance threshold", "``GPS``"
-        ``nesting_speed``, "local timezone of the seabird's nest", "``GPS``"
+        ``nesting_speed``, "speed threshold in km/h below which the seabird is considered nesting", "``GPS``"
         ``nest_position``, "longitude and latitude of the seabird's nest if known beforehand", "``GPS``"
         ``trip_min_duration``, "duration in seconds above which a trip is valid", "``GPS``"
         ``trip_max_duration``, "duration in seconds below which a trip is valid", "``GPS``"
