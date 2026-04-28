@@ -96,7 +96,6 @@ def get_plot_params():
         ``cols_1``, "discrete contrasted color palette for trips", "``GPS``, ``AXY``"
         ``cols_2``, "continuous color palette for speed gradient", "``GPS``, ``AXY``"
         ``cols_3``, "continuous color palette for time gradient", "``GPS``, ``AXY``"
-        ``cols_4``, "discrete contrasted color palette for classes", "``GPS``, ``AXY``, ``TDR``"
         ``main_fs``, "fontsize of the plot title", "``GPS``, ``AXY``, ``TDR``"
         ``labs_fs``, "fontsize of the plot labels", "``GPS``, ``AXY``, ``TDR``"
         ``axis_fs``, "fontsize of the plot axes", "``GPS``, ``AXY``, ``TDR``"
@@ -120,8 +119,7 @@ def get_plot_params():
     # colors
     colors = {"cols_1" : np.tile(plt.cm.Set1(range(9)), (1, 1)),
               "cols_2" : plt.cm.viridis(np.linspace(0, 1, 100)),
-              "cols_3" : plt.cm.plasma(np.linspace(0, 1, 100)),
-              "cols_4" : np.tile(plt.cm.tab10(range(10)), (1, 1))}
+              "cols_3" : plt.cm.plasma(np.linspace(0, 1, 100))}
 
     # fontsizes
     fontsizes = {"main_fs" : 9,
