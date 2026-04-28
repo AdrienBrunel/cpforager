@@ -144,7 +144,6 @@ def full_diagnostic(self, fig_dir, file_id, plot_params):
     
     # distance to nest by trip
     ax = fig.add_subplot(gs[3,0:5])
-    # diagnostic.plot_ts_wtrips(ax, df, params, plot_params, n_trips, "dist_to_nest", "Distance to nest", "Distance [km]")
     diagnostic.plot_ts_wclasses(ax, df, params, plot_params, "trip", "dist_to_nest", "Distance to nest", "Distance [km]")
     
     # save figure
