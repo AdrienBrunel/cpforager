@@ -84,8 +84,8 @@ def full_diagnostic(self, fig_dir, file_id, plot_params):
     
     # depth
     ax = fig.add_subplot(gs[1,0])
-    diagnostic.plot_ts(ax, df, params, plot_params, "depth", "%d dives" % n_dives, "Depth [m]", hline=diving_depth_threshold, eph_cond=(df["dive"]>0))
-    
+    diagnostic.plot_ts_wclasses(ax, df, params, plot_params, "dive", "depth", "%d dives" % n_dives, "Depth [m]")
+
     # temperature
     ax = fig.add_subplot(gs[1,1])
     diagnostic.plot_ts(ax, df, params, plot_params, "temperature", "Temperature", "Temperature [°C]", hline=mean_temperature)
