@@ -3,6 +3,7 @@
 # ================================================================================================ #
 import csv
 import numpy as np
+import math
 
 
 # ================================================================================================ #
@@ -106,3 +107,25 @@ def rgb_to_hex(rgb_col):
     
     return(hex_col)
 
+
+# ================================================================================================ #
+# DISPLAY PROGRESS
+# ================================================================================================ #
+def display_progress(k, n, freq=5):
+    
+    """    
+    Display progress of an iterated process, *e.g.* a loop.
+    
+    :param k: current iteration number
+    :type k: int
+    :param n: total number of iterations
+    :type n: int
+    :param freq: frequence in percent at which progress is printed 
+    :type freq: float
+    """
+    # compute number of leading zeros
+    n_lz = int(math.log10(n))+1
+    
+    # print progress at each freq percent
+    if k % int(n/(100/freq)) == 0: 
+        print("[%s/%d] %.1f" % (str(k).zfill(n_lz), n, 100*k/n))
