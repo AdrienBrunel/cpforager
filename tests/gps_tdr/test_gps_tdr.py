@@ -81,3 +81,26 @@ gps_tdr.display_data_summary()
 _ = gps_tdr.full_diag(test_dir, "%s_diag" % file_id, plot_params)
 _ = gps_tdr.maps_diag(test_dir, "%s_map" % file_id, plot_params)
 _ = gps_tdr.folium_map(test_dir, "%s_fmap" % file_id, plot_params)
+
+
+# ======================================================= #
+# TEST GPS_TDR INTERPOLATION
+# ======================================================= #
+# build a regular interpolation datetime
+interp_freq_secs = 5
+interp_datetime = pd.date_range(start=gps_tdr.df["datetime"].iloc[0], end=gps_tdr.df["datetime"].iloc[-1], freq=pd.Timedelta(seconds=interp_freq_secs), periods=None)
+
+# compute interpolated positions from GPS_TDR method
+df_gps_interp = gps_tdr.interpolate_lat_lon(interp_datetime, add_proxy=True)
+
+# merge dataframes on datetime column
+df_wo_positions = gps_tdr.df[["date", "time", "pressure", "temperature", "datetime"]]
+df_interp = pd.merge(df_wo_positions, df_gps_interp, on="datetime", how="left")
+
+# build another GPS_TDR object with interpolated dataframe
+gps_tdr_interp = GPS_TDR(df=df_interp, group=gps_tdr.group, id="%s_%s" % (gps_tdr.id, "interp"), params=gps_tdr.params)
+
+# display size change and produce diag
+print("df     : %d/%d = %.2f%%" % (len(gps_tdr_interp), len(gps_tdr), 100*len(gps_tdr_interp)/len(gps_tdr)))
+print("df_gps : %d/%d = %.2f%%" % (len(gps_tdr_interp.df_gps), len(gps_tdr.df_gps), 100*len(gps_tdr_interp.df_gps)/len(gps_tdr.df_gps)))
+_ = gps_tdr_interp.full_diag(test_dir, "%s_diag" % gps_tdr_interp.id, plot_params)
