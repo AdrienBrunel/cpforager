@@ -111,7 +111,7 @@ def rgb_to_hex(rgb_col):
 # ================================================================================================ #
 # DISPLAY PROGRESS
 # ================================================================================================ #
-def display_progress(k, n, freq=5):
+def display_progress(k, n, freq=5.0):
     
     """    
     Display progress of an iterated process, *e.g.* a loop.
@@ -123,6 +123,7 @@ def display_progress(k, n, freq=5):
     :param freq: frequence in percent at which progress is printed 
     :type freq: float
     """
+    
     # compute number of leading zeros
     n_lz = int(math.log10(n))+1
     
