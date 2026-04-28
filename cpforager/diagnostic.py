@@ -158,13 +158,107 @@ def plot_ts(ax, df, params, plot_params, var, title, var_lab, custom_locator=Non
     ax.xaxis.set(major_locator=datetime_locator, major_formatter=datetime_formatter)
 
 
+# # ================================================================================================ #
+# # PLOT TIMESERIES WITH TRIP COLORS
+# # ================================================================================================ # 
+# def plot_ts_wtrips(ax, df, params, plot_params, n_trips, var, title, var_lab, custom_locator=None, custom_formatter=None):
+        
+#     """    
+#     Plot timeserie of the dataframe column designated by the value of var colored by trips.
+    
+#     :param ax: plot axes.
+#     :type ax: matplotlib.Axes 
+#     :param df: dataframe with a ``datetime`` column and the column designated by the value of var.
+#     :type df: pandas.DataFrame
+#     :param params: parameters dictionary. 
+#     :type params: dict
+#     :param plot_params: plot parameters dictionary. 
+#     :type plot_params: dict
+#     :param n_trips: number of trips.
+#     :type n_trips: int
+#     :param var: name of the column in df.
+#     :type var: str
+#     :param title: plot title.
+#     :type title: str
+#     :param var_lab: y-axis label.
+#     :type var_lab: str
+#     :param custom_locator: data locator. 
+#     :type custom_locator: matplotlib.dates.DayLocator
+#     :param custom_formatter: date formatter. 
+#     :type custom_formatter: matplotlib.dates.DateFormatter
+#     """
+
+#     # plot timeserie of var in dataframe with trip colors
+#     n_cols = len(plot_params["cols_1"])
+#     datetime_locator, datetime_formatter = get_datetime_locator_formatter(df, custom_locator, custom_formatter)
+#     plot_night(df, params, plot_params)
+#     plt.scatter(df["datetime"], df[var], s=plot_params["pnt_size"], marker=plot_params["pnt_type"], color="black")
+#     if n_trips >= 1:
+#         for i in range(n_trips):
+#             trip_id = i+1
+#             plt.scatter(df.loc[df["trip"] == trip_id, "datetime"], df.loc[df["trip"] == trip_id, var], s=plot_params["pnt_size"], color=plot_params["cols_1"][i % n_cols])
+#     plt.title(title, fontsize=plot_params["main_fs"])
+#     plt.xlabel("Time", fontsize=plot_params["labs_fs"])
+#     plt.ylabel(var_lab, fontsize=plot_params["labs_fs"])
+#     plt.tick_params(axis="both", labelsize=plot_params["axis_fs"])
+#     plt.grid(linestyle=plot_params["grid_lty"], linewidth=plot_params["grid_lwd"], color=plot_params["grid_col"])
+#     ax.xaxis.set(major_locator=datetime_locator, major_formatter=datetime_formatter)
+    
+
+# # ================================================================================================ #
+# # PLOT TIMESERIES WITH DIVE COLORS
+# # ================================================================================================ # 
+# def plot_ts_wdives(ax, df, params, plot_params, n_dives, var, title, var_lab, custom_locator=None, custom_formatter=None):
+        
+#     """    
+#     Plot timeserie of the dataframe column designated by the value of var colored by dives.
+    
+#     :param ax: plot axes.
+#     :type ax: matplotlib.Axes 
+#     :param df: dataframe with a ``datetime`` column and the column designated by the value of var.
+#     :type df: pandas.DataFrame
+#     :param params: parameters dictionary. 
+#     :type params: dict
+#     :param plot_params: plot parameters dictionary. 
+#     :type plot_params: dict
+#     :param n_dives: number of dives.
+#     :type n_dives: int
+#     :param var: name of the column in df.
+#     :type var: str
+#     :param title: plot title.
+#     :type title: str
+#     :param var_lab: y-axis label.
+#     :type var_lab: str
+#     :param custom_locator: data locator. 
+#     :type custom_locator: matplotlib.dates.DayLocator
+#     :param custom_formatter: date formatter. 
+#     :type custom_formatter: matplotlib.dates.DateFormatter
+#     """
+
+#     # plot timeserie of var in dataframe with dive colors
+#     n_cols = len(plot_params["cols_1"])
+#     datetime_locator, datetime_formatter = get_datetime_locator_formatter(df, custom_locator, custom_formatter)
+#     plot_night(df, params, plot_params)
+#     plt.scatter(df["datetime"], df[var], s=plot_params["pnt_size"], marker=plot_params["pnt_type"], color="black")
+#     if n_dives >= 1:
+#         for i in range(n_dives):
+#             dive_id = i+1
+#             plt.scatter(df.loc[df["dive"] == dive_id, "datetime"], df.loc[df["dive"] == dive_id, var], s=plot_params["pnt_size"], color=plot_params["cols_1"][i % n_cols])
+#     plt.title(title, fontsize=plot_params["main_fs"])
+#     plt.xlabel("Time", fontsize=plot_params["labs_fs"])
+#     plt.ylabel(var_lab, fontsize=plot_params["labs_fs"])
+#     plt.tick_params(axis="both", labelsize=plot_params["axis_fs"])
+#     plt.grid(linestyle=plot_params["grid_lty"], linewidth=plot_params["grid_lwd"], color=plot_params["grid_col"])
+#     ax.xaxis.set(major_locator=datetime_locator, major_formatter=datetime_formatter)
+
+
 # ================================================================================================ #
-# PLOT TIMESERIES WITH TRIP COLORS
+# PLOT TIMESERIES WITH CLASS COLORS
 # ================================================================================================ # 
-def plot_ts_wtrips(ax, df, params, plot_params, n_trips, var, title, var_lab, custom_locator=None, custom_formatter=None):
+def plot_ts_wclasses(ax, df, params, plot_params, class_var, var, title, var_lab, hide_zero_class=True, custom_locator=None, custom_formatter=None):
         
     """    
-    Plot timeserie of the dataframe column designated by the value of var colored by trips.
+    Plot timeserie of the dataframe column designated by the value of var colored by classes (*e.g.* dives, trips).
     
     :param ax: plot axes.
     :type ax: matplotlib.Axes 
@@ -174,36 +268,46 @@ def plot_ts_wtrips(ax, df, params, plot_params, n_trips, var, title, var_lab, cu
     :type params: dict
     :param plot_params: plot parameters dictionary. 
     :type plot_params: dict
-    :param n_trips: number of trips.
-    :type n_trips: int
+    :param class_var: name of the column in df containing class information.
+    :type class_var: str
     :param var: name of the column in df.
     :type var: str
     :param title: plot title.
     :type title: str
     :param var_lab: y-axis label.
     :type var_lab: str
+    :param hide_zero_class: hide zero class if True
+    :type hide_zero_class: bool
     :param custom_locator: data locator. 
     :type custom_locator: matplotlib.dates.DayLocator
     :param custom_formatter: date formatter. 
     :type custom_formatter: matplotlib.dates.DateFormatter
     """
+    
+    # get classes infos
+    classes = np.sort(df[class_var].unique())
+    
+    # optionally remove class 0 from classes
+    if hide_zero_class:
+        classes = classes[classes != 0]
+    n_classes = len(classes)
 
-    # plot timeserie of var in dataframe with trip colors
+    # plot timeserie of var in dataframe with dive colors
     n_cols = len(plot_params["cols_1"])
     datetime_locator, datetime_formatter = get_datetime_locator_formatter(df, custom_locator, custom_formatter)
     plot_night(df, params, plot_params)
     plt.scatter(df["datetime"], df[var], s=plot_params["pnt_size"], marker=plot_params["pnt_type"], color="black")
-    if n_trips >= 1:
-        for i in range(n_trips):
-            trip_id = i+1
-            plt.scatter(df.loc[df["trip"] == trip_id, "datetime"], df.loc[df["trip"] == trip_id, var], s=plot_params["pnt_size"], color=plot_params["cols_1"][i % n_cols])
+    if n_classes > 0:
+        for i in range(n_classes):
+            class_id = classes[i]
+            plt.scatter(df.loc[df[class_var] == class_id, "datetime"], df.loc[df[class_var] == class_id, var], s=plot_params["pnt_size"], color=plot_params["cols_1"][i % n_cols])
     plt.title(title, fontsize=plot_params["main_fs"])
     plt.xlabel("Time", fontsize=plot_params["labs_fs"])
     plt.ylabel(var_lab, fontsize=plot_params["labs_fs"])
     plt.tick_params(axis="both", labelsize=plot_params["axis_fs"])
     plt.grid(linestyle=plot_params["grid_lty"], linewidth=plot_params["grid_lwd"], color=plot_params["grid_col"])
     ax.xaxis.set(major_locator=datetime_locator, major_formatter=datetime_formatter)
-    
+
     
 # ================================================================================================ #
 # PLOT RAW AND FILTERED VAR
