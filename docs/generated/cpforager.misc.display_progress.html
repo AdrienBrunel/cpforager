@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>7.4. cpforager.misc.rgb_to_hex &mdash; cpforager</title>
+  <title>7.5. cpforager.misc.display_progress &mdash; cpforager</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=8ac2ccb1" />
@@ -21,8 +21,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="7.5. cpforager.misc.display_progress" href="cpforager.misc.display_progress.html" />
-    <link rel="prev" title="7.3. cpforager.misc.random_colors" href="cpforager.misc.random_colors.html" /> 
+    <link rel="next" title="8. Checks" href="../checks.html" />
+    <link rel="prev" title="7.4. cpforager.misc.rgb_to_hex" href="cpforager.misc.rgb_to_hex.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -57,11 +57,11 @@
 <li class="toctree-l2"><a class="reference internal" href="cpforager.misc.derive_separator.html">7.1. cpforager.misc.derive_separator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cpforager.misc.grep_pattern.html">7.2. cpforager.misc.grep_pattern</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cpforager.misc.random_colors.html">7.3. cpforager.misc.random_colors</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">7.4. cpforager.misc.rgb_to_hex</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#cpforager.misc.rgb_to_hex"><code class="docutils literal notranslate"><span class="pre">rgb_to_hex()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpforager.misc.rgb_to_hex.html">7.4. cpforager.misc.rgb_to_hex</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">7.5. cpforager.misc.display_progress</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cpforager.misc.display_progress"><code class="docutils literal notranslate"><span class="pre">display_progress()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="cpforager.misc.display_progress.html">7.5. cpforager.misc.display_progress</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../checks.html">8. Checks</a></li>
@@ -83,9 +83,9 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../misc.html"><span class="section-number">7. </span>Miscellaneous</a></li>
-      <li class="breadcrumb-item active"><span class="section-number">7.4. </span>cpforager.misc.rgb_to_hex</li>
+      <li class="breadcrumb-item active"><span class="section-number">7.5. </span>cpforager.misc.display_progress</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/generated/cpforager.misc.rgb_to_hex.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/generated/cpforager.misc.display_progress.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -93,21 +93,19 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="cpforager-misc-rgb-to-hex">
-<h1><span class="section-number">7.4. </span>cpforager.misc.rgb_to_hex<a class="headerlink" href="#cpforager-misc-rgb-to-hex" title="Link to this heading"></a></h1>
+  <section id="cpforager-misc-display-progress">
+<h1><span class="section-number">7.5. </span>cpforager.misc.display_progress<a class="headerlink" href="#cpforager-misc-display-progress" title="Link to this heading"></a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="cpforager.misc.rgb_to_hex">
-<span class="sig-prename descclassname"><span class="pre">cpforager.misc.</span></span><span class="sig-name descname"><span class="pre">rgb_to_hex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rgb_col</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cpforager.misc.rgb_to_hex" title="Link to this definition"></a></dt>
-<dd><p>Convert RGB color to hexadecimal code.</p>
+<dt class="sig sig-object py" id="cpforager.misc.display_progress">
+<span class="sig-prename descclassname"><span class="pre">cpforager.misc.</span></span><span class="sig-name descname"><span class="pre">display_progress</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">freq</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cpforager.misc.display_progress" title="Link to this definition"></a></dt>
+<dd><p>Display progress of an iterated process, <em>e.g.</em> a loop.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>rgb_col</strong> (<em>list</em><em>[</em><em>float</em><em>]</em>) – RGB color list</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>the hexadecimal code of the RGB color</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>str</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>k</strong> (<em>int</em>) – current iteration number</p></li>
+<li><p><strong>n</strong> (<em>int</em>) – total number of iterations</p></li>
+<li><p><strong>freq</strong> (<em>float</em>) – frequence in percent at which progress is printed</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -118,8 +116,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="cpforager.misc.random_colors.html" class="btn btn-neutral float-left" title="7.3. cpforager.misc.random_colors" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="cpforager.misc.display_progress.html" class="btn btn-neutral float-right" title="7.5. cpforager.misc.display_progress" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="cpforager.misc.rgb_to_hex.html" class="btn btn-neutral float-left" title="7.4. cpforager.misc.rgb_to_hex" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../checks.html" class="btn btn-neutral float-right" title="8. Checks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

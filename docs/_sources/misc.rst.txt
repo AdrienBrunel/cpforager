@@ -16,3 +16,4 @@ Miscellaneous functions that simplify the code.
    misc.grep_pattern
    misc.random_colors
    misc.rgb_to_hex
+   misc.display_progress

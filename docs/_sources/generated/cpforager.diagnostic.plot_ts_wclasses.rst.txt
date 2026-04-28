@@ -1,0 +1,6 @@
+﻿cpforager.diagnostic.plot\_ts\_wclasses
+=======================================
+
+.. currentmodule:: cpforager.diagnostic
+
+.. autofunction:: plot_ts_wclasses

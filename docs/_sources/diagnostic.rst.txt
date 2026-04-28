@@ -15,7 +15,7 @@ Basis functions used to visualise biologging data of a central-place foraging se
    diagnostic.get_datetime_locator_formatter
    diagnostic.plot_night
    diagnostic.plot_ts
-   diagnostic.plot_ts_wtrips
+   diagnostic.plot_ts_wclasses
    diagnostic.plot_ts_twinx
    diagnostic.plot_cumulative_distribution
    diagnostic.plot_box

@@ -1,0 +1,6 @@
+﻿cpforager.misc.display\_progress
+================================
+
+.. currentmodule:: cpforager.misc
+
+.. autofunction:: display_progress
