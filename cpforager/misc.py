@@ -128,5 +128,5 @@ def display_progress(k, n, freq=5.0):
     n_lz = int(math.log10(n))+1
     
     # print progress at each freq percent
-    if k % int(n/(100/freq)) == 0: 
-        print("[%s/%d] %.1f" % (str(k).zfill(n_lz), n, 100*k/n))
+    if (int(n/(100/freq))>0) and (k % int(n/(100/freq)) == 0): 
+        print("[%s/%d] %.1f %%" % (str(k).zfill(n_lz), n, 100*k/n))
