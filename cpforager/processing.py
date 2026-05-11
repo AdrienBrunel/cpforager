@@ -945,11 +945,8 @@ def add_axy_data(df, params):
     df.loc[tdr_indices, tdr_columns] = df_tdr_tmp[tdr_columns].values
     
     # produce df_gps by processing (sum, mean, max) data between two gps measures
-    cols_funcs = {"odba":"sum", "odba_f":"sum", "step_time":"sum",
-                  "pressure":"max", "depth":"max", "dive":"max",
-                  "temperature":"mean",
-                  "dive":"len_unique_pos"}
-    df = utils.apply_functions_between_samples(df, gps_resolution, cols_funcs, verbose=True)
+    funcs_cols = {"sum":["odba", "odba_f", "step_time"], "max":["pressure", "depth", "dive"], "mean":["temperature"], "len_unique_pos":["dive"]}
+    df = utils.apply_functions_between_samples(df, gps_resolution, funcs_cols, verbose=True)
     
     # process gps data
     df_gps = df.loc[gps_resolution].reset_index(drop=True)
@@ -1017,9 +1014,8 @@ def add_gps_tdr_data(df, params):
     df.loc[tdr_indices, tdr_columns] = df_tdr[tdr_columns].values
         
     # produce df_gps by processing (sum, mean, max) data between two gps measures
-    cols_funcs = {"step_time":"sum", "pressure":"max", "depth":"max", 
-                  "dive":"max", "temperature":"mean", "dive":"len_unique_pos"}
-    df = utils.apply_functions_between_samples(df, gps_resolution, cols_funcs, verbose=True)
+    funcs_cols = {"sum":["step_time"], "max":["pressure", "depth", "dive"], "mean":["temperature"], "len_unique_pos":["dive"]}
+    df = utils.apply_functions_between_samples(df, gps_resolution, funcs_cols, verbose=True)
     
     # process gps data
     df_gps = df.loc[gps_resolution].reset_index(drop=True)

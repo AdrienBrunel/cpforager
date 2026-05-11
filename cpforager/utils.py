@@ -4,6 +4,7 @@
 import math
 import numpy as np
 import pandas as pd
+from cpforager import misc
 
 
 # ================================================================================================ #
@@ -145,7 +146,7 @@ def convert_loc_to_utc(df, local_timezone):
 # ================================================================================================ #
 # APPLY FUNCTION BETWEEN SAMPLES
 # ================================================================================================ #
-def apply_functions_between_samples(df, resolution, columns_functions, verbose=False):
+def apply_functions_between_samples(df, resolution, functions_columns, verbose=False):
     
     """
     Apply a chosen function (*e.g.* sum, mean, min, max) over every high resolution elements between two subsamples defined by a given resolution.
@@ -154,8 +155,8 @@ def apply_functions_between_samples(df, resolution, columns_functions, verbose=F
     :type df: pandas.DataFrame
     :param resolution: boolean dataframe of the subsampling resolution.
     :type resolution: pandas.DataFrame(dtype=bool)
-    :param columns_functions: dictionary giving for each specified column the function to apply.
-    :type columns_functions: dict
+    :param functions_columns: dictionary giving the list of columns for each function to apply between samples.
+    :type functions_columns: dict
     :param verbose: display progress if True.
     :type verbose: bool
     :return: the dataframe with the additional columns "column_function" composed of NaN values everywhere except at the subsampling resolution where the function was applied to every elements between two subsamples.
@@ -191,15 +192,16 @@ def apply_functions_between_samples(df, resolution, columns_functions, verbose=F
     if n_subsamples < n_df:
         
         # initialize new columns in df
-        for c, f in columns_functions.items():
-            new_column = "%s_%s" % (c, f)
-            df[new_column] = np.nan*n_df
+        for f, cs in functions_columns.items():
+            for c in cs:
+                new_column = "%s_%s" % (c, f)
+                df[new_column] = np.nan*n_df
             
         # loop over subsamples
         for k in range(n_subsamples):
             
             # display progress
-            if((verbose) and ((n_subsamples//20 == 0) or (k % (n_subsamples//20) == 0))): print("%d/%d - %.1f%%" % (k, n_subsamples, 100*k/n_subsamples))
+            if verbose: misc.display_progress(k, n_subsamples, freq=5.0)
             
             # find points between samples
             if k == 0:
@@ -213,20 +215,22 @@ def apply_functions_between_samples(df, resolution, columns_functions, verbose=F
             
             # loop over columns to be processed (sum, mean, min or max) between samples
             if len(between_subsamples_points) > 0:
-                for c, f in columns_functions.items():
-                    new_column = "%s_%s" % (c, f)
-                    if f=="sum": df.loc[idx_1-1,new_column] = df.loc[between_subsamples_points,c].sum()
-                    elif f=="mean": df.loc[idx_1-1,new_column] = df.loc[between_subsamples_points,c].mean()
-                    elif f=="min": df.loc[idx_1-1,new_column] = df.loc[between_subsamples_points,c].min()
-                    elif f=="max": df.loc[idx_1-1,new_column] = df.loc[between_subsamples_points,c].max()
-                    elif f=="len_unique_pos": df.loc[idx_1-1,new_column] = (df.loc[between_subsamples_points,c].unique()>0).sum()
-                    else: print("WARNING : \"%s\" cannot be found within the array of possible values, i.e. %s" %(f, funcs_possible_values))
+                for f, cs in functions_columns.items():
+                    for c in cs:
+                        new_column = "%s_%s" % (c, f)
+                        if f=="sum": df.loc[idx_1-1,new_column] = df.loc[between_subsamples_points,c].sum()
+                        elif f=="mean": df.loc[idx_1-1,new_column] = df.loc[between_subsamples_points,c].mean()
+                        elif f=="min": df.loc[idx_1-1,new_column] = df.loc[between_subsamples_points,c].min()
+                        elif f=="max": df.loc[idx_1-1,new_column] = df.loc[between_subsamples_points,c].max()
+                        elif f=="len_unique_pos": df.loc[idx_1-1,new_column] = (df.loc[between_subsamples_points,c].unique()>0).sum()
+                        else: print("WARNING : \"%s\" cannot be found within the array of possible values, i.e. %s" %(f, funcs_possible_values))
                     
     # if subsampling resolution is thiner than sampling resolution
     else:
-        for c, f in columns_functions.items():
-            new_column = "%s_%s" % (c, f)
-            df[new_column] = df[c]
+        for f, cs in functions_columns.items():
+            for c in cs:
+                new_column = "%s_%s" % (c, f)
+                df[new_column] = df[c]
             
     return(df)
 
