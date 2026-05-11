@@ -1,0 +1,6 @@
+cpforager.GPS\_Collection.folium\_map
+=====================================
+
+.. currentmodule:: cpforager
+
+.. automethod:: GPS_Collection.folium_map

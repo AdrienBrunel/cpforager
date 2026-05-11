@@ -1,0 +1,6 @@
+cpforager.TDR\_Collection.display\_data\_summary
+================================================
+
+.. currentmodule:: cpforager
+
+.. automethod:: TDR_Collection.display_data_summary

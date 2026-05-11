@@ -1,0 +1,6 @@
+cpforager.GPS\_TDR\_Collection.plot\_trip\_stats\_summary
+=========================================================
+
+.. currentmodule:: cpforager
+
+.. automethod:: GPS_TDR_Collection.plot_trip_stats_summary

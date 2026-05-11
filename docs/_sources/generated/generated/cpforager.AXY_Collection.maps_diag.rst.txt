@@ -1,0 +1,6 @@
+cpforager.AXY\_Collection.maps\_diag
+====================================
+
+.. currentmodule:: cpforager
+
+.. automethod:: AXY_Collection.maps_diag

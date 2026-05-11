@@ -1,27 +1,40 @@
-﻿cpforager.GPS\_TDR
-==================
+﻿cpforager.GPS_TDR
+=================
 
-.. currentmodule:: cpforager
+.. autoclass:: cpforager.GPS_TDR
+   :special-members: __init__
+   :exclude-members: __weakref__
+   :undoc-members:
+   :show-inheritance:
 
-.. autoclass:: GPS_TDR
 
-   
-   .. automethod:: __init__
+Methods
+-------
 
-   
-   .. rubric:: Methods
+.. autosummary::
+   :toctree: generated
 
-   .. autosummary::
-   
-      ~GPS_TDR.__init__
-      ~GPS_TDR.display_data_summary
-      ~GPS_TDR.folium_map
-      ~GPS_TDR.full_diag
-      ~GPS_TDR.interpolate_lat_lon
-      ~GPS_TDR.maps_diag
-   
-   
 
-   
-   
-   
+
+
+
+   cpforager.GPS_TDR.display_data_summary
+
+
+
+   cpforager.GPS_TDR.folium_map
+
+
+
+   cpforager.GPS_TDR.full_diag
+
+
+
+   cpforager.GPS_TDR.interpolate_lat_lon
+
+
+
+   cpforager.GPS_TDR.maps_diag
+
+
+

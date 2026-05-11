@@ -77,7 +77,7 @@ Also, the Python scripts in the [/tests/](./tests/) folder illustrate how the `G
 <br>
 
 # Future developments
-- [ ] make classes' methods available in documentation.
+- [x] make classes' methods available in documentation.
 - [ ] `hmmlearn` for adding an estimation method of seabird's behaviour (foraging, searching, resting, traveling, *etc*.).
 - [ ] draft for [Applications](https://besjournals.onlinelibrary.wiley.com/hub/journal/2041210X/features/applicationpapers) in *Methods in Ecology and Evolution*.
 - [ ] publish package to the conda-forge channel.

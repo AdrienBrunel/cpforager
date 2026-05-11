@@ -1,28 +1,44 @@
-﻿cpforager.GPS\_Collection
-=========================
+﻿cpforager.GPS_Collection
+========================
 
-.. currentmodule:: cpforager
+.. autoclass:: cpforager.GPS_Collection
+   :special-members: __init__
+   :exclude-members: __weakref__
+   :undoc-members:
+   :show-inheritance:
 
-.. autoclass:: GPS_Collection
 
-   
-   .. automethod:: __init__
+Methods
+-------
 
-   
-   .. rubric:: Methods
+.. autosummary::
+   :toctree: generated
 
-   .. autosummary::
-   
-      ~GPS_Collection.__init__
-      ~GPS_Collection.display_data_summary
-      ~GPS_Collection.folium_map
-      ~GPS_Collection.indiv_map_all
-      ~GPS_Collection.maps_diag
-      ~GPS_Collection.plot_stats_summary
-      ~GPS_Collection.to_SeabirdTracking
-   
-   
 
-   
-   
-   
+
+
+
+   cpforager.GPS_Collection.display_data_summary
+
+
+
+   cpforager.GPS_Collection.folium_map
+
+
+
+   cpforager.GPS_Collection.indiv_map_all
+
+
+
+   cpforager.GPS_Collection.maps_diag
+
+
+
+   cpforager.GPS_Collection.plot_stats_summary
+
+
+
+   cpforager.GPS_Collection.to_SeabirdTracking
+
+
+

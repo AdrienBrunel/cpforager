@@ -1,0 +1,6 @@
+cpforager.AXY.interpolate\_lat\_lon
+===================================
+
+.. currentmodule:: cpforager
+
+.. automethod:: AXY.interpolate_lat_lon

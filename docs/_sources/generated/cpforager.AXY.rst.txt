@@ -1,27 +1,40 @@
 ﻿cpforager.AXY
 =============
 
-.. currentmodule:: cpforager
+.. autoclass:: cpforager.AXY
+   :special-members: __init__
+   :exclude-members: __weakref__
+   :undoc-members:
+   :show-inheritance:
 
-.. autoclass:: AXY
 
-   
-   .. automethod:: __init__
+Methods
+-------
 
-   
-   .. rubric:: Methods
+.. autosummary::
+   :toctree: generated
 
-   .. autosummary::
-   
-      ~AXY.__init__
-      ~AXY.display_data_summary
-      ~AXY.folium_map
-      ~AXY.full_diag
-      ~AXY.interpolate_lat_lon
-      ~AXY.maps_diag
-   
-   
 
-   
-   
-   
+
+
+
+   cpforager.AXY.display_data_summary
+
+
+
+   cpforager.AXY.folium_map
+
+
+
+   cpforager.AXY.full_diag
+
+
+
+   cpforager.AXY.interpolate_lat_lon
+
+
+
+   cpforager.AXY.maps_diag
+
+
+

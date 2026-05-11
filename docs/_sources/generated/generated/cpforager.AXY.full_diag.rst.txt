@@ -1,0 +1,6 @@
+cpforager.AXY.full\_diag
+========================
+
+.. currentmodule:: cpforager
+
+.. automethod:: AXY.full_diag

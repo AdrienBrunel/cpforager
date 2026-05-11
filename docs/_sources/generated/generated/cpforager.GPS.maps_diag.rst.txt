@@ -1,0 +1,6 @@
+cpforager.GPS.maps\_diag
+========================
+
+.. currentmodule:: cpforager
+
+.. automethod:: GPS.maps_diag

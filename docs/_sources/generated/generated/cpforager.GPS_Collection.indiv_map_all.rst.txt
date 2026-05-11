@@ -1,0 +1,6 @@
+cpforager.GPS\_Collection.indiv\_map\_all
+=========================================
+
+.. currentmodule:: cpforager
+
+.. automethod:: GPS_Collection.indiv_map_all

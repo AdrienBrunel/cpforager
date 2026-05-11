@@ -1,0 +1,6 @@
+cpforager.TDR\_Collection.plot\_stats\_summary
+==============================================
+
+.. currentmodule:: cpforager
+
+.. automethod:: TDR_Collection.plot_stats_summary

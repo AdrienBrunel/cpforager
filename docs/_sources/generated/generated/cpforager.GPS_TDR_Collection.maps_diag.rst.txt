@@ -1,0 +1,6 @@
+cpforager.GPS\_TDR\_Collection.maps\_diag
+=========================================
+
+.. currentmodule:: cpforager
+
+.. automethod:: GPS_TDR_Collection.maps_diag

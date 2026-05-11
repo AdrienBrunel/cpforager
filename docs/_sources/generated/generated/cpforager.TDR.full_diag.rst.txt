@@ -1,0 +1,6 @@
+cpforager.TDR.full\_diag
+========================
+
+.. currentmodule:: cpforager
+
+.. automethod:: TDR.full_diag

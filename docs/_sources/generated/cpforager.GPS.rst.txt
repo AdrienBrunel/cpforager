@@ -1,27 +1,40 @@
 ﻿cpforager.GPS
 =============
 
-.. currentmodule:: cpforager
+.. autoclass:: cpforager.GPS
+   :special-members: __init__
+   :exclude-members: __weakref__
+   :undoc-members:
+   :show-inheritance:
 
-.. autoclass:: GPS
 
-   
-   .. automethod:: __init__
+Methods
+-------
 
-   
-   .. rubric:: Methods
+.. autosummary::
+   :toctree: generated
 
-   .. autosummary::
-   
-      ~GPS.__init__
-      ~GPS.display_data_summary
-      ~GPS.folium_map
-      ~GPS.full_diag
-      ~GPS.interpolate_lat_lon
-      ~GPS.maps_diag
-   
-   
 
-   
-   
-   
+
+
+
+   cpforager.GPS.display_data_summary
+
+
+
+   cpforager.GPS.folium_map
+
+
+
+   cpforager.GPS.full_diag
+
+
+
+   cpforager.GPS.interpolate_lat_lon
+
+
+
+   cpforager.GPS.maps_diag
+
+
+

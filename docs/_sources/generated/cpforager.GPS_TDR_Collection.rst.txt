@@ -1,29 +1,48 @@
-﻿cpforager.GPS\_TDR\_Collection
-==============================
+﻿cpforager.GPS_TDR_Collection
+============================
 
-.. currentmodule:: cpforager
+.. autoclass:: cpforager.GPS_TDR_Collection
+   :special-members: __init__
+   :exclude-members: __weakref__
+   :undoc-members:
+   :show-inheritance:
 
-.. autoclass:: GPS_TDR_Collection
 
-   
-   .. automethod:: __init__
+Methods
+-------
 
-   
-   .. rubric:: Methods
+.. autosummary::
+   :toctree: generated
 
-   .. autosummary::
-   
-      ~GPS_TDR_Collection.__init__
-      ~GPS_TDR_Collection.display_data_summary
-      ~GPS_TDR_Collection.folium_map
-      ~GPS_TDR_Collection.indiv_depth_all
-      ~GPS_TDR_Collection.indiv_map_all
-      ~GPS_TDR_Collection.maps_diag
-      ~GPS_TDR_Collection.plot_dive_stats_summary
-      ~GPS_TDR_Collection.plot_trip_stats_summary
-   
-   
 
-   
-   
-   
+
+
+
+   cpforager.GPS_TDR_Collection.display_data_summary
+
+
+
+   cpforager.GPS_TDR_Collection.folium_map
+
+
+
+   cpforager.GPS_TDR_Collection.indiv_depth_all
+
+
+
+   cpforager.GPS_TDR_Collection.indiv_map_all
+
+
+
+   cpforager.GPS_TDR_Collection.maps_diag
+
+
+
+   cpforager.GPS_TDR_Collection.plot_dive_stats_summary
+
+
+
+   cpforager.GPS_TDR_Collection.plot_trip_stats_summary
+
+
+

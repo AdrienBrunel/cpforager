@@ -1,0 +1,6 @@
+cpforager.GPS\_Collection.plot\_stats\_summary
+==============================================
+
+.. currentmodule:: cpforager
+
+.. automethod:: GPS_Collection.plot_stats_summary

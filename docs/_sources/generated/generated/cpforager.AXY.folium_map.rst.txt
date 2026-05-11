@@ -1,0 +1,6 @@
+cpforager.AXY.folium\_map
+=========================
+
+.. currentmodule:: cpforager
+
+.. automethod:: AXY.folium_map

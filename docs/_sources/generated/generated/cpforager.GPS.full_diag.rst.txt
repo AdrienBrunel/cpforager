@@ -1,0 +1,6 @@
+cpforager.GPS.full\_diag
+========================
+
+.. currentmodule:: cpforager
+
+.. automethod:: GPS.full_diag

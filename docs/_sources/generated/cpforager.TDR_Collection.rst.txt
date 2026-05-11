@@ -1,25 +1,32 @@
-﻿cpforager.TDR\_Collection
-=========================
+﻿cpforager.TDR_Collection
+========================
 
-.. currentmodule:: cpforager
+.. autoclass:: cpforager.TDR_Collection
+   :special-members: __init__
+   :exclude-members: __weakref__
+   :undoc-members:
+   :show-inheritance:
 
-.. autoclass:: TDR_Collection
 
-   
-   .. automethod:: __init__
+Methods
+-------
 
-   
-   .. rubric:: Methods
+.. autosummary::
+   :toctree: generated
 
-   .. autosummary::
-   
-      ~TDR_Collection.__init__
-      ~TDR_Collection.display_data_summary
-      ~TDR_Collection.indiv_depth_all
-      ~TDR_Collection.plot_stats_summary
-   
-   
 
-   
-   
-   
+
+
+
+   cpforager.TDR_Collection.display_data_summary
+
+
+
+   cpforager.TDR_Collection.indiv_depth_all
+
+
+
+   cpforager.TDR_Collection.plot_stats_summary
+
+
+

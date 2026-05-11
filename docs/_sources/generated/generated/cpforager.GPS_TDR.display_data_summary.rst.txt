@@ -1,0 +1,6 @@
+cpforager.GPS\_TDR.display\_data\_summary
+=========================================
+
+.. currentmodule:: cpforager
+
+.. automethod:: GPS_TDR.display_data_summary

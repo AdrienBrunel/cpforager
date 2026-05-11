@@ -1,29 +1,48 @@
-﻿cpforager.AXY\_Collection
-=========================
+﻿cpforager.AXY_Collection
+========================
 
-.. currentmodule:: cpforager
+.. autoclass:: cpforager.AXY_Collection
+   :special-members: __init__
+   :exclude-members: __weakref__
+   :undoc-members:
+   :show-inheritance:
 
-.. autoclass:: AXY_Collection
 
-   
-   .. automethod:: __init__
+Methods
+-------
 
-   
-   .. rubric:: Methods
+.. autosummary::
+   :toctree: generated
 
-   .. autosummary::
-   
-      ~AXY_Collection.__init__
-      ~AXY_Collection.display_data_summary
-      ~AXY_Collection.folium_map
-      ~AXY_Collection.indiv_depth_all
-      ~AXY_Collection.indiv_map_all
-      ~AXY_Collection.maps_diag
-      ~AXY_Collection.plot_dive_stats_summary
-      ~AXY_Collection.plot_trip_stats_summary
-   
-   
 
-   
-   
-   
+
+
+
+   cpforager.AXY_Collection.display_data_summary
+
+
+
+   cpforager.AXY_Collection.folium_map
+
+
+
+   cpforager.AXY_Collection.indiv_depth_all
+
+
+
+   cpforager.AXY_Collection.indiv_map_all
+
+
+
+   cpforager.AXY_Collection.maps_diag
+
+
+
+   cpforager.AXY_Collection.plot_dive_stats_summary
+
+
+
+   cpforager.AXY_Collection.plot_trip_stats_summary
+
+
+

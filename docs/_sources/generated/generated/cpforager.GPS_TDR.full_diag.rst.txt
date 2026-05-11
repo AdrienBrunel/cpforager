@@ -1,0 +1,6 @@
+cpforager.GPS\_TDR.full\_diag
+=============================
+
+.. currentmodule:: cpforager
+
+.. automethod:: GPS_TDR.full_diag

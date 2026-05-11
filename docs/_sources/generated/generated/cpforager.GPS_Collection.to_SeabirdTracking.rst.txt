@@ -1,0 +1,6 @@
+cpforager.GPS\_Collection.to\_SeabirdTracking
+=============================================
+
+.. currentmodule:: cpforager
+
+.. automethod:: GPS_Collection.to_SeabirdTracking

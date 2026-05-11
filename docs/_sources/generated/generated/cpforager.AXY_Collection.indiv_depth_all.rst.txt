@@ -1,0 +1,6 @@
+cpforager.AXY\_Collection.indiv\_depth\_all
+===========================================
+
+.. currentmodule:: cpforager
+
+.. automethod:: AXY_Collection.indiv_depth_all

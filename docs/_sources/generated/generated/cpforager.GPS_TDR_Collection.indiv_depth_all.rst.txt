@@ -1,0 +1,6 @@
+cpforager.GPS\_TDR\_Collection.indiv\_depth\_all
+================================================
+
+.. currentmodule:: cpforager
+
+.. automethod:: GPS_TDR_Collection.indiv_depth_all

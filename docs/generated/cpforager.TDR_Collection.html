@@ -21,8 +21,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="2.7. cpforager.AXY_Collection" href="cpforager.AXY_Collection.html" />
-    <link rel="prev" title="2.5. cpforager.GPS_Collection" href="cpforager.GPS_Collection.html" /> 
+    <link rel="next" title="2.6.1.1. cpforager.TDR_Collection.display_data_summary" href="generated/cpforager.TDR_Collection.display_data_summary.html" />
+    <link rel="prev" title="2.5.1.6. cpforager.GPS_Collection.to_SeabirdTracking" href="generated/cpforager.GPS_Collection.to_SeabirdTracking.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -57,6 +57,12 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">2.6. cpforager.TDR_Collection</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#cpforager.TDR_Collection"><code class="docutils literal notranslate"><span class="pre">TDR_Collection</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#cpforager.TDR_Collection.__init__"><code class="docutils literal notranslate"><span class="pre">TDR_Collection.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#methods">2.6.1. Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="generated/cpforager.TDR_Collection.display_data_summary.html">2.6.1.1. cpforager.TDR_Collection.display_data_summary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/cpforager.TDR_Collection.indiv_depth_all.html">2.6.1.2. cpforager.TDR_Collection.indiv_depth_all</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/cpforager.TDR_Collection.plot_stats_summary.html">2.6.1.3. cpforager.TDR_Collection.plot_stats_summary</a></li>
 </ul>
 </li>
 </ul>
@@ -104,7 +110,8 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="cpforager.TDR_Collection">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cpforager.</span></span><span class="sig-name descname"><span class="pre">TDR_Collection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tdr_collection</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cpforager.TDR_Collection" title="Link to this definition"></a></dt>
-<dd><p>A class to represent a list of TDR data of a central-place foraging seabird.</p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A class to represent a list of TDR data of a central-place foraging seabird.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="cpforager.TDR_Collection.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tdr_collection</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cpforager.TDR_Collection.__init__" title="Link to this definition"></a></dt>
@@ -125,33 +132,32 @@
 </dl>
 </dd></dl>
 
-<p class="rubric">Methods</p>
+</dd></dl>
+
+<section id="methods">
+<h2><span class="section-number">2.6.1. </span>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#cpforager.TDR_Collection.__init__" title="cpforager.TDR_Collection.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(tdr_collection)</p></td>
-<td><p>Constructor of a TDR_Collection object.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">display_data_summary</span></code>([standalone])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/cpforager.TDR_Collection.display_data_summary.html#cpforager.TDR_Collection.display_data_summary" title="cpforager.TDR_Collection.display_data_summary"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cpforager.TDR_Collection.display_data_summary</span></code></a>([...])</p></td>
 <td><p>Print in terminal the TDR_Collection data summary.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">indiv_depth_all</span></code>(fig_dir, file_id, plot_params)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/cpforager.TDR_Collection.indiv_depth_all.html#cpforager.TDR_Collection.indiv_depth_all" title="cpforager.TDR_Collection.indiv_depth_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cpforager.TDR_Collection.indiv_depth_all</span></code></a>(...)</p></td>
 <td><p>Produce the individual depth plot of every TDR in collection.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_stats_summary</span></code>(fig_dir, file_id, plot_params)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/cpforager.TDR_Collection.plot_stats_summary.html#cpforager.TDR_Collection.plot_stats_summary" title="cpforager.TDR_Collection.plot_stats_summary"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cpforager.TDR_Collection.plot_stats_summary</span></code></a>(...)</p></td>
 <td><p>Produce the dive statistics summary of every TDR data.</p></td>
 </tr>
 </tbody>
 </table>
-</dd></dl>
-
+</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="cpforager.GPS_Collection.html" class="btn btn-neutral float-left" title="2.5. cpforager.GPS_Collection" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="cpforager.AXY_Collection.html" class="btn btn-neutral float-right" title="2.7. cpforager.AXY_Collection" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="generated/cpforager.GPS_Collection.to_SeabirdTracking.html" class="btn btn-neutral float-left" title="2.5.1.6. cpforager.GPS_Collection.to_SeabirdTracking" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="generated/cpforager.TDR_Collection.display_data_summary.html" class="btn btn-neutral float-right" title="2.6.1.1. cpforager.TDR_Collection.display_data_summary" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

@@ -1,0 +1,6 @@
+cpforager.GPS\_Collection.display\_data\_summary
+================================================
+
+.. currentmodule:: cpforager
+
+.. automethod:: GPS_Collection.display_data_summary

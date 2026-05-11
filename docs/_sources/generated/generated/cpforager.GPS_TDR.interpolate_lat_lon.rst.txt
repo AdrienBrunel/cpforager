@@ -1,0 +1,6 @@
+cpforager.GPS\_TDR.interpolate\_lat\_lon
+========================================
+
+.. currentmodule:: cpforager
+
+.. automethod:: GPS_TDR.interpolate_lat_lon

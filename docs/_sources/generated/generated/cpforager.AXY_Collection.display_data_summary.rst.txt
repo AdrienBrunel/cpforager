@@ -1,0 +1,6 @@
+cpforager.AXY\_Collection.display\_data\_summary
+================================================
+
+.. currentmodule:: cpforager
+
+.. automethod:: AXY_Collection.display_data_summary

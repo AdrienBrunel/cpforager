@@ -1,0 +1,6 @@
+cpforager.AXY\_Collection.plot\_trip\_stats\_summary
+====================================================
+
+.. currentmodule:: cpforager
+
+.. automethod:: AXY_Collection.plot_trip_stats_summary

@@ -1,0 +1,6 @@
+cpforager.AXY.maps\_diag
+========================
+
+.. currentmodule:: cpforager
+
+.. automethod:: AXY.maps_diag
