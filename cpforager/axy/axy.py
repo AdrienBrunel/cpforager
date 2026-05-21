@@ -60,11 +60,15 @@ class AXY:
         :ivar max_odba: the maximum overall dynamical body acceleration.
         :vartype max_odba: float
         :ivar median_odba: the median overall dynamical body acceleration.
-        :vartype median_odba: float
-        :ivar max_odba_f: the maximum filtered overall dynamical body acceleration.
-        :vartype max_odba_f: float
-        :ivar median_odba_f: the median filtered overall dynamical body acceleration.
-        :vartype median_odba_f: float        
+        :vartype median_odba: float   
+        :ivar max_vedba: the maximum vectorial dynamical body acceleration.
+        :vartype max_vedba: float
+        :ivar median_vedba: the median vectorial dynamical body acceleration.
+        :vartype median_vedba: float 
+        :ivar circ_mean_pitch: the circular mean of pitch.
+        :vartype circ_mean_pitch: float 
+        :ivar circ_mean_roll: the circular mean of roll.
+        :vartype circ_mean_roll: float
         """
 
         # process data
@@ -92,8 +96,10 @@ class AXY:
         self.total_duration = basic_infos["total_duration"]
         self.max_odba = axy_infos["max_odba"]
         self.median_odba = axy_infos["median_odba"]
-        self.max_odba_f = axy_infos["max_odba_f"]
-        self.median_odba_f = axy_infos["median_odba_f"]
+        self.max_vedba = axy_infos["max_vedba"]
+        self.median_vedba = axy_infos["median_vedba"]
+        self.circ_mean_pitch = axy_infos["circ_mean_pitch"]
+        self.circ_mean_roll = axy_infos["circ_mean_roll"]
         self.gps = gps
         self.df_gps = df_gps
         self.tdr = tdr
