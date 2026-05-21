@@ -57,6 +57,7 @@ def get_params(config_file_paths):
         ``diving_depth_threshold``, "depth threshold above which a seabird is considered to be diving", "``TDR``"
         ``dive_min_duration``, "minimum duration in seconds of a dive", "``TDR``"
         ``odba_p_norm``, "p-norm used for the computation of overall dyanmical body acceleration", "``AXY``"
+        ``vedba_p_norm``, "p-norm used for the computation of vectorial dyanmical body acceleration", "``AXY``"
         ``filter_type``, "choose type of filter for accelerations measures (``rolling_avg`` or ``high_pass``)", "``AXY``"
         ``acc_time_window``, "duration in seconds of the rolling window used for filtering dynamic acceleration", "``AXY``"
         ``cutoff_f``, "cutoff frequency in Hz for the Butterworth high-pass filter", "``AXY``"
@@ -190,7 +191,7 @@ def get_columns_dtypes(column_names):
     dtypes_columns_gps = {"longitude":"Float64", "latitude":"Float64", "step_length":"Float64", "step_speed":"Float64", "step_heading":"Float64","step_turning_angle":"Float64", 
                           "step_heading_to_colony":"Float64", "is_suspicious":"Int64", "dist_to_nest":"Float64", "trip":"Int64"}
     dtypes_columns_tdr = {"pressure":"Float64", "temperature":"Float64", "depth":"Float64", "dive":"Int64", "zoc":"Float64"}
-    dtypes_columns_acc = {"ax":"Float64", "ay":"Float64", "az":"Float64", "ax_f":"Float64", "ay_f":"Float64", "az_f":"Float64","odba":"Float64", "odba_f":"Float64"}
+    dtypes_columns_acc = {"ax":"Float64", "ay":"Float64", "az":"Float64",  "ax_s":"Float64", "ay_s":"Float64", "az_s":"Float64", "ax_d":"Float64", "ay_d":"Float64", "az_d":"Float64","odba":"Float64","vedba":"Float64", "pitch":"Float64", "pitch_mean":"Float64", "pitch_sd":"Float64", "roll":"Float64", "roll_mean":"Float64", "roll_sd":"Float64"}
     dtypes_trip_stats = {"trip_id":"str", "length":"float", "duration":"float", "max_hole":"float", "dmax":"float", "n_step":"int"}
     dtypes_dive_stats = {"dive_id":"str", "duration":"float", "max_depth":"float"}
     
