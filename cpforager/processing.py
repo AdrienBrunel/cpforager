@@ -632,12 +632,12 @@ def add_filtered_acc(df, params):
         window = int(time_window/resolution)
         
         # compute filtered acceleration as the rolling average over a time window in seconds
-        #Dynamic acceleration
+        # dynamic acceleration
         df["ax_d"] = df["ax"] - df["ax"].rolling(window=window, center=True, min_periods=1).mean()
         df["ay_d"] = df["ay"] - df["ay"].rolling(window=window, center=True, min_periods=1).mean()
         df["az_d"] = df["az"] - df["az"].rolling(window=window, center=True, min_periods=1).mean()
         
-        #Static acceleration 
+        # static acceleration 
         df["ax_s"] = df["ax"].rolling(window=window, center=True, min_periods=1).mean()
         df["ay_s"] = df["ay"].rolling(window=window, center=True, min_periods=1).mean()
         df["az_s"] = df["az"].rolling(window=window, center=True, min_periods=1).mean()
@@ -677,7 +677,6 @@ def add_filtered_acc(df, params):
     return(df)
 
 
-
 # ================================================================================================ #
 # ODBA
 # ================================================================================================ #
@@ -690,7 +689,7 @@ def add_odba(df, params):
     :type df: pandas.DataFrame
     :param params: parameters dictionary. 
     :type params: dict
-    :return: the dataframe with the additional ``odba`` column (overall dynamical body acceleration)
+    :return: the dataframe with an additional ``odba`` column (overall dynamical body acceleration).
     :rtype: pandas.DataFrame
     
     .. note::
@@ -710,7 +709,7 @@ def add_odba(df, params):
     
     
 # ================================================================================================ #
-# VeDBA
+# VEDBA
 # ================================================================================================ #
 def add_vedba(df, params): 
         
@@ -721,7 +720,7 @@ def add_vedba(df, params):
     :type df: pandas.DataFrame
     :param params: parameters dictionary. 
     :type params: dict
-    :return: the dataframe with the additional ``vedba``  column of the raw vectorial sum of acceleration, vectoral dynamical body acceleratio from filtered data and form dynamic accelartion after substarction of the static component.
+    :return: the dataframe with and additional ``vedba``  column of the raw vectorial sum of acceleration, vectoral dynamical body acceleratio from filtered data and form dynamic accelartion after substarction of the static component.
     :rtype: pandas.DataFrame
     
     .. note::
@@ -739,42 +738,45 @@ def add_vedba(df, params):
 
     return(df)
 
+
 # ================================================================================================ #
-# Pitch
+# PITCH
 # ================================================================================================ #
 def add_pitch(df):
     
     """    
-    Add to the dataframe pitch
+    Add to the dataframe pitch.
     
     :param df: dataframe with ``ax_s``, ``ay_s`` and ``az_s`` columns.
     :type df: pandas.DataFrame
-    :return: the dataframe with pitch
+    :return: the dataframe with an additional ``pitch`` column.
     :rtype: pandas.DataFrame
     """
     
-    df['pitch'] = (180/np.pi)*np.arctan(df['ax_s']/np.sqrt(df['ay_s']**2+df['az_s']**2))
+    # compute pitch using static acceleration
+    df["pitch"] = (180/np.pi)*np.arctan(df["ax_s"]/np.sqrt(df["ay_s"]**2+df["az_s"]**2))
     
     return(df)
 
 
 # ================================================================================================ #
-# Roll
+# ROLL
 # ================================================================================================ #
 def add_roll(df):
     
     """    
-    Add to the dataframe roll
+    Add to the dataframe roll.
     
     :param df: dataframe with ``ax_s``, ``ay_s`` and ``az_s`` columns.
     :type df: pandas.DataFrame
-    :return: the dataframe with roll
+    :return: the dataframe with and additional ``roll`` column.
     :rtype: pandas.DataFrame
     """
     
-    
-    df['roll'] = (180/np.pi)*np.arctan(df['ay_s']/np.sqrt(df['ax_s']**2+df['az_s']**2))
+    # compute roll using static acceleration
+    df["roll"] = (180/np.pi)*np.arctan(df["ay_s"]/np.sqrt(df["ax_s"]**2+df["az_s"]**2))
     return(df)
+
 
 # ================================================================================================ #
 # TAG SUSPICIOUS ROWS

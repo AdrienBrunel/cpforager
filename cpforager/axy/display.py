@@ -37,9 +37,8 @@ def display_data_summary(self, standalone=True):
     print("# + Median (ax_s, ay_s, az_s) = (%.3f, %.3f, %.3f)" % (self.df["ax_s"].median(), self.df["ay_s"].median(), self.df["az_s"].median()))
     print("# + Median (ax_d, ay_d, az_d) = (%.3f, %.3f, %.3f)" % (self.df["ax_d"].median(), self.df["ay_d"].median(), self.df["az_d"].median()))
     print("# + Median odba               = %.3f" % self.median_odba)
-    print("# + Median vedba               = %.3f" % self.median_vedba)
-    print("# + Circular mean pitch              = %.3f" % self.circ_mean_pitch)
-    print("# + Circular mean roll              = %.3f" % self.circ_mean_roll)
-    # ajouter vedba
+    print("# + Median vedba              = %.3f" % self.median_vedba)
+    print("# + Circular mean pitch       = %.3f" % self.circ_mean_pitch)
+    print("# + Circular mean roll        = %.3f" % self.circ_mean_roll)
     if standalone:
         print("# ===================================================================== #")

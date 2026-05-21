@@ -207,9 +207,9 @@ def apply_functions_between_samples(df, resolution, functions_columns, verbose=F
         ``mean``, "compute the mean of every elements bewteen two subsamples"
         ``min``, "keep the minimum value of every elements bewteen two subsamples"
         ``max``, "keep the maximum value of every elements bewteen two subsamples"
-        ``circ_mean``, "compute the circular mean for circular data like angles"
-        ``circ_sd``, "compute the circular mean for circular data like angles"
         ``len_unique_pos``, "compute the number of different positive values of every elements bewteen two subsamples"
+        ``circ_mean``, "compute the circular mean for circular data (*e.g.* angles)"
+        ``circ_sd``, "compute the circular mean for circular data (*e.g.* angles)"
     """
     
     # set of possible values for funcs

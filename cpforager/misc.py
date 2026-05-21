@@ -26,7 +26,7 @@ def derive_separator(file_path):
     separators = [";", "\t", ",", " "]
 
     # read first line
-    with open(file_path, 'r') as f:
+    with open(file_path, "r") as f:
         first_line = f.readline()
 
     # read as dataframe with all possible separators
