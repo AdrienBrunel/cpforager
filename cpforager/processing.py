@@ -683,13 +683,13 @@ def add_filtered_acc(df, params):
 def add_odba(df, params): 
         
     """    
-    Add to the dataframe the additional ``odba`` column (overall dynamical body acceleration).
+    Add to the dataframe the additional ``odba`` column that gives the overall dynamical body acceleration.
     
     :param df: dataframe with ``ax_d``, ``ay_d`` and ``az_d`` columns.
     :type df: pandas.DataFrame
     :param params: parameters dictionary. 
     :type params: dict
-    :return: the dataframe with an additional ``odba`` column (overall dynamical body acceleration).
+    :return: the dataframe with an additional ``odba`` column that gives the overall dynamical body acceleration.
     :rtype: pandas.DataFrame
     
     .. note::
@@ -714,13 +714,13 @@ def add_odba(df, params):
 def add_vedba(df, params): 
         
     """    
-    Add to the dataframe the additional ``vedba``  column of the vectorial dynamical body acceleration.
+    Add to the dataframe the additional ``vedba``  column that gives the vectorial dynamical body acceleration.
     
-    :param df: dataframe with ``ax``, ``ay``, ``az``, ``ax_d``, ``ay_d`` and ``az_d`` columns.
+    :param df: dataframe with ``ax_d``, ``ay_d`` and ``az_d`` columns.
     :type df: pandas.DataFrame
     :param params: parameters dictionary. 
     :type params: dict
-    :return: the dataframe with and additional ``vedba``  column of the raw vectorial sum of acceleration, vectoral dynamical body acceleratio from filtered data and form dynamic accelartion after substarction of the static component.
+    :return: the dataframe with and additional ``vedba`` column that gives the vectorial dynamical body acceleration.
     :rtype: pandas.DataFrame
     
     .. note::
@@ -745,11 +745,11 @@ def add_vedba(df, params):
 def add_pitch(df):
     
     """    
-    Add to the dataframe pitch.
+    Add to the dataframe the additional ``pitch`` column that gives the pitch angle in degrees.
     
     :param df: dataframe with ``ax_s``, ``ay_s`` and ``az_s`` columns.
     :type df: pandas.DataFrame
-    :return: the dataframe with an additional ``pitch`` column.
+    :return: the dataframe with an additional ``pitch`` column that gives the pitch angle in degrees.
     :rtype: pandas.DataFrame
     """
     
@@ -765,11 +765,11 @@ def add_pitch(df):
 def add_roll(df):
     
     """    
-    Add to the dataframe roll.
+    Add to the dataframe the additional ``roll`` column  that gives the roll angle in degrees.
     
     :param df: dataframe with ``ax_s``, ``ay_s`` and ``az_s`` columns.
     :type df: pandas.DataFrame
-    :return: the dataframe with and additional ``roll`` column.
+    :return: the dataframe with and additional ``roll`` column that gives the roll angle in degrees.
     :rtype: pandas.DataFrame
     """
     
