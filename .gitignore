@@ -8,7 +8,3 @@ data/BRA_FDN_2016_09/BRA_FDN_MEI_2016-09-18_SSUL_12_T32841_NA_TDR_AXY_8_LOC.csv
 sphinx-doc/
 tests/gps_tdr/PER_PSC_PSC_2008-11-25_SVAR_06_5006_F_GPSxTDR_fmap.html
 dist/
-data/lv0/
-data/lv1/
-data/lv2/
-tests/axy_lev0_to_lev1_lev2/
