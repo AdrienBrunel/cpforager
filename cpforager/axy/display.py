@@ -34,8 +34,12 @@ def display_data_summary(self, standalone=True):
     print("# + Date range                = %s | %s" % (self.start_datetime, self.end_datetime))     
     print("# + Frequency                 = %.1f Hz" % self.frequency)
     print("# + Median (ax, ay, az)       = (%.3f, %.3f, %.3f)" % (self.df["ax"].median(), self.df["ay"].median(), self.df["az"].median()))
-    print("# + Median (ax_f, ay_f, az_f) = (%.3f, %.3f, %.3f)" % (self.df["ax_f"].median(), self.df["ay_f"].median(), self.df["az_f"].median()))
+    print("# + Median (ax_s, ay_s, az_s) = (%.3f, %.3f, %.3f)" % (self.df["ax_s"].median(), self.df["ay_s"].median(), self.df["az_s"].median()))
+    print("# + Median (ax_d, ay_d, az_d) = (%.3f, %.3f, %.3f)" % (self.df["ax_d"].median(), self.df["ay_d"].median(), self.df["az_d"].median()))
     print("# + Median odba               = %.3f" % self.median_odba)
-    print("# + Median odba_f             = %.3f" % self.median_odba_f)
+    print("# + Median vedba               = %.3f" % self.median_vedba)
+    print("# + Circular mean pitch              = %.3f" % self.circ_mean_pitch)
+    print("# + Circular mean roll              = %.3f" % self.circ_mean_roll)
+    # ajouter vedba
     if standalone:
         print("# ===================================================================== #")

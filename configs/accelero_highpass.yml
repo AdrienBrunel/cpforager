@@ -1,4 +1,5 @@
 odba_p_norm : 1
+vedba_p_norm : 2
 filter_type: high_pass
 cutoff_f: 0.8
 order : 4

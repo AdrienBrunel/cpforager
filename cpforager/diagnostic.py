@@ -156,6 +156,110 @@ def plot_ts(ax, df, params, plot_params, var, title, var_lab, custom_locator=Non
     plt.tick_params(axis="both", labelsize=plot_params["axis_fs"])
     plt.grid(linestyle=plot_params["grid_lty"], linewidth=plot_params["grid_lwd"], color=plot_params["grid_col"])
     ax.xaxis.set(major_locator=datetime_locator, major_formatter=datetime_formatter)
+    
+# ================================================================================================ #
+# PLOT TIMESERIES
+# ================================================================================================ #        
+def plot_ts_multiple(ax, df, params, plot_params, var_list, title, var_lab, custom_locator=None, custom_formatter=None, scatter=True, hline=None, eph_cond=None):
+        
+    """
+    Plot timeserie of the dataframe columns designated by the values of var_list.
+        
+    :param ax: plot axes. 
+    :type ax: matplotlib.Axes 
+    :param df: dataframe with a ``datetime`` column and the column designated by the value of var.
+    :type df: pandas.DataFrame
+    :param params: parameters dictionary. 
+    :type params: dict
+    :param plot_params: plot parameters dictionary. 
+    :type plot_params: dict
+    :param var: name of the column in df.
+    :type var: str
+    :param title: plot title.
+    :type title: str
+    :param var_lab: y-axis label.
+    :type var_lab: str
+    :param custom_locator: data locator. 
+    :type custom_locator: matplotlib.dates.DayLocator
+    :param custom_formatter: date formatter. 
+    :type custom_formatter: matplotlib.dates.DateFormatter
+    :param scatter: scatter plot if True, line plot otherwise.
+    :type scatter: bool 
+    :param hline: value of the horizontal line to plot. 
+    :type hline: float
+    :param eph_cond: condition to emphasize points.
+    :type eph_cond: pandas.DataFrame(dtype=bool)
+    """
+    
+    # plot timeserie of var in dataframe
+    datetime_locator, datetime_formatter = get_datetime_locator_formatter(df, custom_locator, custom_formatter)
+    plot_night(df, params, plot_params)
+    n_var = len(var_list)
+    
+    #Set colors
+    if 'pitch' in  var_list:
+        cols = ['tab:pink', 'tab:olive']
+    elif 'odba' in var_list:
+        cols = ['tab:cyan', 'tab:purple']
+    else:
+        cols = ['tab:red', 'tab:green', 'tab:blue']
+    
+    #Plot time series
+    plot_list=[]
+    if scatter:
+        for i in range(n_var):
+            plot_list.append(plt.scatter(df["datetime"], df[var_list[i]], s=plot_params["pnt_size"], marker=plot_params["pnt_type"], c=cols[i], alpha=0.5))
+    else:
+        for i in range(n_var):
+            plot_list.append(plt.plot(df["datetime"], df[var_list[i]], linewidth=plot_params["pnt_size"], c=cols[i]))
+    if not(hline is None):
+        plt.axhline(y=hline, color="orange", linestyle="--", linewidth=plot_params["pnt_size"])
+    if not(eph_cond is None):
+        for i in range(n_var):
+            plt.scatter(df.loc[eph_cond, "datetime"], df.loc[eph_cond, var_list[i]], s=plot_params["eph_size"], color="red")
+    plt.title(title, fontsize=plot_params["main_fs"])
+    plt.xlabel("Time", fontsize=plot_params["labs_fs"])
+    plt.ylabel(var_lab, fontsize=plot_params["labs_fs"])
+    plt.tick_params(axis="both", labelsize=plot_params["axis_fs"])
+    plt.grid(linestyle=plot_params["grid_lty"], linewidth=plot_params["grid_lwd"], color=plot_params["grid_col"])
+    plt.legend(plot_list, var_list, loc="upper right")
+    ax.xaxis.set(major_locator=datetime_locator, major_formatter=datetime_formatter)
+
+
+# fig = plt.figure(figsize=(30, 24))
+# gs = fig.add_gridspec(3, 2)
+# ax = fig.add_subplot(gs[0,0])
+# plot_ts(ax, axy.df_gps, axy.params, parameters.get_plot_params(), "step_time", "GPS step time", "Time [s]")
+# ax = fig.add_subplot(gs[0,1])
+# plot_ts(ax, axy.df_gps, axy.params, parameters.get_plot_params(),  "step_turning_angle", "Step turning angle", "Angle [°]")
+
+# fig = plt.figure(figsize=(30, 24))
+# gs = fig.add_gridspec(3, 2)
+# ax = fig.add_subplot(gs[0,0])
+# plot_ts_multiple(ax, axy.df_gps, axy.params, parameters.get_plot_params(), ["ax","ay","az"], "GPS step time", "Time [s]")
+# ax = fig.add_subplot(gs[0,1])
+# plot_ts_multiple(ax, axy.df_gps, axy.params, parameters.get_plot_params(), ["ax_d","ay_d","az_d"], "Step turning angle", "Angle [°]")
+# ax = fig.add_subplot(gs[1,0])
+# plot_ts_multiple(ax, axy.df_gps, axy.params, parameters.get_plot_params(), ["ax_s","ay_s","az_s"], "Step turning angle", "Angle [°]")
+# ax = fig.add_subplot(gs[1,1])
+# plot_ts_multiple(ax, axy.df_gps, axy.params, parameters.get_plot_params(), ["odba","vedba"], "Step turning angle", "Angle [°]")
+# ax = fig.add_subplot(gs[2,0])
+# plot_ts_multiple(ax, axy.df_gps, axy.params, parameters.get_plot_params(), ["pitch_sd","roll_sd"], "Step turning angle", "Angle [°]")
+# ax = fig.add_subplot(gs[2,1])
+# plot_ts_multiple(ax, axy.df_gps, axy.params, parameters.get_plot_params(), ["pitch_mean","roll_mean"], "Step turning angle", "Angle [°]")
+
+# fig = plt.figure(figsize=(30, 24))
+# gs = fig.add_gridspec(3, 2)
+# ax = fig.add_subplot(gs[0,0])
+# plot_ts_multiple(ax, axy.df, axy.params, parameters.get_plot_params(), ["ax","ay","az"], "GPS step time", "Time [s]")
+# ax = fig.add_subplot(gs[0,1])
+# plot_ts_multiple(ax, axy.df, axy.params, parameters.get_plot_params(), ["ax_d","ay_d","az_d"], "Step turning angle", "Angle [°]")
+# ax = fig.add_subplot(gs[1,0])
+# plot_ts_multiple(ax, axy.df, axy.params, parameters.get_plot_params(), ["ax_s","ay_s","az_s"], "Step turning angle", "Angle [°]")
+# ax = fig.add_subplot(gs[1,1])
+# plot_ts_multiple(ax, axy.df, axy.params, parameters.get_plot_params(), ["odba","vedba"], "Step turning angle", "Angle [°]")
+# ax = fig.add_subplot(gs[2,0])
+# plot_ts_multiple(ax, axy.df, axy.params, parameters.get_plot_params(), ["pitch","roll"], "Step turning angle", "Angle [°]")
 
 
 # ================================================================================================ #
@@ -218,54 +322,54 @@ def plot_ts_wclasses(ax, df, params, plot_params, class_var, var, title, var_lab
 # ================================================================================================ #
 # PLOT RAW AND FILTERED VAR
 # ================================================================================================ # 
-def plot_ts_twinx(ax, df, params, plot_params, var, title, var_lab, custom_locator=None, custom_formatter=None, scatter=True):
+# def plot_ts_twinx(ax, df, params, plot_params, var, title, var_lab, custom_locator=None, custom_formatter=None, scatter=True):
         
-    """    
-    Plot timeserie of dataframe column designated by the value of var and var_f with two distinct axes. 
+#     """    
+#     Plot timeserie of dataframe column designated by the value of var and var_f with two distinct axes. 
     
-    :param ax: plot axes.
-    :type ax: matplotlib.Axes 
-    :param df: dataframe with a ``datetime`` column and the column designated by the value of var.
-    :type df: pandas.DataFrame
-    :param params: parameters dictionary. 
-    :type params: dict
-    :param plot_params: plot parameters dictionary. 
-    :type plot_params: dict
-    :param var: name of the column in df.
-    :type var: str
-    :param title: plot title.
-    :type title: str
-    :param var_lab: y-axis label.
-    :type var_lab: str
-    :param custom_locator: data locator. 
-    :type custom_locator: matplotlib.dates.DayLocator
-    :param custom_formatter: date formatter. 
-    :type custom_formatter: matplotlib.dates.DateFormatter
-    :param scatter: scatter plot if True, line plot otherwise.
-    :type scatter: bool 
+#     :param ax: plot axes.
+#     :type ax: matplotlib.Axes 
+#     :param df: dataframe with a ``datetime`` column and the column designated by the value of var.
+#     :type df: pandas.DataFrame
+#     :param params: parameters dictionary. 
+#     :type params: dict
+#     :param plot_params: plot parameters dictionary. 
+#     :type plot_params: dict
+#     :param var: name of the column in df.
+#     :type var: str
+#     :param title: plot title.
+#     :type title: str
+#     :param var_lab: y-axis label.
+#     :type var_lab: str
+#     :param custom_locator: data locator. 
+#     :type custom_locator: matplotlib.dates.DayLocator
+#     :param custom_formatter: date formatter. 
+#     :type custom_formatter: matplotlib.dates.DateFormatter
+#     :param scatter: scatter plot if True, line plot otherwise.
+#     :type scatter: bool 
     
-    Useful to plot raw and filtered data on the same frame even if scales are different.
-    """
+#     Useful to plot raw and filtered data on the same frame even if scales are different.
+#     """
     
-    # plot timeserie of var and var_f in dataframe with two axes
-    datetime_locator, datetime_formatter = get_datetime_locator_formatter(df, custom_locator, custom_formatter)
-    plot_night(df, params, plot_params)
-    if scatter:
-        plt.scatter(df["datetime"], df[var], s=plot_params["pnt_size"], marker=plot_params["pnt_type"], edgecolor="None")
-        ax_twinx = ax.twinx()
-        ax_twinx.scatter(df["datetime"], df["%s_f" % var], s=plot_params["pnt_size"], marker=plot_params["pnt_type"], edgecolor="None", color="red")
-    else:
-        plt.plot(df["datetime"], df[var], linewidth=plot_params["pnt_size"])
-        ax_twinx = ax.twinx()
-        ax_twinx.plot(df["datetime"], df["%s_f" % var], linewidth=plot_params["pnt_size"], color="red")
-    plt.title(title, fontsize=plot_params["main_fs"])
-    plt.xlabel("Time", fontsize=plot_params["labs_fs"])
-    plt.ylabel(var_lab, fontsize=plot_params["labs_fs"])
-    plt.tick_params(axis="both", labelsize=plot_params["axis_fs"])
-    plt.grid(linestyle=plot_params["grid_lty"], linewidth=plot_params["grid_lwd"], color=plot_params["grid_col"])
-    ax.xaxis.set(major_locator=datetime_locator, major_formatter=datetime_formatter)
-    ax_twinx.spines["right"].set_color("red")
-    ax_twinx.tick_params("y", colors="red")
+#     # plot timeserie of var and var_f in dataframe with two axes
+#     datetime_locator, datetime_formatter = get_datetime_locator_formatter(df, custom_locator, custom_formatter)
+#     plot_night(df, params, plot_params)
+#     if scatter:
+#         plt.scatter(df["datetime"], df[var], s=plot_params["pnt_size"], marker=plot_params["pnt_type"], edgecolor="None")
+#         ax_twinx = ax.twinx()
+#         ax_twinx.scatter(df["datetime"], df["%s_f" % var], s=plot_params["pnt_size"], marker=plot_params["pnt_type"], edgecolor="None", color="red")
+#     else:
+#         plt.plot(df["datetime"], df[var], linewidth=plot_params["pnt_size"])
+#         ax_twinx = ax.twinx()
+#         ax_twinx.plot(df["datetime"], df["%s_f" % var], linewidth=plot_params["pnt_size"], color="red")
+#     plt.title(title, fontsize=plot_params["main_fs"])
+#     plt.xlabel("Time", fontsize=plot_params["labs_fs"])
+#     plt.ylabel(var_lab, fontsize=plot_params["labs_fs"])
+#     plt.tick_params(axis="both", labelsize=plot_params["axis_fs"])
+#     plt.grid(linestyle=plot_params["grid_lty"], linewidth=plot_params["grid_lwd"], color=plot_params["grid_col"])
+#     ax.xaxis.set(major_locator=datetime_locator, major_formatter=datetime_formatter)
+#     ax_twinx.spines["right"].set_color("red")
+#     ax_twinx.tick_params("y", colors="red")
     
     
 # ================================================================================================ #
