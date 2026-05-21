@@ -597,13 +597,13 @@ def add_dive(df, params):
 def add_filtered_acc(df, params):
     
     """    
-    Add to the dataframe the additional ``ax_f``, ``ay_f`` and ``az_f`` columns of the filtered triaxial accelerations. 
+    Add to the dataframe the additional ``ax_s``, ``ay_s``,  ``az_s``, ``ax_d``, ``ay_d`` and ``az_d`` columns of the static and the dynamic components triaxial accelerations. 
     
     :param df: dataframe with ``step_time``, ``ax``, ``ay`` and ``az`` columns.
     :type df: pandas.DataFrame
     :param params: parameters dictionary. 
     :type params: dict
-    :return: the dataframe with the additional ``ax_f``, ``ay_f`` and ``az_f`` columns of the filtered triaxial accelerations.
+    :return: the dataframe with the additional  ``ax_s``, ``ay_s``,  ``az_s``, ``ax_d``, ``ay_d`` and ``az_d``  columns of the static and the dynamic components of triaxial acceleration using a filter or a rolling window.
     :rtype: pandas.DataFrame
     
     Accelerations can be filtered using :
@@ -632,9 +632,16 @@ def add_filtered_acc(df, params):
         window = int(time_window/resolution)
         
         # compute filtered acceleration as the rolling average over a time window in seconds
-        df["ax_f"] = df["ax"] - df["ax"].rolling(window=window, center=True, min_periods=1).mean()
-        df["ay_f"] = df["ay"] - df["ay"].rolling(window=window, center=True, min_periods=1).mean()
-        df["az_f"] = df["az"] - df["az"].rolling(window=window, center=True, min_periods=1).mean()
+        #Dynamic acceleration
+        df["ax_d"] = df["ax"] - df["ax"].rolling(window=window, center=True, min_periods=1).mean()
+        df["ay_d"] = df["ay"] - df["ay"].rolling(window=window, center=True, min_periods=1).mean()
+        df["az_d"] = df["az"] - df["az"].rolling(window=window, center=True, min_periods=1).mean()
+        
+        #Static acceleration 
+        df["ax_s"] = df["ax"].rolling(window=window, center=True, min_periods=1).mean()
+        df["ay_s"] = df["ay"].rolling(window=window, center=True, min_periods=1).mean()
+        df["az_s"] = df["az"].rolling(window=window, center=True, min_periods=1).mean()
+        
         
     # Butterworth high-pass filtering 
     elif filter_type == "high_pass":
@@ -646,20 +653,29 @@ def add_filtered_acc(df, params):
         b, a = butter(order, normal_cutoff, btype="high", analog=False)
 
         # compute filtered acceleration by applying the filter
-        df["ax_f"] = filtfilt(b, a, df["ax"].values)
-        df["ay_f"] = filtfilt(b, a, df["ay"].values)
-        df["az_f"] = filtfilt(b, a, df["az"].values)
+        df["ax_d"] = filtfilt(b, a, df["ax"].values)
+        df["ay_d"] = filtfilt(b, a, df["ay"].values)
+        df["az_d"] = filtfilt(b, a, df["az"].values)
+        
+        df["ax_s"] = df["ax"] - filtfilt(b, a, df["ax"].values)
+        df["ay_s"] = df["ay"] - filtfilt(b, a, df["ay"].values)
+        df["az_s"] = df["az"] - filtfilt(b, a, df["az"].values)
     
     # raise error    
     else:
         raise NotImplementedError("Filter type %s is not implemented." % (filter_type))
         
     # reformat colum
-    df["ax_f"] = df["ax_f"].round(3)
-    df["ay_f"] = df["ay_f"].round(3)
-    df["az_f"] = df["az_f"].round(3) 
+    df["ax_d"] = df["ax_d"].round(3)
+    df["ay_d"] = df["ay_d"].round(3)
+    df["az_d"] = df["az_d"].round(3) 
+    
+    df["ax_s"] = df["ax_s"].round(3)
+    df["ay_s"] = df["ay_s"].round(3)
+    df["az_s"] = df["az_s"].round(3) 
     
     return(df)
+
 
 
 # ================================================================================================ #
@@ -668,13 +684,13 @@ def add_filtered_acc(df, params):
 def add_odba(df, params): 
         
     """    
-    Add to the dataframe the additional ``odba`` and ``odba_f`` columns of the raw and filtered overall dynamical body acceleration.
+    Add to the dataframe the additional ``odba`` column (overall dynamical body acceleration).
     
-    :param df: dataframe with ``ax``, ``ay``, ``az``, ``ax_f``, ``ay_f`` and ``az_f`` columns.
+    :param df: dataframe with ``ax_d``, ``ay_d`` and ``az_d`` columns.
     :type df: pandas.DataFrame
     :param params: parameters dictionary. 
     :type params: dict
-    :return: the dataframe with the additional ``odba`` and ``odba_f`` columns of the raw and filtered overall dynamical body acceleration.
+    :return: the dataframe with the additional ``odba`` column (overall dynamical body acceleration)
     :rtype: pandas.DataFrame
     
     .. note::
@@ -685,15 +701,80 @@ def add_odba(df, params):
     p = params.get("odba_p_norm")
     
     # compute odba as the euclidean p-norm of the acceleration vector
-    df["odba"] = (abs(df["ax"])**p + abs(df["ay"])**p + abs(df["az"])**p)**(1/p)
-    df["odba_f"] = (abs(df["ax_f"])**p + abs(df["ay_f"])**p + abs(df["az_f"])**p)**(1/p)
+    df["odba"] = (abs(df["ax_d"])**p + abs(df["ay_d"])**p + abs(df["az_d"])**p)**(1/p)
     
     # reformat colum
     df["odba"] = df["odba"].round(3)
-    df["odba_f"] = df["odba_f"].round(3)
+    
+    return(df)
+    
+    
+# ================================================================================================ #
+# VeDBA
+# ================================================================================================ #
+def add_vedba(df, params): 
+        
+    """    
+    Add to the dataframe the additional ``vedba``  column of the vectorial dynamical body acceleration.
+    
+    :param df: dataframe with ``ax``, ``ay``, ``az``, ``ax_d``, ``ay_d`` and ``az_d`` columns.
+    :type df: pandas.DataFrame
+    :param params: parameters dictionary. 
+    :type params: dict
+    :return: the dataframe with the additional ``vedba``  column of the raw vectorial sum of acceleration, vectoral dynamical body acceleratio from filtered data and form dynamic accelartion after substarction of the static component.
+    :rtype: pandas.DataFrame
+    
+    .. note::
+        The required fields in the parameters dictionary are ``vedba_p_norm``.
+    """
+    
+    # get parameters
+    p = params.get("vedba_p_norm")
+    
+    # compute vedba as the euclidean p-norm of the acceleration vector
+    df["vedba"] = (abs(df["ax_d"])**p + abs(df["ay_d"])**p + abs(df["az_d"])**p)**(1/p)
+    
+    # reformat colum
+    df["vedba"] = df["vedba"].round(3)
 
     return(df)
 
+# ================================================================================================ #
+# Pitch
+# ================================================================================================ #
+def add_pitch(df):
+    
+    """    
+    Add to the dataframe pitch
+    
+    :param df: dataframe with ``ax_s``, ``ay_s`` and ``az_s`` columns.
+    :type df: pandas.DataFrame
+    :return: the dataframe with pitch
+    :rtype: pandas.DataFrame
+    """
+    
+    df['pitch'] = (180/np.pi)*np.arctan(df['ax_s']/np.sqrt(df['ay_s']**2+df['az_s']**2))
+    
+    return(df)
+
+
+# ================================================================================================ #
+# Roll
+# ================================================================================================ #
+def add_roll(df):
+    
+    """    
+    Add to the dataframe roll
+    
+    :param df: dataframe with ``ax_s``, ``ay_s`` and ``az_s`` columns.
+    :type df: pandas.DataFrame
+    :return: the dataframe with roll
+    :rtype: pandas.DataFrame
+    """
+    
+    
+    df['roll'] = (180/np.pi)*np.arctan(df['ay_s']/np.sqrt(df['ax_s']**2+df['az_s']**2))
+    return(df)
 
 # ================================================================================================ #
 # TAG SUSPICIOUS ROWS
@@ -917,6 +998,9 @@ def add_axy_data(df, params):
     # process acceleration data
     df = add_filtered_acc(df, params)
     df = add_odba(df, params)
+    df = add_vedba(df, params)
+    df = add_pitch(df)
+    df = add_roll(df)
         
     # extract data at gps resolution and add processed gps data
     gps_resolution = (df["longitude"].notna()) & (df["latitude"].notna())
@@ -945,13 +1029,16 @@ def add_axy_data(df, params):
     df.loc[tdr_indices, tdr_columns] = df_tdr_tmp[tdr_columns].values
     
     # produce df_gps by processing (sum, mean, max) data between two gps measures
-    funcs_cols = {"sum":["odba", "odba_f", "step_time"], "max":["pressure", "depth", "dive"], "mean":["temperature"], "len_unique_pos":["dive"]}
+    funcs_cols = {"sum":["odba", "vedba", "step_time"], "max":["pressure", "depth", "dive"], "mean":["temperature"], "len_unique_pos":["dive"], "circ_mean":["pitch","roll"], "circ_sd":["pitch","roll"]}
     df = utils.apply_functions_between_samples(df, gps_resolution, funcs_cols, verbose=True)
-    
+
     # process gps data
     df_gps = df.loc[gps_resolution].reset_index(drop=True)
-    df_gps = df_gps.drop(["odba", "odba_f", "step_time", "dive", "pressure", "depth", "temperature"], axis=1)
-    df_gps = df_gps.rename(columns={"odba_sum":"odba", "odba_f_sum":"odba_f", "step_time_sum":"step_time", 
+    df_gps = df_gps.drop(["odba", "vedba", "pitch", "roll", "step_time", "dive", "pressure", "depth", "temperature"], axis=1)
+    df_gps = df_gps.rename(columns={"odba_sum":"odba", "vedba_sum":"vedba",
+                                    "pitch_circ_mean": "pitch_mean", "pitch_circ_sd": "pitch_sd", 
+                                    "roll_circ_mean": "roll_mean", "roll_circ_sd": "roll_sd",
+                                    "step_time_sum":"step_time", 
                                     "dive_max":"dive", "dive_len_unique_pos":"n_dives",
                                     "pressure_max":"pressure", "depth_max":"depth", "temperature_mean":"temperature"})
     df_gps["trip"] = df_gps["trip"].astype(int)
@@ -962,8 +1049,10 @@ def add_axy_data(df, params):
     df_tdr["dive"] = df_tdr["dive"].astype(int)
 
     # rearrange full dataframe
-    df = df[np.concatenate((["date", "time", "ax", "ay", "az", "longitude", "latitude", "pressure", "temperature",
-                             "datetime", "step_time", "is_night", "ax_f", "ay_f", "az_f", "odba", "odba_f"], gps_columns, tdr_columns))]
+    df = df[np.concatenate((["date", "time", "ax", "ay", "az", "longitude", "latitude", 
+                             "pressure", "temperature","datetime", "step_time", "is_night", 
+                             "ax_s", "ay_s", "az_s", "ax_d", "ay_d", "az_d",
+                             "odba", "vedba", "pitch", "roll"], gps_columns, tdr_columns))]
         
     return(df, df_gps, df_tdr)
 
@@ -1171,13 +1260,17 @@ def compute_axy_infos(df):
     # compute axy infos
     max_odba = df["odba"].max()
     median_odba = df["odba"].median()
-    max_odba_f = df["odba_f"].max()
-    median_odba_f = df["odba_f"].median()
+    max_vedba = df["vedba"].max()
+    median_vedba = df["vedba"].median()
+    circ_mean_pitch = utils.circular_mean(df["pitch"])
+    circ_mean_roll = utils.circular_mean(df["roll"])
             
     # store axy infos
     infos = {"max_odba" : max_odba,
-             "median_odba" : median_odba, 
-             "max_odba_f" : max_odba_f, 
-             "median_odba_f" : median_odba_f}
+             "median_odba" : median_odba,
+             "max_vedba": max_vedba,
+             "median_vedba": median_vedba,
+             "circ_mean_pitch": circ_mean_pitch,
+             "circ_mean_roll": circ_mean_roll}
     
     return(infos)
