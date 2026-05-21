@@ -68,16 +68,19 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="cpforager.processing.add_odba.html">4.14. cpforager.processing.add_odba</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cpforager.processing.add_is_suspicious.html">4.15. cpforager.processing.add_is_suspicious</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cpforager.processing.interpolate_lat_lon.html">4.16. cpforager.processing.interpolate_lat_lon</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cpforager.processing.add_basic_data.html">4.17. cpforager.processing.add_basic_data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cpforager.processing.add_gps_data.html">4.18. cpforager.processing.add_gps_data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cpforager.processing.add_tdr_data.html">4.19. cpforager.processing.add_tdr_data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cpforager.processing.add_axy_data.html">4.20. cpforager.processing.add_axy_data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cpforager.processing.compute_basic_infos.html">4.21. cpforager.processing.compute_basic_infos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cpforager.processing.compute_gps_infos.html">4.22. cpforager.processing.compute_gps_infos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cpforager.processing.compute_tdr_infos.html">4.23. cpforager.processing.compute_tdr_infos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cpforager.processing.compute_axy_infos.html">4.24. cpforager.processing.compute_axy_infos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpforager.processing.add_vedba.html">4.15. cpforager.processing.add_vedba</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpforager.processing.add_pitch.html">4.16. cpforager.processing.add_pitch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpforager.processing.add_roll.html">4.17. cpforager.processing.add_roll</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpforager.processing.add_is_suspicious.html">4.18. cpforager.processing.add_is_suspicious</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpforager.processing.interpolate_lat_lon.html">4.19. cpforager.processing.interpolate_lat_lon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpforager.processing.add_basic_data.html">4.20. cpforager.processing.add_basic_data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpforager.processing.add_gps_data.html">4.21. cpforager.processing.add_gps_data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpforager.processing.add_tdr_data.html">4.22. cpforager.processing.add_tdr_data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpforager.processing.add_axy_data.html">4.23. cpforager.processing.add_axy_data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpforager.processing.compute_basic_infos.html">4.24. cpforager.processing.compute_basic_infos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpforager.processing.compute_gps_infos.html">4.25. cpforager.processing.compute_gps_infos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpforager.processing.compute_tdr_infos.html">4.26. cpforager.processing.compute_tdr_infos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpforager.processing.compute_axy_infos.html">4.27. cpforager.processing.compute_axy_infos</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../diagnostic.html">5. Plots</a></li>
@@ -117,7 +120,7 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="cpforager.processing.add_filtered_acc">
 <span class="sig-prename descclassname"><span class="pre">cpforager.processing.</span></span><span class="sig-name descname"><span class="pre">add_filtered_acc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cpforager.processing.add_filtered_acc" title="Link to this definition"></a></dt>
-<dd><p>Add to the dataframe the additional <code class="docutils literal notranslate"><span class="pre">ax_f</span></code>, <code class="docutils literal notranslate"><span class="pre">ay_f</span></code> and <code class="docutils literal notranslate"><span class="pre">az_f</span></code> columns of the filtered triaxial accelerations.</p>
+<dd><p>Add to the dataframe the additional <code class="docutils literal notranslate"><span class="pre">ax_s</span></code>, <code class="docutils literal notranslate"><span class="pre">ay_s</span></code>,  <code class="docutils literal notranslate"><span class="pre">az_s</span></code>, <code class="docutils literal notranslate"><span class="pre">ax_d</span></code>, <code class="docutils literal notranslate"><span class="pre">ay_d</span></code> and <code class="docutils literal notranslate"><span class="pre">az_d</span></code> columns of the static and the dynamic components triaxial accelerations.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -126,7 +129,7 @@
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>the dataframe with the additional <code class="docutils literal notranslate"><span class="pre">ax_f</span></code>, <code class="docutils literal notranslate"><span class="pre">ay_f</span></code> and <code class="docutils literal notranslate"><span class="pre">az_f</span></code> columns of the filtered triaxial accelerations.</p>
+<dd class="field-even"><p>the dataframe with the additional  <code class="docutils literal notranslate"><span class="pre">ax_s</span></code>, <code class="docutils literal notranslate"><span class="pre">ay_s</span></code>,  <code class="docutils literal notranslate"><span class="pre">az_s</span></code>, <code class="docutils literal notranslate"><span class="pre">ax_d</span></code>, <code class="docutils literal notranslate"><span class="pre">ay_d</span></code> and <code class="docutils literal notranslate"><span class="pre">az_d</span></code>  columns of the static and the dynamic components of triaxial acceleration using a filter or a rolling window.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>pandas.DataFrame</p>

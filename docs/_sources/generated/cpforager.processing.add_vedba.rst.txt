@@ -1,0 +1,6 @@
+﻿cpforager.processing.add\_vedba
+===============================
+
+.. currentmodule:: cpforager.processing
+
+.. autofunction:: add_vedba

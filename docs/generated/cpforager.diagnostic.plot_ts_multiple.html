@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>5.9. cpforager.diagnostic.plot_hist &mdash; cpforager</title>
+  <title>5.4. cpforager.diagnostic.plot_ts_multiple &mdash; cpforager</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=8ac2ccb1" />
@@ -21,8 +21,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="5.10. cpforager.diagnostic.plot_angle_polar" href="cpforager.diagnostic.plot_angle_polar.html" />
-    <link rel="prev" title="5.8. cpforager.diagnostic.plot_violin" href="cpforager.diagnostic.plot_violin.html" /> 
+    <link rel="next" title="5.5. cpforager.diagnostic.plot_ts_wclasses" href="cpforager.diagnostic.plot_ts_wclasses.html" />
+    <link rel="prev" title="5.3. cpforager.diagnostic.plot_ts" href="cpforager.diagnostic.plot_ts.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -55,15 +55,15 @@
 <li class="toctree-l2"><a class="reference internal" href="cpforager.diagnostic.get_datetime_locator_formatter.html">5.1. cpforager.diagnostic.get_datetime_locator_formatter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cpforager.diagnostic.plot_night.html">5.2. cpforager.diagnostic.plot_night</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cpforager.diagnostic.plot_ts.html">5.3. cpforager.diagnostic.plot_ts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cpforager.diagnostic.plot_ts_multiple.html">5.4. cpforager.diagnostic.plot_ts_multiple</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">5.4. cpforager.diagnostic.plot_ts_multiple</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cpforager.diagnostic.plot_ts_multiple"><code class="docutils literal notranslate"><span class="pre">plot_ts_multiple()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="cpforager.diagnostic.plot_ts_wclasses.html">5.5. cpforager.diagnostic.plot_ts_wclasses</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cpforager.diagnostic.plot_cumulative_distribution.html">5.6. cpforager.diagnostic.plot_cumulative_distribution</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cpforager.diagnostic.plot_box.html">5.7. cpforager.diagnostic.plot_box</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cpforager.diagnostic.plot_violin.html">5.8. cpforager.diagnostic.plot_violin</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">5.9. cpforager.diagnostic.plot_hist</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#cpforager.diagnostic.plot_hist"><code class="docutils literal notranslate"><span class="pre">plot_hist()</span></code></a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="cpforager.diagnostic.plot_hist.html">5.9. cpforager.diagnostic.plot_hist</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cpforager.diagnostic.plot_angle_polar.html">5.10. cpforager.diagnostic.plot_angle_polar</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cpforager.diagnostic.plot_colony.html">5.11. cpforager.diagnostic.plot_colony</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cpforager.diagnostic.plot_map_wtrips.html">5.12. cpforager.diagnostic.plot_map_wtrips</a></li>
@@ -96,9 +96,9 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../diagnostic.html"><span class="section-number">5. </span>Plots</a></li>
-      <li class="breadcrumb-item active"><span class="section-number">5.9. </span>cpforager.diagnostic.plot_hist</li>
+      <li class="breadcrumb-item active"><span class="section-number">5.4. </span>cpforager.diagnostic.plot_ts_multiple</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/generated/cpforager.diagnostic.plot_hist.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/generated/cpforager.diagnostic.plot_ts_multiple.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -106,25 +106,27 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="cpforager-diagnostic-plot-hist">
-<h1><span class="section-number">5.9. </span>cpforager.diagnostic.plot_hist<a class="headerlink" href="#cpforager-diagnostic-plot-hist" title="Link to this heading"></a></h1>
+  <section id="cpforager-diagnostic-plot-ts-multiple">
+<h1><span class="section-number">5.4. </span>cpforager.diagnostic.plot_ts_multiple<a class="headerlink" href="#cpforager-diagnostic-plot-ts-multiple" title="Link to this heading"></a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="cpforager.diagnostic.plot_hist">
-<span class="sig-prename descclassname"><span class="pre">cpforager.diagnostic.</span></span><span class="sig-name descname"><span class="pre">plot_hist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var_lab</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bins</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_locator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_formatter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cpforager.diagnostic.plot_hist" title="Link to this definition"></a></dt>
-<dd><p>Plot the histogram of dataframe column designated by the value of var.</p>
+<dt class="sig sig-object py" id="cpforager.diagnostic.plot_ts_multiple">
+<span class="sig-prename descclassname"><span class="pre">cpforager.diagnostic.</span></span><span class="sig-name descname"><span class="pre">plot_ts_multiple</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var_lab</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_locator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_formatter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scatter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hline</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eph_cond</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cpforager.diagnostic.plot_ts_multiple" title="Link to this definition"></a></dt>
+<dd><p>Plot timeserie of the dataframe columns designated by the values of var_list.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>df</strong> (<em>pandas.DataFrame</em>) – dataframe with <code class="docutils literal notranslate"><span class="pre">datetime</span></code> and <code class="docutils literal notranslate"><span class="pre">is_night</span></code> columns and the column designated by the value of var. .</p></li>
+<li><p><strong>ax</strong> (<em>matplotlib.Axes</em>) – plot axes.</p></li>
+<li><p><strong>df</strong> (<em>pandas.DataFrame</em>) – dataframe with a <code class="docutils literal notranslate"><span class="pre">datetime</span></code> column and the column designated by the value of var.</p></li>
+<li><p><strong>params</strong> (<em>dict</em>) – parameters dictionary.</p></li>
 <li><p><strong>plot_params</strong> (<em>dict</em>) – plot parameters dictionary.</p></li>
 <li><p><strong>var</strong> (<em>str</em>) – name of the column in df.</p></li>
 <li><p><strong>title</strong> (<em>str</em>) – plot title.</p></li>
-<li><p><strong>var_lab</strong> (<em>str</em>) – x-axis label.</p></li>
-<li><p><strong>bins</strong> (<em>list</em><em>[</em><em>float</em><em>]</em>) – histograms bins.</p></li>
-<li><p><strong>color</strong> (<em>[</em><em>float</em><em>, </em><em>float</em><em>, </em><em>float</em><em>]</em>) – color.</p></li>
-<li><p><strong>alpha</strong> (<em>float</em>) – transparency.</p></li>
+<li><p><strong>var_lab</strong> (<em>str</em>) – y-axis label.</p></li>
 <li><p><strong>custom_locator</strong> (<em>matplotlib.dates.DayLocator</em>) – data locator.</p></li>
 <li><p><strong>custom_formatter</strong> (<em>matplotlib.dates.DateFormatter</em>) – date formatter.</p></li>
+<li><p><strong>scatter</strong> (<em>bool</em>) – scatter plot if True, line plot otherwise.</p></li>
+<li><p><strong>hline</strong> (<em>float</em>) – value of the horizontal line to plot.</p></li>
+<li><p><strong>eph_cond</strong> (<em>pandas.DataFrame</em><em>(</em><em>dtype=bool</em><em>)</em>) – condition to emphasize points.</p></li>
 </ul>
 </dd>
 </dl>
@@ -136,8 +138,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="cpforager.diagnostic.plot_violin.html" class="btn btn-neutral float-left" title="5.8. cpforager.diagnostic.plot_violin" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="cpforager.diagnostic.plot_angle_polar.html" class="btn btn-neutral float-right" title="5.10. cpforager.diagnostic.plot_angle_polar" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="cpforager.diagnostic.plot_ts.html" class="btn btn-neutral float-left" title="5.3. cpforager.diagnostic.plot_ts" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="cpforager.diagnostic.plot_ts_wclasses.html" class="btn btn-neutral float-right" title="5.5. cpforager.diagnostic.plot_ts_wclasses" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

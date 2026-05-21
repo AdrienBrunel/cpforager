@@ -65,16 +65,19 @@
 <li class="toctree-l2"><a class="reference internal" href="generated/cpforager.processing.add_dive.html">4.12. cpforager.processing.add_dive</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/cpforager.processing.add_filtered_acc.html">4.13. cpforager.processing.add_filtered_acc</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/cpforager.processing.add_odba.html">4.14. cpforager.processing.add_odba</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.processing.add_is_suspicious.html">4.15. cpforager.processing.add_is_suspicious</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.processing.interpolate_lat_lon.html">4.16. cpforager.processing.interpolate_lat_lon</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.processing.add_basic_data.html">4.17. cpforager.processing.add_basic_data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.processing.add_gps_data.html">4.18. cpforager.processing.add_gps_data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.processing.add_tdr_data.html">4.19. cpforager.processing.add_tdr_data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.processing.add_axy_data.html">4.20. cpforager.processing.add_axy_data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.processing.compute_basic_infos.html">4.21. cpforager.processing.compute_basic_infos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.processing.compute_gps_infos.html">4.22. cpforager.processing.compute_gps_infos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.processing.compute_tdr_infos.html">4.23. cpforager.processing.compute_tdr_infos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.processing.compute_axy_infos.html">4.24. cpforager.processing.compute_axy_infos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.processing.add_vedba.html">4.15. cpforager.processing.add_vedba</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.processing.add_pitch.html">4.16. cpforager.processing.add_pitch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.processing.add_roll.html">4.17. cpforager.processing.add_roll</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.processing.add_is_suspicious.html">4.18. cpforager.processing.add_is_suspicious</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.processing.interpolate_lat_lon.html">4.19. cpforager.processing.interpolate_lat_lon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.processing.add_basic_data.html">4.20. cpforager.processing.add_basic_data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.processing.add_gps_data.html">4.21. cpforager.processing.add_gps_data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.processing.add_tdr_data.html">4.22. cpforager.processing.add_tdr_data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.processing.add_axy_data.html">4.23. cpforager.processing.add_axy_data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.processing.compute_basic_infos.html">4.24. cpforager.processing.compute_basic_infos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.processing.compute_gps_infos.html">4.25. cpforager.processing.compute_gps_infos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.processing.compute_tdr_infos.html">4.26. cpforager.processing.compute_tdr_infos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/cpforager.processing.compute_axy_infos.html">4.27. cpforager.processing.compute_axy_infos</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="diagnostic.html">5. Plots</a></li>
@@ -150,39 +153,48 @@
 <td><p>Add to the dataframe an additional <code class="docutils literal notranslate"><span class="pre">dive</span></code> column that gives the dive id number.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/cpforager.processing.add_filtered_acc.html#cpforager.processing.add_filtered_acc" title="cpforager.processing.add_filtered_acc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">processing.add_filtered_acc</span></code></a>(df, params)</p></td>
-<td><p>Add to the dataframe the additional <code class="docutils literal notranslate"><span class="pre">ax_f</span></code>, <code class="docutils literal notranslate"><span class="pre">ay_f</span></code> and <code class="docutils literal notranslate"><span class="pre">az_f</span></code> columns of the filtered triaxial accelerations.</p></td>
+<td><p>Add to the dataframe the additional <code class="docutils literal notranslate"><span class="pre">ax_s</span></code>, <code class="docutils literal notranslate"><span class="pre">ay_s</span></code>,  <code class="docutils literal notranslate"><span class="pre">az_s</span></code>, <code class="docutils literal notranslate"><span class="pre">ax_d</span></code>, <code class="docutils literal notranslate"><span class="pre">ay_d</span></code> and <code class="docutils literal notranslate"><span class="pre">az_d</span></code> columns of the static and the dynamic components triaxial accelerations.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/cpforager.processing.add_odba.html#cpforager.processing.add_odba" title="cpforager.processing.add_odba"><code class="xref py py-obj docutils literal notranslate"><span class="pre">processing.add_odba</span></code></a>(df, params)</p></td>
-<td><p>Add to the dataframe the additional <code class="docutils literal notranslate"><span class="pre">odba</span></code> and <code class="docutils literal notranslate"><span class="pre">odba_f</span></code> columns of the raw and filtered overall dynamical body acceleration.</p></td>
+<td><p>Add to the dataframe the additional <code class="docutils literal notranslate"><span class="pre">odba</span></code> column that gives the overall dynamical body acceleration.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/cpforager.processing.add_is_suspicious.html#cpforager.processing.add_is_suspicious" title="cpforager.processing.add_is_suspicious"><code class="xref py py-obj docutils literal notranslate"><span class="pre">processing.add_is_suspicious</span></code></a>(df, params)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/cpforager.processing.add_vedba.html#cpforager.processing.add_vedba" title="cpforager.processing.add_vedba"><code class="xref py py-obj docutils literal notranslate"><span class="pre">processing.add_vedba</span></code></a>(df, params)</p></td>
+<td><p>Add to the dataframe the additional <code class="docutils literal notranslate"><span class="pre">vedba</span></code>  column that gives the vectorial dynamical body acceleration.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/cpforager.processing.add_pitch.html#cpforager.processing.add_pitch" title="cpforager.processing.add_pitch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">processing.add_pitch</span></code></a>(df)</p></td>
+<td><p>Add to the dataframe the additional <code class="docutils literal notranslate"><span class="pre">pitch</span></code> column that gives the pitch angle in degrees.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/cpforager.processing.add_roll.html#cpforager.processing.add_roll" title="cpforager.processing.add_roll"><code class="xref py py-obj docutils literal notranslate"><span class="pre">processing.add_roll</span></code></a>(df)</p></td>
+<td><p>Add to the dataframe the additional <code class="docutils literal notranslate"><span class="pre">roll</span></code> column  that gives the roll angle in degrees.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/cpforager.processing.add_is_suspicious.html#cpforager.processing.add_is_suspicious" title="cpforager.processing.add_is_suspicious"><code class="xref py py-obj docutils literal notranslate"><span class="pre">processing.add_is_suspicious</span></code></a>(df, params)</p></td>
 <td><p>Add to the dataframe the additional <code class="docutils literal notranslate"><span class="pre">is_suspicious</span></code> boolean column tagging suspicious position recordings.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/cpforager.processing.interpolate_lat_lon.html#cpforager.processing.interpolate_lat_lon" title="cpforager.processing.interpolate_lat_lon"><code class="xref py py-obj docutils literal notranslate"><span class="pre">processing.interpolate_lat_lon</span></code></a>(df, ...[, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/cpforager.processing.interpolate_lat_lon.html#cpforager.processing.interpolate_lat_lon" title="cpforager.processing.interpolate_lat_lon"><code class="xref py py-obj docutils literal notranslate"><span class="pre">processing.interpolate_lat_lon</span></code></a>(df, ...[, ...])</p></td>
 <td><p>Interpolate longitude and latitude at a given datetime.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/cpforager.processing.add_basic_data.html#cpforager.processing.add_basic_data" title="cpforager.processing.add_basic_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">processing.add_basic_data</span></code></a>(df, params)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/cpforager.processing.add_basic_data.html#cpforager.processing.add_basic_data" title="cpforager.processing.add_basic_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">processing.add_basic_data</span></code></a>(df, params)</p></td>
 <td><p>Enhance the dataframe with the additional basic data.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/cpforager.processing.add_gps_data.html#cpforager.processing.add_gps_data" title="cpforager.processing.add_gps_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">processing.add_gps_data</span></code></a>(df, params[, clean])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/cpforager.processing.add_gps_data.html#cpforager.processing.add_gps_data" title="cpforager.processing.add_gps_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">processing.add_gps_data</span></code></a>(df, params[, clean])</p></td>
 <td><p>Enhance the dataframe with the additional gps data.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/cpforager.processing.add_tdr_data.html#cpforager.processing.add_tdr_data" title="cpforager.processing.add_tdr_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">processing.add_tdr_data</span></code></a>(df, params)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/cpforager.processing.add_tdr_data.html#cpforager.processing.add_tdr_data" title="cpforager.processing.add_tdr_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">processing.add_tdr_data</span></code></a>(df, params)</p></td>
 <td><p>Enhance the dataframe with the additional tdr data.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/cpforager.processing.add_axy_data.html#cpforager.processing.add_axy_data" title="cpforager.processing.add_axy_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">processing.add_axy_data</span></code></a>(df, params)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/cpforager.processing.add_axy_data.html#cpforager.processing.add_axy_data" title="cpforager.processing.add_axy_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">processing.add_axy_data</span></code></a>(df, params)</p></td>
 <td><p>Enhance the dataframe with the additional axy data.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/cpforager.processing.compute_basic_infos.html#cpforager.processing.compute_basic_infos" title="cpforager.processing.compute_basic_infos"><code class="xref py py-obj docutils literal notranslate"><span class="pre">processing.compute_basic_infos</span></code></a>(df)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/cpforager.processing.compute_basic_infos.html#cpforager.processing.compute_basic_infos" title="cpforager.processing.compute_basic_infos"><code class="xref py py-obj docutils literal notranslate"><span class="pre">processing.compute_basic_infos</span></code></a>(df)</p></td>
 <td><p>Produce the dictionary of basic infos.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/cpforager.processing.compute_gps_infos.html#cpforager.processing.compute_gps_infos" title="cpforager.processing.compute_gps_infos"><code class="xref py py-obj docutils literal notranslate"><span class="pre">processing.compute_gps_infos</span></code></a>(df, params)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/cpforager.processing.compute_gps_infos.html#cpforager.processing.compute_gps_infos" title="cpforager.processing.compute_gps_infos"><code class="xref py py-obj docutils literal notranslate"><span class="pre">processing.compute_gps_infos</span></code></a>(df, params)</p></td>
 <td><p>Produce the dictionary of gps infos.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/cpforager.processing.compute_tdr_infos.html#cpforager.processing.compute_tdr_infos" title="cpforager.processing.compute_tdr_infos"><code class="xref py py-obj docutils literal notranslate"><span class="pre">processing.compute_tdr_infos</span></code></a>(df)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/cpforager.processing.compute_tdr_infos.html#cpforager.processing.compute_tdr_infos" title="cpforager.processing.compute_tdr_infos"><code class="xref py py-obj docutils literal notranslate"><span class="pre">processing.compute_tdr_infos</span></code></a>(df)</p></td>
 <td><p>Produce the dictionary of tdr infos.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/cpforager.processing.compute_axy_infos.html#cpforager.processing.compute_axy_infos" title="cpforager.processing.compute_axy_infos"><code class="xref py py-obj docutils literal notranslate"><span class="pre">processing.compute_axy_infos</span></code></a>(df)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/cpforager.processing.compute_axy_infos.html#cpforager.processing.compute_axy_infos" title="cpforager.processing.compute_axy_infos"><code class="xref py py-obj docutils literal notranslate"><span class="pre">processing.compute_axy_infos</span></code></a>(df)</p></td>
 <td><p>Produce the dictionary of axy infos.</p></td>
 </tr>
 </tbody>

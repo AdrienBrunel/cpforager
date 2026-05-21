@@ -1,0 +1,6 @@
+﻿cpforager.diagnostic.plot\_ts\_multiple
+=======================================
+
+.. currentmodule:: cpforager.diagnostic
+
+.. autofunction:: plot_ts_multiple

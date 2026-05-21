@@ -1,0 +1,6 @@
+﻿cpforager.processing.add\_roll
+==============================
+
+.. currentmodule:: cpforager.processing
+
+.. autofunction:: add_roll

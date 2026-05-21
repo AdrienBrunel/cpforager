@@ -26,6 +26,9 @@ Basis functions used to process biologging data of a central-place foraging seab
    processing.add_dive
    processing.add_filtered_acc
    processing.add_odba
+   processing.add_vedba
+   processing.add_pitch
+   processing.add_roll
    processing.add_is_suspicious
    processing.interpolate_lat_lon
    processing.add_basic_data

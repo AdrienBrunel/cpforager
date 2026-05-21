@@ -1,0 +1,6 @@
+﻿cpforager.processing.add\_pitch
+===============================
+
+.. currentmodule:: cpforager.processing
+
+.. autofunction:: add_pitch
