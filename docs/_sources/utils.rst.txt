@@ -14,6 +14,8 @@ General functions that are useful.
 
    utils.ortho_distance
    utils.spherical_heading
+   utils.circular_mean
+   utils.circular_sd
    utils.convert_utc_to_loc
    utils.convert_loc_to_utc
    utils.apply_functions_between_samples

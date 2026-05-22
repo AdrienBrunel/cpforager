@@ -1,0 +1,6 @@
+﻿cpforager.utils.circular\_mean
+==============================
+
+.. currentmodule:: cpforager.utils
+
+.. autofunction:: circular_mean

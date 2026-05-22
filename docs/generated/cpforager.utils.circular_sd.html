@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>6.8. cpforager.utils.get_largest_factor &mdash; cpforager</title>
+  <title>6.4. cpforager.utils.circular_sd &mdash; cpforager</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=8ac2ccb1" />
@@ -21,8 +21,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="6.9. cpforager.utils.nearsq_grid_layout" href="cpforager.utils.nearsq_grid_layout.html" />
-    <link rel="prev" title="6.7. cpforager.utils.apply_functions_between_samples" href="cpforager.utils.apply_functions_between_samples.html" /> 
+    <link rel="next" title="6.5. cpforager.utils.convert_utc_to_loc" href="cpforager.utils.convert_utc_to_loc.html" />
+    <link rel="prev" title="6.3. cpforager.utils.circular_mean" href="cpforager.utils.circular_mean.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -56,14 +56,14 @@
 <li class="toctree-l2"><a class="reference internal" href="cpforager.utils.ortho_distance.html">6.1. cpforager.utils.ortho_distance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cpforager.utils.spherical_heading.html">6.2. cpforager.utils.spherical_heading</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cpforager.utils.circular_mean.html">6.3. cpforager.utils.circular_mean</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cpforager.utils.circular_sd.html">6.4. cpforager.utils.circular_sd</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">6.4. cpforager.utils.circular_sd</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cpforager.utils.circular_sd"><code class="docutils literal notranslate"><span class="pre">circular_sd()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="cpforager.utils.convert_utc_to_loc.html">6.5. cpforager.utils.convert_utc_to_loc</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cpforager.utils.convert_loc_to_utc.html">6.6. cpforager.utils.convert_loc_to_utc</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cpforager.utils.apply_functions_between_samples.html">6.7. cpforager.utils.apply_functions_between_samples</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">6.8. cpforager.utils.get_largest_factor</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#cpforager.utils.get_largest_factor"><code class="docutils literal notranslate"><span class="pre">get_largest_factor()</span></code></a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="cpforager.utils.get_largest_factor.html">6.8. cpforager.utils.get_largest_factor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cpforager.utils.nearsq_grid_layout.html">6.9. cpforager.utils.nearsq_grid_layout</a></li>
 </ul>
 </li>
@@ -87,9 +87,9 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../utils.html"><span class="section-number">6. </span>Utils</a></li>
-      <li class="breadcrumb-item active"><span class="section-number">6.8. </span>cpforager.utils.get_largest_factor</li>
+      <li class="breadcrumb-item active"><span class="section-number">6.4. </span>cpforager.utils.circular_sd</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/generated/cpforager.utils.get_largest_factor.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/generated/cpforager.utils.circular_sd.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -97,27 +97,23 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="cpforager-utils-get-largest-factor">
-<h1><span class="section-number">6.8. </span>cpforager.utils.get_largest_factor<a class="headerlink" href="#cpforager-utils-get-largest-factor" title="Link to this heading"></a></h1>
+  <section id="cpforager-utils-circular-sd">
+<h1><span class="section-number">6.4. </span>cpforager.utils.circular_sd<a class="headerlink" href="#cpforager-utils-circular-sd" title="Link to this heading"></a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="cpforager.utils.get_largest_factor">
-<span class="sig-prename descclassname"><span class="pre">cpforager.utils.</span></span><span class="sig-name descname"><span class="pre">get_largest_factor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cpforager.utils.get_largest_factor" title="Link to this definition"></a></dt>
-<dd><p>Compute the largest factor of an integer.</p>
+<dt class="sig sig-object py" id="cpforager.utils.circular_sd">
+<span class="sig-prename descclassname"><span class="pre">cpforager.utils.</span></span><span class="sig-name descname"><span class="pre">circular_sd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">angles</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cpforager.utils.circular_sd" title="Link to this definition"></a></dt>
+<dd><p>Compute circular standard deviation of angles in degrees.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>n</strong> (<em>int</em>) – integer we want the largest factor.</p>
+<dd class="field-odd"><p><strong>angles</strong> (<em>list</em>) – angles in degrees for which we want to compute the standard deviation.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>the largest factor.</p>
+<dd class="field-even"><p>the circular standard deviation of angles in degrees.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>int</p>
+<dd class="field-odd"><p>float</p>
 </dd>
 </dl>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>n&gt;0.</p>
-</div>
 </dd></dl>
 
 </section>
@@ -126,8 +122,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="cpforager.utils.apply_functions_between_samples.html" class="btn btn-neutral float-left" title="6.7. cpforager.utils.apply_functions_between_samples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="cpforager.utils.nearsq_grid_layout.html" class="btn btn-neutral float-right" title="6.9. cpforager.utils.nearsq_grid_layout" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="cpforager.utils.circular_mean.html" class="btn btn-neutral float-left" title="6.3. cpforager.utils.circular_mean" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="cpforager.utils.convert_utc_to_loc.html" class="btn btn-neutral float-right" title="6.5. cpforager.utils.convert_utc_to_loc" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

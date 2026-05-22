@@ -1,0 +1,6 @@
+﻿cpforager.utils.circular\_sd
+============================
+
+.. currentmodule:: cpforager.utils
+
+.. autofunction:: circular_sd
