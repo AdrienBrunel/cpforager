@@ -192,45 +192,45 @@ def full_diagnostic(self, fig_dir, file_id, plot_params, fast=False):
     # raw acc timeserie        
     ax = fig.add_subplot(gs[4,0])
     if fast: 
-        diagnostic.plot_ts_multiple(ax, df_small, params, plot_params, ["ax", "ay", "az"], "Raw acceleration", "Acceleration [g]")
+        diagnostic.plot_ts_multiple(ax, df_small, params, plot_params, plot_params["cols_ts"], ["ax", "ay", "az"], "Raw acceleration", "Acceleration [g]")
     else:
-        diagnostic.plot_ts_multiple(ax, df, params, plot_params, ["ax", "ay", "az"], "Raw acceleration", "Acceleration [g]")
+        diagnostic.plot_ts_multiple(ax, df, params, plot_params, plot_params["cols_ts"], ["ax", "ay", "az"], "Raw acceleration", "Acceleration [g]")
     
     # static acc timeserie
     ax = fig.add_subplot(gs[4,1])
     if fast: 
-        diagnostic.plot_ts_multiple(ax, df_small, params, plot_params, ["ax_s", "ay_s", "az_s"], "Static acceleration", "Acceleration [g]")
+        diagnostic.plot_ts_multiple(ax, df_small, params, plot_params, plot_params["cols_ts"], ["ax_s", "ay_s", "az_s"], "Static acceleration", "Acceleration [g]")
     else:
-        diagnostic.plot_ts_multiple(ax, df, params, plot_params, ["ax_s", "ay_s", "az_s"], "Static acceleration", "Acceleration [g]")
+        diagnostic.plot_ts_multiple(ax, df, params, plot_params, plot_params["cols_ts"], ["ax_s", "ay_s", "az_s"], "Static acceleration", "Acceleration [g]")
     
     # dynamic acc timeserie
     ax = fig.add_subplot(gs[4,2])
     if fast: 
-        diagnostic.plot_ts_multiple(ax, df_small, params, plot_params, ["ax_d", "ay_d", "az_d"], "Dynamic acceleration", "Acceleration [g]")
+        diagnostic.plot_ts_multiple(ax, df_small, params, plot_params, plot_params["cols_ts"], ["ax_d", "ay_d", "az_d"], "Dynamic acceleration", "Acceleration [g]")
     else:
-        diagnostic.plot_ts_multiple(ax, df, params, plot_params, ["ax_d", "ay_d", "az_d"], "Dynamic acceleration", "Acceleration [g]")
+        diagnostic.plot_ts_multiple(ax, df, params, plot_params, plot_params["cols_ts"], ["ax_d", "ay_d", "az_d"], "Dynamic acceleration", "Acceleration [g]")
      
     # odba and vedba timeserie
     ax = fig.add_subplot(gs[4,3])
     if fast: 
-        diagnostic.plot_ts_multiple(ax, df_small, params, plot_params, ["odba", "vedba"], "Overall and Vectorial Dynamic Body Acceleration", "Acceleration [g]")
+        diagnostic.plot_ts_multiple(ax, df_small, params, plot_params, plot_params["cols_ts_acc"], ["odba", "vedba"], "Overall and Vectorial Dynamic Body Acceleration", "Acceleration [g]")
     else:
-        diagnostic.plot_ts_multiple(ax, df, params, plot_params, ["odba", "vedba"], "Overall and Vectorial Dynamic Body Acceleration", "Acceleration [g]")
+        diagnostic.plot_ts_multiple(ax, df, params, plot_params, plot_params["cols_ts_acc"], ["odba", "vedba"], "Overall and Vectorial Dynamic Body Acceleration", "Acceleration [g]")
         
     # odba timeserie zoom (50% to 50.1% dataframe length)
     ax = fig.add_subplot(gs[4,4])
-    diagnostic.plot_ts_multiple(ax, df.iloc[int(0.5*n_df):int((0.5+0.001)*n_df)].reset_index(drop=True), params, plot_params, ["odba", "vedba"], "Overall and Vectorial Dynamic Body Acceleration [Zoom]", "Acceleration [g]", scatter=False)
-    
+    diagnostic.plot_ts_multiple(ax, df.iloc[int(0.5*n_df):int((0.5+0.001)*n_df)].reset_index(drop=True), params, plot_params, plot_params["cols_ts_acc"], ["odba", "vedba"], "Overall and Vectorial Dynamic Body Acceleration [Zoom]", "Acceleration [g]", scatter=False)
+
     # pitch and roll timeserie
     ax = fig.add_subplot(gs[5,0])
     if fast: 
-        diagnostic.plot_ts_multiple(ax, df_small, params, plot_params, ["pitch", "roll"], "Pitch and Roll", "Angle [°]")
+        diagnostic.plot_ts_multiple(ax, df_small, params, plot_params, plot_params["cols_ts_angles"], ["pitch", "roll"], "Pitch and Roll", "Angle [°]")
     else:
-        diagnostic.plot_ts_multiple(ax, df, params, plot_params, ["pitch", "roll"], "Pitch and Roll", "Angle [°]")
+        diagnostic.plot_ts_multiple(ax, df, params, plot_params, plot_params["cols_ts_angles"], ["pitch", "roll"], "Pitch and Roll", "Angle [°]")
      
     # pitch and roll timeserie zoom (50% to 50.1% dataframe length)
     ax = fig.add_subplot(gs[5,1])
-    diagnostic.plot_ts_multiple(ax, df.iloc[int(0.5*n_df):int((0.5+0.001)*n_df)].reset_index(drop=True), params, plot_params, ["pitch", "roll"], "Pitch and Roll [Zoom]", "Angle [°]", scatter=False)
+    diagnostic.plot_ts_multiple(ax, df.iloc[int(0.5*n_df):int((0.5+0.001)*n_df)].reset_index(drop=True), params, plot_params, plot_params["cols_ts_angles"], ["pitch", "roll"], "Pitch and Roll [Zoom]", "Angle [°]", scatter=False)
  
     # pressure
     ax = fig.add_subplot(gs[5,2])
