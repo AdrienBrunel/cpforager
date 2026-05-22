@@ -98,6 +98,7 @@ def spherical_heading(lon_1, lat_1, lon_2, lat_2):
 # CIRCULAR MEAN
 # ================================================================================================ #
 def circular_mean(angles):
+    
     """
     Compute circular mean of angles in degrees.
     
@@ -107,17 +108,23 @@ def circular_mean(angles):
     :rtype: float
     """
     
+    # convert degrees to radians
     angles_rad = math.pi/180*angles
-    average_angle_rad = scipy.circmean(angles_rad, low=-math.pi, high=math.pi)
-    average_angle = 180/math.pi*average_angle_rad
     
-    return(average_angle)
+    # compute circular mean
+    mean_angle_rad = scipy.circmean(angles_rad, low=-math.pi, high=math.pi, nan_policy="omit")
+    
+    # convert back to degrees
+    mean_angle_deg = 180/math.pi*mean_angle_rad
+    
+    return(mean_angle_deg)
 
 
 # ================================================================================================ #
 # CIRCULAR STANDARD DEVIATION
 # ================================================================================================ #
 def circular_sd(angles):
+    
     """
     Compute circular standard deviation of angles in degrees.
     
@@ -127,11 +134,16 @@ def circular_sd(angles):
     :rtype: float
     """
     
+    # convert degrees to radians
     angles_rad = math.pi/180*angles
-    std_angle_rad = scipy.circstd(angles_rad, low=-math.pi, high=math.pi)
-    std_angle = 180/math.pi*std_angle_rad
+
+    # compute circular standard deviation
+    std_angle_rad = scipy.circstd(angles_rad, low=-math.pi, high=math.pi, nan_policy="omit")
     
-    return(std_angle)
+    # convert back to degrees
+    std_angle_deg = 180/math.pi*std_angle_rad
+    
+    return(std_angle_deg)
 
 
 # ================================================================================================ #
