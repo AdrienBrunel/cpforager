@@ -93,36 +93,46 @@ def spherical_heading(lon_1, lat_1, lon_2, lat_2):
 
     return(heading_deg)
 
+
 # ================================================================================================ #
-# CIRCULAR MEAN AND SD
+# CIRCULAR MEAN
 # ================================================================================================ #
 def circular_mean(angles):
     """
-    Compute circular mean (for pitch or roll) for each interval.
+    Compute circular mean of angles in degrees.
     
     :param angles: angles in degrees for which we want to compute the mean.
     :type angles: list
-    :return: the circular mean in degrees.
+    :return: the circular mean of angles in degrees.
     :rtype: float
     """
-    angles_rad = np.pi/180*angles
-    average_angle_rad = scipy.circmean(angles_rad, low=-np.pi, high=np.pi)
-    average_angle = 180/np.pi*average_angle_rad
+    
+    angles_rad = math.pi/180*angles
+    average_angle_rad = scipy.circmean(angles_rad, low=-math.pi, high=math.pi)
+    average_angle = 180/math.pi*average_angle_rad
+    
     return(average_angle)
 
+
+# ================================================================================================ #
+# CIRCULAR STANDARD DEVIATION
+# ================================================================================================ #
 def circular_sd(angles):
     """
-    Compute circular standard deviation (for pitch or roll) for each interval.
+    Compute circular standard deviation of angles in degrees.
     
     :param angles: angles in degrees for which we want to compute the standard deviation.
     :type angles: list
-    :return: the circular standard deviation in degrees.
+    :return: the circular standard deviation of angles in degrees.
     :rtype: float
     """
-    angles_rad = np.pi/180*angles
-    average_angle_rad = scipy.circstd(angles_rad, low=-np.pi, high=np.pi)
-    average_angle = 180/np.pi*average_angle_rad
-    return(average_angle)
+    
+    angles_rad = math.pi/180*angles
+    std_angle_rad = scipy.circstd(angles_rad, low=-math.pi, high=math.pi)
+    std_angle = 180/math.pi*std_angle_rad
+    
+    return(std_angle)
+
 
 # ================================================================================================ #
 # UTC TO LOC
