@@ -186,7 +186,6 @@ def plot_ts_multiple(ax, df, params, plot_params, color_palette, vars, title, va
     n_vars = len(vars)
         
     # plot time series
-    # plot_list=[]
     for i in range(n_vars):
         if scatter:
             plt.scatter(df["datetime"], df[vars[i]], s=plot_params["pnt_size"], marker=plot_params["pnt_type"], c=color_palette[i], alpha=0.5, label=vars[i])
