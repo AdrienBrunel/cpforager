@@ -147,10 +147,10 @@ def plot_ts(ax, df, params, plot_params, var, title, var_lab, custom_locator=Non
 # ================================================================================================ #
 # PLOT TIMESERIES
 # ================================================================================================ #        
-def plot_ts_multiple(ax, df, params, plot_params, var_list, title, var_lab, custom_locator=None, custom_formatter=None, scatter=True, hline=None, eph_cond=None):
+def plot_ts_multiple(ax, df, params, plot_params, color_palette, vars, title, var_lab, custom_locator=None, custom_formatter=None, scatter=True, hline=None, eph_cond=None):
         
     """
-    Plot timeserie of the dataframe columns designated by the values of var_list.
+    Plot timeserie of the dataframe columns designated by the value of list vars.
         
     :param ax: plot axes. 
     :type ax: matplotlib.Axes 
@@ -160,8 +160,10 @@ def plot_ts_multiple(ax, df, params, plot_params, var_list, title, var_lab, cust
     :type params: dict
     :param plot_params: plot parameters dictionary. 
     :type plot_params: dict
-    :param var: name of the column in df.
-    :type var: str
+    :param color_palette: list of colors for the plots.
+    :type color_palette: list of str
+    :param vars: list of column names in df.
+    :type vars: list of str
     :param title: plot title.
     :type title: str
     :param var_lab: y-axis label.
@@ -181,35 +183,25 @@ def plot_ts_multiple(ax, df, params, plot_params, var_list, title, var_lab, cust
     # plot timeserie of var in dataframe
     datetime_locator, datetime_formatter = get_datetime_locator_formatter(df, custom_locator, custom_formatter)
     plot_night(df, params, plot_params)
-    n_var = len(var_list)
-    
-    # set colors [TBD : move this to plot_params dictionary]
-    if "pitch" in var_list:
-        cols = ["tab:pink", "tab:olive"]
-    elif "odba" in var_list:
-        cols = ["tab:cyan", "tab:purple"]
-    else:
-        cols = ["tab:red", "tab:green", "tab:blue"]
-    
+    n_vars = len(vars)
+        
     # plot time series
-    plot_list=[]
-    if scatter:
-        for i in range(n_var):
-            plot_list.append(plt.scatter(df["datetime"], df[var_list[i]], s=plot_params["pnt_size"], marker=plot_params["pnt_type"], c=cols[i], alpha=0.5))
-    else:
-        for i in range(n_var):
-            plot_list.append(plt.plot(df["datetime"], df[var_list[i]], linewidth=plot_params["pnt_size"], c=cols[i]))
+    # plot_list=[]
+    for i in range(n_vars):
+        if scatter:
+            plt.scatter(df["datetime"], df[vars[i]], s=plot_params["pnt_size"], marker=plot_params["pnt_type"], c=color_palette[i], alpha=0.5, label=vars[i])
+        else:
+            plt.plot(df["datetime"], df[vars[i]], linewidth=plot_params["pnt_size"], c=color_palette[i], label=vars[i])
+        if not(eph_cond is None):
+            plt.scatter(df.loc[eph_cond, "datetime"], df.loc[eph_cond, vars[i]], s=plot_params["eph_size"], color="red")
     if not(hline is None):
         plt.axhline(y=hline, color="orange", linestyle="--", linewidth=plot_params["pnt_size"])
-    if not(eph_cond is None):
-        for i in range(n_var):
-            plt.scatter(df.loc[eph_cond, "datetime"], df.loc[eph_cond, var_list[i]], s=plot_params["eph_size"], color="red")
     plt.title(title, fontsize=plot_params["main_fs"])
     plt.xlabel("Time", fontsize=plot_params["labs_fs"])
     plt.ylabel(var_lab, fontsize=plot_params["labs_fs"])
     plt.tick_params(axis="both", labelsize=plot_params["axis_fs"])
     plt.grid(linestyle=plot_params["grid_lty"], linewidth=plot_params["grid_lwd"], color=plot_params["grid_col"])
-    plt.legend(plot_list, var_list, loc="upper right")
+    plt.legend(loc="upper right")
     ax.xaxis.set(major_locator=datetime_locator, major_formatter=datetime_formatter)
     
 
