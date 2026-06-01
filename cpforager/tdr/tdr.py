@@ -53,8 +53,8 @@ class TDR:
         :vartype median_pressure: float
         :ivar median_depth: the median depth in meters.
         :vartype median_depth: float
-        :ivar max_depth: the maximum depth in meters.
-        :vartype max_depth: float
+        :ivar min_depth: the minimum depth in meters.
+        :vartype min_depth: float
         :ivar mean_temperature: the mean temperature in °C.
         :vartype mean_temperature: float
         :ivar dive_statistics: the dataframe containing the dive statistics where one row corresponds to one dive.
@@ -84,7 +84,7 @@ class TDR:
         self.n_dives = tdr_infos["n_dives"]
         self.median_pressure = tdr_infos["median_pressure"]
         self.median_depth = tdr_infos["median_depth"]
-        self.max_depth = tdr_infos["max_depth"]
+        self.min_depth = tdr_infos["min_depth"]
         self.mean_temperature = tdr_infos["mean_temperature"]
         self.dive_statistics = tdr_infos["dive_statistics"]
         

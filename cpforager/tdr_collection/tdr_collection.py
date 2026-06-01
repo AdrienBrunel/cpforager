@@ -38,7 +38,7 @@ class TDR_Collection:
         """
         
         # init dataframes
-        column_names_1 = ["group", "id", "dive_id", "duration", "max_depth"]
+        column_names_1 = ["group", "id", "dive_id", "duration", "min_depth"]
         dtypes_1 = parameters.get_columns_dtypes(column_names_1)
         dive_statistics_all = pd.DataFrame(columns=column_names_1).astype(dtype=dtypes_1)
         

@@ -199,7 +199,7 @@ def get_columns_dtypes(column_names):
     dtypes_columns_tdr = {"pressure":"Float64", "temperature":"Float64", "depth":"Float64", "dive":"Int64", "zoc":"Float64"}
     dtypes_columns_acc = {"ax":"Float64", "ay":"Float64", "az":"Float64",  "ax_s":"Float64", "ay_s":"Float64", "az_s":"Float64", "ax_d":"Float64", "ay_d":"Float64", "az_d":"Float64","odba":"Float64","vedba":"Float64", "pitch":"Float64", "pitch_mean":"Float64", "pitch_sd":"Float64", "roll":"Float64", "roll_mean":"Float64", "roll_sd":"Float64"}
     dtypes_trip_stats = {"trip_id":"str", "length":"float", "duration":"float", "max_hole":"float", "dmax":"float", "n_step":"int"}
-    dtypes_dive_stats = {"dive_id":"str", "duration":"float", "max_depth":"float"}
+    dtypes_dive_stats = {"dive_id":"str", "duration":"float", "min_depth":"float"}
     
     # append dictionaries
     dtypes_columns_dict = {}

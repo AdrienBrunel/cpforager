@@ -459,7 +459,7 @@ def add_trip(df, params):
 def add_depth(df, params):
     
     """    
-    Add to the dataframe an additional ``depth`` column that gives the estimated underwater depth in negative.   
+    Add to the dataframe an additional ``depth`` column that gives the estimated underwater depth in negative meters.   
     
     :param df: dataframe with a ``pressure`` column in hPa.
     :type df: pandas.DataFrame
@@ -1031,7 +1031,7 @@ def add_axy_data(df, params):
     df.loc[tdr_indices, tdr_columns] = df_tdr_tmp[tdr_columns].values
     
     # produce df_gps by processing (sum, mean, max) data between two gps measures
-    funcs_cols = {"sum":["odba", "vedba", "step_time"], "max":["pressure", "depth", "dive"], "mean":["temperature"], "len_unique_pos":["dive"], "circ_mean":["pitch","roll"], "circ_sd":["pitch","roll"]}
+    funcs_cols = {"sum":["odba", "vedba", "step_time"], "max":["pressure", "dive"], "min":["depth"], "mean":["temperature"], "len_unique_pos":["dive"], "circ_mean":["pitch","roll"], "circ_sd":["pitch","roll"]}
     df = utils.apply_functions_between_samples(df, gps_resolution, funcs_cols, verbose=True)
 
     # process gps data
@@ -1042,7 +1042,7 @@ def add_axy_data(df, params):
                                     "roll_circ_mean": "roll_mean", "roll_circ_sd": "roll_sd",
                                     "step_time_sum":"step_time", 
                                     "dive_max":"dive", "dive_len_unique_pos":"n_dives",
-                                    "pressure_max":"pressure", "depth_max":"depth", "temperature_mean":"temperature"})
+                                    "pressure_max":"pressure", "depth_min":"depth", "temperature_mean":"temperature"})
     df_gps["trip"] = df_gps["trip"].astype(int)
     df_gps["is_suspicious"] = df_gps["is_suspicious"].astype(int)
         
@@ -1105,7 +1105,7 @@ def add_gps_tdr_data(df, params):
     df.loc[tdr_indices, tdr_columns] = df_tdr[tdr_columns].values
         
     # produce df_gps by processing (sum, mean, max) data between two gps measures
-    funcs_cols = {"sum":["step_time"], "max":["pressure", "depth", "dive"], "mean":["temperature"], "len_unique_pos":["dive"]}
+    funcs_cols = {"sum":["step_time"], "max":["pressure", "dive"], "min":["depth"], "mean":["temperature"], "len_unique_pos":["dive"]}
     df = utils.apply_functions_between_samples(df, gps_resolution, funcs_cols, verbose=True)
     
     # process gps data
@@ -1113,7 +1113,7 @@ def add_gps_tdr_data(df, params):
     df_gps = df_gps.drop(["step_time", "dive", "pressure", "depth", "temperature"], axis=1)
     df_gps = df_gps.rename(columns={"step_time_sum":"step_time", 
                                     "dive_max":"dive", "dive_len_unique_pos":"n_dives",
-                                    "pressure_max":"pressure", "depth_max":"depth", "temperature_mean":"temperature"})
+                                    "pressure_max":"pressure", "depth_min":"depth", "temperature_mean":"temperature"})
     df_gps["trip"] = df_gps["trip"].astype(int)
     df_gps["is_suspicious"] = df_gps["is_suspicious"].astype(int)
         
@@ -1221,22 +1221,22 @@ def compute_tdr_infos(df):
     n_dives = df["dive"].max()
     median_pressure = df["pressure"].median()
     median_depth = df["depth"].median()
-    max_depth = df["depth"].abs().max()
+    min_depth = df["depth"].min()
     mean_temperature = df["temperature"].mean()
-    dive_statistics = pd.DataFrame(columns=["id", "duration", "max_depth"])
+    dive_statistics = pd.DataFrame(columns=["id", "duration", "min_depth"])
     for k in range(n_dives):
         dive_id = k+1
         df_dive = df.loc[df["dive"] == dive_id].reset_index(drop=True)
         n_df_dive = len(df_dive)
         dive_statistics.loc[k, "id"] = dive_id
         dive_statistics.loc[k, "duration"] = (df_dive.loc[n_df_dive-1, "datetime"] - df_dive.loc[0, "datetime"]).total_seconds()
-        dive_statistics.loc[k, "max_depth"] = df_dive["depth"].abs().max()
+        dive_statistics.loc[k, "min_depth"] = df_dive["depth"].min()
             
     # store tdr infos
     infos = {"n_dives" : n_dives,
              "median_pressure" : median_pressure, 
              "median_depth" : median_depth, 
-             "max_depth" : max_depth, 
+             "min_depth" : min_depth, 
              "mean_temperature" : mean_temperature,
              "dive_statistics" : dive_statistics}
     

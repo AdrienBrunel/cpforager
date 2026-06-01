@@ -49,11 +49,11 @@ def plot_stats_summary(self, fig_dir, file_id, plot_params, quantiles=[0.25, 0.5
     fig.add_subplot(gs[2,0])
     diagnostic.plot_cumulative_distribution(dive_statistics_all, plot_params, "duration", "Dive duration", "Time [s]", quantiles)
     fig.add_subplot(gs[0,1])
-    diagnostic.plot_hist(dive_statistics_all, plot_params, "max_depth", "Dive max depth", "Depth [m]")
+    diagnostic.plot_hist(dive_statistics_all, plot_params, "min_depth", "Dive min depth", "Depth [m]")
     fig.add_subplot(gs[1,1])
-    diagnostic.plot_box(dive_statistics_all, plot_params, "max_depth", "Dive max depth", "Depth [m]")
+    diagnostic.plot_box(dive_statistics_all, plot_params, "min_depth", "Dive min depth", "Depth [m]")
     fig.add_subplot(gs[2,1])
-    diagnostic.plot_cumulative_distribution(dive_statistics_all, plot_params, "max_depth", "Dive max depth", "Depth [m]", quantiles)
+    diagnostic.plot_cumulative_distribution(dive_statistics_all, plot_params, "min_depth", "Dive min depth", "Depth [m]", quantiles)
     
     # save figure
     fig_path = os.path.join(fig_dir, "%s.png" % file_id)
